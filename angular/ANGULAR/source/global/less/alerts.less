@@ -1,0 +1,138 @@
+//
+// Alerts
+// --------------------------------------------------
+
+
+// Base styles
+// -------------------------
+
+.alert {
+  padding: @alert-padding;
+  margin-bottom: @line-height-computed;
+  border: 1px solid transparent;
+  border-radius: @alert-border-radius;
+  &:extend(.clearfix all);
+  // Headings for larger alerts
+  h4 {
+    margin-top: 0;
+    // Specified for the h4 to prevent conflicts of changing @headings-color
+    color: inherit;
+  }
+  // Provide class for links that match alerts
+  .alert-link {
+    font-weight: @alert-link-font-weight;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+  // Improve alignment and spacing of inner content
+  > p,
+  > ul {
+    margin-bottom: 0;
+  }
+  > p + p {
+    margin-top: 5px;
+  }
+  //begin alert-icon
+  .alert-icon{
+    font-size: 38px;
+    float: left;
+    width: 10%;
+  }
+  //end alert-icon
+  //bgin alert alert-content
+  .alert-content{
+    float: left;
+    display: inline;
+    width: 89%;
+    text-align: left;
+    p{
+      margin: 0;
+      font-size: 12px;
+
+    }
+  }
+}
+
+// Dismissible alerts
+//
+// Expand the right padding and account for the close button's positioning.
+
+.alert-dismissable, // The misspelled .alert-dismissable was deprecated in 3.2.0.
+.alert-dismissible {
+  padding-right: (@alert-padding + 20);
+
+  // Adjust close link position
+  .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    color: inherit;
+  }
+  >.alert-content{
+    width: 86%;
+  }
+}
+
+// Alternate styles
+//
+// Generate contextual modifier classes for colorizing the alert.
+
+.alert-success {
+  .alert-variant(@alert-success-bg; fade(@state-success-border, 20%); @alert-success-text);
+}
+.alert-info {
+  .alert-variant(@alert-info-bg;fade(@state-info-border, 20%); @alert-info-text);
+}
+.alert-warning {
+  .alert-variant(@alert-warning-bg;  fade(@state-warning-border, 20%); @alert-warning-text);
+}
+.alert-danger {
+  .alert-variant(@alert-danger-bg; fade(@state-danger-border, 20%); @alert-danger-text);
+}
+
+
+.alert-shadow{
+  .box-shadow(5px 5px 0 rgba(0, 0, 0, 0.07));
+}
+
+.alert{
+  &.alert-custom{
+    border: 0;
+    border-left: 2px solid;
+   // background-color: rgba(255,255,255,0.7);
+  }
+
+}
+
+@media only screen and (max-width: @screen-xs ) {
+  .alert{
+    .alert-icon{
+      width: 20%;
+    }
+    .alert-content{
+      width: 80%;
+    }
+    &.alert-dismissable{
+      .alert-content{
+        width: 74%;
+      }
+    }
+  }
+}
+@media only screen and (min-width : 992px) and (max-width : 1200px) {
+  .alert{
+    .alert-icon{
+      width: 20%;
+    }
+    .alert-content{
+      width: 80%;
+    }
+    &.alert-dismissable{
+      .alert-content{
+        width: 74%;
+      }
+    }
+  }
+}

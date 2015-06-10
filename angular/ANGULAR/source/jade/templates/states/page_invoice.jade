@@ -1,0 +1,109 @@
+.page-invoice
+    .row
+        .col-md-12
+            .panel
+                .panel-body
+                    .invoice-title
+                        .row
+                            .col-lg-12.mbxl
+                                h2 Invoice
+                            .col-lg-6
+                                img.mbm(src="http://next-themes.com/loki/code/assets/images/google_logo.png", style="width: 150px;")
+                                p 
+                                    a(href="http://www.google.com") 
+                                        strong www.google.com
+                                p(style="width: 200px") 75 Ninth Avenue 2nd and 4th Floors New York
+                                p 
+                                    strong Phone: 
+                                    span +1 212-565-0000
+                                p 
+                                    strong Fax: 
+                                    span +1 212-565-0001
+                            .col-lg-6
+                                h4.pull-right 
+                                    span.text-warning #12345
+                                    | &nbsp;|&nbsp;
+                                    span October 10, 2014
+                    hr
+                    .well
+                        .row
+                            .col-md-6
+                                address
+                                    strong Billed To:
+                                    br
+                                    | John Smith
+                                    br
+                                    | 1234 Main
+                                    br
+                                    | Apt. 4B
+                                    br
+                                    | Springfield, ST 54321
+                            .col-md-6
+                                address
+                                    strong Shipped To:
+                                    br
+                                    | Jane Smith
+                                    br
+                                    | 1234 Main
+                                    br
+                                    | Apt. 4B
+                                    br
+                                    | Springfield, ST 54321
+                        .row
+                            .col-md-6
+                                address
+                                    strong Payment Method:
+                                    br
+                                    | Visa ending **** 4242
+                                    br
+                                    | example@email.com
+                            .col-md-6
+                                address
+                                    strong Order Date: 
+                                    | March 7, 2014
+                                    br
+                                    strong Order Status: 
+                                    <span class="label label-success">Success</span>
+                                    br
+                    h4.block-heading Order summary
+                    .table-responsive
+                        table.table.table-condensed.table-striped
+                            thead
+                                tr
+                                    td
+                                        strong Item
+                                    td.text-center
+                                        strong Price
+                                    td.text-center
+                                        strong Quantity
+                                    td.text-right
+                                        strong Totals
+                            tbody
+                                tr
+                                    td G-AdWords 200
+                                    td.text-center $10.99
+                                    td.text-center 1
+                                    td.text-right $10.99
+                                tr
+                                    td G-AdWords 400
+                                    td.text-center $20.00
+                                    td.text-center 3
+                                    td.text-right $60.00
+                                tr
+                                    td G-AdWords 1000
+                                    td.text-center $600.00
+                                    td.text-center 1
+                                    td.text-right $600.00
+                        .total.pull-right(style="width: 200px")
+                            p
+                                strong.pull-left Sub-Total
+                                span.pull-right $670.99
+                            .clearfix
+                            p
+                                strong.pull-left Shipping
+                                span.pull-right $15
+                            .clearfix
+                            hr
+                            p
+                                strong.pull-left.mts Total
+                                strong.pull-right.fz18 $685.99

@@ -1,0 +1,208 @@
+.row
+   .col-md-6
+      .panel
+         .panel-body
+            #carousel-example-generic
+               ol.carousel-indicators
+                  li.active
+                  li
+               .carousel-inner
+                  .item.active
+                     img(src="https://s3.amazonaws.com/uifaces/faces/twitter/nisaanjani/128.jpg",alt="")
+                     .carousel-caption
+                        p Your eyes can deceive you. Don't trust them. I don't know what you're talking about.
+                        small
+                           i Another famous person
+      .panel
+         .panel-body
+            | Earning
+            span.pull-right(style="font-size: 24px;") $
+               span#earning-number
+            #earning-chart.mtl(style="width: 100%; height:100px")
+      .panel
+         .panel-body
+            | New Customers
+            span.pull-right
+               span#new-customer-number(style="font-size: 24px;")
+            #new-customer-chart.mtl(style="width: 100%; height:100px")
+
+
+   .col-md-6
+      .panel
+         .panel-body
+            #placeholder.demo-placeholder(style="width: 100%; height:150px")
+            .section.section-info
+               span.info-time Today 2:25 PM
+               h3.info-title Salt Lake City, Utah
+               .info-block
+                  dl
+                     dt 13.5 M
+                     dd Shares Traded
+               .info-block.last
+                  dl
+                     dt 28.44
+                     dd Market Cap
+               .info-aapl
+                  | AAPL
+                  ul
+                     li
+                        span.orange(style='height: 37.5%')
+                     li
+                        span.orange(style='height: 47.5%')
+                     li
+                        span.orange(style='height: 70%')
+                     li
+                        span.orange(style='height: 85%')
+                     li
+                        span.orange(style='height: 40%')
+                     li
+                        span.green(style='height: 75%')
+                     li
+                        span.green(style='height: 50%')
+                     li
+                        span.green(style='height: 15%')
+                     li
+                        span.green(style='height: 25%')
+                     li
+                        span.green(style='height: 25%')
+
+               .yearly-change
+                  | Yearly Change
+                  span
+                     em +
+                     |  127.01
+
+.row
+   .col-md-8
+      .panel
+         .panel-body
+            h3.info-title.mtn MOST PLACE IN THE WORLD
+            small Analytics country user favoutite visited
+            .row.mtl
+               .col-md-4
+                  #map-visitor-chart(style="width: 100%; height:200px")
+               .col-md-8
+                  #map-visitor-markers(style="width: 100%; height: 300px")
+   .col-md-4
+      .widget-weather
+         .widget-header
+            h5 California USA
+               span.caret.mls
+         .widget-body
+            .date
+               p Dec, 10 - Monday
+            .row
+               .col-xs-7
+                  p.time 12:30
+                     span PM
+                  .stats
+                     p Wind:
+                        span.text-success 6 mph NE
+                     p Humidity
+                        span %
+                        span#number-humidity.text-pink 88
+                     p Sunrise:
+                        span 6:30 AM
+                     p Sunset
+                        span 5:40 PM
+               .col-xs-5
+                  canvas#icon1(width='60px', height='60px')
+            .row
+               .items
+                  .item.col-xs-3
+                     p France
+                     canvas#icon2(width='30px', height='30px')
+                     p.value 14°C
+                  .item.col-xs-3
+                     p Italia
+                     canvas#icon3(width='30px', height='30px')
+                     p.value 20°C
+                  .item.col-xs-3
+                     p India
+                     canvas#icon4(width='30px', height='30px')
+                     p.value 25°C
+                  .item.col-xs-3
+                     p England
+                     canvas#icon5(width='30px', height='30px')
+                     p.value 30°C
+.row.mbl
+   .col-lg-5
+      .widget-user
+         .header
+            .header-content.clearfix
+               .user-img.col-sm-3
+                  img.img-circle.img.img-responsive(src="http://api.randomuser.me/portraits/men/27.jpg")
+               .user-info.col-sm-9
+                  h2 Jake Rochleau
+                  p I'm a freelance developer based in Austin, TX. I runs several open-source projects
+                  p
+                     span.label.label-info Design
+                     span.label.label-warning UI/UX
+         .stats
+            .row
+               .stat-item.col-xs-4
+                  a(href="javascript:void(0)")
+                     span#number-blogs 1,240
+                     p blogs
+               .stat-item.col-xs-4
+                  a(href="javascript:void(0)")
+                     span#number-following 60
+                     p following
+               .stat-item.col-xs-4
+                  a(href="javascript:void(0)")
+                     span#number-follower 117
+                     p followers
+         ul.action-list.nav.nav-tabs.nav-justified
+            li
+               a(href="javascript:void(0)")
+                  i.icon-note(data-toggle="tooltip", data-placement="top", title="Write message")
+            li
+               a(href="javascript:void(0)")
+                  i.icon-info(data-toggle="tooltip", data-placement="top", title="View")
+            li
+               a(href="javascript:void(0)")
+                  i.icon-heart(data-toggle="tooltip", data-placement="top", title="Favourite")
+            li
+               a(href="javascript:void(0)")
+                  i.icon-settings(data-toggle="tooltip", data-placement="top", title="Setting")
+   .col-lg-7
+      .panel
+         .panel-body
+            h3.info-title.mtn POPULAR ITEMS
+            small Follow product's income in market place
+            .table-responsive.mtl
+               table.table.table-border-dashed.table-hover
+                  thead
+                     tr
+                        th App Name
+                        th Download
+                        th Percent
+                  tbody
+                     tr
+                        td Highway Rider
+                        td 2.346
+                        td
+                           .progress.progress-xs.mtm.mbm(data-hover='tooltip', title='80%')
+                              .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='80', aria-valuemin='0', aria-valuemax='100', style='width: 80%;')
+                                 span.sr-only 80% Complete
+                     tr
+                        td FaceFighter Ultimate
+                        td 1.320
+                        td
+                           .progress.progress-xs.mtm.mbm(data-hover='tooltip', title='85%')
+                              .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='85', aria-valuemin='0', aria-valuemax='100', style='width: 85%;')
+                                 span.sr-only 85% Complete
+                     tr
+                        td My Talking Tom
+                        td 4.780
+                        td
+                           .progress.progress-xs.mtm.mbm(data-hover='tooltip', title='90%')
+                              .progress-bar.progress-bar-danger(role='progressbar', aria-valuenow='90', aria-valuemin='0', aria-valuemax='100', style='width: 90%;')
+                                 span.sr-only 90% Complete
+                     tr
+                        td Bomb Me
+                        td 7.884
+                        td
+                           .progress.progress-xs.mtm.mbm(data-hover='tooltip', title='60%')
+                              .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
+                                 span.sr-only 60% Complete

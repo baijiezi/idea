@@ -1,0 +1,121 @@
+//
+// Notes
+// --------------------------------------------------
+
+
+// Base styles
+// -------------------------
+.note{
+  padding: @alert-padding;
+  margin-bottom: @line-height-computed;
+  border-radius: @alert-border-radius;
+  &:extend(.clearfix all);
+  border: 0;
+  border-left: 2px solid;
+
+  >strong{
+    >i{
+      font-size: 20px;
+      margin-right: 5px;
+    }
+    padding-bottom: @alert-padding;
+    margin-bottom: @alert-padding;
+    display: block;
+    border-bottom: 1px solid #eee;
+  }
+  >p{
+    margin: 0;
+    font-size: 12px;
+    a{
+      font-weight: bold;
+      color:#777;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &.note-shadow{
+    position: relative;
+    .box-shadow(-5px 5px 0 rgba(0, 0, 0, 0.07));
+    &:after{
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 0;
+      right: 0;
+      border-right: 8px solid #fff;
+      border-top: 8px solid #fff;
+    }
+  }
+}
+
+
+.note-success {
+  .alert-variant(@alert-success-bg; @state-success-border; @alert-success-text);
+  &.note-shadow{
+    &:after {
+      border-left: 7px solid @state-success-border;
+      border-bottom: 7px solid @state-success-border;
+      background: @state-success-border;
+    }
+  }
+  >strong{
+
+    border-bottom: 1px solid fade(@state-success-border,20%);
+  }
+  p a{
+    color:darken(@alert-success-text, 10%);
+    font-weight: bold;
+  }
+}
+.note-info {
+  .alert-variant(@alert-info-bg;@state-info-border; @alert-info-text);
+  &.note-shadow {
+    &:after {
+      border-left: 7px solid @state-info-border;
+      border-bottom: 7px solid @state-info-border;
+      background: @state-info-border;
+    }
+  }
+  >strong{
+    border-bottom: 1px solid fade(@state-info-border,20%);
+  }
+  p a{
+    color:darken(@alert-info-text, 10%);
+    font-weight: bold;
+  }
+}
+.note-warning {
+  .alert-variant(@alert-warning-bg;  @state-warning-border; @alert-warning-text);
+  &.note-shadow {
+    &:after {
+      border-left: 7px solid @state-warning-border;
+      border-bottom: 7px solid @state-warning-border;
+      background: @state-warning-border;
+    }
+  }
+  >strong{
+    border-bottom: 1px solid fade(@state-warning-border,20%);
+  }
+  p a{
+    color:darken(@alert-warning-text, 10%);
+    font-weight: bold;
+  }
+}
+.note-danger {
+  .alert-variant(@alert-danger-bg; @state-danger-border; @alert-danger-text);
+  &.note-shadow {
+    &:after {
+      border-left: 7px solid @state-danger-border;
+      border-bottom: 7px solid @state-danger-border;
+      background: @state-danger-border;
+    }
+  }
+  >strong{
+    border-bottom: 1px solid fade(@state-danger-border,20%);
+  }
+  p a{
+    color:darken(@alert-danger-text, 10%);
+    font-weight: bold;
+  }
+}

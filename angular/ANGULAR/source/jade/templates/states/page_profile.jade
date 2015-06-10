@@ -1,0 +1,659 @@
+.page-profile    
+    .row
+        .col-lg-12
+            .panel
+                .panel-body
+                    .row
+                        .profile-left-side.col-md-3
+                            .user-img.text-center
+                                img.img-circle(src="http://api.randomuser.me/portraits/men/27.jpg")
+                            .social-icon-group
+                                ul.social-icons.list-unstyled.list-inline.text-center.mbl.mtl
+                                    li
+                                        a.facebook(href='javascript:void(0)', data-hover='tooltip', data-original-title='facebook')
+                                            i.fa.fa-facebook
+                                    li
+                                        a.googleplus(href='javascript:void(0)', data-hover='tooltip', data-original-title='google Plus')
+                                            i.fa.fa-google-plus
+                                    li
+                                        a.twitter(href='javascript:void(0)', data-hover='tooltip', data-original-title='twitter')
+                                            i.fa.fa-twitter
+                            .text-center
+                                a.btn.btn-default(href='javascript:void(0)')
+                                    i.fa.fa-envelope
+                                    | &nbsp;
+                                    | Send an email
+                            .row
+                                dl.partner-list.col-sm-6.col-md-12.clearfix.mtl
+                                    dt
+                                        p.title-line Partner 
+                                            span.text-muted (429)
+                                    dd
+                                        a(href="#", data-hover='tooltip', data-original-title='Uxceo')
+                                            img(src='https://s3.amazonaws.com/uifaces/faces/twitter/uxceo/48.jpg')
+                                    dd
+                                        a(href="#", data-hover='tooltip', data-original-title='Rssems')
+                                            img(src='https://s3.amazonaws.com/uifaces/faces/twitter/rssems/48.jpg')
+                                    dd
+                                        a(href="#", data-hover='tooltip', data-original-title='Claudio Guglieri')
+                                            img(src='https://s3.amazonaws.com/uifaces/faces/twitter/claudioguglieri/48.jpg')
+                                    dd
+                                        a(href="#", data-hover='tooltip', data-original-title='Jack Mcdade')
+                                            img(src='https://s3.amazonaws.com/uifaces/faces/twitter/jackmcdade/48.jpg')
+                                    dd
+                                        a(href="#", data-hover='tooltip', data-original-title='Dominik Martn')
+                                            img(src='https://s3.amazonaws.com/uifaces/faces/twitter/dominikmartn/48.jpg')
+                                    dd
+                                        a(href="#", data-hover='tooltip', data-original-title='Oliveira Simoes')
+                                            img(src='https://s3.amazonaws.com/uifaces/faces/twitter/oliveirasimoes/48.jpg')
+                                    dd
+                                        a(href="#", data-hover='tooltip', data-original-title='Adelle Charles')
+                                            img(src='https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/48.jpg')
+                                dl.recent-post-list.col-sm-6.col-md-12.mtl
+                                    dt
+                                        p.title-line Recent Post 
+                                            span.text-muted (5 mins ago)
+                                    dd.mtm
+                                        a.post-title(href='javascript:void(0)')
+                                            img(src="http://next-themes.com/mtek/code/assets/images/icon-html5.png").mrs
+                                            span HTML5 Weekly: A Free, Weekly Email
+                                    dd.mtm
+                                        a.post-title(href='javascript:void(0)')
+                                            img(src="http://next-themes.com/mtek/code/assets/images/icon-css3.png").mrs
+                                            span All you ever needed to know about CSS3
+                                    dd.mtm
+                                        a.post-title(href='javascript:void(0)')
+                                            img(src="http://next-themes.com/mtek/code/assets/images/icon-angular.png").mrs
+                                            span AngularJS Stories for Web Architects
+                                    dd.mtm
+                                        a.post-title(href='javascript:void(0)')
+                                            img(src="http://next-themes.com/mtek/code/assets/images/icon-vine.png").mrs
+                                            span How well does your browser support HTML5?
+                                    dd.mtm
+                                        a.post-title(href='javascript:void(0)')
+                                            img(src="http://next-themes.com/mtek/code/assets/images/icon-tumblr.png").mrs
+                                            span HTML5 semantic elements
+                        .profile-right-side.col-md-9
+                            .row
+                                .col-xs-12(ng-generaltab="")
+                                    h3.mbs.mlx.plm(style="color: #222") Jake Rochleau
+                                    p.mlx.plm Jake Rochleau is a freelance developer based in Austin, TX. He runs several open-source projects (such as LabJS), writes books, and speaks at meetups and conferences.
+                                    .row
+                                        .tabbable-line.col-md-12
+                                            ul.row.nav.nav-tabs.responsive.mtxl
+                                                li.active
+                                                    a(href='#tab-about', data-toggle='tab', style='padding-top: 8px')
+                                                        strong
+                                                            i.fa.fa-info
+                                                            | &nbsp;
+                                                            | About
+                                                li
+                                                    a(href='#tab-activity', data-toggle='tab', style='padding-top: 8px')
+                                                        strong
+                                                            i.fa.fa-bolt
+                                                            | &nbsp;
+                                                            | Activity
+                                                li
+                                                    a(href='#tab-mail', data-toggle='tab', style='padding-top: 8px')
+                                                        strong
+                                                            i.fa.fa-envelope-o
+                                                            | &nbsp;
+                                                            | Messages
+                                            .tab-content
+                                                #tab-about.tab-pane.fade.in.active
+                                                    .row
+                                                        .col-lg-6
+                                                            .article.article-danger
+                                                                .article-head
+                                                                    h4.article-title
+                                                                        | Basic Information
+                                                                .article-body
+                                                                    .st-section
+                                                                        table
+                                                                            tbody
+                                                                                tr
+                                                                                    td.tr-head Gender
+                                                                                    td Male
+                                                                                tr
+                                                                                    td.tr-head Email
+                                                                                    td user@example.com
+                                                                                tr
+                                                                                    td.tr-head Address
+                                                                                    td Street 123, Avenue 45, Country
+                                                                                tr
+                                                                                    td.tr-head Status
+                                                                                    td 
+                                                                                        span.label.label-success Active
+                                                                                tr
+                                                                                    td.tr-head Rating
+                                                                                    td 
+                                                                                        i.fa.fa-star.text-warning.fa-fw
+                                                                                        i.fa.fa-star.text-warning.fa-fw
+                                                                                        i.fa.fa-star.text-warning.fa-fw
+                                                                                        i.fa.fa-star.text-warning.fa-fw
+                                                                                        i.fa.fa-star.fa-fw
+                                                                                tr
+                                                                                    td.tr-head Join
+                                                                                    td Jun 03, 2014
+                                                                                
+                                                                .article-footer
+                                                                    a(href="#", type='button') Edit
+                                                            .article.article-info
+                                                                .article-head
+                                                                    h4.article-title
+                                                                        | Education
+                                                                .article-body
+                                                                    .st-section
+                                                                        h5.st-title
+                                                                            | The University of Melbourne
+                                                                        p.st-description
+                                                                            | 2012 - 2014
+                                                                        p.st-description
+                                                                            | Oldest Victorian university (established 1855) offering a vast range of coursework
+                                                                    .st-section
+                                                                        h5.st-title
+                                                                            | The University of Sydney
+                                                                        p.st-description
+                                                                            | 2014
+                                                                        p.st-description
+                                                                            | Australia's leading higher education and research University.
+                                                                .article-footer
+                                                                    a(href="#", type='button') Edit
+                                                            .article.article-danger
+                                                                .article-head
+                                                                    h4.article-title
+                                                                        | Contact Information
+                                                                .article-body
+                                                                    .st-section
+                                                                        h5.ci-title.st-title
+                                                                            | Home
+                                                                        p.st-description
+                                                                            table
+                                                                                tbody
+                                                                                    tr
+                                                                                        td.tr-head Phone
+                                                                                        td 08-1234-567
+                                                                                    tr
+                                                                                        td.tr-head Fax
+                                                                                        td 021-56789
+                                                                                    tr
+                                                                                        td.tr-head Website
+                                                                                        td 
+                                                                                            a(href="javascript:void(0)") http://www.yoursite.com
+                                                                                    tr
+                                                                                        td.tr-head Blog
+                                                                                        td 
+                                                                                            a(href="javascript:void(0)") http://www.yourblog.com
+                                                                    .st-section
+                                                                        h5.ci-title.st-title
+                                                                            | Work
+                                                                        p.st-description
+                                                                            table
+                                                                                tbody
+                                                                                    tr
+                                                                                        td.tr-head Phone
+                                                                                        td 08-1234-567
+                                                                                    tr
+                                                                                        td.tr-head Fax
+                                                                                        td 021-56789
+                                                                                    tr
+                                                                                        td.tr-head Website
+                                                                                        td 
+                                                                                            a(href="javascript:void(0)") http://www.yoursite.com
+                                                                                    tr
+                                                                                        td.tr-head Blog
+                                                                                        td 
+                                                                                            a(href="javascript:void(0)") http://www.yourblog.com
+                                                                .article-footer
+                                                                    a(href="#", type='button') Edit
+                                                            
+                                                        .col-lg-6
+                                                            .article.article-success
+                                                                .article-head
+                                                                    h4.article-title
+                                                                        | Work
+                                                                .article-body
+                                                                    .st-section
+                                                                        h5.st-title
+                                                                            | Occupation
+                                                                        p.st-description
+                                                                            | What do you do?
+                                                                    .st-section
+                                                                        h5.st-title
+                                                                            | Skills
+                                                                        p.st-description
+                                                                            | What are your best skils?
+                                                                    .st-section
+                                                                        h5.st-title
+                                                                            | Employment
+                                                                        p.st-description
+                                                                            | Where have you worked?
+                                                                .article-footer
+                                                                    a(href="#", type='button') Edit
+                                                            .article
+                                                                .article-head
+                                                                    h4.article-title
+                                                                        | Places
+                                                                .article-body
+                                                                    .st-section
+                                                                        iframe(width="100%", height="350", frameborder="0", style="border:0", src="https://www.google.com/maps/embed/v1/place?q=121%20King%20Street%2C%20Melbourne%2C%20Victoria%2C%20Australia&key=AIzaSyBl-BZWqTyzNfUxRGZbOODQGdyWtW7MVAY")
+                                                                .article-footer
+                                                                    a(href="#", type='button') Edit
+                                                            .article.article-warning
+                                                                .article-head
+                                                                    h4.article-title
+                                                                        | Link Connection
+                                                                .article-body
+                                                                    .st-section
+                                                                        img(src="http://next-themes.com/mtek/code/assets/images/icon-html5.png").pull-left.mrm
+                                                                        a.lc-link(href="#") HTML5 Community
+                                                                        button.btn.btn-default.pull-right.mts View
+                                                                    .st-section
+                                                                        img(src="http://next-themes.com/mtek/code/assets/images/icon-css3.png").pull-left.mrm
+                                                                        a.lc-link(href="#") Bootstrap framework
+                                                                        button.btn.btn-default.pull-right.mts View
+                                                                    .st-section
+                                                                        img(src="http://next-themes.com/mtek/code/assets/images/icon-angular.png").pull-left.mrm
+                                                                        a.lc-link(href="#") Superheroic Javascript framework
+                                                                        button.btn.btn-default.pull-right.mts View
+                                                                .article-footer
+                                                                    a(href="#", type='button') Edit
+                                                #tab-activity.tab-pane.fade
+                                                    ul.list-activity.list-unstyled
+                                                        li.post-list.clearfix
+                                                            .avatar
+                                                                img.img-circle(src='https://s3.amazonaws.com/uifaces/faces/twitter/mlane/48.jpg')
+                                                            .post-body
+                                                                .desc
+                                                                    strong.post-user.mrs Diane Harris
+                                                                    small.text-muted posted a new note
+                                                                    | &nbsp; - &nbsp;
+                                                                    small.text-muted 1 days ago at 6:18am
+                                                                .post-content
+                                                                    a.post-title(href='javascript:void(0)')
+                                                                        img(src="http://next-themes.com/mtek/code/assets/images/icon-html5.png").mrs
+                                                                        strong HTML5 Weekly: A Free, Weekly Email Newsletter
+                                                                    .summary.mts.cleafix
+                                                                        .img-wrapper
+                                                                            img(src="http://next-themes.com/mtek/code/assets/images/06.jpg").mrs
+                                                                        p Lorem ipsum dolor sit amet, consectetur adipisicing.  Lorem ipsum dolor 
+                                                                            | sit amet,consectetur adipisicing elit. Laudantium, quo. Lorem
+                                                                            | it amet,consectetur adipisicing elit. Laudantium, quo. Lorem
+                                                                    .clearfix   
+                                                                .action-post.mtl
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-heart-o.mrx
+                                                                        | Like
+                                                                    | &nbsp; - &nbsp;
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-comments-o.mrx
+                                                                        | Comments
+                                                                    | &nbsp; - &nbsp;
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-share-square-o.mrx
+                                                                        | Share
+                                                        li.post-list.clearfix
+                                                            .avatar
+                                                                img.img-circle(src='https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/48.jpg')
+                                                            .post-body
+                                                                .desc
+                                                                    strong.post-user.mrs Ava Martin
+                                                                    small.text-muted posted a new note
+                                                                    | &nbsp; - &nbsp;
+                                                                    small.text-muted 1 days ago at 6:18am
+                                                                .post-content
+                                                                    a.post-title(href='javascript:void(0)')
+                                                                        img(src="http://next-themes.com/mtek/code/assets/images/icon-angular.png").mrs
+                                                                        strong AngularJS Stories for Web Architects
+                                                                    .summary.mts.cleafix
+                                                                        .img-wrapper
+                                                                            img(src="http://next-themes.com/mtek/code/assets/images/02-sm.jpg").mrs
+                                                                        p Lorem ipsum dolor sit amet, consectetur adipisicing.  Lorem ipsum dolor 
+                                                                            | sit amet,consectetur adipisicing elit. Laudantium, quo. Lorem
+                                                                            | it amet,consectetur adipisicing elit. Laudantium, quo. Lorem
+                                                                    .clearfix   
+                                                                .action-post.mtl
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-heart-o.mrx
+                                                                        | Like
+                                                                    | &nbsp; - &nbsp;
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-comments-o.mrx
+                                                                        | Comments
+                                                                    | &nbsp; - &nbsp;
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-share-square-o.mrx
+                                                                        | Share
+                                                        li.post-list.clearfix
+                                                            .avatar
+                                                                img.img-circle(src='https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/48.jpg')
+                                                            .post-body
+                                                                .desc
+                                                                    strong.post-user.mrs Charlotte Robinson
+                                                                    small.text-muted upload new photos
+                                                                    | &nbsp; - &nbsp;
+                                                                    small.text-muted 1 week ago at 9:18am
+                                                                .post-content 
+                                                                    .img-upload-wrap
+                                                                        img(src="http://next-themes.com/mtek/code/assets/images/04-sm.jpg")
+                                                                        img(src="http://next-themes.com/mtek/code/assets/images/05-sm.jpg")
+                                                                        img(src="http://next-themes.com/mtek/code/assets/images/07-sm.jpg")
+                                                                        img(src="http://next-themes.com/mtek/code/assets/images/09-sm.jpg")
+                                                        li.post-list.clearfix
+                                                            .avatar
+                                                                img.img-circle(src='https://s3.amazonaws.com/uifaces/faces/twitter/chadengle/48.jpg')
+                                                            .post-body
+                                                                .desc
+                                                                    strong.post-user.mrs Sophia Lee
+                                                                    small.text-muted upload new photos
+                                                                    | &nbsp; - &nbsp;
+                                                                    small.text-muted 1 week ago at 9:18am
+                                                                .post-content 
+                                                                    .row
+                                                                        .col-md-6
+                                                                            span.task-item
+                                                                                | Admin Template
+                                                                                small.pull-right.text-muted 80%
+                                                                            .progress
+                                                                                .progress-bar.progress-bar-orange(role='progressbar', aria-valuenow='80', aria-valuemin='0', aria-valuemax='100', style='width: 80%;')
+                                                                                    span.sr-only 80% Complete (success)
+                                                                            span.task-item
+                                                                                | Wordpress Themes
+                                                                                small.pull-right.text-muted 40%
+                                                                            .progress
+                                                                                .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='40', aria-valuemin='0', aria-valuemax='100', style='width: 40%;')
+                                                                                    span.sr-only 40% Complete (success)
+                                                                            span.task-item
+                                                                                | Landing Page
+                                                                                small.pull-right.text-muted 67%
+                                                                            .progress
+                                                                                .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='67', aria-valuemin='0', aria-valuemax='100', style='width: 67%;')
+                                                                                    span.sr-only 67% Complete (success)
+                                                        li.post-list.clearfix
+                                                            .avatar
+                                                                img.img-circle(src='https://s3.amazonaws.com/uifaces/faces/twitter/oliveirasimoes/48.jpg')
+                                                            .post-body
+                                                                .desc
+                                                                    strong.post-user.mrs Diane Harris
+                                                                    small.text-muted posted a new note
+                                                                    | &nbsp; - &nbsp;
+                                                                    small.text-muted 1 days ago at 6:18am
+                                                                .post-content
+                                                                    a.post-title(href='javascript:void(0)')
+                                                                        img(src="http://next-themes.com/mtek/code/assets/images/icon-html5.png").mrs
+                                                                        strong HTML5 Weekly: A Free, Weekly Email Newsletter
+                                                                    .summary.mts.cleafix
+                                                                        .img-wrapper
+                                                                            img(src="http://next-themes.com/mtek/code/assets/images/04-sm.jpg").mrs
+                                                                        p Lorem ipsum dolor sit amet, consectetur adipisicing.  Lorem ipsum dolor 
+                                                                            | sit amet,consectetur adipisicing elit. Laudantium, quo. Lorem
+                                                                            | it amet,consectetur adipisicing elit. Laudantium, quo. Lorem
+                                                                    .clearfix   
+                                                                .action-post.mtl
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-heart-o.mrx
+                                                                        | Like
+                                                                    | &nbsp; - &nbsp;
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-comments-o.mrx
+                                                                        | Comments
+                                                                    | &nbsp; - &nbsp;
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-share-square-o.mrx
+                                                                        | Share
+                                                        li.post-list.clearfix
+                                                            .avatar
+                                                                img.img-circle(src='https://s3.amazonaws.com/uifaces/faces/twitter/claudioguglieri/48.jpg')
+                                                            .post-body
+                                                                .desc
+                                                                    strong.post-user.mrs Diane Harris
+                                                                    small.text-muted posted a new note
+                                                                    | &nbsp; - &nbsp;
+                                                                    small.text-muted 1 days ago at 6:18am
+                                                                .post-content
+                                                                    a.post-title(href='javascript:void(0)')
+                                                                        img(src="http://next-themes.com/mtek/code/assets/images/icon-html5.png").mrs
+                                                                        strong HTML5 Weekly: A Free, Weekly Email Newsletter
+                                                                    .summary.mts.cleafix
+                                                                        .img-wrapper
+                                                                            img(src="http://next-themes.com/mtek/code/assets/images/05-sm.jpg").mrs
+                                                                        p Lorem ipsum dolor sit amet, consectetur adipisicing.  Lorem ipsum dolor 
+                                                                            | sit amet,consectetur adipisicing elit. Laudantium, quo. Lorem
+                                                                            | it amet,consectetur adipisicing elit. Laudantium, quo. Lorem
+                                                                    .clearfix   
+                                                                .action-post.mtl
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-heart-o.mrx
+                                                                        | Like
+                                                                    | &nbsp; - &nbsp;
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-comments-o.mrx
+                                                                        | Comments
+                                                                    | &nbsp; - &nbsp;
+                                                                    a(href="javascript:void(0)")
+                                                                        i.fa.fa-share-square-o.mrx
+                                                                        | Share
+                                                #tab-mail.tab-pane.fade
+                                                    .mail-action-group.form-inline.mtl.mbl
+                                                        .row
+                                                            .col-lg-6
+                                                                a.btn.btn-danger.mrm(href='javascript:void(0)', role='button') 
+                                                                    i.fa.fa-send-o.mrs
+                                                                    | COMPOSE
+                                                                a.btn.btn-default(href='javascript:void(0)', role='button') 
+                                                                    i.fa.fa-trash-o.mrs
+                                                                    | Trash
+                                                            .col-lg-6
+                                                                .input-group.pull-right
+                                                                    input.form-control.input-inline(type="text")
+                                                                    a(href="javascript:void(0)").input-group-addon Search
+                                                    .list-group.mail-box
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip
+                                                        a.list-group-item
+                                                            .row
+                                                                .col-lg-3
+                                                                    input(type='checkbox')
+                                                                    span.fa.fa-star-o.mrm.mlm
+                                                                    span.mail-from Bhaumik Patel
+                                                                .col-lg-9
+                                                                    i.mail-title Sed ut perspiciatis unde
+                                                                    | &nbsp; - &nbsp;
+                                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                                    span.pull-right 12:10 AM
+                                                                    span.pull-right.mrl
+                                                                        span.glyphicon.glyphicon-paperclip

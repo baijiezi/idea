@@ -1,0 +1,194 @@
+.row
+    .col-md-6
+        .panel
+            .panel-heading
+                .caption Date Range Pickers
+            .panel-body
+                form.form-horizontal.form-seperated(role="form")
+                    .form-body
+                        .form-group
+                            label.col-md-3.control-label Date
+                            .col-md-7
+                                .input-group
+                                    .input-group-addon
+                                        i.fa.fa-calendar
+                                    input.form-control(type='text', name='daterangepicker-default')
+                        .form-group
+                            label.col-md-3.control-label Date & Time
+                            .col-md-7
+                                .input-group
+                                    input.form-control(type='text', name='daterangepicker-date-time')
+                                    .input-group-addon
+                                        i.fa.fa-calendar
+                        .form-group
+                            label.col-md-3.control-label Advance Date Range Picker
+                            .col-md-6
+                                .btn.btn-success.reportrange
+                                    i.fa.fa-calendar
+                                    | &nbsp;
+                                    span
+                                    | &nbsp;report&nbsp;
+                                    i.fa.fa-angle-down
+                                    input(type='hidden', name="datestart")
+                                    input(type='hidden', name="endstart")
+                        .form-group
+                            .col-md-6.col-md-offset-3
+                                button.btn.btn-info(type='button', data-target='#date-range-picker-modal', data-toggle="modal") Run with modal
+                                    i.icon-arrow-right.mls
+        .panel
+            .panel-heading
+                .caption Date Picker
+            .panel-body
+                form.form-horizontal.form-seperated(role="form")
+                    .form-body
+                        .form-group
+                            label.col-md-3.control-label Default
+                            .col-md-5
+                                input.datepicker-default.form-control(type='text', data-date-format='dd/mm/yyyy', placeholder='dd/mm/yyyy')
+
+                        .form-group
+                            label.col-md-3.control-label Format
+                            .col-md-5
+                                input.datepicker-default.form-control(type='text', data-date-format='mm-dd-yyyy', placeholder='mm-dd-yyyy')
+
+                        .form-group
+                            label.col-md-3.control-label Start with years
+                            .col-md-5
+                                .input-group
+                                    input.datepicker-years.form-control(type='text')
+                                    .input-group-addon
+                                        i.fa.fa-calendar
+                        .form-group
+                            label.col-md-3.control-label Range
+                            .col-md-8
+                                .input-group.input-daterange
+                                    input.form-control(type='text', name='startdate')
+                                    span.input-group-addon to
+                                    input.form-control(type='text', name='enddate')
+                        .form-group
+                            label.col-md-3.control-label Inline
+                            .col-md-3
+                                .datepicker-inline
+                        .form-group
+                            .col-md-6.col-md-offset-3
+                                button.btn.btn-info(type='button', data-target='#date-picker-modal', data-toggle="modal") Run with modal
+                                    i.icon-arrow-right.mls
+        
+    .col-md-6
+        .panel
+            .panel-heading
+                .caption Clockface Time Picker
+            .panel-body
+                form.form-horizontal.form-seperated(role="form")
+                    .form-body
+                        .form-group
+                            label.col-md-3.control-label Default
+                            .col-md-4
+                                input.clockface-default.form-control(type='text', value='2:30 PM', data-format='hh:mm A')
+                        .form-group
+                            label.col-md-3.control-label Clockface component
+                            .col-md-4
+                                .input-group
+                                    input.clockface-component.form-control(type='text', value='2:30 PM', data-format='hh:mm A')
+                                    span.input-group-btn.btn-clockface-component
+                                        button.btn.btn-default(type='button')
+                                            i.fa.fa-clock-o
+                        .form-group
+                            label.col-md-3.control-label Clockface Inline
+                            .col-md-4
+                                .clockface-inline.well(style='padding: 0; float: left;')
+                        .form-group
+                            .col-md-6.col-md-offset-3
+                                button.btn.btn-info(type='button', data-target='#clockface-picker-modal', data-toggle="modal") Run with modal
+                                    i.icon-arrow-right.mls
+        .panel
+            .panel-heading
+                .caption Datetime Picker
+            .panel-body
+                form.form-horizontal.form-seperated(role="form", name='datetime-picker')
+                    .form-body
+                        .form-group
+                            label.col-md-3.control-label Default
+                            .col-md-6
+                                .input-group.datetimepicker-default.date
+                                    input.form-control(type='text', name='datetime')
+                                    span.input-group-addon
+                                        i.fa.fa-calendar
+                        .form-group
+                            label.col-md-3.control-label Disable date
+                            .col-md-6
+                                .input-group.datetimepicker-disable-date.date
+                                    input.form-control(type='text', name='time')
+                                    span.input-group-addon
+                                        i.fa.fa-clock-o
+                        .form-group
+                            label.col-md-3.control-label Disable time
+                            .col-md-6
+                                .input-group.datetimepicker-disable-time.date
+                                    input.form-control(type='text', name='date')
+                                    span.input-group-addon
+                                        i.fa.fa-calendar
+                        .form-group
+                            label.col-md-3.control-label Events and linked pickers
+                            .col-md-6
+                                .input-group.datetimepicker-start.date.mbl
+                                    input.form-control(type='text', name='datetime_event_start')
+                                    span.input-group-addon
+                                        i.fa.fa-calendar
+                            .col-md-6.col-md-offset-3
+                                .input-group.datetimepicker-end.date
+                                    input.form-control(type='text', name='datetime_event_end')
+                                    span.input-group-addon
+                                        i.fa.fa-clock-o
+                        .form-group
+                            .col-md-6.col-md-offset-3
+                                button.btn.btn-info(type='button', data-target='#datetime-picker-modal', data-toggle="modal") Run with modal
+                                    i.icon-arrow-right.mls
+.row
+    .col-md-6
+        .panel
+            .panel-heading
+                .caption Time Picker
+            .panel-body
+                form.form-horizontal.form-seperated(role="form")
+                    .form-body
+                        .form-group
+                            label.col-md-3.control-label Default
+                            .col-md-4
+                                .input-group.bootstrap-timepicker
+                                    input.timepicker-default.form-control(type='text')
+                                    span.input-group-addon
+                                        i.fa.fa-clock-o
+                        .form-group
+                            label.col-md-3.control-label Timepicker 24hr
+                            .col-md-4
+                                .input-group.bootstrap-timepicker
+                                    input.timepicker-24hr.form-control(type='text')
+                                    span.input-group-addon
+                                        i.fa.fa-clock-o
+                        .form-group
+                            .col-md-6.col-md-offset-3
+                                button.btn.btn-info(type='button', data-target='#time-picker-modal', data-toggle="modal") Run with modal
+        
+                                    i.icon-arrow-right.mls
+    .col-md-6
+        .panel
+            .panel-heading
+                .caption Color Picker
+            .panel-body
+                form.form-horizontal.form-seperated(role="form")
+                    .form-body
+                        .form-group
+                            label.col-md-3.control-label Default
+                            .col-md-9
+                                input.colorpicker-default.form-control(type='text')
+                        .form-group
+                            label.col-md-3.control-label RGBA format
+                            .col-md-9
+                                input.colorpicker-rgba.form-control(type='text', data-color-format='rgba')
+                        .form-group
+                            .col-md-9.col-md-offset-3
+                                button.btn.btn-info(type='button', data-target='#color-picker-modal', data-toggle="modal") Run with Modal
+                                    i.icon-arrow-right.mls
+    
+

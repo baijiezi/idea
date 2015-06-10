@@ -1,0 +1,537 @@
+.demo-form-component
+    .row
+        .col-md-12
+            .note.note-success
+                strong
+                    i.fa.fa-tags
+                    |Note
+                p
+                    strong Circle style, shadow style:
+                    = ' '
+                    | using by add class
+                    code .form-control-circle
+                    = ' or '
+                    code .form-control-shadow
+                    = ' '
+                    | into input or input group.
+                    br
+                    | Template has change
+                    code z-index
+                    = ' '
+                    | attribute of some picker widgets to help they can run in modal.
+
+    .row
+        .col-md-12
+            .panel
+                .panel-heading
+                    .caption Basic component
+                .panel-body
+                    form.form-horizontal.form-seperated(role="form")
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label(for="InputText") Default Input Text
+                                .col-md-6
+                                    input.form-control(type="text", id="InputText", placeholder=".form-control")
+                            .form-group
+                                label.col-md-3.control-label(for="InputText") Shadow Input Text
+                                .col-md-6
+                                    input.form-control.form-control-shadow(type="text", id="InputText", placeholder=".form-control-shadow")
+                            .form-group
+                                label.col-md-3.control-label(for="InputText") Circle Input Text
+                                .col-md-6
+                                    input.form-control.form-control-circle(type="text", id="InputText", placeholder=".form-control-circle")
+                            .form-group
+                                label.col-md-3.control-label(for="InputEmail") Default Input Group
+                                .col-md-6
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-phone
+                                        input.form-control(type="text", placeholder=".input-group")
+                            .form-group
+                                label.col-md-3.control-label(for="InputEmail") Shadow Input Group
+                                .col-md-6
+                                    .input-group.input-group-shadow
+                                        span.input-group-addon
+                                            i.fa.fa-phone
+                                        input.form-control(type="text", placeholder=".input-group-shadow")
+                            .form-group
+                                label.col-md-3.control-label(for="InputEmail") Circle Input Group
+                                .col-md-6
+                                    .input-group.input-group-circle-left
+                                        span.input-group-addon
+                                            i.fa.fa-phone
+                                        input.form-control(type="text", placeholder=".input-group-circle-left")
+                            .form-group
+                                label.col-md-3.control-label(for="InputPassword") Password
+                                .col-md-6
+                                    .input-group.input-group-circle-right
+                                        input.form-control(type="password", placeholder=".input-group-circle-right")
+                                        span.input-group-addon
+                                            i.fa.fa-key
+                            .form-group
+                                label.col-md-3.control-label Left icon
+                                .col-md-6
+                                    .input-icon
+                                        i.fa.fa-clock-o
+                                        input.form-control(type="text", placeholder="Left icon")
+                            .form-group
+                                label.col-md-3.control-label Right icon
+                                .col-md-6
+                                    .input-icon.right
+                                        i.fa.fa-bullhorn
+                                        input.form-control(type="text", placeholder="Right icon")
+                            .form-group
+                                label.col-md-3.control-label Disabled
+                                .col-md-6
+                                    input.form-control(type="text", placeholder="Disabled", disabled)
+                            .form-group
+                                label.col-md-3.control-label Readonly
+                                .col-md-6
+                                    input.form-control(type="text", placeholder="Readonly", readonly)
+                            .form-group
+                                label.col-md-3.control-label(for='exampleInputFile1') File input
+                                .col-md-6
+                                    input(type='file', style='display: none;')
+                                    .input-group
+                                        input.form-control(type='text')
+                                        .input-group-btn
+                                            a.btn.btn-info.btn-browse Browse
+                            .form-group
+                                label.col-md-3.control-label Input With Spinner
+                                .col-md-6
+                                    .input-icon.right
+                                        i.fa.fa-spinner.fa-spin
+                                        input.form-control(type="text", placeholder="Process something")
+                            .form-group
+                                label.col-md-3.control-label Dropdown
+                                .col-md-6
+                                    select.form-control
+                                        option Option 1
+                                        option Option 2
+                                        option Option 3
+                                        option Option 4
+                                        option Option 5
+                            .form-group
+                                label.col-md-3.control-label(for="InputDropdown") Multiple Select
+                                .col-md-6
+                                    select.form-control(multiple)
+                                        option Option 1
+                                        option Option 2
+                                        option Option 3
+                                        option Option 4
+                                        option Option 5
+                            .form-group
+                                label.col-md-3.control-label Textarea
+                                .col-md-6
+                                    textarea.form-control(rows="4")
+                            .form-group
+                                label.col-md-3.control-label Checkboxes
+                                .col-md-6
+                                    .checkbox.mtx
+                                        label
+                                            input(type='checkbox').form-control-shadow
+                                            | &nbsp;
+                                            | Option 1
+                                    .checkbox.mtx
+                                        label
+                                            input(type='checkbox')
+                                            | &nbsp;
+                                            | Option 2
+                                    .checkbox.disabled.mtx
+                                        label
+                                            input(type='checkbox', disabled='disabled')
+                                            | &nbsp;
+                                            | Disabled
+                            .form-group
+                                label.col-md-3.control-label Inline Checkboxes
+                                .col-md-6
+                                    label.checkbox-inline.pln
+                                        input#inlineCheckbox1(type='checkbox', value='option1').form-control-shadow
+                                        | &nbsp;
+                                        | Checkbox 1
+                                    label.checkbox-inline
+                                        input#inlineCheckbox2(type='checkbox', value='option2')
+                                        | &nbsp;
+                                        | Checkbox 2
+                                    label.checkbox-inline
+                                        input#inlineCheckbox3(type='checkbox', value='option3', disabled='disabled')
+                                        | &nbsp;
+                                        | Disabled
+                            .form-group
+                                label.col-md-3.control-label Radio
+                                .col-md-6
+                                    .radio.mtx
+                                        label
+                                            input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='checked').form-control-shadow
+                                            | &nbsp;
+                                            | Option 1
+                                    .radio.mtx
+                                        label
+                                            input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
+                                            | &nbsp;
+                                            | Option 2
+                                    .radio.disabled.mtx
+                                        label
+                                            input#optionsRadios3(type='radio', name='optionsRadios', value='option3', disabled='disabled')
+                                            | &nbsp;
+                                            | Disabled
+                            .form-group
+                                label.col-md-3.control-label Radio Inline
+                                .col-md-6
+                                    .radio
+                                        label
+                                            input#optionsRadios4(type='radio', name='optionsRadiosInline', value='option1', checked='checked').form-control-shadow
+                                            | &nbsp;
+                                            | Option 1
+                                        label
+                                            input#optionsRadios5(type='radio', name='optionsRadiosInline', value='option2')
+                                            | &nbsp;
+                                            | Option 2
+                                        label
+                                            input#optionsRadios6(type='radio', name='optionsRadiosInline', value='option3', disabled='disabled')
+                                            | &nbsp;
+                                            | Disabled
+    .row
+        .col-md-6
+            .panel
+                .panel-heading
+                    .caption Placehoder & Mask input
+                .panel-body
+                    form.form-horizontal.form-seperated(role="form")
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label Date
+                                .col-md-9
+                                    input#date.form-control(placeholder="__/__/____")
+                            .form-group
+                                label.col-md-3.control-label Phone
+                                .col-md-9
+                                    input#phone.form-control(placeholder="(123) 456-7890")
+                            .form-group
+                                label.col-md-3.control-label Product Key
+                                .col-md-9
+                                    input#product-key.form-control(placeholder="(ab) 12-345")
+        .col-md-6
+            .panel
+                .panel-heading
+                    .caption Input help block
+                .panel-body
+                    form.form-horizontal.form-separated(role="form")
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label.mtxl Username
+                                .col-md-4
+                                    p.text-success Help block above
+                                    input.form-control.input-small
+                            .form-group.form-inline
+                                label.col-md-3.control-label Password
+                                .col-md-9
+                                    input.form-control.input-small.mrs(style="width:120px !important;display:inline-block;")
+                                    span.text-warning.mts.help-block-right Help block on the right
+                            .form-group
+                                label.col-md-3.control-label Password retype
+                                .col-md-6
+                                    input.form-control.input-small
+                                    p.text-danger Help block below
+    
+    .row
+        .col-md-12
+            .panel
+                .panel-heading
+                    .caption Bootstrap Switch
+                .panel-body
+                    form#demo-bootstrap-switch.form-horizontal.form-seperated(role="form")
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label Colors
+                                .col-md-9
+                                    .make-switch(data-on='primary', data-off='info')
+                                        input.switch(type='checkbox', checked='checked')
+                                    | &nbsp;
+                                    .make-switch(data-on='info', data-off='success')
+                                        input.switch(type='checkbox', checked='checked')
+                                    | &nbsp;
+                                    .make-switch(data-on='success', data-off='warning')
+                                        input.switch(type='checkbox', checked='checked')
+                                    | &nbsp;
+                                    .make-switch(data-on='warning', data-off='danger')
+                                        input.switch(type='checkbox', checked='checked')
+                                    | &nbsp;
+                                    .make-switch.mts(data-on='danger', data-off='default')
+                                        input.switch(type='checkbox', checked='checked')
+                                    | &nbsp;
+                                    .make-switch.mts(data-on='default', data-off='primary')
+                                        input.switch(type='checkbox', checked='checked')
+                            .form-group
+                                label.col-md-3.control-label Size
+                                .col-md-9
+                                    .make-switch.switch-large
+                                        input.switch(type='checkbox', checked='checked')
+                                    | &nbsp;
+                                    .make-switch
+                                        input.switch(type='checkbox', checked='checked')
+                                    | &nbsp;
+                                    .make-switch.switch-small
+                                        input.switch(type='checkbox', checked='checked')
+                                    | &nbsp;
+                                    .make-switch.switch-mini
+                                        input.switch(type='checkbox', checked='checked')
+                            .form-group
+                                label.col-md-3.control-label Disabled
+                                .col-md-9
+                                    .make-switch(data-on='primary')
+                                        input.switch(type='checkbox', checked='checked', disabled)
+                            .form-group
+                                label.col-md-3.control-label Text
+                                .col-md-9
+                                    .make-switch(data-on-label='Open', data-off-label='Close', data-text-label="Door")
+                                        input.switch(type='checkbox', checked='checked')
+                            .form-group
+                                label.col-md-3.control-label Icons
+                                .col-md-9
+                                    .make-switch(data-on-label='<i class="fa fa-microphone"></i>', data-off-label='<i class="fa fa-power-off"></i>')
+                                        input.switch(type='checkbox', checked='checked')
+
+            
+                                            i.icon-arrow-right.mls
+    .row
+        .col-md-6
+            .panel
+                .panel-heading
+                    .caption Dynamic Character Count
+                .panel-body
+                    form.form-horizontal.form-seperated(role="form")
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label Default Input Field
+                                .col-md-9
+                                    input#message1.form-control(type='text', name='message1')
+                            .form-group
+                                label.col-md-3.control-label Default Textareas
+                                .col-md-9
+                                    textarea#message2.form-control(name='message2')
+                            .form-group
+                                label.col-md-3.control-label Custom Usage
+                                .col-md-9
+                                    span.help-block Another message (limited to 50, warning at 20)
+                                    textarea#message3.form-control(name='message3', rows="6")
+        .col-md-6
+            .panel
+                .panel-heading
+                    .caption Input sizing
+                .panel-body
+                    form.form-horizontal.form-seperated(role="form")
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label Large Input
+                                .col-md-9
+                                    input.form-control.input-large(type='text', placeholder='.input-large',style="width:100% !important")
+                            .form-group
+                                label.col-md-3.control-label Medium Input
+                                .col-md-9
+                                    input.form-control.input-medium(type='text', placeholder='.input-medium')
+                            .form-group
+                                label.col-md-3.control-label Small Input
+                                .col-md-9
+                                    input.form-control.input-small(type='text', placeholder='.input-small')
+                            .form-group
+                                label.col-md-3.control-label Extra Small Input
+                                .col-md-9
+                                    input.form-control.input-xsmall(type='text', placeholder='.input-xsmall')
+                            .form-group
+                                label.col-md-3.control-label Large Input
+                                .col-md-9
+                                    input.input-lg.form-control(type='text', placeholder='Large Input')
+                            .form-group
+                                label.col-md-3.control-label Medium Input
+                                .col-md-9
+                                    input.form-control(type='text', placeholder='Medium Input')
+                            .form-group
+                                label.col-md-3.control-label Small Input
+                                .col-md-9
+                                    input.input-sm.form-control(type='text', placeholder='Small Input')
+
+    .row
+        .col-md-12
+            .panel
+                .panel-heading
+                    .caption Validate States
+                .panel-body
+                    form(role='form')
+                    .row
+                        .col-md-6
+                            h4.block-heading Validation States
+                            .form-group
+                                label.control-label(for='inputSuccess') Defalt input
+                                input#inputDefault.form-control(type='text')
+                            .form-group.has-success
+                                label.control-label(for='inputSuccess') Input with success
+                                input#inputSuccess.form-control(type='text')
+                            .form-group.has-warning
+                                label.control-label(for='inputWarning') Input with warning
+                                input#inputWarning.form-control(type='text')
+                            .form-group.has-error
+                                label.control-label(for='inputError') Input with error
+                                input#inputError.form-control(type='text')
+                        .col-md-6
+                            h4.block-heading Validation States With Icons
+                            .form-group
+                                label.control-label(for='inputSuccess') Default input
+                                .input-icon.right
+                                    i.glyphicon.glyphicon-info-sign.tooltips(data-hover='tooltip', data-original-title='Email address', data-container='body')
+                                    input.form-control(type='text')
+                            .form-group.has-success
+                                label.control-label(for='inputSuccess') Input with success
+                                .input-icon.right
+                                    i.glyphicon.glyphicon-ok.tooltips(data-hover='tooltip', data-original-title='You look OK!', data-container='body')
+                                    input.form-control(type='text')
+                            .form-group.has-warning
+                                label.control-label(for='inputWarning') Input with warning
+                                .input-icon.right
+                                    i.glyphicon.glyphicon-warning-sign.tooltips(data-hover='tooltip', data-original-title='please provide an email', data-container='body')
+                                    input.form-control(type='text')
+                            .form-group.has-error
+                                label.control-label(for='inputError') Input with error
+                                .input-icon.right
+                                    i.glyphicon.glyphicon-exclamation-sign.tooltips(data-hover='tooltip', data-original-title='please write a valid email', data-container='body')
+                                    input.form-control(type='text')
+    .row
+        .col-md-12
+            .panel
+                .panel-heading
+                    .caption Search Toolbar
+                .panel-body
+                    h4.block-heading Button Addons
+                    .row
+                        .col-md-6.mbm
+                            .input-group
+                                span.input-group-btn
+                                    button.btn.btn-primary(type='button') Go!
+                                input.form-control(type='text')
+                        .col-md-6.mbm
+                            .input-group
+                                input.form-control(type='text')
+                                span.input-group-btn
+                                    button.btn.btn-primary(type='button') Go!
+                    .clearfix.mbxxl
+                    h4.block-heading Button Addons On Both Sides
+                    .row
+                        .col-md-12.mbm
+                            .input-group
+                                span.input-group-btn
+                                    button.btn.btn-success(type='button') Go!
+                                input.form-control(type='text')
+                                span.input-group-btn
+                                    button.btn.btn-success(type='button') Go!
+                    .clearfix.mbxxl
+                    h4.block-heading Buttons With Dropdowns
+                    .row
+                        .col-md-6.mbm
+                            .input-group
+                                .input-group-btn
+                                    button.btn.btn-info.dropdown-toggle(type='button', data-toggle='dropdown')
+                                        | Action
+                                        = ' '
+                                        i.fa.fa-angle-down
+                                    ul.dropdown-menu
+                                        li
+                                            a(href='#') Action
+                                        li
+                                            a(href='#') Another action
+                                        li
+                                            a(href='#') Something else here
+                                        li.divider
+                                        li
+                                            a(href='#') seperated link
+                                input.form-control(type='text')
+                        .col-md-6.mbm
+                            .input-group
+                                input.form-control(type='text')
+                                .input-group-btn
+                                    button.btn.btn-info.dropdown-toggle(type='button', data-toggle='dropdown')
+                                        | Action
+                                        = ' '
+                                        i.fa.fa-angle-down
+                                    ul.dropdown-menu.pull-right
+                                        li
+                                            a(href='#') Action
+                                        li
+                                            a(href='#') Another action
+                                        li
+                                            a(href='#') Something else here
+                                        li.divider
+                                        li
+                                            a(href='#') seperated link
+                    .clearfix.mbxxl
+                    h4.block-heading Buttons With Dropdowns On Both Sides
+                    .row
+                        .col-md-12.mbm
+                            .input-group
+                                .input-group-btn
+                                    button.btn.btn-danger.dropdown-toggle(type='button', data-toggle='dropdown')
+                                        | Action
+                                        = ' '
+                                        i.fa.fa-angle-down
+                                    ul.dropdown-menu
+                                        li
+                                            a(href='#') Action
+                                        li
+                                            a(href='#') Another action
+                                        li
+                                            a(href='#') Something else here
+                                        li.divider
+                                        li
+                                            a(href='#') seperated link
+                                input.form-control(type='text')
+                                .input-group-btn
+                                    button.btn.btn-danger.dropdown-toggle(type='button', data-toggle='dropdown')
+                                        | Action
+                                        = ' '
+                                        i.fa.fa-angle-down
+                                    ul.dropdown-menu.pull-right
+                                        li
+                                            a(href='#') Action
+                                        li
+                                            a(href='#') Another action
+                                        li
+                                            a(href='#') Something else here
+                                        li.divider
+                                        li
+                                            a(href='#') seperated link
+                    .clearfix.mbxxl
+                    h4.block-heading Segmented Buttons
+                    .row
+                        .col-md-6.mbm
+                            .input-group
+                                .input-group-btn
+                                    button.btn.btn-primary(type='button', tabindex='-1') Action
+                                    button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', tabindex='-1')
+                                        i.fa.fa-angle-down
+                                    ul.dropdown-menu(role='menu')
+                                        li
+                                            a(href='#') Action
+                                        li
+                                            a(href='#') Another action
+                                        li
+                                            a(href='#') Something else here
+                                        li.divider
+                                        li
+                                            a(href='#') seperated link
+                                input.form-control(type='text')
+                        .col-md-6.mbm
+                            .input-group
+                                input.form-control(type='text')
+                                .input-group-btn
+                                    button.btn.btn-primary(type='button', tabindex='-1') Action
+                                    button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', tabindex='-1')
+                                        i.fa.fa-angle-down
+                                    ul.dropdown-menu.pull-right(role='menu')
+                                        li
+                                            a(href='#') Action
+                                        li
+                                            a(href='#') Another action
+                                        li
+                                            a(href='#') Something else here
+                                        li.divider
+                                        li
+                                            a(href='#') seperated link

@@ -1,0 +1,97 @@
+#chat-form
+    .chat-inner
+        h2.chat-header
+            a.chat-form-close.pull-right(href='javascript:;')
+                i.fa.fa-times
+            i.fa.fa-user
+            | &nbsp;
+            | Active Chat
+            | &nbsp;
+            span.badge.badge-success 5
+        .chat-group#group-1
+            h4.group-title Recently
+            a(href="javascript:void(0)")
+                img.avt(src="https://s3.amazonaws.com/uifaces/faces/twitter/claudioguglieri/48.jpg")
+                span.user-status.is-online
+                small Judy Russell
+                span.badge.badge-info 2
+            a(href="javascript:void(0)")
+                img.avt(src="https://s3.amazonaws.com/uifaces/faces/twitter/uxceo/48.jpg")
+                span.user-status.is-online
+                small Eugene Turner
+                span.badge.badge-info.is-hidden 0
+            a(href="javascript:void(0)")
+                img.avt(src="https://s3.amazonaws.com/uifaces/faces/twitter/rssems/48.jpg")
+                span.user-status.is-busy
+                small Ann Porter
+                span.badge.badge-info.is-hidden 0
+            a(href="javascript:void(0)")
+                img.avt(src="https://s3.amazonaws.com/uifaces/faces/twitter/jackmcdade/48.jpg")
+                span.user-status.is-idle
+                small Benjamin Howell
+                span.badge.badge-info.is-hidden 0
+        .chat-group#group-2
+            h4.group-title Work
+            a(href="javascript:void(0)")
+                img.avt(src="https://s3.amazonaws.com/uifaces/faces/twitter/oliveirasimoes/48.jpg")
+                span.user-status.is-busy
+                small Lawrence Larson
+                span.badge.badge-info.is-hidden 0
+            a(href="javascript:void(0)")
+                img.avt(src="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/48.jpg")
+                span.user-status.is-offline
+                small Jacqueline Howell
+                span.badge.badge-info.is-hidden 0
+            a(href="javascript:void(0)")
+                img.avt(src="https://s3.amazonaws.com/uifaces/faces/twitter/jackmcdade/48.jpg")
+                span.user-status.is-offline
+                small Andrew Brewer
+                span.badge.badge-info 1
+        .chat-group#group-3
+            h4.group-title Friends
+            a(href="javascript:void(0)")
+                img.avt(src="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/48.jpg")
+                span.user-status.is-online
+                small Marilyn Romero
+                span.badge.badge-info.is-hidden 0
+            a(href="javascript:void(0)")
+                img.avt(src="https://s3.amazonaws.com/uifaces/faces/twitter/rssems/48.jpg")
+                span.user-status.is-busy
+                small Philip Hall
+                span.badge.badge-info.is-hidden 0
+            a(href="javascript:void(0)")
+                img.avt(src="https://s3.amazonaws.com/uifaces/faces/twitter/uxceo/48.jpg")
+                span.user-status.is-offline
+                small Gary Wells
+                span.badge.badge-info.is-hidden 0
+        .chat-theme-setting.text-right
+            #setting-theme-chat.make-switch(data-on-label='dark', data-off-label='light')
+                input.switch(type='checkbox')
+.chat-box-wrapper
+    #chat-box(style='top:400px')
+        .chat-box-header
+            a.chat-box-close.pull-right.mlm(href="javascript:void(0)")
+                i.fa.fa-times
+            a.chat-box-minimize-btn.pull-right(href="javascript:void(0)")
+                i.fa.fa-chevron-down
+            span.user-status.is-online
+            span.display-name Willard Mckenzie
+        .chat-content
+            ul.chat-box-body
+                li
+                    p
+                        img.avt(src="http://api.randomuser.me/portraits/men/27.jpg")
+                        span.user You
+                        span.time 08:44
+                    p Hi, we have some ideas for this template
+                li.odd
+                    p
+                        img.avt(src="https://s3.amazonaws.com/uifaces/faces/twitter/claudioguglieri/48.jpg")
+                        span.user Jake Rochleau
+                        span.time 08:45
+                    p Great! Let tell us now...
+        .chat-textarea
+            input.form-control(placeholder='Type text and press Enter')
+    .chat-box-minimize
+        img.img-circle(src="https://s3.amazonaws.com/uifaces/faces/twitter/claudioguglieri/48.jpg")
+        span.user-status.is-online

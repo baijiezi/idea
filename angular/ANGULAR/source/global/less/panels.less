@@ -1,0 +1,476 @@
+//
+// Panels
+// --------------------------------------------------
+
+
+// Base class
+.panel {
+  margin-bottom: @line-height-computed;
+  background-color: @panel-bg;
+  border: 0px solid transparent;
+  border-radius: @panel-border-radius;
+  .box-shadow(none);
+}
+
+// Panel contents
+.panel-body {
+  padding: @panel-body-padding;
+  position: relative;
+  &:extend(.clearfix all);
+}
+
+// Optional heading
+.panel-heading {
+  padding: @panel-heading-padding;
+  border-bottom: 1px solid #f0f1f2;
+  .border-top-radius(0);
+
+  > .dropdown .dropdown-toggle {
+    color: inherit;
+  }
+}
+
+// Within heading, strip any `h*` tag of its default margins for spacing.
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: ceil((@font-size-base * 1.125));
+  color: inherit;
+
+  > a {
+    color: inherit;
+  }
+}
+
+// Optional footer (stays gray in every modifier class)
+.panel-footer {
+  padding: @panel-footer-padding;
+  background-color: @panel-footer-bg;
+  border-top: 1px solid @panel-inner-border;
+  .border-bottom-radius(0);
+}
+
+
+// List groups in panels
+//
+// By default, space out list group content from panel headings to account for
+// any kind of custom content between the two.
+
+.panel {
+  > .list-group {
+    margin-bottom: 0;
+
+    .list-group-item {
+      border-width: 1px 0;
+      border-radius: 0;
+    }
+
+    // Add border top radius for first one
+    &:first-child {
+      .list-group-item:first-child {
+        border-top: 0;
+        .border-top-radius(0);
+      }
+    }
+    // Add border bottom radius for last one
+    &:last-child {
+      .list-group-item:last-child {
+        border-bottom: 0;
+        .border-bottom-radius(0);
+      }
+    }
+  }
+}
+// Collapse space between when there's no additional content.
+.panel-heading + .list-group {
+  .list-group-item:first-child {
+    border-top-width: 0;
+  }
+}
+.list-group + .panel-footer {
+  border-top-width: 0;
+}
+
+// Tables in panels
+//
+// Place a non-bordered `.table` within a panel (not within a `.panel-body`) and
+// watch it go full width.
+
+.panel {
+  > .table,
+  > .table-responsive > .table,
+  > .panel-collapse > .table {
+    margin-bottom: 0;
+  }
+  // Add border top radius for first one
+  > .table:first-child,
+  > .table-responsive:first-child > .table:first-child {
+    .border-top-radius(0);
+
+    > thead:first-child,
+    > tbody:first-child {
+      > tr:first-child {
+        td:first-child,
+        th:first-child {
+          border-top-left-radius: 0;
+        }
+        td:last-child,
+        th:last-child {
+          border-top-right-radius: 0;
+        }
+      }
+    }
+  }
+  // Add border bottom radius for last one
+  > .table:last-child,
+  > .table-responsive:last-child > .table:last-child {
+    .border-bottom-radius(0);
+
+    > tbody:last-child,
+    > tfoot:last-child {
+      > tr:last-child {
+        td:first-child,
+        th:first-child {
+          border-bottom-left-radius: 0;
+        }
+        td:last-child,
+        th:last-child {
+          border-bottom-right-radius: 0;
+        }
+      }
+    }
+  }
+  > .panel-body + .table,
+  > .panel-body + .table-responsive {
+    border-top: 1px solid @table-border-color;
+  }
+  > .table > tbody:first-child > tr:first-child th,
+  > .table > tbody:first-child > tr:first-child td {
+    border-top: 0;
+  }
+  > .table-bordered,
+  > .table-responsive > .table-bordered {
+    border: 0;
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th:first-child,
+        > td:first-child {
+          border-left: 0;
+        }
+        > th:last-child,
+        > td:last-child {
+          border-right: 0;
+        }
+      }
+    }
+    > thead,
+    > tbody {
+      > tr:first-child {
+        > td,
+        > th {
+          border-bottom: 0;
+        }
+      }
+    }
+    > tbody,
+    > tfoot {
+      > tr:last-child {
+        > td,
+        > th {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+  > .table-responsive {
+    border: 0;
+    margin-bottom: 0;
+  }
+}
+
+
+// Collapsable panels (aka, accordion)
+//
+// Wrap a series of panels in `.panel-group` to turn them into an accordion with
+// the help of our collapse JavaScript plugin.
+
+.panel-group {
+  margin-bottom: @line-height-computed;
+
+  // Tighten up margin so it's only between panels
+  .panel {
+    margin-bottom: 0;
+    border-radius: @panel-border-radius;
+    + .panel {
+      margin-top: 5px;
+    }
+  }
+
+  .panel-heading {
+    border-bottom: 0;
+    + .panel-collapse > .panel-body {
+      border-top: 1px solid @panel-inner-border;
+    }
+  }
+  .panel-footer {
+    border-top: 0;
+    + .panel-collapse .panel-body {
+      border-bottom: 1px solid @panel-inner-border;
+    }
+  }
+}
+
+
+
+
+
+.panel{
+  .panel-heading{
+    color:  darken(@panel-default-text,25%);
+    &:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+    .caption{
+      min-height: 40px;
+      padding: 20px 0;
+      float: left;
+      display: inline-block;
+      font-size: 17px;
+      line-height: 15px;
+
+      i[class*='icon-']{
+        margin-right: 5px;
+      }
+      a{
+        color: #FFFFFF;
+      }
+    }
+    .tools{
+      >ul>li.active>a{
+        color: #3F3F3F;
+      }
+      float: right;
+      padding: 13px 0 7px 0;
+      a{
+        color: #bcbcbc;
+
+        &.collapse{
+          display: inline-block;
+          margin-left: 5px;
+          line-height: 1;
+          .collapse-icon{
+            display: block;
+            width: 10px;
+            font-size: 16px;
+            text-align: center;
+          }
+          .expand-icon {
+            display: none;
+            font-size: 18px;
+          }
+        }
+        &.remove{
+          display: inline-block;
+          margin-left: 5px;
+          line-height: 1;
+          i{
+            font-size: 22px;
+          }
+        }
+      }
+      > .nav-tabs{
+        > li{
+          > a{
+            padding: 4px 10px;
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+.panel.panel-default {
+  .panel-heading {
+    .caption, .tools {
+      a {
+        color: @text-color !important;
+      }
+    }
+  }
+}
+// Contextual variations
+.panel-default {
+  .panel-variant(@panel-default-border; darken(@panel-default-text,25%); @panel-default-heading-bg; @panel-default-border);
+
+}
+.panel-primary {
+  .panel-variant(@panel-primary-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+
+}
+.panel-success {
+  .panel-variant(@panel-success-border; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
+  .panel-heading{
+    .tools{
+      ul{
+        li{
+          &.active>a{
+            color: darken(@panel-success-text,10%);
+            border-top-color: @panel-success-text;
+          }
+          a{
+            color: @panel-success-text;
+
+          }
+        }
+      }
+    }
+  }
+}
+.panel-info {
+  .panel-variant(@panel-info-border; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
+  .panel-heading{
+    .tools{
+      ul{
+        li{
+          &.active>a{
+            color: darken(@panel-info-text,10%);
+            border-top-color: @panel-info-text;
+          }
+          a{
+            color: @panel-info-text;
+
+          }
+        }
+      }
+    }
+  }
+}
+.panel-warning {
+  .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
+  .panel-heading{
+    .tools{
+      ul{
+        li{
+          &.active>a{
+            color: darken(@panel-warning-text,10%);
+            border-top-color: @panel-warning-text;
+          }
+          a{
+            color: @panel-warning-text;
+
+          }
+        }
+      }
+    }
+  }
+}
+.panel-danger {
+  .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+  .panel-heading{
+    .tools{
+      ul{
+        li{
+          &.active>a{
+            color: darken(@panel-danger-text,10%);
+            border-top-color: @panel-danger-text;
+          }
+          a{
+            color: @panel-danger-text;
+
+          }
+        }
+      }
+    }
+  }
+}
+
+//BEGIN ACCORDIONS
+.accordion .panel {
+  margin-bottom: 10px;
+}
+.accordion .panel-heading {
+  border-left: 3px solid #07bf29;
+  .accordion-toggle {
+  display: block;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 15px 0;
+  position: relative;
+  }
+}
+.accordion .panel-heading .accordion-toggle:hover, .accordion .panel-heading .accordion-toggle:focus {
+  text-decoration: none;
+}
+.accordion .panel-heading .accordion-toggle.collapsed {
+  color: #3F3F3F;
+  border: 0 !important;
+}
+.accordion .panel-heading .accordion-toggle.collapsed > .icon-arrow {
+  filter: alpha(opacity=75);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
+}
+.accordion .panel-heading .accordion-toggle.collapsed > .icon-arrow:before {
+  content: "\f067" !important;
+  color: #3F3F3F;
+}
+.accordion .panel-heading .accordion-toggle > .icon-arrow {
+  font-size: 16px;
+  padding: 0 10px 0 5px;
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #3F3F3F;
+}
+.accordion .panel-heading .accordion-toggle > .icon-arrow:before {
+  content: "\f068";
+  color: #3F3F3F;
+}
+.accordion .panel-body {
+  border: none !important;
+}
+.accordion.panel-group .panel + .panel {
+  margin-top: 1px;
+}
+.accordion.accordion-white .panel-heading .accordion-toggle {
+  background-color: white;
+}
+.accordion.accordion-white .panel-heading .accordion-toggle.collapsed {
+  background-color: white;
+}
+.accordion.accordion-white.panel-group .panel + .panel {
+  margin-top: 0;
+  border-top: 1px solid #a7acb7;
+}
+.accordion>.panel> .panel-heading>.panel-title >a
+{
+  border-bottom: 1px solid #f0f1f2;
+}
+.accordion-inline{
+  >.panel {
+    margin-bottom: 0;
+
+    > .panel-heading {
+
+      > .panel-title > a {
+
+        border: 0;
+        color: #3F3F3F;
+      }
+    }
+  }
+
+}
+
+//END ACCORDIONS
