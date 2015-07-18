@@ -1,0 +1,20 @@
+.page-404
+    .page-form
+        form.form(action='index.html')
+            .header-content
+                h2(style="font-size: 50px") 404
+                h4 This is not the web page you are looking for.
+                p Try the search bar below.
+            .body-content
+                .list-group
+                    .list-group-item
+                        input.form-control(type='password', placeholder='Keyword...')
+                .row
+                    .col-sm-5
+                        button.btn.btn-success.btn-circle.btn-block.btn-shadow.mbs(type='submit')
+                            | Search
+                    .col-sm-7.text-right
+                        a.btn.btn-default.btn-circle.btn-shadow.mbs(href='index.html')
+                            i.icon-arrow-left
+                            | &nbsp;
+                            | Return home

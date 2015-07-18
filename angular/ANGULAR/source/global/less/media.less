@@ -1,0 +1,109 @@
+// Media objects
+// Source: http://stubbornella.org/content/?p=497
+// --------------------------------------------------
+
+
+// Common styles
+// -------------------------
+
+// Clear the floats
+.media,
+.media-body {
+  overflow: hidden;
+  zoom: 1;
+
+  &.media-shadow{
+    padding: 5px;
+  }
+  h4{
+    font-weight: bold;
+    color: #757575;
+    display: inline;
+    margin-right: 5px;
+    font-size: 13px;
+  }
+  .media-link {
+    a {
+      display: inline-block;
+      padding: 5px 3px 0;
+      color: #428bca;
+      cursor: pointer;
+      font-size:10px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Proper spacing between instances of .media
+.media,
+.media .media {
+  margin-top: 5px;
+  >a{
+    position: relative;
+    &:after{
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: rgba(255, 255, 255, 1);
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      border-left: 2px solid #428bca;
+      border-top: 2px solid #428bca;
+      position: absolute;
+      top: 40%;
+      z-index: 11;
+      right: -14px;
+    }
+  }
+  img{
+    border: 2px solid #428bca;
+    border-radius: 50px;
+    width: 58px;
+  }
+}
+.media:first-child {
+  margin-top: 0;
+}
+
+// For images and videos, set to block
+.media-object {
+  display: block;
+}
+
+// Reset margins on headings for tighter default spacing
+.media-heading {
+  margin: 0 0 5px;
+}
+
+
+// Media image alignment
+// -------------------------
+
+.media {
+  > .pull-left {
+    margin-right: 10px;
+  }
+  > .pull-right {
+    margin-left: 10px;
+  }
+}
+
+
+// Media list variation
+// -------------------------
+
+// Undo default ul/ol styles
+.media-list {
+  padding-left: 0;
+  list-style: none;
+}
+//
+.media-body{
+  padding: 10px;
+  border-left: 2px solid #428bca;
+  border-radius: 10px;
+  font-size: 12px;
+}

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+html(lang="en", ng-app='mtek')
+    head
+        title mTek | Angular
+        meta(charset='utf-8')
+        meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel='shortcut icon', href='images/icons/favicon.ico')
+        link(rel='apple-touch-icon', href='images/icons/favicon.png')
+        link(rel='apple-touch-icon', sizes='72x72', href='images/icons/favicon-72x72.png')
+        link(rel='apple-touch-icon', sizes='114x114', href='images/icons/favicon-114x114.png')
+
+        // Loading css
+        link(type="text/css", rel='stylesheet', href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700")
+        link(type="text/css", rel="stylesheet", href="global/vendors/font-awesome/css/font-awesome.min.css")
+        link(type="text/css", rel="stylesheet", href="global/vendors/simple-line-icons/simple-line-icons.css")
+        link(type="text/css", rel="stylesheet", href="global/vendors/bootstrap/css/bootstrap.min.css")
+        link(type="text/css", rel='stylesheet', href='global/vendors/animate.css/animate.css')
+        link(type="text/css", rel='stylesheet', href='global/vendors/iCheck/skins/all.css')
+        link(type="text/css", rel='stylesheet', href='assets/vendors/bootstrap-switch/css/bootstrap-switch.css')
+        link(type="text/css", rel='stylesheet', href='assets/vendors/google-code-prettify/prettify.css')
+        link(type="text/css", rel='stylesheet', href="", id="font-layout")
+        link(type="text/css", rel='stylesheet', href='global/css/core.css')
+        link(type="text/css", rel='stylesheet', href='assets/css/system.css')
+        link(type="text/css", rel='stylesheet', href='assets/css/system-responsive.css')
+
+
+        // Loading Angular libs
+        script(src="global/js/jquery-1.10.2.min.js")
+        script(src='js/libs/angular.js')
+        script(src='js/libs/angular-route.js')
+        script(src='js/libs/angular-ui-router.js')
+        script(src='js/libs/ocLazyLoad.js')
+        script(src='js/libs/ui-bootstrap.js')
+        
+        // Loading jQuery libs
+        script(src="global/js/jquery-migrate-1.2.1.min.js")
+        script(src="global/js/jquery-ui.js")
+        script(src="global/vendors/bootstrap/js/bootstrap.min.js")
+        script(src="global/vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js")
+        script(src="global/js/html5shiv.js")
+        script(src="global/js/respond.min.js")
+        script(src="global/vendors/metisMenu/jquery.metisMenu.js")
+        script(src="global/vendors/slimScroll/jquery.slimscroll.js")
+        script(src="global/vendors/iCheck/icheck.min.js")
+        script(src="global/vendors/iCheck/custom.min.js")
+        script(src="assets/vendors/bootstrap-switch/js/bootstrap-switch.min.js")
+        script(src="assets/vendors/jquery-cookie/jquery.cookie.js")
+        script(src="assets/vendors/bootstrap-datepaginator/moment.js")
+        script(src='assets/vendors/DataTables/media/js/jquery.dataTables.js')
+        script(src='assets/vendors/flot-chart/jquery.flot.js')
+        script(src='assets/vendors/jquery-jvectormap/jquery-jvectormap-2.0.1.min.js')
+        script(src='assets/vendors/jquery-jvectormap/jquery-jvectormap-world-mill-en.js')
+
+        // Loading core javascript
+        script(src='js/main.js')
+    
+        // Loading script for each page using LazyLoad
+    body(ng-controller="AppController", ng-class="[header.layout_menu]")
+        //Modal Default
+        div.fluid(ng-class="header.boxed")
+
+            //BEGIN TEMPLATE SETTING
+            .hidden-xs.hidden-sm(ng-include="'templates/states/_includes/template-setting.html'")
+            //END TEMPLATE SETTING
+
+            //BEGIN TOPBAR
+            .page-header-topbar(ng-include="'templates/states/_includes/topbar.html'")
+            //END TOPBAR
+
+            //BEGIN HORIZONTAL MENU
+            .page-horizontal-menu(ng-include="'templates/states/_includes/horizontal-menu.html'")
+            //END HORIZONTAL MENU
+
+            #wrapper
+                //BEGIN PAGE WRAPPER
+                #page-wrapper
+                    //BEGIN SIDEBAR MAIN
+                    .sidebar-main.sidebar(ng-include="'templates/states/_includes/sidebar-main.html'")
+                    //END SIDEBAR MAIN
+                    
+                    //BEGIN CHAT FORM
+                    .chat-form-wrapper(ng-include="'templates/states/_includes/chat-form.html'")
+                    //END CHAT FORM
+
+                    //BEGIN PAGE CONTENT
+                    .page-content(ng-class="[header.animation]", class="animated")(ng-generaltab="")
+                        //BEGIN TITLE & BREADCRUMB PAGE
+                        .page-title-breadcrumb(ng-include="'templates/states/_includes/title-breadcrumb.html'")
+                        //END TITLE & BREADCRUMB PAGE
+                        .box-content
+
+                            //BEGIN CONTENT
+                            .content(ui-view="")
+                            //END CONTENT
+
+                    //END PAGE CONTENT
+
+                //END PAGE WRAPPER
+
+            //BEGIN FOOTER
+            #footer
+                .copyright  Create by: Nextthemes
+                    .pull-left ©2014 mTek - Bootstrap Admin Template
+            //END FOOTER
+    #color-picker-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal-default-label', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                    h4#modal-default-label.modal-title Color Picker
+                .modal-body
+                    form.form-horizontal.form-seperated(role="form")
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label Default
+                                .col-md-9
+                                    input.colorpicker-default.form-control(type='text')
+                            .form-group
+                                label.col-md-3.control-label RGBA format
+                                .col-md-9
+                                    input.colorpicker-rgba.form-control(type='text', data-color-format='rgba')
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-success(type='button') Save changes
+    #date-range-picker-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal-default-label', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                    h4#modal-default-label.modal-title Date Range Picker
+                .modal-body
+                    form.form-horizontal.form-seperated(role="form")
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label Date
+                                .col-md-7
+                                    .input-group
+                                        .input-group-addon
+                                            i.fa.fa-calendar
+                                        input.form-control(type='text', name='daterangepicker-default')
+                            .form-group
+                                label.col-md-3.control-label Date & Time
+                                .col-md-7
+                                    .input-group
+                                        input.form-control(type='text', name='daterangepicker-date-time')
+                                        .input-group-addon
+                                            i.fa.fa-calendar
+                            .form-group
+                                label.col-md-3.control-label Advance Date Range Picker
+                                .col-md-6
+                                    .btn.btn-success.reportrange
+                                        i.fa.fa-calendar
+                                        | &nbsp;
+                                        span
+                                        | &nbsp;report&nbsp;
+                                        i.fa.fa-angle-down
+                                        input(type='hidden', name="datestart")
+                                        input(type='hidden', name="endstart")
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-success(type='button') Save changes
+    #datetime-picker-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal-default-label', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                    h4#modal-default-label.modal-title Datetime Picker
+                .modal-body
+                    form.form-horizontal.form-seperated(role="form", name='datetime-picker')
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label Default
+                                .col-md-6
+                                    .input-group.datetimepicker-default.date
+                                        input.form-control(type='text', name='datetime')
+                                        span.input-group-addon
+                                            i.fa.fa-calendar
+                            .form-group
+                                label.col-md-3.control-label Disable date
+                                .col-md-6
+                                    .input-group.datetimepicker-disable-date.date
+                                        input.form-control(type='text', name='time')
+                                        span.input-group-addon
+                                            i.fa.fa-clock-o
+                            .form-group
+                                label.col-md-3.control-label Disable time
+                                .col-md-6
+                                    .input-group.datetimepicker-disable-time.date
+                                        input.form-control(type='text', name='date')
+                                        span.input-group-addon
+                                            i.fa.fa-calendar
+                            .form-group
+                                label.col-md-3.control-label Events and linked pickers
+                                .col-md-6
+                                    .input-group.datetimepicker-start.date.mbl
+                                        input.form-control(type='text', name='datetime_event_start')
+                                        span.input-group-addon
+                                            i.fa.fa-calendar
+                                .col-md-6.col-md-offset-3
+                                    .input-group.datetimepicker-end.date
+                                        input.form-control(type='text', name='datetime_event_end')
+                                        span.input-group-addon
+                                            i.fa.fa-clock-o
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-success(type='button') Save changes
+    #time-picker-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal-default-label', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                    h4#modal-default-label.modal-title Time Picker
+                .modal-body
+                    form.form-horizontal.form-seperated(role="form")
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label Default
+                                .col-md-4
+                                    .input-group.bootstrap-timepicker
+                                        input.timepicker-default.form-control(type='text')
+                                        span.input-group-addon
+                                            i.fa.fa-clock-o
+                            .form-group
+                                label.col-md-3.control-label Timepicker 24hr
+                                .col-md-4
+                                    .input-group.bootstrap-timepicker
+                                        input.timepicker-24hr.form-control(type='text')
+                                        span.input-group-addon
+                                            i.fa.fa-clock-o
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-success(type='button') Save changes
+    #date-picker-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal-default-label', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                    h4#modal-default-label.modal-title Date Picker
+                .modal-body
+                   form.form-horizontal.form-seperated(role="form")
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label Default
+                                .col-md-5
+                                    input.datepicker-default.form-control(type='text', data-date-format='dd/mm/yyyy', placeholder='dd/mm/yyyy')
+
+                            .form-group
+                                label.col-md-3.control-label Format
+                                .col-md-5
+                                    input.datepicker-default.form-control(type='text', data-date-format='mm-dd-yyyy', placeholder='mm-dd-yyyy')
+
+                            .form-group
+                                label.col-md-3.control-label Start with years
+                                .col-md-5
+                                    .input-group
+                                        input.datepicker-years.form-control(type='text')
+                                        .input-group-addon
+                                            i.fa.fa-calendar
+                            .form-group
+                                label.col-md-3.control-label Range
+                                .col-md-8
+                                    .input-group.input-daterange
+                                        input.form-control(type='text', name='startdate')
+                                        span.input-group-addon to
+                                        input.form-control(type='text', name='enddate')
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-success(type='button') Save changes
+    #clockface-picker-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal-default-label', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                    h4#modal-default-label.modal-title Clockface Picker
+                .modal-body
+                    form.form-horizontal.form-seperated(role="form")
+                        .form-body
+                            .form-group
+                                label.col-md-3.control-label Default
+                                .col-md-4
+                                    input.clockface-default.form-control(type='text', value='2:30 PM', data-format='hh:mm A')
+                            .form-group
+                                label.col-md-3.control-label Clockface Inline
+                                .col-md-4
+                                    .clockface-inline.well(style='padding: 0; float: left;')
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-success(type='button') Save changes
+    #lightbox-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal-default-label', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                img.img.img-responsive(src="")
+
+
+
+   

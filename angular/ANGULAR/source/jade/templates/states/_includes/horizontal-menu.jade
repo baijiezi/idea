@@ -1,0 +1,162 @@
+#horizontal-menu.collapse.navbar-collapse
+    ul.nav.navbar-nav
+        li
+            a(ui-sref='index')
+                i.icon-home
+                span.menu-title Dashboard
+        li
+            a(ui-sref='page_profile')
+                i.icon-user
+                span.menu-title User Profile
+        li
+            a(ui-sref='page_mail')
+                i.icon-envelope
+                span.menu-title Mail Box
+        li.dropdown
+            a.dropdown-toggle(ui-sref='#', data-hover='dropdown')
+                i.icon-screen-desktop
+                span.menu-title Layouts
+            ul.dropdown-menu
+                li
+                    a(ui-sref='layout_full_width')
+                        span.submenu-title Full width
+                li
+                    a(ui-sref='layout_boxed')
+                        span.submenu-title Boxed
+                li.hidden-sm
+                    a(ui-sref='layout_sidebar_collapsed')
+                        span.submenu-title Sidebar Collapsed
+                li.hidden-sm
+                    a(ui-sref='layout_sidebar_fixed')
+                        span.submenu-title Sidebar fixed
+                li.hidden-sm
+                    a(ui-sref='layout_sidebar_collapsed_fixed')
+                        span.submenu-title Sidebar collapsed & fixed
+                li
+                    a(ui-sref='layout_horizontal_menu')
+                        span.submenu-title Horizontal Menu
+                li
+                    a(ui-sref='layout_header_fixed')
+                        span.submenu-title Header Fixed
+        li.dropdown
+            a.dropdown-toggle(ui-sref='#', data-hover='dropdown')
+                i.icon-magic-wand
+                span.menu-title UI Elements
+                span.badge.badge-danger 3
+            ul.dropdown-menu
+                li
+                    a(ui-sref='ui_general')
+                        span.submenu-title General
+                        span.badge.badge-success 10
+                li
+                    a(ui-sref='ui_buttons')
+                        span.submenu-title Buttons
+                li
+                    a(ui-sref='ui_typography')
+                        span.submenu-title Typography
+                li
+                    a(ui-sref='ui_tabs_accordions')
+                        span.submenu-title Tabs & Accordions
+                li
+                    a(ui-sref='ui_icons')
+                        span.submenu-title Icons
+                li
+                    a(ui-sref='ui_panels')
+                        span.submenu-title Panels
+                li
+                    a(ui-sref='ui_nestable_list')
+                        span.submenu-title Nestable List
+                li
+                    a(ui-sref='ui_datepaginator')
+                        span.submenu-title Date Paginator
+        li.dropdown
+            a.dropdown-toggle(ui-sref='#', data-hover='dropdown')
+                i.icon-note
+                span.menu-title Forms
+            ul.dropdown-menu
+                li
+                    a(ui-sref='form_components')
+                        span.submenu-title Form Component
+                        span.label.label-info 8
+                li
+                    a(ui-sref='form_wizard')
+                        span.submenu-title Form Wizard
+                li
+                    a(ui-sref='form_select')
+                        span.submenu-title Dropdown & Select
+                li
+                    a(ui-sref='form_picker')
+                        span.submenu-title Picker
+                li
+                    a(ui-sref='form_dropzone')
+                        span.submenu-title Dropzone File Upload
+                li
+                    a(ui-sref='form_multiple_file_upload')
+                        span.submenu-title Multiple File Upload
+        li.dropdown
+            a.dropdown-toggle(ui-sref='#', data-hover='dropdown')
+                i.icon-grid
+                span.menu-title Tables
+            ul.dropdown-menu
+                li
+                    a(ui-sref='table_basic')
+                        span.submenu-title Basic table
+                li
+                    a(ui-sref='table_responsive')
+                        span.submenu-title Responsive table
+                li
+                    a(ui-sref='table_advanced')
+                        span.submenu-title Advanced table
+                li
+                    a(ui-sref='table_treegrid')
+                        span.submenu-title Treegrid table
+        li.dropdown
+            a.dropdown-toggle(ui-sref='#', data-hover='dropdown')
+                i.icon-book-open
+                span.menu-title Pages
+            ul.dropdown-menu
+                li
+                    a(ui-sref='page_gallery')
+                        span.submenu-title Gallery
+                li
+                    a(ui-sref='page_calendar')
+                        span.submenu-title Calendar
+                li
+                    a(ui-sref='page_invoice')
+                        span.submenu-title Invoice
+                li
+                    a(ui-sref='page_pricing_table')
+                        span.submenu-title Pricing Table
+                li
+                    a(ui-sref='page_search')
+                        span.submenu-title Search
+                li
+                    a(ui-sref='page_signin')
+                        span.submenu-title Sign in
+                li
+                    a(ui-sref='page_signup')
+                        span.submenu-title Sign up
+                li
+                    a(ui-sref='page_lock_screen')
+                        span.submenu-title Lock screen
+                li
+                    a(ui-sref='page_404')
+                        span.submenu-title Page 404
+                li
+                    a(ui-sref='page_500')
+                        span.submenu-title Page 500
+        li.dropdown
+            a.dropdown-toggle(ui-sref='#', data-hover='dropdown')
+                i.icon-bar-chart
+                span.menu-title Chart
+                span.badge.badge-warning 8
+            ul.dropdown-menu
+                li
+                    a(ui-sref='charts_chartjs')
+                        span.submenu-title ChartJs
+                li
+                    a(ui-sref='charts_flot')
+                        span.submenu-title Flot Charts
+                li
+                    a(ui-sref='charts_sparklines')
+                        span.submenu-title Sparklines Charts

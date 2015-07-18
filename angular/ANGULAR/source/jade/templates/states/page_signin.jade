@@ -1,0 +1,36 @@
+.page-signin
+    .page-form
+        form.form(action='index.html')
+            .header-content.text-center
+                h1 Login to your account
+            .body-content
+                .alert.alert-danger.alert-dismissible.alert-custom.hide(role='alert')
+                    button.close(type='button', data-dismiss='alert')
+                        span &times;
+                    | Enter any username and password.
+                .list-group
+                    .list-group-item
+                        input.form-control(type='text', placeholder='Username')
+                    .list-group-item
+                        input.form-control(type='password', placeholder='Password')
+                .form-group.pull-left
+                    label
+                        input.form-control-shadow(type='checkbox')
+                        | &nbsp;
+                        | Remember me
+                .form-group.pull-right
+                    a.btn-link(href='#') Forgotten your Password?
+                .clearfix
+                .row
+                    .col-sm-5
+                        button.btn.btn-success.btn-circle.btn-block.btn-shadow.mbs(type='submit') Log in
+                    .col-sm-7
+                        a.btn.btn-social.btn-google-plus.btn-circle.btn-block.btn-shadow.mbs(href='#')
+                            i.fa.fa-google-plus
+                            | Login with Google
+                hr
+                .form-group
+                    p
+                        | Don't have an account?
+                        = ' '
+                        a#btn-register.btn-link(href='page_signup.html') Create an account

@@ -1,0 +1,175 @@
+nav#topbar.navbar.navbar-default.container.pln.prn(role='navigation')
+    .container-fluid.pln.prn
+        #topbar-menu.navbar-collapse.pln.prn
+            ul.nav.navbar-nav.logo-wrapper
+                li.btn-menu-toggle
+                    #menu-toggle.show-collapsed
+                        i.fa.fa-bars
+                li.pull-left
+                    a#logo.pan(href='index.html')
+                        img(src="assets/images/logo2.png")
+            ul.nav.navbar-nav.navbar-left.topbar-nav
+                li.dropdown
+                    a.dropdown-toggle(data-toggle='dropdown', href='#')
+                        i.icon-calendar
+                        span.badge.badge-warning 1
+                    ul.dropdown-menu.dropdown-task.dropdown-topbar
+                        li
+                            p You have 1 new tasks
+                        li
+                            .dropdown-slimscroll
+                                ul
+                                    li.unread
+                                        a(href='#', target='_blank')
+                                            | Lorem ipsum dolor sit amet
+                                            span.label.label-success.pull-right Html
+                                            br
+                                            span.text-muted.small 4 mins ago
+                                    li
+                                        a(href='#', target='_blank')
+                                            | Consectetur adipiscing
+                                            span.label.label-info.pull-right CSS
+                                            br
+                                            span.text-muted.small 12 mins ago
+                                    li
+                                        a(href='#', target='_blank')
+                                            | Tempor incididunt ut
+                                            span.label.label-warning.pull-right Javascript
+                                            br
+                                            span.text-muted.small 15 mins ago
+                                    li
+                                        a(href='#', target='_blank')
+                                            | Ut enim ad minim
+                                            span.label.label-default.pull-right Fix Bug
+                                            br
+                                            span.text-muted.small 18 mins ago
+                                    li
+                                        a(href='#', target='_blank')
+                                            | Sed ut perspiciatis unde omnis
+                                            span.label.label-success.pull-right Html
+                                            br
+                                            span.text-muted.small 2 days ago
+                                    li
+                                        a(href='#', target='_blank')
+                                            | Sed quia non numquam
+                                            span.label.label-info.pull-right CSS
+                                            br
+                                            span.text-muted.small 2 days ago
+                                    li
+                                        a(href='#', target='_blank')
+                                            | Lorem ipsum dolor sit
+                                            span.label.label-default.pull-right Fix Bug
+                                            br
+                                            span.text-muted.small 5 days ago
+                        li.last
+                            a.text-right(href='extra-user-list.html') See all alerts
+                li.dropdown
+                    a.dropdown-toggle(data-toggle="dropdown", href='#')
+                        i.icon-bell
+                        span.badge.badge-success(data-pulsate="{parent:true,onClick:'stop',border:false,speed:800,reach: 20,delay:5000}") 2
+                    ul.dropdown-menu.dropdown-alerts
+                        li
+                            p You have 2 new notifications
+                        li
+                            .dropdown-slimscroll
+                                ul
+                                    li.unread
+                                        a(href='extra-user-list.html', target="_blank")
+                                            span.label.label-info
+                                                i.fa.fa-comment
+                                            | New Comment
+                                            span.pull-right.text-muted.small 4 mins ago
+                                    li.unread
+                                        a(href='extra-user-list.html', target="_blank")
+                                            span.label.label-success
+                                                i.fa.fa-twitter
+                                            | 3 New Followers
+                                            span.pull-right.text-muted.small 12 mins ago
+                                    li
+                                        a(href='extra-user-list.html', target="_blank")
+                                            span.label.label-warning
+                                                i.fa.fa-envelope
+                                            | Message Sent
+                                            span.pull-right.text-muted.small 15 mins ago
+                                    li
+                                        a(href='extra-user-list.html', target="_blank")
+                                            span.label.label-success
+                                                i.fa.fa-tasks
+                                            | New Task
+                                            span.pull-right.text-muted.small 18 mins ago
+                                    li
+                                        a(href='extra-user-list.html', target="_blank")
+                                            span.label.label-danger
+                                                i.fa.fa-upload
+                                            | Server Rebooted
+                                            span.pull-right.text-muted.small 19 mins ago
+                                    li
+                                        a(href='extra-user-list.html', target="_blank")
+                                            span.label.label-success
+                                                i.fa.fa-tasks
+                                            | New Task
+                                            span.pull-right.text-muted.small 2 days ago
+                                    li
+                                        a(href='extra-user-list.html', target="_blank")
+                                            span.label.label-warning
+                                                i.fa.fa-envelope
+                                            | Message Sent
+                                            span.pull-right.text-muted.small 5 days ago
+                        li.last
+                            a.text-right(href='extra-user-list.html') See all alerts
+                li.hidden-sm.hidden-xs
+                    #note-app-toggle.btn.btn-success.btn-xs.mlm
+                        i.icon-note.mrs
+                        | Add note
+                    #note-app-wrapper
+                        .note-app-tools
+                            i.icon-note(data-hover='tooltip', title='New')
+                            i.fa.fa-sign-in(data-hover='tooltip', title='Import')
+                            i.fa.fa-save(data-hover='tooltip', title='Save')
+                            i.icon-close(data-hover='tooltip', title='Close')
+                            input#note-app-file(type='file', style='display: none;')
+                        .note-app-list
+                        .note-app-data
+                            input.note-app-title(type="text",placeholder="Enter note title...")
+                            textarea.note-app-content(placeholder="Enter note description here...")
+
+            ul.nav.navbar-nav.navbar-right
+                li#topbar-chat.hidden-xs
+                    a.btn-chat(href='javascript:void(0)')
+                        i.fa.fa-comments-o
+                        span.badge.badge-info 3
+                li.dropdown
+                    a.dropdown-toggle(data-toggle='dropdown', href='#')
+                        i.icon-user
+                        | &nbsp;
+                        span.caret
+                    ul.dropdown-menu.dropdown-user.pull-right
+                        li
+                            .navbar-content
+                                .row
+                                    .col-md-5.col-xs-5
+                                        img.img-responsive.img-circle(src='http://api.randomuser.me/portraits/men/27.jpg', alt='')
+                                        p.text-center.mtm
+                                            a.change-avatar(href='#')
+                                                small Set Avatar
+                                    .col-md-7.col-xs-5
+                                        span Jake Rochleau
+                                        p.text-muted.small
+                                            | example@mail.com
+                                        .divider
+                                        a(href="#")
+                                            button.btn.btn-default.btn-sm(href='#') Edit Profile
+                            .navbar-footer
+                                .navbar-footer-content
+                                    .row
+                                        .col-md-6.col-xs-6
+                                            a(href="#")
+                                                button.btn.btn-default.btn-sm Change Password
+                                        .col-md-6.col-xs-6
+                                            a(href="#")
+                                                button.btn.btn-info.btn-sm.pull-right(href='page-lock-screen.html') Sign Out
+                li.hidden-sm.hidden-xs
+                    a.btn-template-setting(href='javascript:void(0)')
+                        i.icon-settings
+
+

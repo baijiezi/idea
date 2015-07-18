@@ -1,0 +1,90 @@
+.row
+    .col-sm-6
+        .panel
+            .panel-heading
+                .caption  Inline
+            .panel-body.text-left
+                p
+                    | Mouse speed
+                    span#mousespeed
+                p
+                    | Inline
+                    span.sparkline(values="5,6,7,9,10,2,2,1,10,5,6,7,9,10,2,2,1,10")
+                    | line graphs
+                    span.sparkline(values="15,2,2,6,2,3,8,9,9,12,10,1,3,4,6,12,10,9,8,10,6,7,5,10,19")
+                p
+                    | Bar charts
+                    span.sparkbar(values="5,6,7,2,0,-4,-2,4 ")
+                    | negative values:
+                    span.sparkbar(values="5,6,3,9,2,7,5")
+                    | stacked:
+                    span.sparkbar(values="10,-5,-6,12,3,6,9,10")
+                p
+                    | Composite inline
+                    span#compositeline(values="5,6,3,9,2,7,5,10,-5,-6,12,3,6,9,10")
+                p
+                    | Inline with normal range
+                    span#normalline(values="5,6,3,9,2,7,5,5,6,3,9,2,7,5")
+                p
+                    | Composite bar
+                    span#compositebar(values="5,6,3,9,2,7,5")
+                p
+                    | Discrete
+                    span.discrete1(values="4,6,7,7,4,3,2,1,4,4 ,4,6,7,7,4,3,2,1,4,4 ")
+                    br
+                    | Discrete with threshold
+                    span#discrete2(values="5,6,3,9,2,7,5,5,6,3,9,2,7,5")
+                p
+                    | Customize size and colours
+                    span#linecustom(values="5,6,3,9,2,7,5")
+                p
+                    | Tristate charts
+                    span.sparktristate(values="1,1,0,1,-1,-1,1,-1,0,0,1,1 ")
+                    br
+                    | (think games won, lost or drawn)
+                p
+                    | Tristate chart using a colour map:
+                    span.sparktristatecols(values="1,1,0,1,-1,-1,1,-1,0,0,1,1 ")
+                p
+                    | Box Plot:
+                    span.sparkboxplot(values="4,27,34,52,54,59,61,68,78,82,85,87,91,93,100 ")
+                    br
+                    | Pre-computed box plot
+                    span.sparkboxplotraw(values="4,27,85,87,91,93,100")
+
+                p
+                    | Pie charts
+                    span.sparkpie(values="5,6,3")
+                    span.sparkpie(values="5,6,3,9")
+                    span.sparkpie(values="5,6")
+                p
+                    | Bullet charts
+
+                    span.sparkbullet(values="10,12,12,9,7 ")
+
+                    span.sparkbullet(values="10,0,12,9,7  ")
+
+                    span.sparkbullet(values="10,10,12,1,2")
+
+
+        .panel
+            .panel-heading
+                .caption  Composite Bar
+            .panel-body.text-center
+                #bigcomposite
+    .col-sm-6
+        .panel
+            .panel-heading
+                .caption  Pie Charts
+            .panel-body.text-center
+                #bigpie
+        .panel
+            .panel-heading
+                .caption  Line Charts
+            .panel-body.text-center
+                #bigline
+        .panel
+            .panel-heading
+                .caption  Click Events
+            .panel-body.text-center
+                #eventclick

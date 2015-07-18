@@ -1,0 +1,471 @@
+.page-mail
+    .row(ng-generaltab="")
+        .col-md-3
+            .sidebar-left.nav.nav-pills
+                    .sidebar-row
+                        ul.sidebar-list-info.list-unstyled
+                            li.mbm(style="border-bottom: 1px solid rgba(153, 153, 153, 0.32)")
+                                .sidebar-title
+                                    a.btn.btn-danger.pll.prl(href="#tab-compose", role='tab', data-toggle='tab') Compose                          
+                            li.active
+                                a.btn-group.dropup.btn-block(href='#tab-inbox', role='tab', data-toggle='tab')
+                                    | Inbox (5)
+                            li 
+                                a.btn-group.dropup.btn-block(href='#tab-sent', role='tab', data-toggle='tab')
+                                    | Sent Mail
+                            li 
+                                a.btn-group.dropup.btn-block(href='#tab-drafts', role='tab', data-toggle='tab')
+                                    | Drafts (3)
+                            li 
+                                a.btn-group.dropup.btn-block(href='#tab-sent', role='tab', data-toggle='tab')
+                                    | Important
+                            li 
+                                a.btn-group.dropup.btn-block(href='#tab-drafts', role='tab', data-toggle='tab')
+                                    | Spam
+                            li 
+                                a.btn-group.dropup.btn-block(href='#tab-drafts', role='tab', data-toggle='tab')
+                                    | Trash
+                            li(style="border-top: 1px solid rgba(153, 153, 153, 0.32)")
+                                h4.mtl.mbm(style="padding-left: 15px;") Label
+                            li 
+                                a.btn-group.dropup.btn-block(href='#tab-inbox', role='tab', data-toggle='tab')
+                                    span.mrs.badge.badge-success(style="display: inline")
+                                    | Work
+                            li 
+                                a.btn-group.dropup.btn-block(href='#tab-sent', role='tab', data-toggle='tab')
+                                    span.mrs.badge.badge-warning(style="display: inline")
+                                    | Home
+                            li 
+                                a.btn-group.dropup.btn-block(href='#tab-drafts', role='tab', data-toggle='tab')
+                                    span.mrs.badge.badge-info(style="display: inline")
+                                    | Entertainment 
+                            li 
+                                a.btn-group.dropup.btn-block(href='#tab-inbox', role='tab', data-toggle='tab')
+                                    span.mrs.badge.badge-danger(style="display: inline")
+                                    | Programming
+        .col-md-9
+            .mail-main.tab-content
+                        #tab-compose.tab-pane.fade
+                            ul.list-group.mail-action.list-unstyled.list-inline
+                                li
+                                    a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Save Draft') 
+                                        i.fa.fa-floppy-o
+                                    a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Move to') 
+                                        i.fa.fa-folder
+                                    a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Trash') 
+                                        i.fa.fa-trash-o
+                            form.form-horizontal.mtxl(role="form", action="#")
+                                .form-group
+                                    label.control-label.col-lg-2 To:
+                                    .col-lg-7
+                                        input.form-control(type="text", placeholder="Email Address")
+                                .form-group
+                                    label.control-label.col-lg-2 CC:
+                                    .col-lg-7
+                                        input.form-control(type="text", placeholder="Email Address")
+                                .form-group
+                                    label.control-label.col-lg-2 Subject:
+                                    .col-lg-7
+                                        input.form-control(type="text", placeholder="Email Title")
+                                .form-group
+                                    label.control-label.col-lg-2 Content:
+                                    .col-lg-10
+                                        textarea.wysihtml5.form-control(type="text", rows="9", placeholder="")
+                                .form-group
+                                    .col-lg-7.col-lg-offset-2
+                                        button.btn.btn-success(type="submit") Send
+                        #tab-inbox.tab-pane.fade.in.active
+                            .row
+                                .col-lg-12
+                                    .input-group.mtm.mbm
+                                        input.form-control(type="text", placeholder="Enter text...")
+                                        .input-group-btn
+                                            button.btn.btn-info Search
+                                .col-lg-12
+                                    ul.list-group.mail-action.list-unstyled.list-inline
+                                        li
+                                            a.btn.btn-default(style="padding: 6px 15px;")
+                                                input.checkall-email(type="checkbox")
+                                        li
+                                            a.btn.btn-default(href="javascript:void(0)") Mark as read
+
+                                        li
+                                            a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Mark Important') 
+                                                i.fa.fa-star-o
+                                            a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Report Spam') 
+                                                i.fa.fa-info
+                                            a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Move to Trash') 
+                                                i.fa.fa-trash-o
+                                        li.dropdown
+                                            a.btn.btn-default.dropdown-toggle(href="javascript:void(0)", data-hover="dropdown")
+                                                i.fa.fa-folder
+                                                | &nbsp; Move to &nbsp;
+                                                span.caret
+                                            ul.dropdown-menu(role="menu")
+                                                li
+                                                    a(href="javascript:void(0)") Important
+                                                li
+                                                    a(href="javascript:void(0)") Draft
+                                                li
+                                                    a(href="javascript:void(0)") Spam
+                                        li.pull-right
+                                            a.btn.btn-sm.btn-default
+                                                i.fa.fa-angle-left
+                                            a.btn.btn-sm.btn-default
+                                                i.fa.fa-angle-right
+                                    .list-group.mail-box
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star.mrm.mlm.text-warning
+                                                    strong.mail-from Envato Market
+                                                .col-md-7.col-lg-8
+                                                    strong.mail-title
+                                                        i Upload your item proble.
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star.mrm.mlm.text-warning
+                                                    strong.mail-from Themeforest Market
+                                                .col-md-7.col-lg-8
+                                                    strong.mail-title 
+                                                        i Approved! Your item has...
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star.mrm.mlm.text-warning
+                                                    span.mail-from Template Support
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Buy - Free Support forever.
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star.mrm.mlm.text-warning
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                        #tab-sent.tab-pane.fade
+                            .row
+                                .col-lg-12
+                                    .input-group.mtm.mbm
+                                        input.form-control(type="text", placeholder="Enter text...")
+                                        .input-group-btn
+                                            button.btn.btn-info Search
+                                .col-lg-12
+                                    ul.list-group.mail-action.list-unstyled.list-inline
+                                        li
+                                            a.btn.btn-default(style="padding: 6px 15px;")
+                                                input.checkall-email(type="checkbox")
+                                        li
+                                            a.btn.btn-default(href="javascript:void(0)") Mark as read
+
+                                        li
+                                            a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Mark Important') 
+                                                i.fa.fa-star-o
+                                            a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Report Spam') 
+                                                i.fa.fa-info
+                                            a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Move to Trash') 
+                                                i.fa.fa-trash-o
+                                        li.dropdown
+                                            a.btn.btn-default.dropdown-toggle(href="javascript:void(0)", data-hover="dropdown")
+                                                i.fa.fa-folder
+                                                | &nbsp; Move to &nbsp;
+                                                span.caret
+                                            ul.dropdown-menu(role="menu")
+                                                li
+                                                    a(href="javascript:void(0)") Important
+                                                li
+                                                    a(href="javascript:void(0)") Draft
+                                                li
+                                                    a(href="javascript:void(0)") Spam
+                                        li.pull-right
+                                            a.btn.btn-sm.btn-default
+                                                i.fa.fa-angle-left
+                                            a.btn.btn-sm.btn-default
+                                                i.fa.fa-angle-right
+                                    .list-group.mail-box
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star.mrm.mlm.text-warning
+                                                    span.mail-from Envato Market
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Upload your item proble.
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star.mrm.mlm.text-warning
+                                                    span.mail-from Themeforest Market
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Approved! Your item has...
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                        #tab-drafts.tab-pane.fade
+                            .row
+                                .col-lg-12
+                                    .input-group.mtm.mbm
+                                        input.form-control(type="text", placeholder="Enter text...")
+                                        .input-group-btn
+                                            button.btn.btn-info Search
+                                .col-lg-12
+                                    ul.list-group.mail-action.list-unstyled.list-inline
+                                        li
+                                            a.btn.btn-default(style="padding: 6px 15px;")
+                                                input.checkall-email(type="checkbox")
+                                        li
+                                            a.btn.btn-default(href="javascript:void(0)") Mark as read
+                                        li
+                                            a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Mark Important') 
+                                                i.fa.fa-star-o
+                                            a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Report Spam') 
+                                                i.fa.fa-info
+                                            a.btn.btn-default(href="javascript:void(0)", data-hover='tooltip', data-original-title='Move to Trash') 
+                                                i.fa.fa-trash-o
+                                        li.dropdown
+                                            a.btn.btn-default.dropdown-toggle(href="javascript:void(0)", data-hover="dropdown")
+                                                i.fa.fa-folder
+                                                | &nbsp; Move to &nbsp;
+                                                span.caret
+                                            ul.dropdown-menu(role="menu")
+                                                li
+                                                    a(href="javascript:void(0)") Important
+                                                li
+                                                    a(href="javascript:void(0)") Draft
+                                                li
+                                                    a(href="javascript:void(0)") Spam
+                                        li.pull-right
+                                            a.btn.btn-sm.btn-default
+                                                i.fa.fa-angle-left
+                                            a.btn.btn-sm.btn-default
+                                                i.fa.fa-angle-right
+                                    .list-group.mail-box
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star-o.mrm.mlm
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip
+                                        a.list-group-item(href='#')
+                                            .row
+                                                .col-md-5.col-lg-4
+                                                    input(type='checkbox')
+                                                    span.fa.fa-star.mrm.mlm.text-warning
+                                                    span.mail-from Bhaumik Patel
+                                                .col-md-7.col-lg-8
+                                                    i.mail-title Sed ut perspiciatis unde
+                                                    | &nbsp; - &nbsp;
+                                                    span.text-muted(style='font-size: 11px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                    span.pull-right 12:10 AM
+                                                    span.pull-right.mrl
+                                                        span.glyphicon.glyphicon-paperclip

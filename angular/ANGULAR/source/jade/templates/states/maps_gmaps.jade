@@ -1,0 +1,54 @@
+.row
+   .col-md-6
+      .panel
+         .panel-heading
+            .caption  Basic
+         .panel-body
+            #viewcode-example.viewcode-example
+               #map-basic
+   .col-md-6
+      .panel
+         .panel-heading
+            .caption  Context menu
+         .panel-body
+            #viewcode-map-context.viewcode-example
+               #map-context
+
+   .col-md-12
+      .panel
+         .panel-heading
+            .caption  Geocoding
+         .panel-body
+            #viewcode-map-geocoding.viewcode-example
+               .input-group
+                  input#address.form-control(type='text')
+                  span.input-group-btn
+                     button#geocoding_search.btn.btn-primary
+                        i.glyphicon.glyphicon-search
+               #map-geocoding
+   .col-md-12
+      .panel
+         .panel-heading
+            .caption  Routes
+         .panel-body
+            #viewcode-map-routes.viewcode-example
+               .row
+                  .col-md-8
+                     #map-routes
+                  .col-md-4
+                     ol#instructions.mtm
+   .col-md-12
+      .panel
+         .panel-heading
+            .caption  Travel route
+         .panel-body
+            #viewcode-map-travel.viewcode-example
+               .row
+                  .col-md-8
+                     #map-travel.large
+                  .col-md-4
+                        a#get_route.btn.btn-default.btn-xs.mrs.mtm(href='#') Get route
+                        a#back.btn.btn-default.btn-xs.mrs.mtm(href='#') &laquo; Back
+                        a#forward.btn.btn-default.btn-xs.mtm(href='#') Forward &raquo;
+                        ol#steps.mtm
+

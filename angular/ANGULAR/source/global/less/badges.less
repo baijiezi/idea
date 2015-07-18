@@ -1,0 +1,96 @@
+//
+// Badges
+// --------------------------------------------------
+
+
+// Base class
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 6px;
+  font-size: 11px !important;
+  font-weight: @badge-font-weight;
+  color: @badge-color;
+  line-height: @badge-line-height;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: @badge-bg;
+  border-color: @badge-bg;
+  border-radius: @badge-border-radius;
+
+  &.badge-none-radius{
+    border-radius: 0;
+  }
+  // Empty badges collapse automatically (not available in IE8)
+  &:empty {
+    display: none;
+  }
+
+  // Quick fix for badges in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+  .btn-xs & {
+    top: 0;
+    padding: 1px 5px;
+  }
+
+  // Hover state, but only for links
+  a& {
+    &:hover,
+    &:focus {
+      color: @badge-link-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  // Account for badges in navs
+  a.list-group-item.active > &,
+  .nav-pills > .active > a > & {
+    color: @badge-active-color;
+    background-color: @badge-active-bg;
+  }
+  .nav-pills > li > a > & {
+    margin-left: 3px;
+  }
+}
+
+.badge-default  {
+  background-color: #999 !important;
+}
+
+.badge-primary {
+  background-color: @brand-primary !important;
+}
+
+.badge-success {
+  background-color: @brand-success;
+  border-color: @brand-success;
+  background-image: none !important;
+}
+
+.badge-warning {
+  background-color: @brand-warning;
+  border-color: @brand-warning;
+  background-image: none !important;
+}
+
+.badge-danger {
+  background-color: @brand-danger;
+  border-color: @brand-danger;
+  background-image: none !important;
+}
+
+.badge-info {
+  background-color: @brand-info;
+  border-color: @brand-info;
+  background-image: none !important;
+}
+
+//badge shadow
+.badge-shadow{
+  .box-shadow(5px 5px 0 rgba(0, 0, 0, 0.07));
+}

@@ -1,0 +1,254 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="note note-success"><strong><i class="fa fa-tags"></i>jQuery Step </strong>
+      <p>"Advanced wizard" only show you HTML&CSS only, go on Form Validation menu to apply validate.</p>
+      <p>"Horizontal Wizard & Vertical using" <strong>jQuery Step</strong> plugin</p>
+      <p>Using <code>h3</code> to set step title and put content inside tag <code>&#x3C;section&#x3E;</code>, plugin will do the rest.</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel">
+      <div class="panel-heading">
+        <div class="caption">Advanced wizard</div>
+      </div>
+      <div class="panel-body">
+        <div id="viewcode-rootwizard-script" class="viewcode-example">
+          <div id="rootwizard" class="wizard-wrapper">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <ul>
+                  <li><a href="#tab1-wizard-custom-circle" data-toggle="tab"><i class="icon-user"></i>
+                      <p><span>1. Log in</span>Set up account</p></a></li>
+                  <li><a href="#tab2-wizard-custom-circle" data-toggle="tab"><i class="icon-envelope-letter"></i>
+                      <p><span>2. Address</span>Provide information</p></a></li>
+                  <li><a href="#tab3-wizard-custom-circle" data-toggle="tab"><i class="icon-basket"></i>
+                      <p><span>3. Cart detail</span>Check products</p></a></li>
+                  <li><a href="#tab4-wizard-custom-circle" data-toggle="tab"><i class="icon-check"></i>
+                      <p><span>4. Finish</span>Confirm all</p></a></li>
+                </ul>
+              </div>
+            </div>
+            <div id="bar" class="progress active">
+              <div class="bar progress-bar progress-bar-success"></div>
+            </div>
+            <div class="tab-content">
+              <div id="tab1-wizard-custom-circle" class="tab-pane">
+                <h3 class="mbxl">Set up your account</h3>
+                <form action="#" class="form-horizontal">
+                  <div class="form-group">
+                    <label for="inputUsername" class="col-sm-3 control-label">Username <span class='require'>*</span></label>
+                    <div class="col-sm-9">
+                      <div class="input-group"><span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" placeholder="Username" class="inputUsername form-control"/>
+                      </div><i class="alert alert-hide">Oops! Forgot something? Let try again.</i>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-3 control-label">Password <span class='require'>*</span></label>
+                    <div class="col-sm-9">
+                      <div class="input-group"><span class="input-group-addon"><i class="fa fa-key"></i></span>
+                        <input type="text" placeholder="Password" class="inputPwd form-control"/>
+                      </div><i class="alert alert-hide">Oops! Forgot something? Let try again.</i>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress" class="col-sm-3 control-label">Password confirm <span class='require'>*</span></label>
+                    <div class="col-sm-9">
+                      <div class="input-group"><span class="input-group-addon"><i class="fa fa-key"></i></span>
+                        <input type="text" placeholder="Password confirm" class="inputPwdC form-control"/>
+                      </div><i class="alert alert-hide">Oops! Forgot something? Let try again.</i>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div id="tab2-wizard-custom-circle" class="tab-pane">
+                <h3 class="mbxl">Delivery information</h3>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="inputStreet" class="control-label">Street <span class='require'>*</span></label>
+                      <input id="inputStreet" type="text" placeholder="" class="form-control"/><i class="alert alert-hide">Oops! Forgot something? Let try again.</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="inputFirstName" class="control-label">District</label>
+                      <input id="inputDistrict" type="text" placeholder="" class="form-control"/><i class="alert alert-hide">Oops! Forgot something? Let try again.</i>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="inputCity" class="control-label">City <span class='require'>*</span></label>
+                      <input id="inputCity" type="text" placeholder="" class="form-control"/><i class="alert alert-hide">Oops! Forgot something? Let try again.</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="inputPostCode" class="control-label">Post Code</label>
+                      <input id="inputPostCode" type="text" placeholder="" class="form-control"/><i class="alert alert-hide">Oops! Forgot something? Let try again.</i>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="selCountry" class="control-label">Country</label>
+                      <select id="selCountry" class="form-control">
+                        <option value="">Select a Country</option>
+                        <option value="">United States</option>
+                        <option value="">England</option>
+                        <option value="">France</option>
+                        <option value="">Spain</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="tab3-wizard-custom-circle" class="tab-pane fadeIn">
+                <h3 class="mbxl">Checking products</h3>
+                <form action="#" class="form-horizontal">
+                  <div class="form-group">
+                    <label for="inputUsername" class="col-md-2 control-label">Product 1:</label>
+                    <div class="col-md-10">
+                      <input type="text" placeholder="Detail" class="inputUsername form-control"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputUsername" class="col-md-2 control-label">Product 2:</label>
+                    <div class="col-md-10">
+                      <input type="text" placeholder="Detail" class="inputUsername form-control"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputUsername" class="col-md-2 control-label">Product 3:</label>
+                    <div class="col-md-10">
+                      <input type="text" placeholder="Detail" class="inputUsername form-control"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="selCountry" class="col-md-2 control-label">Check out method</label>
+                    <div class="col-lg-3 col-md-5">
+                      <select id="selCountry" class="form-control">
+                        <option value="">Cash</option>
+                        <option value="">Visa Card</option>
+                        <option value="">Credit Card</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div id="tab4-wizard-custom-circle" class="tab-pane fadeIn">
+                <h3 class="mbxl">Thank you!</h3>
+                <p>Congragulation! You have completed checkout steps.</p>
+                <p>Thank you for use our products.</p>
+              </div>
+              <ul class="pager wizard">
+                <li style="display: none;" class="previous first">
+                  <button class="btn btn-info button-previous"><i class="fa fa-arrow-circle-o-left mr"></i>First</button>
+                </li>
+                <li class="previous">
+                  <button class="btn btn-info button-previous"><i class="fa fa-arrow-circle-o-left mrx"></i>Previous</button>
+                </li>
+                <li style="display: none;" class="next last">
+                  <button class="btn btn-info button-next mlm">Last<i class="fa fa-arrow-circle-o-right mlx"></i></button>
+                </li>
+                <li class="next">
+                  <button class="btn btn-info button-next mlm">Next<i class="fa fa-arrow-circle-o-right mlx"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel">
+      <div class="panel-heading">
+        <div class="caption">Horizontal Steps</div>
+      </div>
+      <div class="panel-body">
+        <div id="viewcode-example-form" class="viewcode-example">
+          <form id="example-form" action="#" class="form-horizontal form-seperated">
+            <div>
+              <h3>Account</h3>
+              <section>
+                <legend>Account Information</legend>
+                <div class="form-group">
+                  <label for="InputText" class="col-md-3 control-label">Username<span class="require">*</span></label>
+                  <div class="col-md-6">
+                    <input id="InputText" name="userName" type="text" placeholder="" class="required form-control"/>
+                  </div>
+                  <div class="col-md-3"><i class="text-muted">(Min length: 5 characters)</i></div>
+                </div>
+                <div class="form-group">
+                  <label for="InputEmail" class="col-md-3 control-label">Password<span class="require">*</span></label>
+                  <div class="col-md-6">
+                    <input id="password" type="text" name="password" placeholder="" class="required form-control"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="InputEmail" class="col-md-3 control-label">Confirm Password<span class="require">*</span></label>
+                  <div class="col-md-6">
+                    <input id="confirm" type="text" name="confirm" placeholder="" class="required form-control"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="InputEmail" class="col-md-3 control-label">Email<span class="require">*</span></label>
+                  <div class="col-md-6">
+                    <input id="email" type="text" name="email" placeholder="" class="required form-control"/>
+                  </div>
+                  <div class="col-md-3"><i class="text-muted">(ex: example@email.com)</i></div>
+                </div>
+              </section>
+              <h3>Profile</h3>
+              <section>
+                <label for="name">First name *</label>
+                <input id="name" name="name" type="text" class="required"/>
+                <label for="surname">Last name *</label>
+                <input id="surname" name="surname" type="text" class="required"/>
+                <label for="email">Email *</label>
+                <input id="email" name="email" type="text" class="required email"/>
+                <label for="address">Address</label>
+                <input id="address" name="address" type="text"/>
+                <p>(*) Mandatory</p>
+              </section>
+              <h3>Hints</h3>
+              <section>
+                <ul>
+                  <li>Foo</li>
+                  <li>Bar</li>
+                  <li>Foobar</li>
+                </ul>
+              </section>
+              <h3>Finish</h3>
+              <section>
+                <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"/>
+                <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+              </section>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel">
+      <div class="panel-heading">
+        <div class="caption">Vertical Steps</div>
+      </div>
+      <div class="panel-body">
+        <div id="viewcode-form-3" class="viewcode-example">
+          <form id="form-3" action="#">
+            <div id="wizard-3"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

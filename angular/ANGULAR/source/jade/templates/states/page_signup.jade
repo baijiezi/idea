@@ -1,0 +1,40 @@
+.page-signup
+    .page-form
+        form.form(action='index.html')
+            .header-content.text-center
+                h1 Register new account
+            .body-content
+                .alert.alert-danger.alert-dismissible.alert-custom.hide(role='alert')
+                    button.close(type='button', data-dismiss='alert')
+                        span &times;
+                    | Enter any username and password.
+                p.text-muted Enter your personal details below:
+                .list-group
+                    .list-group-item
+                        input.form-control(type='text', placeholder='User Name')
+                    .list-group-item
+                        input.form-control(type='email', placeholder='Password')
+                    .list-group-item
+                        input.form-control(type='text', placeholder='Email')
+                .form-group
+                    label
+                        input.form-control-shadow(type='checkbox')
+                        | &nbsp;
+                        | I agree to the <a href='#' class='btn-link'>Terms of Service</a> and <a href='#' class='btn-link'>Privacy Policy</a>
+                .clearfix
+                .row
+                    .col-md-12
+                        button.text-center.btn.btn-success.btn-circle.btn-block.btn-shadow(type='submit') Register
+                    
+                .clearfix
+                p.text-muted.mtm You have an account already
+                .clearfix
+                .row
+                    .col-md-12
+                        button.text-center.btn.btn-default.btn-circle.btn-block.btn-shadow(type='submit') Log in
+                    .col-md-12
+                        p.mtm.text-left
+                            a(href='index.html')
+                                i.fa.fa-long-arrow-left
+                                | &nbsp;
+                                | Back

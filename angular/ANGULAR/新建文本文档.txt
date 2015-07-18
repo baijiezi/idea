@@ -1,0 +1,19 @@
+启动方式
+
+打开Windows 命令行工具
+
+C:\Users\sunshine>E:
+
+E:\>cd E:\idea\angularJS\ANGULAR
+
+E:\idea\angularJS\ANGULAR>grunt serve
+Running "serve" task
+Server is running on port 9000...
+Press CTRL+C at any time to terminate it.
+
+
+
+
+
+
+在浏览器中输入地址：http://localhost:9000/app/index.html#/index

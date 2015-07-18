@@ -1,0 +1,218 @@
+.row
+    .col-md-12
+        .note.note-success
+            strong
+                i.fa.fa-tags
+                | jQuery Step 
+            p "Advanced wizard" only show you HTML&CSS only, go on Form Validation menu to apply validate.
+            p "Horizontal Wizard & Vertical using" <strong>jQuery Step</strong> plugin
+            p Using <code>h3</code> to set step title and put content inside tag <code>&#x3C;section&#x3E;</code>, plugin will do the rest.
+.row
+    .col-md-12
+        .panel
+            .panel-heading
+                .caption Advanced wizard
+            .panel-body
+                #viewcode-rootwizard-script.viewcode-example
+                    #rootwizard.wizard-wrapper
+                        .navbar
+                            .navbar-inner
+                                ul
+                                    li
+                                        a(href='#tab1-wizard-custom-circle', data-toggle='tab')
+                                            i.icon-user
+                                            p
+                                                span 1. Log in
+                                                |Set up account
+                                    li
+                                        a(href='#tab2-wizard-custom-circle', data-toggle='tab')
+                                            i.icon-envelope-letter
+                                            p
+                                                span 2. Address
+                                                |Provide information
+                                    li
+                                        a(href='#tab3-wizard-custom-circle', data-toggle='tab')
+                                            i.icon-basket
+                                            p
+                                                span 3. Cart detail
+                                                | Check products
+                                    li
+                                        a(href='#tab4-wizard-custom-circle', data-toggle='tab')
+                                            i.icon-check
+                                            p
+                                                span 4. Finish
+                                                | Confirm all
+                        #bar.progress.active
+                            .bar.progress-bar.progress-bar-success
+                        .tab-content
+                            #tab1-wizard-custom-circle.tab-pane
+                                h3.mbxl Set up your account
+                                form.form-horizontal(action='#')
+                                    .form-group
+                                        label.col-sm-3.control-label(for='inputUsername') Username <span class='require'>*</span>
+                                        .col-sm-9
+                                            .input-group
+                                                span.input-group-addon
+                                                    i.fa.fa-user
+                                                input.inputUsername.form-control(type='text', placeholder='Username')
+                                            i.alert.alert-hide Oops! Forgot something? Let try again.
+                                    .form-group
+                                        label.col-sm-3.control-label(for='inputEmail') Password <span class='require'>*</span>
+                                        .col-sm-9
+                                            .input-group
+                                                span.input-group-addon
+                                                    i.fa.fa-key
+                                                input.inputPwd.form-control(type="text", placeholder="Password")
+                                            i.alert.alert-hide Oops! Forgot something? Let try again.
+                                    .form-group
+                                        label.col-sm-3.control-label(for='inputAddress') Password confirm <span class='require'>*</span>
+                                        .col-sm-9
+                                            .input-group
+                                                span.input-group-addon
+                                                    i.fa.fa-key
+                                                input.inputPwdC.form-control(type="text", placeholder="Password confirm")
+                                            i.alert.alert-hide Oops! Forgot something? Let try again.
+                            #tab2-wizard-custom-circle.tab-pane
+                                h3.mbxl Delivery information
+                                .row
+                                    .col-md-12
+                                        .form-group
+                                            label.control-label(for='inputStreet') Street <span class='require'>*</span>
+                                            input#inputStreet.form-control(type='text', placeholder='')
+                                            i.alert.alert-hide Oops! Forgot something? Let try again.
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label.control-label(for='inputFirstName') District
+                                            input#inputDistrict.form-control(type='text', placeholder='')
+                                            i.alert.alert-hide Oops! Forgot something? Let try again.
+                                    .col-md-6
+                                        .form-group
+                                            label.control-label(for='inputCity') City <span class='require'>*</span>
+                                            input#inputCity.form-control(type="text", placeholder="")
+                                            i.alert.alert-hide Oops! Forgot something? Let try again.
+                                .row
+                                    .col-md-6
+                                        .form-group
+                                            label.control-label(for='inputPostCode') Post Code
+                                            input#inputPostCode.form-control(type='text', placeholder='')
+                                            i.alert.alert-hide Oops! Forgot something? Let try again.
+                                    .col-md-6
+                                        .form-group
+                                            label.control-label(for='selCountry') Country
+                                            select#selCountry.form-control
+                                                option(value='') Select a Country
+                                                option(value='') United States
+                                                option(value='') England
+                                                option(value='') France
+                                                option(value='') Spain
+                            #tab3-wizard-custom-circle.tab-pane.fadeIn
+                                h3.mbxl Checking products
+                                form.form-horizontal(action='#')
+                                    .form-group
+                                        label.col-md-2.control-label(for='inputUsername') Product 1:
+                                        .col-md-10
+                                            input.inputUsername.form-control(type='text', placeholder='Detail')
+                                    .form-group
+                                        label.col-md-2.control-label(for='inputUsername') Product 2:
+                                        .col-md-10
+                                            input.inputUsername.form-control(type='text', placeholder='Detail')
+                                    .form-group
+                                        label.col-md-2.control-label(for='inputUsername') Product 3:
+                                        .col-md-10
+                                            input.inputUsername.form-control(type='text', placeholder='Detail')
+                                    .form-group
+                                        label.col-md-2.control-label(for='selCountry') Check out method
+                                        .col-lg-3.col-md-5
+                                            select#selCountry.form-control
+                                                option(value='') Cash
+                                                option(value='') Visa Card
+                                                option(value='') Credit Card
+                            #tab4-wizard-custom-circle.tab-pane.fadeIn
+                                h3.mbxl Thank you!
+                                p Congragulation! You have completed checkout steps.
+                                p Thank you for use our products.
+                            ul.pager.wizard
+                                li.previous.first(style='display: none;')
+                                    button.btn.btn-info.button-previous
+                                        i.fa.fa-arrow-circle-o-left.mr
+                                        |First
+                                li.previous
+                                    button.btn.btn-info.button-previous
+                                        i.fa.fa-arrow-circle-o-left.mrx
+                                        | Previous
+                                li.next.last(style='display: none;')
+                                    button.btn.btn-info.button-next.mlm
+                                        |Last
+                                        i.fa.fa-arrow-circle-o-right.mlx
+                                li.next
+                                    button.btn.btn-info.button-next.mlm
+                                        |Next
+                                        i.fa.fa-arrow-circle-o-right.mlx
+
+
+    .col-md-12
+        .panel
+            .panel-heading
+                .caption Horizontal Steps
+            .panel-body
+                #viewcode-example-form.viewcode-example
+                    form#example-form.form-horizontal.form-seperated(action='#')
+                        div
+                            h3 Account
+                            section
+                                legend Account Information
+                                .form-group
+                                    label.col-md-3.control-label(for="InputText") Username
+                                        span.require *
+                                    .col-md-6
+                                        input#userName.required.form-control(name='userName',type="text", id="InputText", placeholder="")
+                                    .col-md-3
+                                        i.text-muted (Min length: 5 characters)
+                                .form-group
+                                    label.col-md-3.control-label(for="InputEmail") Password
+                                        span.require *
+                                    .col-md-6
+                                        input#password.required.form-control(type="text", name='password', placeholder="")
+                                .form-group
+                                    label.col-md-3.control-label(for="InputEmail") Confirm Password
+                                        span.require *
+                                    .col-md-6
+                                        input#confirm.required.form-control(type="text", name='confirm', placeholder="")
+                                .form-group
+                                    label.col-md-3.control-label(for="InputEmail") Email
+                                        span.require *
+                                    .col-md-6
+                                        input#email.required.form-control(type="text", name='email', placeholder="")
+                                    .col-md-3
+                                        i.text-muted (ex: example@email.com)
+                            h3 Profile
+                            section
+                                label(for='name') First name *
+                                input#name.required(name='name', type='text')
+                                label(for='surname') Last name *
+                                input#surname.required(name='surname', type='text')
+                                label(for='email') Email *
+                                input#email.required.email(name='email', type='text')
+                                label(for='address') Address
+                                input#address(name='address', type='text')
+                                p (*) Mandatory
+                            h3 Hints
+                            section
+                                ul
+                                    li Foo
+                                    li Bar
+                                    li Foobar
+                            h3 Finish
+                            section
+                                input#acceptTerms.required(name='acceptTerms', type='checkbox')
+                                label(for='acceptTerms') I agree with the Terms and Conditions.
+
+    .col-md-12
+        .panel
+            .panel-heading
+                .caption Vertical Steps
+            .panel-body
+                #viewcode-form-3.viewcode-example
+                    form#form-3(action='#')
+                        #wizard-3
