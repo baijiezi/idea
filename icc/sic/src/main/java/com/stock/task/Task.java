@@ -55,7 +55,7 @@ public class Task {
                 System.out.println(node.toHtml(true));
                 System.out.println(node.toHtml(false));
                 System.out.println(node.toString());
-                System.out.println("=================================================");
+                System.out.println("=======================================================");
 
             }
 
