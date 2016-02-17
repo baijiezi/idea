@@ -41,50 +41,6 @@ public class Task {
     }
 
 
-    public static void main(String[] args){
-        try{
-            Parser parser = new Parser( (HttpURLConnection) (new URL("http://localhost:8080/")).openConnection() );
 
-            NodeFilter filter = new TagNameFilter("div");
-            NodeList list=parser.extractAllNodesThatMatch(filter);
-            for(NodeIterator i = list.elements(); i.hasMoreNodes(); ){
-                Node node = i.nextNode();
-                System.out.println(node.getText());
-                System.out.println(node.toPlainTextString());
-                System.out.println(node.toHtml());
-                System.out.println(node.toHtml(true));
-                System.out.println(node.toHtml(false));
-                System.out.println(node.toString());
-                System.out.println("======================aa=================================");
-
-            }
-
-
-//            for (NodeIterator i = parser.elements (); i.hasMoreNodes(); ) {
-//                Node node = i.nextNode();
-//                System.out.println(node.getText());
-//                System.out.println(node.toPlainTextString());
-//                System.out.println(node.toHtml());
-//                System.out.println(node.toHtml(true));
-//                System.out.println(node.toHtml(false));
-//                System.out.println(node.toString());
-//                System.out.println("=================================================");
-//            }
-
-
-
-
-
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-
-
-
-
-    }
 
 }
