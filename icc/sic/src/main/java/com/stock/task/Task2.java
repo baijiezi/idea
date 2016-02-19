@@ -15,4 +15,8 @@ public class Task2 {
         System.out.println(new Date() + "  Task2  execute");
     }
 
+    public String hi(){
+        return "task2";
+    }
+
 }

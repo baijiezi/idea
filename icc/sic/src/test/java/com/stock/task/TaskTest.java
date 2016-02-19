@@ -12,8 +12,8 @@ import junit.framework.TestCase;
 public class TaskTest extends TestCase {
 
     public void testHi(){
-        Task task = new Task();
-        String result = task.Hi();
+        Task2 task2 = new Task2();
+        String result = task2.hi();
         System.out.println(result);
 
 
