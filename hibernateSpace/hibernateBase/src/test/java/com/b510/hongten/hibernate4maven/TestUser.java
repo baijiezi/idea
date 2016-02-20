@@ -25,7 +25,7 @@ public class TestUser {
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
         User user = new User();
-        user.setAge(new Random().nextInt(22));
+        user.setAge(250);
         user.setName("Hongten");
         user.setGender("M");
         user.setEmail("hongtenzone@foxmail.com");
@@ -44,6 +44,8 @@ public class TestUser {
         Query query = session.createQuery("from User");
         List<User> list = query.list();
         for (User u : list) {
+            u.setAge(20);
+            session.update(u);
             System.out.println("Id : " + u.getId() + " Name : " + u.getName()
                     + "  Gender : " + u.getGender() + "  Age : " + u.getAge()
                     + " email : " + u.getEmail());
