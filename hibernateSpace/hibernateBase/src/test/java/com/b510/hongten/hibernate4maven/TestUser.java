@@ -52,4 +52,22 @@ public class TestUser {
         }
         session.getTransaction().commit();
     }
+
+
+    @Test
+    public void testQuery(){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from User u where u.age = 20");
+        List<User> list = query.list();
+        System.out.println(list.size());
+        for (User u : list) {
+            System.out.println("Id : " + u.getId() + " Name : " + u.getName()
+                    + "  Gender : " + u.getGender() + "  Age : " + u.getAge()
+                    + " email : " + u.getEmail());
+        }
+
+        session.getTransaction().commit();
+    }
+
 }
