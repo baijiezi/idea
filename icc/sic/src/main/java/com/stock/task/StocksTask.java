@@ -26,6 +26,7 @@ import java.util.List;
  * Time: 下午12:57
  * To change this template use File | Settings | File Templates.
  */
+//沪市
 public class StocksTask {
 
     public void execute(){
@@ -87,6 +88,7 @@ public class StocksTask {
                 NodeFilter filter = new TagNameFilter("a");
                 NodeList list2 = parser1.extractAllNodesThatMatch(filter);
                 System.out.println(list2.size());
+                int y = 0;
                 for(NodeIterator k = list2.elements(); k.hasMoreNodes(); ){
                     LinkTag n = (LinkTag) k.nextNode();
                     System.out.println(n.toPlainTextString());
@@ -94,14 +96,20 @@ public class StocksTask {
                     if(n.getAttribute("title")!=null && !n.getAttribute("title").equals("")){
                         String[] temp = n.toPlainTextString().split(" ");
                         StocksDto stocksDto = new StocksDto();
-                        stocksDto.setName(new String(temp[0].getBytes("UTF-8"), "UTF-8"));
+                        stocksDto.setName(temp[0]);
                         stocksDto.setCode(temp[1]);
                         stocksDto.setBelongTo(belongTo);
                         stocksDto.setDetailUrl(n.getAttribute("href"));
                         data.add(stocksDto);
                     }
+                    y++;
+                    if(y==2){
+                        break;
+                    }
                 }
                 System.out.println("======================aa=================================");
+
+                break;
             }
 
             updateData(data);
