@@ -31,6 +31,11 @@ import java.util.List;
 //科室
 public class StocksTask {
 
+    public static void main(String[] args){
+        StocksTask stocksTask = new StocksTask();
+        stocksTask.execute();
+    }
+
     public void execute(){
         System.out.println(new Date() + "  StocksTask  execute");
 
@@ -84,7 +89,7 @@ public class StocksTask {
                 String p = new String(belongTo.getBytes("Unicode"), "Unicode");
 
 
-                belongTo = b;
+//                belongTo = b;
 
                 Parser parser1 = new Parser(node.toHtml());
                 NodeFilter filter = new TagNameFilter("a");
@@ -142,6 +147,9 @@ public class StocksTask {
             stocksEntity.setDetailUrl(stocksDto.getDetailUrl());
             stocksEntity.setType(stocksDto.getType());
             stocksEntity.setSubType(stocksDto.getSubType());
+            System.out.print(stocksEntity.getName());
+            stocksEntity.setName("中文");
+            System.out.print(stocksEntity.getName());
             StocksDao dao = new StocksDao();
             dao.saveOrUpdate(stocksEntity, session);
         }
