@@ -11,7 +11,7 @@
         <property name="triggers">
             <list>
                 <ref bean="stocksTaskTrigger" />
-                <ref bean="task2Trigger" />
+                <ref bean="stocksDailyTaskTrigger" />
             </list>
         </property>
     </bean>
@@ -22,11 +22,11 @@
         <!-- 每10秒运行一次 -->
         <property name="cronExpression" value="0/60 * * * * ?" />
     </bean>
-    <bean id="task2Trigger"
+    <bean id="stocksDailyTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="jobDetail" ref="task2JobDetail" />
+        <property name="jobDetail" ref="stocksDailyTaskJobDetail" />
         <!-- 每10秒运行一次 -->
-        <property name="cronExpression" value="0/2000 * * * * ?" />
+        <property name="cronExpression" value="0/10 * * * * ?" />
     </bean>
 
     <bean id="stocksTaskJobDetail"
@@ -36,16 +36,16 @@
         <!-- 指定任务执行的方法 -->
         <property name="targetMethod" value="execute" />
     </bean>
-    <bean id="task2JobDetail"
+    <bean id="stocksDailyTaskJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <!-- 指定任务类 -->
-        <property name="targetObject" ref="task2" />
+        <property name="targetObject" ref="stocksDailyTask" />
         <!-- 指定任务执行的方法 -->
         <property name="targetMethod" value="execute" />
     </bean>
 
-    <bean id="stocksTask" class="com.stock.task.StocksTask"></bean>
-    <bean id="task2" class="com.stock.task.Task2"></bean>
+    <bean id="stocksTask" class="com.stocks.task.StocksTask"></bean>
+    <bean id="stocksDailyTask" class="com.stocks.task.StocksDailyTask"></bean>
 
 
 

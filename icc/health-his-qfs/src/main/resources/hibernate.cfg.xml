@@ -23,7 +23,8 @@
         <property name="hbm2ddl.auto">update</property>
 
         <!-- Add POJO to here -->
-        <mapping class="com.stock.entity.StocksEntity" />
+        <mapping class="com.stocks.entity.StocksEntity" />
+        <mapping class="com.stocks.entity.StocksDailyEntity" />
 
     </session-factory>
 
