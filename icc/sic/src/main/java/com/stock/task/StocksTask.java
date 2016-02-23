@@ -3,7 +3,9 @@ package com.stock.task;
 import com.stock.dao.StocksDao;
 import com.stock.dto.StocksDto;
 import com.stock.entity.StocksEntity;
+import com.stock.utils.HibernateUtil;
 import com.stock.utils.Utils;
+import org.hibernate.Session;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
@@ -130,6 +132,8 @@ public class StocksTask {
         if(data==null || data.size()==0){
             return;
         }
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
         for(StocksDto stocksDto : data){
             StocksEntity stocksEntity = new StocksEntity();
             stocksEntity.setName(stocksDto.getName());
@@ -139,8 +143,11 @@ public class StocksTask {
             stocksEntity.setType(stocksDto.getType());
             stocksEntity.setSubType(stocksDto.getSubType());
             StocksDao dao = new StocksDao();
-            dao.saveOrUpdate(stocksEntity);
+            dao.saveOrUpdate(stocksEntity, session);
         }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
     }
 
 

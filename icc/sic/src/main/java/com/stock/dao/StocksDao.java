@@ -41,7 +41,22 @@ public class StocksDao {
 
     }
 
+    public void saveOrUpdate(StocksEntity stock, Session session){
+        try{
+            Query query = session.createQuery("from StocksEntity s where s.code = " + stock.getCode());
+            List<StocksEntity> list = query.list();
+            System.out.println(list.size());
+            if(list.size() > 0){
+                StocksEntity sck = list.get(0);
+                sck.setName(stock.getName());
+                session.update(sck);
+            }else{
+                session.save(stock);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
-
+    }
 
 }
