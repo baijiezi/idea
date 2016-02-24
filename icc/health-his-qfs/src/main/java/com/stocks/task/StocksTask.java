@@ -39,6 +39,9 @@ public class StocksTask {
     public void execute(){
         System.out.println(new Date() + "  StocksTask  execute");
 
+        String str = "中";
+        System.out.println(str);
+
         try{
             Parser parser = new Parser( (HttpURLConnection) (new URL("http://bbs.10jqka.com.cn/codelist.html")).openConnection() );
             //设置Parser对象的字符编码,一般与网页的字符编码保持一致
