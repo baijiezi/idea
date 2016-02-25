@@ -21,7 +21,7 @@ public class StocksDao {
             Session session = HibernateUtil.getOpenSession();
             session.beginTransaction();
 
-            Query query = session.createQuery("from StocksEntity s where s.code = " + stock.getCode());
+            Query query = session.createQuery("from StocksEntity s where s.code = '" + stock.getCode() + "'");
             List<StocksEntity> list = query.list();
             System.out.println(list.size());
             if(list.size() > 0){
@@ -43,7 +43,7 @@ public class StocksDao {
 
     public void saveOrUpdate(StocksEntity stock, Session session){
         try{
-            Query query = session.createQuery("from StocksEntity s where s.code = " + stock.getCode());
+            Query query = session.createQuery(" from StocksEntity s where s.code = '" + stock.getCode() + "'");
             List<StocksEntity> list = query.list();
             System.out.println(list.size());
             if(list.size() > 0){
@@ -56,6 +56,19 @@ public class StocksDao {
         }catch(Exception e){
             e.printStackTrace();
         }
+
+    }
+
+    public List<StocksEntity> query(StocksEntity stock, Session session){
+        try{
+            Query query = session.createQuery(" from StocksEntity s where s.code = '" + stock.getCode() + "'");
+            List<StocksEntity> list = query.list();
+            System.out.println(list.size());
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
 
     }
 

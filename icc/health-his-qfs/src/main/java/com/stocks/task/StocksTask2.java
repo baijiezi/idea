@@ -4,7 +4,6 @@ import com.stocks.dao.StocksDao;
 import com.stocks.dto.StocksDto;
 import com.stocks.entity.StocksEntity;
 import com.stocks.utils.HibernateUtil;
-import com.stocks.utils.Utils;
 import org.hibernate.Session;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
@@ -23,26 +22,23 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: BaiJiezi
- * Date: 16-2-19
- * Time: 下午12:57
+ * User: Administrator
+ * Date: 16-2-25
+ * Time: 下午8:44
  * To change this template use File | Settings | File Templates.
  */
-//科室
-public class StocksTask {
-
+public class StocksTask2 {
     public static void main(String[] args){
-        StocksTask stocksTask = new StocksTask();
-        stocksTask.execute();
+        StocksTask2 stocksTask2 = new StocksTask2();
+        stocksTask2.execute();
     }
 
     public void execute(){
-        System.out.println(new Date() + "  StocksTask  execute");
+        System.out.println(new Date() + "  StocksTask2  execute");
 
         try{
-            Parser parser = new Parser( (HttpURLConnection) (new URL("http://bbs.10jqka.com.cn/codelist.html")).openConnection() );
+            Parser parser = new Parser( (HttpURLConnection) (new URL("http://quote.eastmoney.com/stocklist.html")).openConnection() );
             //设置Parser对象的字符编码,一般与网页的字符编码保持一致
-            parser.setEncoding("gbk");
             CssSelectorNodeFilter divFilter = new CssSelectorNodeFilter("div[class='bbsilst_wei3']");      //  "div[id='someid'] .className a")       "div[class='dd']"
             NodeList list = parser.extractAllNodesThatMatch(divFilter);
             List data = new ArrayList<StocksDto>();
@@ -89,10 +85,13 @@ public class StocksTask {
 
 
 
+
+
+
     }
 
 
-    public void updateData(List<StocksDto> data){
+    private void updateData(List<StocksDto> data){
         if(data==null || data.size()==0){
             return;
         }
@@ -114,6 +113,9 @@ public class StocksTask {
         session.close();
         HibernateUtil.closeSessionFactory();
     }
+
+
+
 
 
 }

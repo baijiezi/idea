@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,6 +26,7 @@ public class StocksEntity {
     private String type;
     private String subType;
     private String detailUrl;
+    private Date createAt;
 
     public Integer getId() {
         return id;
@@ -80,5 +82,13 @@ public class StocksEntity {
 
     public void setDetailUrl(String detailUrl) {
         this.detailUrl = detailUrl;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 }
