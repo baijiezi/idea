@@ -110,7 +110,7 @@ public class StockTast2 {
             if(list!=null && list.size()>0){
                 StocksEntity stocksEntity = list.get(0);
                 stocksEntity.setDetailUrl2(stocksDto.getDetailUrl2());
-                dao.update(stocksEntity, session);
+//                dao.update(stocksEntity, session);
             }
             else{
                 StocksEntity stocksEntity = new StocksEntity();
