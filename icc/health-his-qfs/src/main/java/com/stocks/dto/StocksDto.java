@@ -12,10 +12,11 @@ public class StocksDto {
     private Integer id;
     private String name;
     private String code;
-    private String belongTo;
+    private String exchange;
     private String type;
     private String subType;
-    private String detailUrl;
+    private String detailUrl1;
+    private String detailUrl2;
 
     public Integer getId() {
         return id;
@@ -41,12 +42,12 @@ public class StocksDto {
         this.code = code;
     }
 
-    public String getBelongTo() {
-        return belongTo;
+    public String getExchange() {
+        return exchange;
     }
 
-    public void setBelongTo(String belongTo) {
-        this.belongTo = belongTo;
+    public void setExchange(String exchange) {
+        this.exchange = exchange;
     }
 
     public String getType() {
@@ -65,11 +66,19 @@ public class StocksDto {
         this.subType = subType;
     }
 
-    public String getDetailUrl() {
-        return detailUrl;
+    public String getDetailUrl1() {
+        return detailUrl1;
     }
 
-    public void setDetailUrl(String detailUrl) {
-        this.detailUrl = detailUrl;
+    public void setDetailUrl1(String detailUrl1) {
+        this.detailUrl1 = detailUrl1;
+    }
+
+    public String getDetailUrl2() {
+        return detailUrl2;
+    }
+
+    public void setDetailUrl2(String detailUrl2) {
+        this.detailUrl2 = detailUrl2;
     }
 }

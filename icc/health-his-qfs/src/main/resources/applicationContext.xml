@@ -44,8 +44,8 @@
         <property name="targetMethod" value="execute" />
     </bean>
 
-    <bean id="stocksTask" class="com.stocks.task.StocksTask"></bean>
-    <bean id="stocksDailyTask" class="com.stocks.task.StocksDailyTask"></bean>
+    <bean id="stocksTask" class="com.stocks.task.StockTask"></bean>
+    <bean id="stocksDailyTask" class="com.stocks.task.StockDailyTask"></bean>
 
 
 

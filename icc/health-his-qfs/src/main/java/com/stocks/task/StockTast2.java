@@ -4,7 +4,6 @@ import com.stocks.dao.StocksDao;
 import com.stocks.dto.StocksDto;
 import com.stocks.entity.StocksEntity;
 import com.stocks.utils.HibernateUtil;
-import com.stocks.utils.Utils;
 import org.hibernate.Session;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
@@ -23,21 +22,24 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: BaiJiezi
- * Date: 16-2-19
- * Time: 下午12:57
+ * User: Administrator
+ * Date: 16-2-27
+ * Time: 下午2:05
  * To change this template use File | Settings | File Templates.
  */
-//科室
-public class StocksTask {
+
+
+public class StockTast2 {
+
+
 
     public static void main(String[] args){
-        StocksTask stocksTask = new StocksTask();
-        stocksTask.execute();
+        StockTast2 stockTask2 = new StockTast2();
+        stockTask2.execute();
     }
 
     public void execute(){
-        System.out.println(new Date() + "  StocksTask  execute");
+        System.out.println(new Date() + "  StockTast2  execute");
 
         try{
             Parser parser = new Parser( (HttpURLConnection) (new URL("http://bbs.10jqka.com.cn/codelist.html")).openConnection() );
@@ -49,13 +51,16 @@ public class StocksTask {
             for(NodeIterator i = list.elements(); i.hasMoreNodes(); ){
                 Node node = i.nextNode();
                 NodeList childs = node.getChildren();
-                String belongTo = "";
+                String exchange = "";
                 for(NodeIterator j = childs.elements(); j.hasMoreNodes(); ){
                     Node child = j.nextNode();
                     if(child.getText()!=null && child.getText().equals("h2")){
-                        belongTo = child.toPlainTextString();
+                        exchange = child.toPlainTextString();
                     }
-
+                }
+                //去除基金部分
+                if(exchange!=null &&exchange.equals("基金")){
+                    continue;
                 }
 
                 Parser parser1 = new Parser(node.toHtml());
@@ -65,12 +70,13 @@ public class StocksTask {
                 for(NodeIterator k = list2.elements(); k.hasMoreNodes(); ){
                     LinkTag n = (LinkTag) k.nextNode();
                     if(n.getAttribute("title")!=null && !n.getAttribute("title").equals("")){
-                        String[] temp = n.toPlainTextString().split(" ");
+                        String text = n.toPlainTextString();
+                        int index = text.lastIndexOf(" ");
                         StocksDto stocksDto = new StocksDto();
-                        stocksDto.setName(temp[0]);
-                        stocksDto.setCode(temp[1]);
-                        stocksDto.setBelongTo(belongTo);
-                        stocksDto.setDetailUrl(n.getAttribute("href"));
+                        stocksDto.setName(text.substring(0, index).replace(" ", ""));
+                        stocksDto.setCode(text.substring(index+1));
+                        stocksDto.setExchange(exchange);
+                        stocksDto.setDetailUrl2("");
                         data.add(stocksDto);
                     }
                 }
@@ -99,21 +105,31 @@ public class StocksTask {
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
         for(StocksDto stocksDto : data){
-            StocksEntity stocksEntity = new StocksEntity();
-            stocksEntity.setName(stocksDto.getName());
-            stocksEntity.setCode(stocksDto.getCode());
-            stocksEntity.setBelongTo(stocksDto.getBelongTo());
-            stocksEntity.setDetailUrl(stocksDto.getDetailUrl());
-            stocksEntity.setType(stocksDto.getType());
-            stocksEntity.setSubType(stocksDto.getSubType());
-            stocksEntity.setCreateAt(new Date());
             StocksDao dao = new StocksDao();
-            dao.saveOrUpdate(stocksEntity, session);
+            List<StocksEntity> list = dao.queryByCode(stocksDto.getCode(), session);
+            if(list!=null && list.size()>0){
+                StocksEntity stocksEntity = list.get(0);
+                stocksEntity.setDetailUrl2(stocksDto.getDetailUrl2());
+                dao.update(stocksEntity, session);
+            }
+            else{
+                StocksEntity stocksEntity = new StocksEntity();
+                stocksEntity.setName(stocksDto.getName());
+                stocksEntity.setCode(stocksDto.getCode());
+                stocksEntity.setExchange(stocksDto.getExchange());
+                stocksEntity.setDetailUrl2(stocksDto.getDetailUrl2());
+                stocksEntity.setType(stocksDto.getType());
+                stocksEntity.setSubType(stocksDto.getSubType());
+                stocksEntity.setCreateAt(new Date());
+                dao.save(stocksEntity, session);
+            }
         }
         session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
     }
+
+
 
 
 }

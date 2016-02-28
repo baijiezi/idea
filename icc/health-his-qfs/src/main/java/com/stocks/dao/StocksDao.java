@@ -16,59 +16,66 @@ import java.util.List;
  */
 public class StocksDao {
 
-    public void saveOrUpdate(StocksEntity stock){
-        try{
-            Session session = HibernateUtil.getOpenSession();
-            session.beginTransaction();
+    public List<StocksEntity> getAll(){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
 
-            Query query = session.createQuery("from StocksEntity s where s.code = '" + stock.getCode() + "'");
+        try{
+            Query query = session.createQuery(" from StocksEntity ");
             List<StocksEntity> list = query.list();
-            System.out.println(list.size());
-            if(list.size() > 0){
-                StocksEntity sck = list.get(0);
-                sck.setName(stock.getName());
-                session.update(sck);
-            }else{
-                session.save(stock);
+            if(list!=null && list.size()>0) {
+                return list;
             }
-            session.getTransaction().commit();
-            session.close();
-            HibernateUtil.closeSessionFactory();
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-    public void saveOrUpdate(StocksEntity stock, Session session){
-        try{
-            Query query = session.createQuery(" from StocksEntity s where s.code = '" + stock.getCode() + "'");
-            List<StocksEntity> list = query.list();
-            System.out.println(list.size());
-            if(list.size() > 0){
-                StocksEntity sck = list.get(0);
-                sck.setName(stock.getName());
-                session.update(sck);
-            }else{
-                session.save(stock);
+            else{
+                return null;
             }
         }catch(Exception e){
             e.printStackTrace();
         }
 
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
     }
 
-    public List<StocksEntity> query(StocksEntity stock, Session session){
+    public List<StocksEntity> queryByCode(String code, Session session){
         try{
-            Query query = session.createQuery(" from StocksEntity s where s.code = '" + stock.getCode() + "'");
+            if(code==null || code.equals("")) {
+                return null;
+            }
+            Query query = session.createQuery(" from StocksEntity s where s.code = '" + code + "'");
             List<StocksEntity> list = query.list();
-            System.out.println(list.size());
-            return list;
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
         }catch(Exception e){
             e.printStackTrace();
         }
         return null;
+
+    }
+
+    public void save(StocksEntity stock, Session session){
+        try{
+            session.save(stock);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+    public void update(StocksEntity stock, Session session){
+        try{
+            session.update(stock);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
     }
 
