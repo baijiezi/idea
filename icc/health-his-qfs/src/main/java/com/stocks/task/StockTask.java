@@ -96,7 +96,7 @@ public class StockTask {
         session.beginTransaction();
         for(StocksDto stocksDto : data){
             StocksDao dao = new StocksDao();
-            List<StocksEntity> list = dao.queryByCode(stocksDto.getCode(), session);
+            List<StocksEntity> list = dao.queryByCodeAndExchange(stocksDto.getCode(), stocksDto.getExchange(), session);
             if(list!=null && list.size()>0){
                 StocksEntity stocksEntity = list.get(0);
                 stocksEntity.setDetailUrl1(stocksDto.getDetailUrl1());

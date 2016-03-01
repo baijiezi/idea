@@ -54,12 +54,34 @@ public class StockDailyTask {
 
             for(StocksEntity stock : list){
                 logger.info("开始StockDailyTask:" + stock.getCode());
-//                if(!stock.getCode().equals("002340")){
-//                    continue;
-//                }
+                if(stock.getCode().equals("399001")){
+                    logger.info("");
+                }
+
+                if(stock.getUrl2Type()!=null && stock.getUrl2Type()==0){
+                    String url = stock.getDetailUrl2();
+                    Future r = asyncHttpClient.prepareGet(url).execute();
+                    Response response = (Response) r.get();
+                    String result = response.getResponseBody();
+                    logger.info(result);
+                    String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
+                    String[] temp = str.split(",");
+                    StocksDailyDto stocksDailyDto = new StocksDailyDto();
+                    stocksDailyDto.setCode(stock.getCode());
+                    stocksDailyDto.setName(stock.getName());
+                    stocksDailyDto.setDate(date);
+                    if(stock.getName().equals("上证指数")){
+                        stocksDailyDto.setShouPan(toInt(temp[2]));
+                    }
+                    else if(stock.getName().equals("深证成指")){
+                        stocksDailyDto.setShouPan(toInt(temp[10]));
+                    }
+                    data.add(stocksDailyDto);
+                }
+
 
                 //http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=0023402&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback08984737466089427&callback=callback08984737466089427&_=1456623860821
-                if(stock.getUrl2Type()==1){
+                if(stock.getUrl2Type()!=null && stock.getUrl2Type()==1){
                     String url = stock.getDetailUrl2();
                     Future r = asyncHttpClient.prepareGet(url).execute();
                     Response response = (Response) r.get();
@@ -90,13 +112,14 @@ public class StockDailyTask {
                     stocksDailyDto.setShiYing(toInt(temp[38]));
                     stocksDailyDto.setShiJing(toInt(temp[43]));
                     stocksDailyDto.setZongShiZhi(Long.parseLong(temp[46]));
-                    stocksDailyDto.setLiuTongShiZhi(Long.parseLong(temp[45]));;
+                    stocksDailyDto.setLiuTongShiZhi(Long.parseLong(temp[45]));
                     data.add(stocksDailyDto);
                 }
             }
             updateData(data);
         } catch (Exception e){
             logger.error("执行StockDailyTask任务异常：" + e.getMessage());
+            e.printStackTrace();
         }
 
     }

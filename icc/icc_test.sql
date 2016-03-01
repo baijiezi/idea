@@ -36,9 +36,8 @@ CREATE TABLE `sic_stocks` (
   `detailUrl5` varchar(256) DEFAULT NULL,
   `url5Type` int(8) DEFAULT NULL,
   `createAt` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=3776 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sic_stocks
