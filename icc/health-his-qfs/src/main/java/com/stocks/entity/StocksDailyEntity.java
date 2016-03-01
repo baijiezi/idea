@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,6 +21,7 @@ public class StocksDailyEntity {
     private Integer id;
     private String code;
     private String name;
+    private Date date;
     private int shouPan;
     private int junJia;
     private int zhangFu;
@@ -63,6 +65,14 @@ public class StocksDailyEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getShouPan() {

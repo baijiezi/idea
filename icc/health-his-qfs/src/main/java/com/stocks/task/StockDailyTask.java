@@ -14,6 +14,8 @@ import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeIterator;
 import org.htmlparser.util.NodeList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -30,6 +32,8 @@ import java.util.List;
  */
 public class StockDailyTask {
 
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
+
     public static void main(String[] args){
         StockDailyTask stockDailyTask = new StockDailyTask();
         stockDailyTask.execute();
@@ -39,32 +43,37 @@ public class StockDailyTask {
     public void execute(){
         System.out.println(new Date() + "  StockDailyTask  execute");
 
-        try{
-            StocksDao stocksDao = new StocksDao();
-            List<StocksEntity> stocks = stocksDao.getAll();
-            System.out.println(stocks.size());
-            List data = new ArrayList<StocksDailyDto>();
-            int v = 0;
-            for(StocksEntity stock : stocks){
-                String url = stock.getDetailUrl1();
-                System.out.println(url);
-                Parser parser = new Parser( (HttpURLConnection) (new URL("http://quote.eastmoney.com/sz002340.html")).openConnection() );
-                //设置Parser对象的字符编码,一般与网页的字符编码保持一致
-                parser.setEncoding("GB2312");
+        logger.info("---------info");
+        logger.error("---------error");
+        logger.warn("-----------warn");
 
-                NodeFilter hasAttributeFilter = new HasAttributeFilter( "id", "rgt1" );
-                NodeList list = parser.extractAllNodesThatMatch(hasAttributeFilter);
-                System.out.println(list.size());
-                System.out.println(list.elementAt(0).toHtml());
-//                updateData(data);
-                v++;
-                if(v > 0){
-                    break;
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
+//        try{
+//            StocksDao stocksDao = new StocksDao();
+//            List<StocksEntity> stocks = stocksDao.getAll();
+//            System.out.println(stocks.size());
+//            List data = new ArrayList<StocksDailyDto>();
+//            int v = 0;
+//            for(StocksEntity stock : stocks){
+//                String url = stock.getDetailUrl1();
+//                System.out.println(url);
+//                Parser parser = new Parser( (HttpURLConnection) (new URL("http://quote.eastmoney.com/sz002340.html")).openConnection() );
+//                //设置Parser对象的字符编码,一般与网页的字符编码保持一致
+//                parser.setEncoding("GB2312");
+//
+//                NodeFilter hasAttributeFilter = new HasAttributeFilter( "id", "rgt1" );
+//                NodeList list = parser.extractAllNodesThatMatch(hasAttributeFilter);
+//                System.out.println(list.size());
+//                System.out.println(list.elementAt(0).toHtml());
+////                updateData(data);
+//                v++;
+//                if(v > 0){
+//                    break;
+//                }
+//            }
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
 

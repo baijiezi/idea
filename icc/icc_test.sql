@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50711
+Source Server Version : 50618
 Source Host           : localhost:3306
 Source Database       : icc_test
 
 Target Server Type    : MYSQL
-Target Server Version : 50711
+Target Server Version : 50618
 File Encoding         : 65001
 
-Date: 2016-03-01 00:12:56
+Date: 2016-03-01 17:42:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,7 +23,7 @@ CREATE TABLE `sic_stocks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(16) NOT NULL,
   `name` varchar(32) NOT NULL,
-  `exchange` varchar(32) DEFAULT NULL,
+  `exchange` varchar(32) NOT NULL,
   `type` varchar(32) DEFAULT NULL,
   `subType` varchar(32) DEFAULT NULL,
   `detailUrl1` varchar(128) DEFAULT NULL,
@@ -3818,13 +3818,14 @@ INSERT INTO `sic_stocks` VALUES ('3775', '500159', '景顺500', '深市', null, 
 DROP TABLE IF EXISTS `sic_stocks_daily`;
 CREATE TABLE `sic_stocks_daily` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(16) DEFAULT NULL,
-  `name` varchar(32) DEFAULT NULL,
-  `shouPan` int(11) DEFAULT NULL,
+  `code` varchar(16) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `date` date NOT NULL,
+  `shouPan` int(11) NOT NULL,
   `junJia` int(11) DEFAULT NULL,
   `zhangFu` int(11) DEFAULT NULL,
   `zhangDie` int(11) DEFAULT NULL,
-  `chengJiaoLiang` bigint(20) DEFAULT NULL COMMENT '成交量(股)',
+  `chengJiaoLiang` bigint(20) DEFAULT NULL,
   `ChengJiaoE` bigint(20) DEFAULT NULL,
   `huanShou` int(11) DEFAULT NULL,
   `liangBi` int(11) DEFAULT NULL,
@@ -3836,14 +3837,15 @@ CREATE TABLE `sic_stocks_daily` (
   `dieTing` int(11) DEFAULT NULL,
   `waiPan` int(11) DEFAULT NULL,
   `neiPan` int(11) DEFAULT NULL,
-  `shiYing` int(11) NOT NULL,
+  `shiYing` int(11) DEFAULT NULL,
   `shiJing` int(11) DEFAULT NULL,
   `zongShiZhi` bigint(20) DEFAULT NULL,
   `liuTongShiZhi` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sic_stocks_daily
 -- ----------------------------
-INSERT INTO `sic_stocks_daily` VALUES ('3', '002340', '格林美', '878', '894', '-835', '-80', '372494', '333000000', '319', '127', '966', '862', '959', '958', '1054', '862', '14409000', '22840500', '5084', '289', '12778717357', '10243786679');
+INSERT INTO `sic_stocks_daily` VALUES ('3', '002340', '格林美', '0000-00-00', '878', '894', '-835', '-80', '372494', '333000000', '319', '127', '966', '862', '959', '958', '1054', '862', '14409000', '22840500', '5084', '289', '12778717357', '10243786679');
+INSERT INTO `sic_stocks_daily` VALUES ('4', '002340', '格林美', '2016-03-01', '909', '904', '364', '32', '16473300', '14900000000', '141', '104', '922', '790', '883', '878', '966', '790', '9045300', '7428000', '5269', '300', '13244457445', '10617137303');

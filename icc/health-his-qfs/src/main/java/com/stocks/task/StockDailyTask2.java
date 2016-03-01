@@ -47,7 +47,7 @@ public class StockDailyTask2 {
 //            Future r = asyncHttpClient.prepareGet(url).execute();
 //            Response response = (Response) r.get();
 //            String result = response.getResponseBody();
-//            //callback08984737466089427({"Comment":[],"Value":["2","002340","格林美","9.58","9.57","9.56","9.55","9.54","9.59","9.60","9.61","9.62","9.63","1812","704","531","281","107","1291","556","404","114","314","10.53","8.61","9.58","9.61","0.01","9.72","0.10","9.81","246638","9.37","2026","9.57","2.37亿","0.89","2.11","55.47","103029","143609","12.36","756","3.15","1","11177161570","13943065493","0|0|0|0|0","0|0|0|0|0","2016-02-28 15:20:27","4.60","-","-"]})
+//            //callback08984737466089427({"Comment":[],"Value":["2","002340","","9.58","9.57","9.56","9.55","9.54","9.59","9.60","9.61","9.62","9.63","1812","704","531","281","107","1291","556","404","114","314","10.53","8.61","9.58","9.61","0.01","9.72","0.10","9.81","246638","9.37","2026","9.57","2.37亿","0.89","2.11","55.47","103029","143609","12.36","756","3.15","1","11177161570","13943065493","0|0|0|0|0","0|0|0|0|0","2016-02-28 15:20:27","4.60","-","-"]})
 //            System.out.println(result);
 //            String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
 //            System.out.println(str);
@@ -83,6 +83,7 @@ public class StockDailyTask2 {
             List data = new ArrayList<StocksDailyDto>();
             StocksDao stocksDao = new StocksDao();
             List<StocksEntity> list = stocksDao.getAll();
+            Date date = new Date();
             AsyncHttpClientConfig config = new AsyncHttpClientConfig.Builder()
                     .setMaximumConnectionsPerHost(30)
                     .setMaximumConnectionsTotal(300)
@@ -101,7 +102,7 @@ public class StockDailyTask2 {
                 Future r = asyncHttpClient.prepareGet(url).execute();
                 Response response = (Response) r.get();
                 String result = response.getResponseBody();
-                //callback08984737466089427({"Comment":[],"Value":["2","002340","格林美","9.58","9.57","9.56","9.55","9.54","9.59","9.60","9.61","9.62","9.63","1812","704","531","281","107","1291","556","404","114","314","10.53","8.61","9.58","9.61","0.01","9.72","0.10","9.81","246638","9.37","2026","9.57","2.37亿","0.89","2.11","55.47","103029","143609","12.36","756","3.15","1","11177161570","13943065493","0|0|0|0|0","0|0|0|0|0","2016-02-28 15:20:27","4.60","-","-"]})
+                //callback08984737466089427({"Comment":[],"Value":["2","002340","","9.58","9.57","9.56","9.55","9.54","9.59","9.60","9.61","9.62","9.63","1812","704","531","281","107","1291","556","404","114","314","10.53","8.61","9.58","9.61","0.01","9.72","0.10","9.81","246638","9.37","2026","9.57","2.37亿","0.89","2.11","55.47","103029","143609","12.36","756","3.15","1","11177161570","13943065493","0|0|0|0|0","0|0|0|0|0","2016-02-28 15:20:27","4.60","-","-"]})
                 System.out.println(result);
                 String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
                 System.out.println(str);
@@ -112,6 +113,7 @@ public class StockDailyTask2 {
                 StocksDailyDto stocksDailyDto = new StocksDailyDto();
                 stocksDailyDto.setCode(stock.getCode());
                 stocksDailyDto.setName(stock.getName());
+                stocksDailyDto.setDate(date);
                 stocksDailyDto.setShouPan(toInt(temp[3]));
                 stocksDailyDto.setJunJia(toInt(temp[26]));
                 stocksDailyDto.setZhangFu(toInt(temp[29]));
@@ -194,6 +196,7 @@ public class StockDailyTask2 {
             StocksDailyEntity entity = new StocksDailyEntity();
             entity.setCode(dto.getCode());
             entity.setName(dto.getName());
+            entity.setDate(dto.getDate());
             entity.setShouPan(dto.getShouPan());
             entity.setJunJia(dto.getJunJia());
             entity.setZhangFu(dto.getZhangFu());

@@ -1,5 +1,7 @@
 package com.stocks.dto;
 
+import java.util.Date;
+
 /**
  * Created with IntelliJ IDEA.
  * User: BaiJiezi
@@ -11,6 +13,7 @@ public class StocksDailyDto {
     private Integer id;
     private String code;
     private String name;
+    private Date date;
     private int shouPan;
     private int junJia;
     private int zhangFu;
@@ -54,6 +57,14 @@ public class StocksDailyDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getShouPan() {

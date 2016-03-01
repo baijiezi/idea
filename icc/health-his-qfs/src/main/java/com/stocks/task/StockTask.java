@@ -12,6 +12,8 @@ import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeIterator;
 import org.htmlparser.util.NodeList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -27,60 +29,71 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class StockTask {
+
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
     public static void main(String[] args){
+
+
         StockTask stockTask = new StockTask();
         stockTask.execute();
     }
 
     public void execute(){
         System.out.println(new Date() + "  StockTask  execute");
-        try{
-            Parser parser = new Parser( (HttpURLConnection) (new URL("http://quote.eastmoney.com/stocklist.html")).openConnection() );
-            //设置Parser对象的字符编码,一般与网页的字符编码保持一致
-            parser.setEncoding("GB2312");
-            NodeFilter filter = new TagNameFilter("ul");
-            NodeList list = parser.extractAllNodesThatMatch(filter);
-            System.out.println(list.size());
-            List data = new ArrayList<StocksDto>();
-            for(NodeIterator i = list.elements(); i.hasMoreNodes(); ){
-                Node node = i.nextNode();
-                Parser parser1 = new Parser(node.toHtml());
-                NodeFilter filter2 = new TagNameFilter("a");
-                NodeList list2 = parser1.extractAllNodesThatMatch(filter2);
-                System.out.println(list2.size());
-                if(list2.size() > 1000){
-                    String exchange = "";
-                    for(NodeIterator k = list2.elements(); k.hasMoreNodes(); ){
-                        LinkTag n = (LinkTag) k.nextNode();
-                        if(n.getAttribute("href")!=null && !n.getAttribute("href").equals("")){
-                            String text = n.toPlainTextString();
-                            if(text==null || text.equals("") || !text.contains("(")){
-                                continue;
-                            }
-                            int idx = text.indexOf("(");
-                            int idx2 = text.indexOf(")");
-                            String href = n.getAttribute("href");
-                            if(href.contains("sh")){
-                                exchange = "沪市";
-                            }
-                            if(href.contains("sz")){
-                                exchange = "深市";
-                            }
-                            StocksDto stocksDto = new StocksDto();
-                            stocksDto.setName(text.substring(0, idx));
-                            stocksDto.setCode(text.substring(idx+1, idx2));
-                            stocksDto.setExchange(exchange);
-                            stocksDto.setDetailUrl1(href);
-                            data.add(stocksDto);
-                        }
-                    }
-                }
-                System.out.println("======================aa=================================");
-            }
-            updateData(data);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
+        logger.info("========info");
+        logger.error("=======error");
+        logger.warn("========warn");
+
+
+
+//        try{
+//            Parser parser = new Parser( (HttpURLConnection) (new URL("http://quote.eastmoney.com/stocklist.html")).openConnection() );
+//            //设置Parser对象的字符编码,一般与网页的字符编码保持一致
+//            parser.setEncoding("GB2312");
+//            NodeFilter filter = new TagNameFilter("ul");
+//            NodeList list = parser.extractAllNodesThatMatch(filter);
+//            System.out.println(list.size());
+//            List data = new ArrayList<StocksDto>();
+//            for(NodeIterator i = list.elements(); i.hasMoreNodes(); ){
+//                Node node = i.nextNode();
+//                Parser parser1 = new Parser(node.toHtml());
+//                NodeFilter filter2 = new TagNameFilter("a");
+//                NodeList list2 = parser1.extractAllNodesThatMatch(filter2);
+//                System.out.println(list2.size());
+//                if(list2.size() > 1000){
+//                    String exchange = "";
+//                    for(NodeIterator k = list2.elements(); k.hasMoreNodes(); ){
+//                        LinkTag n = (LinkTag) k.nextNode();
+//                        if(n.getAttribute("href")!=null && !n.getAttribute("href").equals("")){
+//                            String text = n.toPlainTextString();
+//                            if(text==null || text.equals("") || !text.contains("(")){
+//                                continue;
+//                            }
+//                            int idx = text.indexOf("(");
+//                            int idx2 = text.indexOf(")");
+//                            String href = n.getAttribute("href");
+//                            if(href.contains("sh")){
+//                                exchange = "沪市";
+//                            }
+//                            if(href.contains("sz")){
+//                                exchange = "深市";
+//                            }
+//                            StocksDto stocksDto = new StocksDto();
+//                            stocksDto.setName(text.substring(0, idx));
+//                            stocksDto.setCode(text.substring(idx+1, idx2));
+//                            stocksDto.setExchange(exchange);
+//                            stocksDto.setDetailUrl1(href);
+//                            data.add(stocksDto);
+//                        }
+//                    }
+//                }
+//                System.out.println("======================aa=================================");
+//            }
+//            updateData(data);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
 
