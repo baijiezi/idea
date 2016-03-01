@@ -27,6 +27,13 @@ public class StocksEntity {
     private String subType;
     private String detailUrl1;
     private String detailUrl2;
+    private Integer url2Type;
+    private String detailUrl3;
+    private Integer url3Type;
+    private String detailUrl4;
+    private Integer url4Type;
+    private String detailUrl5;
+    private Integer url5Type;
     private Date createAt;
 
     public Integer getId() {
@@ -91,6 +98,62 @@ public class StocksEntity {
 
     public void setDetailUrl2(String detailUrl2) {
         this.detailUrl2 = detailUrl2;
+    }
+
+    public Integer getUrl2Type() {
+        return url2Type;
+    }
+
+    public void setUrl2Type(Integer url2Type) {
+        this.url2Type = url2Type;
+    }
+
+    public String getDetailUrl3() {
+        return detailUrl3;
+    }
+
+    public void setDetailUrl3(String detailUrl3) {
+        this.detailUrl3 = detailUrl3;
+    }
+
+    public Integer getUrl3Type() {
+        return url3Type;
+    }
+
+    public void setUrl3Type(Integer url3Type) {
+        this.url3Type = url3Type;
+    }
+
+    public String getDetailUrl4() {
+        return detailUrl4;
+    }
+
+    public void setDetailUrl4(String detailUrl4) {
+        this.detailUrl4 = detailUrl4;
+    }
+
+    public Integer getUrl4Type() {
+        return url4Type;
+    }
+
+    public void setUrl4Type(Integer url4Type) {
+        this.url4Type = url4Type;
+    }
+
+    public String getDetailUrl5() {
+        return detailUrl5;
+    }
+
+    public void setDetailUrl5(String detailUrl5) {
+        this.detailUrl5 = detailUrl5;
+    }
+
+    public Integer getUrl5Type() {
+        return url5Type;
+    }
+
+    public void setUrl5Type(Integer url5Type) {
+        this.url5Type = url5Type;
     }
 
     public Date getCreateAt() {

@@ -13,6 +13,8 @@ import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeIterator;
 import org.htmlparser.util.NodeList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -31,7 +33,7 @@ import java.util.List;
 
 public class StockTast2 {
 
-
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args){
         StockTast2 stockTask2 = new StockTast2();
@@ -39,10 +41,11 @@ public class StockTast2 {
     }
 
     public void execute(){
-        System.out.println(new Date() + "  StockTast2  execute");
+        logger.info("StockTast2  execute");
 
         try{
-            Parser parser = new Parser( (HttpURLConnection) (new URL("http://bbs.10jqka.com.cn/codelist.html")).openConnection() );
+            String url = "http://bbs.10jqka.com.cn/codelist.html";
+            Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
             //设置Parser对象的字符编码,一般与网页的字符编码保持一致
             parser.setEncoding("gbk");
             CssSelectorNodeFilter divFilter = new CssSelectorNodeFilter("div[class='bbsilst_wei3']");      //  "div[id='someid'] .className a")       "div[class='dd']"
@@ -66,7 +69,6 @@ public class StockTast2 {
                 Parser parser1 = new Parser(node.toHtml());
                 NodeFilter filter = new TagNameFilter("a");
                 NodeList list2 = parser1.extractAllNodesThatMatch(filter);
-                System.out.println(list2.size());
                 for(NodeIterator k = list2.elements(); k.hasMoreNodes(); ){
                     LinkTag n = (LinkTag) k.nextNode();
                     if(n.getAttribute("title")!=null && !n.getAttribute("title").equals("")){
@@ -80,8 +82,6 @@ public class StockTast2 {
                         data.add(stocksDto);
                     }
                 }
-                System.out.println("======================aa=================================");
-
             }
 
             updateData(data);
@@ -89,11 +89,6 @@ public class StockTast2 {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
-
-
-
 
     }
 
@@ -128,8 +123,5 @@ public class StockTast2 {
         session.close();
         HibernateUtil.closeSessionFactory();
     }
-
-
-
 
 }
