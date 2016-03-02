@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
@@ -37,7 +37,7 @@ CREATE TABLE `sic_stocks` (
   `url5Type` int(8) DEFAULT NULL,
   `createAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3778 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sic_stocks
@@ -3850,7 +3850,7 @@ CREATE TABLE `sic_stocks_daily` (
   `zongShiZhi` bigint(20) DEFAULT NULL,
   `liuTongShiZhi` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sic_stocks_daily

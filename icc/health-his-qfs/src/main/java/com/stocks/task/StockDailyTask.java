@@ -8,6 +8,7 @@ import com.stocks.dao.StocksDao;
 import com.stocks.dto.StocksDailyDto;
 import com.stocks.entity.StocksDailyEntity;
 import com.stocks.entity.StocksEntity;
+import com.stocks.utils.Constants;
 import com.stocks.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.slf4j.Logger;
@@ -58,7 +59,7 @@ public class StockDailyTask {
                     logger.info("");
                 }
 
-                if(stock.getUrl2Type()!=null && stock.getUrl2Type()==0){
+                if(stock.getUrl2Type()!=null && stock.getUrl2Type()==Constants.DETAIL_URL_TYPE_1){
                     String url = stock.getDetailUrl2();
                     Future r = asyncHttpClient.prepareGet(url).execute();
                     Response response = (Response) r.get();
@@ -81,7 +82,7 @@ public class StockDailyTask {
 
 
                 //http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=0023402&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback08984737466089427&callback=callback08984737466089427&_=1456623860821
-                if(stock.getUrl2Type()!=null && stock.getUrl2Type()==1){
+                if(stock.getUrl2Type()!=null && stock.getUrl2Type()==Constants.DETAIL_URL_TYPE_2){
                     String url = stock.getDetailUrl2();
                     Future r = asyncHttpClient.prepareGet(url).execute();
                     Response response = (Response) r.get();
