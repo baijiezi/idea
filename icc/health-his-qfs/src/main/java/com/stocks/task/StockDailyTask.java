@@ -59,63 +59,70 @@ public class StockDailyTask {
                     logger.info("");
                 }
 
-                if(stock.getUrl2Type()!=null && stock.getUrl2Type()==Constants.DETAIL_URL_TYPE_1){
-                    String url = stock.getDetailUrl2();
-                    Future r = asyncHttpClient.prepareGet(url).execute();
-                    Response response = (Response) r.get();
-                    String result = response.getResponseBody();
-                    logger.info(result);
-                    String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
-                    String[] temp = str.split(",");
-                    StocksDailyDto stocksDailyDto = new StocksDailyDto();
-                    stocksDailyDto.setCode(stock.getCode());
-                    stocksDailyDto.setName(stock.getName());
-                    stocksDailyDto.setDate(date);
-                    if(stock.getName().equals("上证指数")){
-                        stocksDailyDto.setShouPan(toInt(temp[2]));
+                try{
+                    if(stock.getUrl2Type()!=null && stock.getUrl2Type()==Constants.DETAIL_URL_TYPE_1){
+                        String url = stock.getDetailUrl2();
+                        Future r = asyncHttpClient.prepareGet(url).execute();
+                        Response response = (Response) r.get();
+                        String result = response.getResponseBody();
+                        logger.info(result);
+                        String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
+                        String[] temp = str.split(",");
+                        StocksDailyDto stocksDailyDto = new StocksDailyDto();
+                        stocksDailyDto.setCode(stock.getCode());
+                        stocksDailyDto.setName(stock.getName());
+                        stocksDailyDto.setDate(date);
+                        if(stock.getName().equals("上证指数")){
+                            stocksDailyDto.setShouPan(toInt(temp[2]));
+                        }
+                        else if(stock.getName().equals("深证成指")){
+                            stocksDailyDto.setShouPan(toInt(temp[10]));
+                        }
+                        data.add(stocksDailyDto);
                     }
-                    else if(stock.getName().equals("深证成指")){
-                        stocksDailyDto.setShouPan(toInt(temp[10]));
-                    }
-                    data.add(stocksDailyDto);
-                }
 
 
-                //http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=0023402&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback08984737466089427&callback=callback08984737466089427&_=1456623860821
-                if(stock.getUrl2Type()!=null && stock.getUrl2Type()==Constants.DETAIL_URL_TYPE_2){
-                    String url = stock.getDetailUrl2();
-                    Future r = asyncHttpClient.prepareGet(url).execute();
-                    Response response = (Response) r.get();
-                    String result = response.getResponseBody();
-                    logger.info(result);
-                    String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
-                    String[] temp = str.split(",");
-                    StocksDailyDto stocksDailyDto = new StocksDailyDto();
-                    stocksDailyDto.setCode(stock.getCode());
-                    stocksDailyDto.setName(stock.getName());
-                    stocksDailyDto.setDate(date);
-                    stocksDailyDto.setShouPan(toInt(temp[3]));
-                    stocksDailyDto.setJunJia(toInt(temp[26]));
-                    stocksDailyDto.setZhangFu(toInt(temp[29]));
-                    stocksDailyDto.setZhangDie(toInt(temp[27]));
-                    stocksDailyDto.setChengJiaoLiang(toLong(temp[31]));
-                    stocksDailyDto.setChengJiaoE(toLong(temp[35]));
-                    stocksDailyDto.setHuanShou(toInt(temp[37]));
-                    stocksDailyDto.setLiangBi(toInt(temp[36]));
-                    stocksDailyDto.setZuiGao(toInt(temp[30]));
-                    stocksDailyDto.setZuiDi(toInt(temp[24]));
-                    stocksDailyDto.setJinKai(toInt(temp[28]));
-                    stocksDailyDto.setZuoShou(toInt(temp[34]));
-                    stocksDailyDto.setZhangTing(toInt(temp[23]));
-                    stocksDailyDto.setDieTing(toInt(temp[24]));
-                    stocksDailyDto.setWaiPan(toInt(temp[39]));
-                    stocksDailyDto.setNeiPan(toInt(temp[40]));
-                    stocksDailyDto.setShiYing(toInt(temp[38]));
-                    stocksDailyDto.setShiJing(toInt(temp[43]));
-                    stocksDailyDto.setZongShiZhi(Long.parseLong(temp[46]));
-                    stocksDailyDto.setLiuTongShiZhi(Long.parseLong(temp[45]));
-                    data.add(stocksDailyDto);
+                    if(stock.getUrl2Type()!=null && stock.getUrl2Type()==Constants.DETAIL_URL_TYPE_2){
+                        String url = stock.getDetailUrl2();
+                        Future r = asyncHttpClient.prepareGet(url).execute();
+                        Response response = (Response) r.get();
+                        String result = response.getResponseBody();
+                        logger.info(result);
+                        String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
+                        String[] temp = str.split(",");
+                        StocksDailyDto stocksDailyDto = new StocksDailyDto();
+                        stocksDailyDto.setCode(stock.getCode());
+                        stocksDailyDto.setName(stock.getName());
+                        stocksDailyDto.setDate(date);
+                        stocksDailyDto.setShouPan(toInt(temp[3]));
+                        stocksDailyDto.setJunJia(toInt(temp[26]));
+                        stocksDailyDto.setZhangFu(toInt(temp[29]));
+                        stocksDailyDto.setZhangDie(toInt(temp[27]));
+                        stocksDailyDto.setChengJiaoLiang(toLong(temp[31]));
+                        stocksDailyDto.setChengJiaoE(toLong(temp[35]));
+                        stocksDailyDto.setHuanShou(toInt(temp[37]));
+                        stocksDailyDto.setLiangBi(toInt(temp[36]));
+                        stocksDailyDto.setZuiGao(toInt(temp[30]));
+                        stocksDailyDto.setZuiDi(toInt(temp[32]));
+                        stocksDailyDto.setJinKai(toInt(temp[28]));
+                        stocksDailyDto.setZuoShou(toInt(temp[34]));
+                        stocksDailyDto.setZhangTing(toInt(temp[23]));
+                        stocksDailyDto.setDieTing(toInt(temp[24]));
+                        stocksDailyDto.setWaiPan(toInt(temp[39]));
+                        stocksDailyDto.setNeiPan(toInt(temp[40]));
+                        stocksDailyDto.setShiYing(toInt(temp[38]));
+                        stocksDailyDto.setShiJing(toInt(temp[43]));
+                        stocksDailyDto.setZongShiZhi(toLong(temp[46]));
+                        stocksDailyDto.setLiuTongShiZhi(toLong(temp[45]));
+                        data.add(stocksDailyDto);
+                    }
+
+
+                }catch (Exception e){
+                    logger.error("StockDailyTask远程异常：" + stock.getCode());
+                    logger.error(e.getMessage());
                 }
+
             }
             updateData(data);
         } catch (Exception e){

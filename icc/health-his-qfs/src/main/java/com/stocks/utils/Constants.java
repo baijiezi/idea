@@ -15,4 +15,10 @@ public class Constants {
     //http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=0023402&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback09560457475017756&callback=callback09560457475017756&_=1456841948315
     public static Integer DETAIL_URL_TYPE_2 = 2;
 
+
+
+
+    //http://hqchart.eastmoney.com/hq20/js/002340.js?2229
+    public static Integer ZJLX_URL_TYPE_1 = 1;
+
 }

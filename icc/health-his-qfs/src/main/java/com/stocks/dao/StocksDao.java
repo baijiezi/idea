@@ -64,15 +64,15 @@ public class StocksDao {
 
     }
 
-    public void save(StocksEntity stock, Session session){
+    public void save(StocksEntity entity, Session session){
         try{
-            List<StocksEntity> list = queryByCodeAndExchange(stock.getCode(), stock.getExchange(), session);
+            List<StocksEntity> list = queryByCodeAndExchange(entity.getCode(), entity.getExchange(), session);
             if(list!=null && list.size()>0){
-                logger.error("入库异常，已存在相同的代码:" + stock.getCode());
-                throw new Exception("入库异常，已存在相同的代码:" + stock.getCode());
+                logger.error("入库异常，已存在相同的代码:" + entity.getCode());
+                throw new Exception("入库异常，已存在相同的代码:" + entity.getCode());
             }
             else{
-                session.save(stock);
+                session.save(entity);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -82,9 +82,9 @@ public class StocksDao {
 
 
 
-    public void update(StocksEntity stock, Session session){
+    public void update(StocksEntity entity, Session session){
         try{
-            session.update(stock);
+            session.update(entity);
         }catch(Exception e){
             e.printStackTrace();
         }

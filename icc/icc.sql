@@ -1,4 +1,4 @@
-﻿/*
+/*
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2016-03-01 23:33:23
+Date: 2016-03-03 00:00:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,7 +37,7 @@ CREATE TABLE `sic_stocks` (
   `url5Type` int(8) DEFAULT NULL,
   `createAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3778 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sic_stocks
@@ -2280,7 +2280,7 @@ INSERT INTO `sic_stocks` VALUES ('2235', '002336', '人人乐', '深市', null, 
 INSERT INTO `sic_stocks` VALUES ('2236', '002337', '赛象科技', '深市', null, null, 'http://quote.eastmoney.com/sz002337.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:21');
 INSERT INTO `sic_stocks` VALUES ('2237', '002338', '奥普光电', '深市', null, null, 'http://quote.eastmoney.com/sz002338.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:21');
 INSERT INTO `sic_stocks` VALUES ('2238', '002339', '积成电子', '深市', null, null, 'http://quote.eastmoney.com/sz002339.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:21');
-INSERT INTO `sic_stocks` VALUES ('2239', '002340', '格林美', '深市', null, null, 'http://quote.eastmoney.com/sz002340.html', 'http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=0023402&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback09560457475017756&callback=callback09560457475017756&_=1456841948315', '1', null, null, null, null, null, null, '2016-03-01 23:23:21');
+INSERT INTO `sic_stocks` VALUES ('2239', '002340', '格林美', '深市', null, null, 'http://quote.eastmoney.com/sz002340.html', 'http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=0023402&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback09560457475017756&callback=callback09560457475017756&_=1456841948315', '2', 'http://hqchart.eastmoney.com/hq20/js/002340.js?2229', '1', null, null, null, null, '2016-03-01 23:23:21');
 INSERT INTO `sic_stocks` VALUES ('2240', '002341', '新纶科技', '深市', null, null, 'http://quote.eastmoney.com/sz002341.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:21');
 INSERT INTO `sic_stocks` VALUES ('2241', '002342', '巨力索具', '深市', null, null, 'http://quote.eastmoney.com/sz002342.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:21');
 INSERT INTO `sic_stocks` VALUES ('2242', '002343', '慈文传媒', '深市', null, null, 'http://quote.eastmoney.com/sz002343.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:21');
@@ -3817,8 +3817,8 @@ INSERT INTO `sic_stocks` VALUES ('3772', '300502', '新易盛', '深市', null, 
 INSERT INTO `sic_stocks` VALUES ('3773', '300503', '昊志机电', '深市', null, null, 'http://quote.eastmoney.com/sz300503.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:48');
 INSERT INTO `sic_stocks` VALUES ('3774', '300505', '川金诺', '深市', null, null, 'http://quote.eastmoney.com/sz300505.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:48');
 INSERT INTO `sic_stocks` VALUES ('3775', '500159', '景顺500', '深市', null, null, 'http://quote.eastmoney.com/sz500159.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:48');
-INSERT INTO `sic_stocks` VALUES ('3776', '000001', '上证指数', '沪市', null, null, null, 'http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568', '0', null, null, null, null, null, null, '2016-03-01 23:25:45');
-INSERT INTO `sic_stocks` VALUES ('3777', '399001', '深证成指', '深市', null, null, null, 'http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568', '0', null, null, null, null, null, null, '2016-03-01 23:27:05');
+INSERT INTO `sic_stocks` VALUES ('3776', '000001', '上证指数', '沪市', null, null, null, 'http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568', '1', null, null, null, null, null, null, '2016-03-01 23:25:45');
+INSERT INTO `sic_stocks` VALUES ('3777', '399001', '深证成指', '深市', null, null, null, 'http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568', '1', null, null, null, null, null, null, '2016-03-01 23:27:05');
 
 -- ----------------------------
 -- Table structure for `sic_stocks_daily`
@@ -3850,11 +3850,43 @@ CREATE TABLE `sic_stocks_daily` (
   `zongShiZhi` bigint(20) DEFAULT NULL,
   `liuTongShiZhi` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sic_stocks_daily
 -- ----------------------------
-INSERT INTO `sic_stocks_daily` VALUES ('5', '002340', '格林美', '2016-03-01', '912', '906', '387', '34', '27130200', '24600000000', '233', '86', '922', '790', '883', '878', '966', '790', '14782400', '12347900', '5280', '300', '13273565419', '10640471091');
-INSERT INTO `sic_stocks_daily` VALUES ('6', '000001', '上证指数', '2016-03-01', '273317', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `sic_stocks_daily` VALUES ('7', '399001', '深证成指', '2016-03-01', '932200', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `sic_stocks_daily` VALUES ('1', '002340', '格林美', '2016-03-02', '967', '946', '603', '55', '34764000', '32900000000', '298', '111', '974', '908', '908', '912', '1003', '821', '20524700', '14239300', '5599', '318', '1407405484900', '1128216639800');
+INSERT INTO `sic_stocks_daily` VALUES ('2', '000001', '上证指数', '2016-03-02', '284968', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `sic_stocks_daily` VALUES ('3', '399001', '深证成指', '2016-03-02', '976637', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+
+-- ----------------------------
+-- Table structure for `sic_stocks_zjlx`
+-- ----------------------------
+DROP TABLE IF EXISTS `sic_stocks_zjlx`;
+CREATE TABLE `sic_stocks_zjlx` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(32) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `date` date NOT NULL,
+  `zhuLiLiuRu` bigint(20) DEFAULT NULL,
+  `zhuLiLiuChu` bigint(20) DEFAULT NULL,
+  `zhuLiJingLiuRu` bigint(20) DEFAULT NULL,
+  `chaoDaLiuRu` bigint(20) DEFAULT NULL,
+  `chaoDaLiuChu` bigint(20) DEFAULT NULL,
+  `jingChaoDa` bigint(20) DEFAULT NULL,
+  `daDanLiuRu` bigint(20) DEFAULT NULL,
+  `daDanLiuChu` bigint(20) DEFAULT NULL,
+  `jingDaDan` bigint(20) DEFAULT NULL,
+  `zhongDanLiuRu` bigint(20) DEFAULT NULL,
+  `zhongDanLiuChu` bigint(20) DEFAULT NULL,
+  `jingZhongDan` bigint(20) DEFAULT NULL,
+  `xiaoDanLiuRu` bigint(20) DEFAULT NULL,
+  `xiaoDanLiuChu` bigint(20) DEFAULT NULL,
+  `jingXiaoDan` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sic_stocks_zjlx
+-- ----------------------------
+INSERT INTO `sic_stocks_zjlx` VALUES ('1', '002340', '格林美', '2016-03-02', '14680970000', '-10531450000', '4149510000', '4393700000', '-1208620000', '3185080000', '10287270000', '-9322830000', '964440000', '10655050000', '-12422210000', '-1767160000', '7278410000', '-9660760000', '-2382350000');
