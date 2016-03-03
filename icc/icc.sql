@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2016-03-03 00:00:11
+Date: 2016-03-03 22:47:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,8 @@ CREATE TABLE `sic_stocks` (
   `detailUrl5` varchar(256) DEFAULT NULL,
   `url5Type` int(8) DEFAULT NULL,
   `createAt` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3778 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3817,14 +3818,14 @@ INSERT INTO `sic_stocks` VALUES ('3772', '300502', '新易盛', '深市', null, 
 INSERT INTO `sic_stocks` VALUES ('3773', '300503', '昊志机电', '深市', null, null, 'http://quote.eastmoney.com/sz300503.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:48');
 INSERT INTO `sic_stocks` VALUES ('3774', '300505', '川金诺', '深市', null, null, 'http://quote.eastmoney.com/sz300505.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:48');
 INSERT INTO `sic_stocks` VALUES ('3775', '500159', '景顺500', '深市', null, null, 'http://quote.eastmoney.com/sz500159.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:48');
-INSERT INTO `sic_stocks` VALUES ('3776', '000001', '上证指数', '沪市', null, null, null, 'http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568', '1', null, null, null, null, null, null, '2016-03-01 23:25:45');
+INSERT INTO `sic_stocks` VALUES ('3776', '000001_2', '上证指数', '沪市', null, null, null, 'http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568', '1', null, null, null, null, null, null, '2016-03-01 23:25:45');
 INSERT INTO `sic_stocks` VALUES ('3777', '399001', '深证成指', '深市', null, null, null, 'http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568', '1', null, null, null, null, null, null, '2016-03-01 23:27:05');
 
 -- ----------------------------
--- Table structure for `sic_stocks_daily`
+-- Table structure for `sic_stocks_price`
 -- ----------------------------
-DROP TABLE IF EXISTS `sic_stocks_daily`;
-CREATE TABLE `sic_stocks_daily` (
+DROP TABLE IF EXISTS `sic_stocks_price`;
+CREATE TABLE `sic_stocks_price` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(16) NOT NULL,
   `name` varchar(32) NOT NULL,
@@ -3849,15 +3850,16 @@ CREATE TABLE `sic_stocks_daily` (
   `shiJing` int(11) DEFAULT NULL,
   `zongShiZhi` bigint(20) DEFAULT NULL,
   `liuTongShiZhi` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`,`date`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of sic_stocks_daily
+-- Records of sic_stocks_price
 -- ----------------------------
-INSERT INTO `sic_stocks_daily` VALUES ('1', '002340', '格林美', '2016-03-02', '967', '946', '603', '55', '34764000', '32900000000', '298', '111', '974', '908', '908', '912', '1003', '821', '20524700', '14239300', '5599', '318', '1407405484900', '1128216639800');
-INSERT INTO `sic_stocks_daily` VALUES ('2', '000001', '上证指数', '2016-03-02', '284968', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `sic_stocks_daily` VALUES ('3', '399001', '深证成指', '2016-03-02', '976637', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `sic_stocks_price` VALUES ('1', '002340', '格林美', '2016-03-03', '1003', '1019', '372', '36', '54762300', '55800000000', '469', '163', '1064', '984', '990', '967', '1064', '870', '28101000', '26661300', '5807', '330', '1459801088600', '1170218459900');
+INSERT INTO `sic_stocks_price` VALUES ('2', '000001_2', '上证指数', '2016-03-03', '285976', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `sic_stocks_price` VALUES ('3', '399001', '深证成指', '2016-03-03', '976201', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `sic_stocks_zjlx`
@@ -3868,6 +3870,9 @@ CREATE TABLE `sic_stocks_zjlx` (
   `code` varchar(32) NOT NULL,
   `name` varchar(32) NOT NULL,
   `date` date NOT NULL,
+  `zongLiuRu` bigint(20) DEFAULT NULL,
+  `zongLiuChu` bigint(20) DEFAULT NULL,
+  `zongJing` bigint(20) DEFAULT NULL,
   `zhuLiLiuRu` bigint(20) DEFAULT NULL,
   `zhuLiLiuChu` bigint(20) DEFAULT NULL,
   `zhuLiJingLiuRu` bigint(20) DEFAULT NULL,
@@ -3883,10 +3888,27 @@ CREATE TABLE `sic_stocks_zjlx` (
   `xiaoDanLiuRu` bigint(20) DEFAULT NULL,
   `xiaoDanLiuChu` bigint(20) DEFAULT NULL,
   `jingXiaoDan` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`,`date`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sic_stocks_zjlx
 -- ----------------------------
-INSERT INTO `sic_stocks_zjlx` VALUES ('1', '002340', '格林美', '2016-03-02', '14680970000', '-10531450000', '4149510000', '4393700000', '-1208620000', '3185080000', '10287270000', '-9322830000', '964440000', '10655050000', '-12422210000', '-1767160000', '7278410000', '-9660760000', '-2382350000');
+INSERT INTO `sic_stocks_zjlx` VALUES ('1', '002340', '格林美', '2016-03-03', '54709410000', '-54709410000', '0', '17903340000', '-18864990000', '-961650000', '5952650000', '-4116000000', '1836660000', '11950690000', '-14748990000', '-2798310000', '18469610000', '-19916680000', '-1447070000', '18336460000', '-15927740000', '2408720000');
+
+-- ----------------------------
+-- Table structure for `sic_stocks_zjlx_detail`
+-- ----------------------------
+DROP TABLE IF EXISTS `sic_stocks_zjlx_detail`;
+CREATE TABLE `sic_stocks_zjlx_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(32) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sic_stocks_zjlx_detail
+-- ----------------------------
