@@ -1,3 +1,6 @@
+ALTER TABLE sic_stocks
+ADD UNIQUE KEY(CODE);  
+
 ALTER TABLE sic_stocks_daily
 ADD UNIQUE KEY(CODE, DATE);  
 

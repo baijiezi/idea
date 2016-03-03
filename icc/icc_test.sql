@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50618
 File Encoding         : 65001
 
-Date: 2016-03-03 19:16:25
+Date: 2016-03-03 20:18:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,8 @@ CREATE TABLE `sic_stocks` (
   `detailUrl5` varchar(256) DEFAULT NULL,
   `url5Type` int(8) DEFAULT NULL,
   `createAt` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3778 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3817,7 +3818,7 @@ INSERT INTO `sic_stocks` VALUES ('3772', '300502', '新易盛', '深市', null, 
 INSERT INTO `sic_stocks` VALUES ('3773', '300503', '昊志机电', '深市', null, null, 'http://quote.eastmoney.com/sz300503.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:48');
 INSERT INTO `sic_stocks` VALUES ('3774', '300505', '川金诺', '深市', null, null, 'http://quote.eastmoney.com/sz300505.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:48');
 INSERT INTO `sic_stocks` VALUES ('3775', '500159', '景顺500', '深市', null, null, 'http://quote.eastmoney.com/sz500159.html', null, null, null, null, null, null, null, null, '2016-03-01 23:23:48');
-INSERT INTO `sic_stocks` VALUES ('3776', '000001', '上证指数', '沪市', null, null, null, 'http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568', '1', null, null, null, null, null, null, '2016-03-01 23:25:45');
+INSERT INTO `sic_stocks` VALUES ('3776', '000001_2', '上证指数', '沪市', null, null, null, 'http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568', '1', null, null, null, null, null, null, '2016-03-01 23:25:45');
 INSERT INTO `sic_stocks` VALUES ('3777', '399001', '深证成指', '深市', null, null, null, 'http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568', '1', null, null, null, null, null, null, '2016-03-01 23:27:05');
 
 -- ----------------------------
