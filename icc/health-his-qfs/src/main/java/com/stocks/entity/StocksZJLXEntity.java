@@ -23,6 +23,9 @@ public class StocksZJLXEntity {
     private String code;
     private String name;
     private Date date;
+    private long zongLiuRu;
+    private long zongLiuChu;
+    private long zongJing;
     private long zhuLiLiuRu;
     private long zhuLiLiuChu;
     private long zhuLiJingLiuRu;
@@ -69,6 +72,30 @@ public class StocksZJLXEntity {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public long getZongLiuRu() {
+        return zongLiuRu;
+    }
+
+    public void setZongLiuRu(long zongLiuRu) {
+        this.zongLiuRu = zongLiuRu;
+    }
+
+    public long getZongLiuChu() {
+        return zongLiuChu;
+    }
+
+    public void setZongLiuChu(long zongLiuChu) {
+        this.zongLiuChu = zongLiuChu;
+    }
+
+    public long getZongJing() {
+        return zongJing;
+    }
+
+    public void setZongJing(long zongJing) {
+        this.zongJing = zongJing;
     }
 
     public long getZhuLiLiuRu() {
