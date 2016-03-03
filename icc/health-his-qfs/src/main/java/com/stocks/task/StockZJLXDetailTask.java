@@ -1,13 +1,11 @@
-package com.stocks.enums;
+package com.stocks.task;
 
 /**
  * Created with IntelliJ IDEA.
  * User: BaiJiezi
- * Date: 16-3-2
- * Time: 下午4:43
+ * Date: 16-3-3
+ * Time: 下午6:50
  * To change this template use File | Settings | File Templates.
  */
-public enum DetailUrlTypeEnum {
-    是,
-    否
+public class StockZJLXDetailTask {
 }

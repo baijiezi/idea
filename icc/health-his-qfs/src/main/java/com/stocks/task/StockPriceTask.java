@@ -3,16 +3,17 @@ package com.stocks.task;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
 import com.ning.http.client.Response;
-import com.stocks.dao.StocksDailyDao;
+import com.stocks.dao.StocksPriceDao;
 import com.stocks.dao.StocksDao;
-import com.stocks.dto.StocksDailyDto;
-import com.stocks.entity.StocksDailyEntity;
+import com.stocks.dto.StocksPriceDto;
 import com.stocks.entity.StocksEntity;
+import com.stocks.entity.StocksPriceEntity;
 import com.stocks.utils.Constants;
 import com.stocks.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,18 +22,19 @@ import java.util.concurrent.Future;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Administrator
- * Date: 16-2-27
- * Time: 下午2:07
+ * User: BaiJiezi
+ * Date: 16-3-3
+ * Time: 下午6:42
  * To change this template use File | Settings | File Templates.
  */
-public class StockDailyTask {
+public class StockPriceTask {
+
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args){
 
-        StockDailyTask stockDailyTask = new StockDailyTask();
+        StockPriceTask stockDailyTask = new StockPriceTask();
         stockDailyTask.execute();
 
     }
@@ -41,7 +43,7 @@ public class StockDailyTask {
         logger.info("StockDailyTask  execute");
 
         try{
-            List data = new ArrayList<StocksDailyDto>();
+            List data = new ArrayList<StocksPriceDto>();
             StocksDao stocksDao = new StocksDao();
             List<StocksEntity> list = stocksDao.getAll();
             Date date = new Date();
@@ -60,7 +62,7 @@ public class StockDailyTask {
                 }
 
                 try{
-                    if(stock.getUrl2Type()!=null && stock.getUrl2Type()==Constants.DETAIL_URL_TYPE_1){
+                    if(stock.getUrl2Type()!=null && stock.getUrl2Type()== Constants.DETAIL_URL_TYPE_1){
                         String url = stock.getDetailUrl2();
                         Future r = asyncHttpClient.prepareGet(url).execute();
                         Response response = (Response) r.get();
@@ -68,17 +70,17 @@ public class StockDailyTask {
                         logger.info(result);
                         String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
                         String[] temp = str.split(",");
-                        StocksDailyDto stocksDailyDto = new StocksDailyDto();
-                        stocksDailyDto.setCode(stock.getCode());
-                        stocksDailyDto.setName(stock.getName());
-                        stocksDailyDto.setDate(date);
+                        StocksPriceDto stocksPriceDto = new StocksPriceDto();
+                        stocksPriceDto.setCode(stock.getCode());
+                        stocksPriceDto.setName(stock.getName());
+                        stocksPriceDto.setDate(date);
                         if(stock.getName().equals("上证指数")){
-                            stocksDailyDto.setShouPan(toInt(temp[2]));
+                            stocksPriceDto.setShouPan(toInt(temp[2]));
                         }
                         else if(stock.getName().equals("深证成指")){
-                            stocksDailyDto.setShouPan(toInt(temp[10]));
+                            stocksPriceDto.setShouPan(toInt(temp[10]));
                         }
-                        data.add(stocksDailyDto);
+                        data.add(stocksPriceDto);
                     }
 
 
@@ -90,31 +92,31 @@ public class StockDailyTask {
                         logger.info(result);
                         String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
                         String[] temp = str.split(",");
-                        StocksDailyDto stocksDailyDto = new StocksDailyDto();
-                        stocksDailyDto.setCode(stock.getCode());
-                        stocksDailyDto.setName(stock.getName());
-                        stocksDailyDto.setDate(date);
-                        stocksDailyDto.setShouPan(toInt(temp[3]));
-                        stocksDailyDto.setJunJia(toInt(temp[26]));
-                        stocksDailyDto.setZhangFu(toInt(temp[29]));
-                        stocksDailyDto.setZhangDie(toInt(temp[27]));
-                        stocksDailyDto.setChengJiaoLiang(toLong(temp[31]));
-                        stocksDailyDto.setChengJiaoE(toLong(temp[35]));
-                        stocksDailyDto.setHuanShou(toInt(temp[37]));
-                        stocksDailyDto.setLiangBi(toInt(temp[36]));
-                        stocksDailyDto.setZuiGao(toInt(temp[30]));
-                        stocksDailyDto.setZuiDi(toInt(temp[32]));
-                        stocksDailyDto.setJinKai(toInt(temp[28]));
-                        stocksDailyDto.setZuoShou(toInt(temp[34]));
-                        stocksDailyDto.setZhangTing(toInt(temp[23]));
-                        stocksDailyDto.setDieTing(toInt(temp[24]));
-                        stocksDailyDto.setWaiPan(toInt(temp[39]));
-                        stocksDailyDto.setNeiPan(toInt(temp[40]));
-                        stocksDailyDto.setShiYing(toInt(temp[38]));
-                        stocksDailyDto.setShiJing(toInt(temp[43]));
-                        stocksDailyDto.setZongShiZhi(toLong(temp[46]));
-                        stocksDailyDto.setLiuTongShiZhi(toLong(temp[45]));
-                        data.add(stocksDailyDto);
+                        StocksPriceDto stocksPriceDto = new StocksPriceDto();
+                        stocksPriceDto.setCode(stock.getCode());
+                        stocksPriceDto.setName(stock.getName());
+                        stocksPriceDto.setDate(date);
+                        stocksPriceDto.setShouPan(toInt(temp[3]));
+                        stocksPriceDto.setJunJia(toInt(temp[26]));
+                        stocksPriceDto.setZhangFu(toInt(temp[29]));
+                        stocksPriceDto.setZhangDie(toInt(temp[27]));
+                        stocksPriceDto.setChengJiaoLiang(toLong(temp[31]));
+                        stocksPriceDto.setChengJiaoE(toLong(temp[35]));
+                        stocksPriceDto.setHuanShou(toInt(temp[37]));
+                        stocksPriceDto.setLiangBi(toInt(temp[36]));
+                        stocksPriceDto.setZuiGao(toInt(temp[30]));
+                        stocksPriceDto.setZuiDi(toInt(temp[32]));
+                        stocksPriceDto.setJinKai(toInt(temp[28]));
+                        stocksPriceDto.setZuoShou(toInt(temp[34]));
+                        stocksPriceDto.setZhangTing(toInt(temp[23]));
+                        stocksPriceDto.setDieTing(toInt(temp[24]));
+                        stocksPriceDto.setWaiPan(toInt(temp[39]));
+                        stocksPriceDto.setNeiPan(toInt(temp[40]));
+                        stocksPriceDto.setShiYing(toInt(temp[38]));
+                        stocksPriceDto.setShiJing(toInt(temp[43]));
+                        stocksPriceDto.setZongShiZhi(toLong(temp[46]));
+                        stocksPriceDto.setLiuTongShiZhi(toLong(temp[45]));
+                        data.add(stocksPriceDto);
                     }
 
 
@@ -167,14 +169,14 @@ public class StockDailyTask {
         return v.longValue();
     }
 
-    private void updateData(List<StocksDailyDto> data){
+    private void updateData(List<StocksPriceDto> data){
         if(data==null || data.size()==0){
             return;
         }
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
-        for(StocksDailyDto dto : data){
-            StocksDailyEntity entity = new StocksDailyEntity();
+        for(StocksPriceDto dto : data){
+            StocksPriceEntity entity = new StocksPriceEntity();
             entity.setCode(dto.getCode());
             entity.setName(dto.getName());
             entity.setDate(dto.getDate());
@@ -199,12 +201,13 @@ public class StockDailyTask {
             entity.setZongShiZhi(dto.getZongShiZhi());
             entity.setLiuTongShiZhi(dto.getLiuTongShiZhi());
 
-            StocksDailyDao dao = new StocksDailyDao();
+            StocksPriceDao dao = new StocksPriceDao();
             dao.save(entity, session);
         }
         session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
     }
+
 
 }
