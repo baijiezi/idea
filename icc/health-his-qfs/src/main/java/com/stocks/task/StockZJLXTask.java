@@ -80,6 +80,9 @@ public class StockZJLXTask {
                         zjlxDto.setCode(stock.getCode());
                         zjlxDto.setName(stock.getName());
                         zjlxDto.setDate(date);
+                        zjlxDto.setZongLiuRu(toLong(temp[12]+"万")+toLong(temp[14]+"万")+toLong(temp[16]+"万")+toLong(temp[18]+"万"));
+                        zjlxDto.setZongLiuChu(toLong(temp[13]+"万")+toLong(temp[15]+"万")+toLong(temp[17]+"万")+toLong(temp[19]+"万"));
+                        zjlxDto.setZongJing(toLong(temp[2]+"万")+toLong(temp[4]+"万")+toLong(temp[6]+"万")+toLong(temp[8]+"万"));
                         zjlxDto.setZhuLiLiuRu(toLong(temp[12] + "万") + toLong(temp[14] + "万"));
                         zjlxDto.setZhuLiLiuChu(toLong(temp[13]+"万") + toLong(temp[15]+"万"));
                         zjlxDto.setZhuLiJingLiuRu(toLong(temp[0]+"万"));
@@ -157,6 +160,9 @@ public class StockZJLXTask {
             entity.setCode(dto.getCode());
             entity.setName(dto.getName());
             entity.setDate(dto.getDate());
+            entity.setZongLiuRu(dto.getZongLiuRu());
+            entity.setZongLiuChu(dto.getZongLiuChu());
+            entity.setZongJing(dto.getZongJing());
             entity.setZhuLiLiuRu(dto.getZhuLiLiuRu());
             entity.setZhuLiLiuChu(dto.getZhuLiLiuChu());
             entity.setZhuLiJingLiuRu(dto.getZhuLiJingLiuRu());
