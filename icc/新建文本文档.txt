@@ -1,34 +1,5 @@
-ALTER TABLE sic_stocks
-ADD UNIQUE KEY(CODE);  
 
-ALTER TABLE sic_stocks_daily
-ADD UNIQUE KEY(CODE, DATE);  
-
-
-
-ALTER TABLE sic_stocks_zjlx
-ADD UNIQUE KEY(CODE, DATE); 
- 
-
-
-
-000001改为000001_2
-code唯一
-
-
-sic_stocks_daily 改名 sic_stocks_price
-
-
-总流入，总流出，总净
-
-
-曲线图
-
-
-
-zjlx_detail
-
-
+曲线
 
 连接池
 
@@ -40,15 +11,5 @@ zjlx K图
 
 《证券市场基础知识》
 《证券交易》
-
-
-DROP TABLE IF EXISTS `sic_stocks_zjlx_detail`;
-CREATE TABLE `sic_stocks_zjlx_detail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(32) NOT NULL,
-  `name` varchar(32) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 

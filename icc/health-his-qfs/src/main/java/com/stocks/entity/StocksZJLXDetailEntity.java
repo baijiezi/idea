@@ -23,6 +23,10 @@ public class StocksZJLXDetailEntity {
     private String code;
     private String name;
     private Date date;
+    private int chengJiaoJia;
+    private int chengJiaoLiang;
+    private long chengJiaoE;
+    private int shift;
 
     public Integer getId() {
         return id;
@@ -54,5 +58,37 @@ public class StocksZJLXDetailEntity {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getChengJiaoJia() {
+        return chengJiaoJia;
+    }
+
+    public void setChengJiaoJia(int chengJiaoJia) {
+        this.chengJiaoJia = chengJiaoJia;
+    }
+
+    public int getChengJiaoLiang() {
+        return chengJiaoLiang;
+    }
+
+    public void setChengJiaoLiang(int chengJiaoLiang) {
+        this.chengJiaoLiang = chengJiaoLiang;
+    }
+
+    public long getChengJiaoE() {
+        return chengJiaoE;
+    }
+
+    public void setChengJiaoE(long chengJiaoE) {
+        this.chengJiaoE = chengJiaoE;
+    }
+
+    public int getShift() {
+        return shift;
+    }
+
+    public void setShift(int shift) {
+        this.shift = shift;
     }
 }
