@@ -29,18 +29,23 @@ public class StocksZJLXEntity {
     private long zhuLiLiuRu;
     private long zhuLiLiuChu;
     private long zhuLiJingLiuRu;
-    private long chaoDaLiuRu;
-    private long chaoDaLiuChu;
-    private long jingChaoDa;
+    private long zhuLiJingBi;
+    private long chaoDaDanLiuRu;
+    private long chaoDaDanLiuChu;
+    private long chaoDaDanJingLiuRu;
+    private long chaoDaDanJingBi;
     private long daDanLiuRu;
     private long daDanLiuChu;
-    private long jingDaDan;
+    private long daDanJingLiuRu;
+    private long daDanJingBi;
     private long zhongDanLiuRu;
     private long zhongDanLiuChu;
-    private long jingZhongDan;
+    private long zhongDanJingLiuRu;
+    private long zhongDanJingBi;
     private long xiaoDanLiuRu;
     private long xiaoDanLiuChu;
-    private long jingXiaoDan;
+    private long xiaoDanJingLiuRu;
+    private long xiaoDanJingBi;
 
     public Integer getId() {
         return id;
@@ -122,28 +127,20 @@ public class StocksZJLXEntity {
         this.zhuLiJingLiuRu = zhuLiJingLiuRu;
     }
 
-    public long getChaoDaLiuRu() {
-        return chaoDaLiuRu;
+    public long getChaoDaDanLiuRu() {
+        return chaoDaDanLiuRu;
     }
 
-    public void setChaoDaLiuRu(long chaoDaLiuRu) {
-        this.chaoDaLiuRu = chaoDaLiuRu;
+    public void setChaoDaDanLiuRu(long chaoDaDanLiuRu) {
+        this.chaoDaDanLiuRu = chaoDaDanLiuRu;
     }
 
-    public long getChaoDaLiuChu() {
-        return chaoDaLiuChu;
+    public long getChaoDaDanLiuChu() {
+        return chaoDaDanLiuChu;
     }
 
-    public void setChaoDaLiuChu(long chaoDaLiuChu) {
-        this.chaoDaLiuChu = chaoDaLiuChu;
-    }
-
-    public long getJingChaoDa() {
-        return jingChaoDa;
-    }
-
-    public void setJingChaoDa(long jingChaoDa) {
-        this.jingChaoDa = jingChaoDa;
+    public void setChaoDaDanLiuChu(long chaoDaDanLiuChu) {
+        this.chaoDaDanLiuChu = chaoDaDanLiuChu;
     }
 
     public long getDaDanLiuRu() {
@@ -162,14 +159,6 @@ public class StocksZJLXEntity {
         this.daDanLiuChu = daDanLiuChu;
     }
 
-    public long getJingDaDan() {
-        return jingDaDan;
-    }
-
-    public void setJingDaDan(long jingDaDan) {
-        this.jingDaDan = jingDaDan;
-    }
-
     public long getZhongDanLiuRu() {
         return zhongDanLiuRu;
     }
@@ -184,14 +173,6 @@ public class StocksZJLXEntity {
 
     public void setZhongDanLiuChu(long zhongDanLiuChu) {
         this.zhongDanLiuChu = zhongDanLiuChu;
-    }
-
-    public long getJingZhongDan() {
-        return jingZhongDan;
-    }
-
-    public void setJingZhongDan(long jingZhongDan) {
-        this.jingZhongDan = jingZhongDan;
     }
 
     public long getXiaoDanLiuRu() {
@@ -210,11 +191,75 @@ public class StocksZJLXEntity {
         this.xiaoDanLiuChu = xiaoDanLiuChu;
     }
 
-    public long getJingXiaoDan() {
-        return jingXiaoDan;
+    public long getZhuLiJingBi() {
+        return zhuLiJingBi;
     }
 
-    public void setJingXiaoDan(long jingXiaoDan) {
-        this.jingXiaoDan = jingXiaoDan;
+    public void setZhuLiJingBi(long zhuLiJingBi) {
+        this.zhuLiJingBi = zhuLiJingBi;
+    }
+
+    public long getChaoDaDanJingLiuRu() {
+        return chaoDaDanJingLiuRu;
+    }
+
+    public void setChaoDaDanJingLiuRu(long chaoDaDanJingLiuRu) {
+        this.chaoDaDanJingLiuRu = chaoDaDanJingLiuRu;
+    }
+
+    public long getChaoDaDanJingBi() {
+        return chaoDaDanJingBi;
+    }
+
+    public void setChaoDaDanJingBi(long chaoDaDanJingBi) {
+        this.chaoDaDanJingBi = chaoDaDanJingBi;
+    }
+
+    public long getDaDanJingLiuRu() {
+        return daDanJingLiuRu;
+    }
+
+    public void setDaDanJingLiuRu(long daDanJingLiuRu) {
+        this.daDanJingLiuRu = daDanJingLiuRu;
+    }
+
+    public long getDaDanJingBi() {
+        return daDanJingBi;
+    }
+
+    public void setDaDanJingBi(long daDanJingBi) {
+        this.daDanJingBi = daDanJingBi;
+    }
+
+    public long getZhongDanJingLiuRu() {
+        return zhongDanJingLiuRu;
+    }
+
+    public void setZhongDanJingLiuRu(long zhongDanJingLiuRu) {
+        this.zhongDanJingLiuRu = zhongDanJingLiuRu;
+    }
+
+    public long getZhongDanJingBi() {
+        return zhongDanJingBi;
+    }
+
+    public void setZhongDanJingBi(long zhongDanJingBi) {
+        this.zhongDanJingBi = zhongDanJingBi;
+    }
+
+    public long getXiaoDanJingLiuRu() {
+        return xiaoDanJingLiuRu;
+    }
+
+    public void setXiaoDanJingLiuRu(long xiaoDanJingLiuRu) {
+        this.xiaoDanJingLiuRu = xiaoDanJingLiuRu;
+    }
+
+    public long getXiaoDanJingBi() {
+        return xiaoDanJingBi;
+    }
+
+    public void setXiaoDanJingBi(long xiaoDanJingBi) {
+        this.xiaoDanJingBi = xiaoDanJingBi;
     }
 }

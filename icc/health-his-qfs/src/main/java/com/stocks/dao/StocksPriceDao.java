@@ -35,24 +35,26 @@ public class StocksPriceDao {
 
     }
 
-    public void save(StocksPriceEntity stocksDailyEntity, Session session){
+    public boolean save(StocksPriceEntity stocksDailyEntity, Session session){
         try{
             session.save(stocksDailyEntity);
+            return true;
         }catch(Exception e){
             e.printStackTrace();
         }
-
+        return false;
     }
 
 
 
-    public void update(StocksPriceEntity stocksDailyEntity, Session session){
+    public boolean update(StocksPriceEntity stocksDailyEntity, Session session){
         try{
             session.update(stocksDailyEntity);
+            return true;
         }catch(Exception e){
             e.printStackTrace();
         }
-
+        return false;
     }
 
 

@@ -27,14 +27,17 @@ public class StocksEntity {
     private String subType;
     private String detailUrl1;
     private String detailUrl2;
-    private Integer url2Type;
+    private String url2Type;
     private String detailUrl3;
-    private Integer url3Type;
+    private String url3Type;
     private String detailUrl4;
-    private Integer url4Type;
+    private String url4Type;
     private String detailUrl5;
-    private Integer url5Type;
+    private String url5Type;
     private Date createAt;
+    private Date priceUpdate;
+    private Date zjlsUpdate;
+    private Date zjlsDetailUpdate;
 
     public Integer getId() {
         return id;
@@ -100,11 +103,11 @@ public class StocksEntity {
         this.detailUrl2 = detailUrl2;
     }
 
-    public Integer getUrl2Type() {
+    public String getUrl2Type() {
         return url2Type;
     }
 
-    public void setUrl2Type(Integer url2Type) {
+    public void setUrl2Type(String url2Type) {
         this.url2Type = url2Type;
     }
 
@@ -116,11 +119,11 @@ public class StocksEntity {
         this.detailUrl3 = detailUrl3;
     }
 
-    public Integer getUrl3Type() {
+    public String getUrl3Type() {
         return url3Type;
     }
 
-    public void setUrl3Type(Integer url3Type) {
+    public void setUrl3Type(String url3Type) {
         this.url3Type = url3Type;
     }
 
@@ -132,11 +135,11 @@ public class StocksEntity {
         this.detailUrl4 = detailUrl4;
     }
 
-    public Integer getUrl4Type() {
+    public String getUrl4Type() {
         return url4Type;
     }
 
-    public void setUrl4Type(Integer url4Type) {
+    public void setUrl4Type(String url4Type) {
         this.url4Type = url4Type;
     }
 
@@ -148,11 +151,11 @@ public class StocksEntity {
         this.detailUrl5 = detailUrl5;
     }
 
-    public Integer getUrl5Type() {
+    public String getUrl5Type() {
         return url5Type;
     }
 
-    public void setUrl5Type(Integer url5Type) {
+    public void setUrl5Type(String url5Type) {
         this.url5Type = url5Type;
     }
 
@@ -162,5 +165,29 @@ public class StocksEntity {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public Date getPriceUpdate() {
+        return priceUpdate;
+    }
+
+    public void setPriceUpdate(Date priceUpdate) {
+        this.priceUpdate = priceUpdate;
+    }
+
+    public Date getZjlsUpdate() {
+        return zjlsUpdate;
+    }
+
+    public void setZjlsUpdate(Date zjlsUpdate) {
+        this.zjlsUpdate = zjlsUpdate;
+    }
+
+    public Date getZjlsDetailUpdate() {
+        return zjlsDetailUpdate;
+    }
+
+    public void setZjlsDetailUpdate(Date zjlsDetailUpdate) {
+        this.zjlsDetailUpdate = zjlsDetailUpdate;
     }
 }

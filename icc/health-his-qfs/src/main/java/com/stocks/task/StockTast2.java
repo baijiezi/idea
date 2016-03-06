@@ -101,10 +101,9 @@ public class StockTast2 {
         session.beginTransaction();
         for(StocksDto stocksDto : data){
             StocksDao dao = new StocksDao();
-            List<StocksEntity> list = dao.queryByCodeAndExchange(stocksDto.getCode(), stocksDto.getExchange(), session);
-            if(list!=null && list.size()>0){
-                StocksEntity stocksEntity = list.get(0);
-                stocksEntity.setDetailUrl2(stocksDto.getDetailUrl2());
+            StocksEntity entity = dao.getByCode(stocksDto.getCode(), session);
+            if(entity!=null){
+                entity.setDetailUrl2(stocksDto.getDetailUrl2());
 //                dao.update(stocksEntity, session);
             }
             else{

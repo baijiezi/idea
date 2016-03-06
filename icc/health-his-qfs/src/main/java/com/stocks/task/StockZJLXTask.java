@@ -10,6 +10,7 @@ import com.stocks.entity.StocksEntity;
 import com.stocks.entity.StocksZJLXEntity;
 import com.stocks.utils.Constants;
 import com.stocks.utils.HibernateUtil;
+import com.stocks.utils.NumberUtils;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,24 +81,29 @@ public class StockZJLXTask {
                         zjlxDto.setCode(stock.getCode());
                         zjlxDto.setName(stock.getName());
                         zjlxDto.setDate(date);
-                        zjlxDto.setZongLiuRu(toLong(temp[12]+"万")+toLong(temp[14]+"万")+toLong(temp[16]+"万")+toLong(temp[18]+"万"));
-                        zjlxDto.setZongLiuChu(toLong(temp[13]+"万")+toLong(temp[15]+"万")+toLong(temp[17]+"万")+toLong(temp[19]+"万"));
-                        zjlxDto.setZongJing(toLong(temp[2]+"万")+toLong(temp[4]+"万")+toLong(temp[6]+"万")+toLong(temp[8]+"万"));
-                        zjlxDto.setZhuLiLiuRu(toLong(temp[12] + "万") + toLong(temp[14] + "万"));
-                        zjlxDto.setZhuLiLiuChu(toLong(temp[13]+"万") + toLong(temp[15]+"万"));
-                        zjlxDto.setZhuLiJingLiuRu(toLong(temp[0]+"万"));
-                        zjlxDto.setChaoDaLiuRu(toLong(temp[12]+"万"));
-                        zjlxDto.setChaoDaLiuChu(toLong(temp[13]+"万"));
-                        zjlxDto.setJingChaoDa(toLong(temp[2]+"万"));
-                        zjlxDto.setDaDanLiuRu(toLong(temp[14]+"万"));
-                        zjlxDto.setDaDanLiuChu(toLong(temp[15]+"万"));
-                        zjlxDto.setJingDaDan(toLong(temp[4]+"万"));
-                        zjlxDto.setZhongDanLiuRu(toLong(temp[16]+"万"));
-                        zjlxDto.setZhongDanLiuChu(toLong(temp[17]+"万"));
-                        zjlxDto.setJingZhongDan(toLong(temp[6]+"万"));
-                        zjlxDto.setXiaoDanLiuRu(toLong(temp[18]+"万"));
-                        zjlxDto.setXiaoDanLiuChu(toLong(temp[19]+"万"));
-                        zjlxDto.setJingXiaoDan(toLong(temp[8]+"万"));
+                        zjlxDto.setZongLiuRu(NumberUtils.toLong(temp[12] + "万")+NumberUtils.toLong(temp[14]+"万")+NumberUtils.toLong(temp[16]+"万")+NumberUtils.toLong(temp[18]+"万"));
+                        zjlxDto.setZongLiuChu(NumberUtils.toLong(temp[13]+"万")+NumberUtils.toLong(temp[15]+"万")+NumberUtils.toLong(temp[17]+"万")+NumberUtils.toLong(temp[19]+"万"));
+                        zjlxDto.setZongJing(NumberUtils.toLong(temp[2]+"万")+NumberUtils.toLong(temp[4]+"万")+NumberUtils.toLong(temp[6]+"万")+NumberUtils.toLong(temp[8]+"万"));
+                        zjlxDto.setZhuLiLiuRu(NumberUtils.toLong(temp[12] + "万") + NumberUtils.toLong(temp[14] + "万"));
+                        zjlxDto.setZhuLiLiuChu(NumberUtils.toLong(temp[13]+"万") + NumberUtils.toLong(temp[15]+"万"));
+                        zjlxDto.setZhuLiJingLiuRu(NumberUtils.toLong(temp[0]+"万"));
+                        zjlxDto.setZhuLiJingBi(NumberUtils.toInt(temp[1]));
+                        zjlxDto.setChaoDaDanLiuRu(NumberUtils.toLong(temp[12]+"万"));
+                        zjlxDto.setChaoDaDanLiuChu(NumberUtils.toLong(temp[13]+"万"));
+                        zjlxDto.setChaoDaDanJingLiuRu(NumberUtils.toLong(temp[2]+"万"));
+                        zjlxDto.setChaoDaDanJingBi(NumberUtils.toInt(temp[3]));
+                        zjlxDto.setDaDanLiuRu(NumberUtils.toLong(temp[14]+"万"));
+                        zjlxDto.setDaDanLiuChu(NumberUtils.toLong(temp[15]+"万"));
+                        zjlxDto.setDaDanJingLiuRu(NumberUtils.toLong(temp[4]+"万"));
+                        zjlxDto.setDaDanJingBi(NumberUtils.toInt(temp[5]));
+                        zjlxDto.setZhongDanLiuRu(NumberUtils.toLong(temp[16]+"万"));
+                        zjlxDto.setZhongDanLiuChu(NumberUtils.toLong(temp[17]+"万"));
+                        zjlxDto.setZhongDanJingLiuRu(NumberUtils.toLong(temp[6]+"万"));
+                        zjlxDto.setZhongDanJingBi(NumberUtils.toInt(temp[7]));
+                        zjlxDto.setXiaoDanLiuRu(NumberUtils.toLong(temp[18]+"万"));
+                        zjlxDto.setXiaoDanLiuChu(NumberUtils.toLong(temp[19]+"万"));
+                        zjlxDto.setXiaoDanJingLiuRu(NumberUtils.toLong(temp[8]+"万"));
+                        zjlxDto.setXiaoDanJingBi(NumberUtils.toInt(temp[9]));
                         data.add(zjlxDto);
                     }
                 }catch (Exception e){
@@ -114,40 +120,6 @@ public class StockZJLXTask {
 
     }
 
-    public int toInt(String str){
-        if(str==null || str.equals("")){
-            return 0;
-        }
-        if(str.contains("万")){
-            String s = str.replace("万", "");
-            BigDecimal b = new BigDecimal(s);
-            BigDecimal v = b.multiply(new BigDecimal(10000));
-            return v.intValue();
-        }
-        BigDecimal b = new BigDecimal(str);
-        BigDecimal v = b.multiply(new BigDecimal(100));
-        return v.intValue();
-    }
-
-
-    public long toLong(String str){
-        if(str==null || str.equals("")){
-            return 0;
-        }
-        if(str.contains("万")){
-            String s = str.replace("万", "");
-            BigDecimal bigDecimal = new BigDecimal(s);
-            return bigDecimal.multiply(new BigDecimal(10000)).multiply(new BigDecimal(100)).longValue();
-        }
-        if(str.contains("亿")){
-            String s = str.replace("亿", "");
-            BigDecimal bigDecimal = new BigDecimal(s);
-            return bigDecimal.multiply(new BigDecimal(100000000)).multiply(new BigDecimal(100)).longValue();
-        }
-        BigDecimal b = new BigDecimal(str);
-        BigDecimal v = b.multiply(new BigDecimal(100));
-        return v.longValue();
-    }
 
     private void updateData(List<StocksZJLXDto> data){
         if(data==null || data.size()==0){
@@ -166,18 +138,23 @@ public class StockZJLXTask {
             entity.setZhuLiLiuRu(dto.getZhuLiLiuRu());
             entity.setZhuLiLiuChu(dto.getZhuLiLiuChu());
             entity.setZhuLiJingLiuRu(dto.getZhuLiJingLiuRu());
-            entity.setChaoDaLiuRu(dto.getChaoDaLiuRu());
-            entity.setChaoDaLiuChu(dto.getChaoDaLiuChu());
-            entity.setJingChaoDa(dto.getJingChaoDa());
+            entity.setZhuLiJingBi(dto.getZhuLiJingBi());
+            entity.setChaoDaDanLiuRu(dto.getChaoDaDanLiuRu());
+            entity.setChaoDaDanLiuChu(dto.getChaoDaDanLiuChu());
+            entity.setChaoDaDanJingLiuRu(dto.getChaoDaDanJingLiuRu());
+            entity.setChaoDaDanJingBi(dto.getChaoDaDanJingBi());
             entity.setDaDanLiuRu(dto.getDaDanLiuRu());
             entity.setDaDanLiuChu(dto.getDaDanLiuChu());
-            entity.setJingDaDan(dto.getJingDaDan());
+            entity.setDaDanJingLiuRu(dto.getDaDanJingLiuRu());
+            entity.setDaDanJingBi(dto.getDaDanJingBi());
             entity.setZhongDanLiuRu(dto.getZhongDanLiuRu());
             entity.setZhongDanLiuChu(dto.getZhongDanLiuChu());
-            entity.setJingZhongDan(dto.getJingZhongDan());
+            entity.setZhongDanJingLiuRu(dto.getZhongDanJingLiuRu());
+            entity.setZhongDanJingBi(dto.getZhongDanJingBi());
             entity.setXiaoDanLiuRu(dto.getXiaoDanLiuRu());
             entity.setXiaoDanLiuChu(dto.getXiaoDanLiuChu());
-            entity.setJingXiaoDan(dto.getJingXiaoDan());
+            entity.setXiaoDanJingLiuRu(dto.getXiaoDanJingLiuRu());
+            entity.setXiaoDanJingBi(dto.getXiaoDanJingBi());
 
             StocksZJLXDao dao = new StocksZJLXDao();
             dao.save(entity, session);

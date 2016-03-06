@@ -44,15 +44,15 @@ public class StocksDao {
         return null;
     }
 
-    public List<StocksEntity> queryByCodeAndExchange(String code, String exchange, Session session){
+    public StocksEntity getByCode(String code, Session session){
         try{
             if(code==null || code.equals("")) {
                 return null;
             }
-            Query query = session.createQuery(" from StocksEntity s where s.code = '" + code + "' and s.exchange = '" + exchange + "'");
+            Query query = session.createQuery(" from StocksEntity s where s.code = '" + code + "'");
             List<StocksEntity> list = query.list();
             if(list!=null && list.size()>0) {
-                return list;
+                return list.get(0);
             }
             else{
                 return null;
@@ -66,14 +66,7 @@ public class StocksDao {
 
     public void save(StocksEntity entity, Session session){
         try{
-            List<StocksEntity> list = queryByCodeAndExchange(entity.getCode(), entity.getExchange(), session);
-            if(list!=null && list.size()>0){
-                logger.error("入库异常，已存在相同的代码:" + entity.getCode());
-                throw new Exception("入库异常，已存在相同的代码:" + entity.getCode());
-            }
-            else{
-                session.save(entity);
-            }
+            session.save(entity);
         }catch(Exception e){
             e.printStackTrace();
         }
