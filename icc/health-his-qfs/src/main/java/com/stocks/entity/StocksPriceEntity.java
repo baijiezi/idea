@@ -1,9 +1,6 @@
 package com.stocks.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -67,6 +64,9 @@ public class StocksPriceEntity {
     private int saleFive2;
     private Date createTime;
 
+    @ManyToOne(cascade = CascadeType.REFRESH, optional = false,fetch=FetchType.LAZY)
+    @JoinColumn(name = "code",insertable = false, updatable = false)
+    private StocksEntity stocksEntity;//上级科室
 
 
     public Integer getId() {
@@ -451,5 +451,13 @@ public class StocksPriceEntity {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public StocksEntity getStocksEntity() {
+        return stocksEntity;
+    }
+
+    public void setStocksEntity(StocksEntity stocksEntity) {
+        this.stocksEntity = stocksEntity;
     }
 }

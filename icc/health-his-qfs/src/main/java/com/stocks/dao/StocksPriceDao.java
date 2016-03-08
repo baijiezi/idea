@@ -1,9 +1,12 @@
 package com.stocks.dao;
 
+import com.stocks.entity.StocksEntity;
 import com.stocks.entity.StocksPriceEntity;
+import com.stocks.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -56,6 +59,31 @@ public class StocksPriceDao {
         }
         return false;
     }
+
+
+
+    public static void main(String[] args){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        StocksPriceDao dao = new StocksPriceDao();
+        List<StocksPriceEntity> list = dao.queryByCode("002340", session);
+        System.out.println(list.size());
+        StocksPriceEntity entity = list.get(0);
+        System.out.println(entity.getShouPan());
+        System.out.println(entity.getStocksEntity());
+        System.out.println(entity.getStocksEntity().getDetailUrl1());
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+
+
+
+    }
+
+
+
+
+
 
 
 }
