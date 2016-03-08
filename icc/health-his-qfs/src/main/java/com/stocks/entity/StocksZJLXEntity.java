@@ -46,6 +46,7 @@ public class StocksZJLXEntity {
     private long xiaoDanLiuChu;
     private long xiaoDanJingLiuRu;
     private long xiaoDanJingBi;
+    private Date createAt;
 
     public Integer getId() {
         return id;
@@ -261,5 +262,13 @@ public class StocksZJLXEntity {
 
     public void setXiaoDanJingBi(long xiaoDanJingBi) {
         this.xiaoDanJingBi = xiaoDanJingBi;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 }

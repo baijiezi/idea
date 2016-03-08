@@ -56,17 +56,18 @@ public class StockZJLXTask {
 
             for(StocksEntity stock : list){
                 logger.info("StockZJLXTask:" + stock.getCode());
-                if(stock.getCode().equals("002340")){
-                    logger.info("");
-                }
+//                if(!stock.getCode().equals("002340")){
+//                    stock.setUrl3Type("1");
+//                }
 
                 try{
-                    if(stock.getUrl3Type()!=null && stock.getUrl3Type()==Constants.ZJLX_URL_TYPE_1){
-                        String url = stock.getDetailUrl3();
+                    if(stock.getUrl3Type()!=null && stock.getUrl3Type().equals(Constants.ZJLX_URL_TYPE_1)){
+
+                        String url = "http://s1.dfcfw.com/js/" + stock.getCode() + ".js?rt=0.7480427355039865";
                         Future r = asyncHttpClient.prepareGet(url).execute();
                         Response response = (Response) r.get();
                         String result = response.getResponseBody();
-                        logger.info(result);
+                        logger.info("result:" + result);
                         System.out.println(result.indexOf("\""));
                         System.out.println(result.indexOf("\"", 2));
                         int idx1 = result.indexOf("\"");
@@ -87,23 +88,23 @@ public class StockZJLXTask {
                         zjlxDto.setZhuLiLiuRu(NumberUtils.toLong(temp[12] + "万") + NumberUtils.toLong(temp[14] + "万"));
                         zjlxDto.setZhuLiLiuChu(NumberUtils.toLong(temp[13]+"万") + NumberUtils.toLong(temp[15]+"万"));
                         zjlxDto.setZhuLiJingLiuRu(NumberUtils.toLong(temp[0]+"万"));
-                        zjlxDto.setZhuLiJingBi(NumberUtils.toInt(temp[1]));
+                        zjlxDto.setZhuLiJingBi(NumberUtils.toIntMilli(temp[1]));
                         zjlxDto.setChaoDaDanLiuRu(NumberUtils.toLong(temp[12]+"万"));
                         zjlxDto.setChaoDaDanLiuChu(NumberUtils.toLong(temp[13]+"万"));
                         zjlxDto.setChaoDaDanJingLiuRu(NumberUtils.toLong(temp[2]+"万"));
-                        zjlxDto.setChaoDaDanJingBi(NumberUtils.toInt(temp[3]));
+                        zjlxDto.setChaoDaDanJingBi(NumberUtils.toIntMilli(temp[3]));
                         zjlxDto.setDaDanLiuRu(NumberUtils.toLong(temp[14]+"万"));
                         zjlxDto.setDaDanLiuChu(NumberUtils.toLong(temp[15]+"万"));
                         zjlxDto.setDaDanJingLiuRu(NumberUtils.toLong(temp[4]+"万"));
-                        zjlxDto.setDaDanJingBi(NumberUtils.toInt(temp[5]));
+                        zjlxDto.setDaDanJingBi(NumberUtils.toIntMilli(temp[5]));
                         zjlxDto.setZhongDanLiuRu(NumberUtils.toLong(temp[16]+"万"));
                         zjlxDto.setZhongDanLiuChu(NumberUtils.toLong(temp[17]+"万"));
                         zjlxDto.setZhongDanJingLiuRu(NumberUtils.toLong(temp[6]+"万"));
-                        zjlxDto.setZhongDanJingBi(NumberUtils.toInt(temp[7]));
+                        zjlxDto.setZhongDanJingBi(NumberUtils.toIntMilli(temp[7]));
                         zjlxDto.setXiaoDanLiuRu(NumberUtils.toLong(temp[18]+"万"));
                         zjlxDto.setXiaoDanLiuChu(NumberUtils.toLong(temp[19]+"万"));
                         zjlxDto.setXiaoDanJingLiuRu(NumberUtils.toLong(temp[8]+"万"));
-                        zjlxDto.setXiaoDanJingBi(NumberUtils.toInt(temp[9]));
+                        zjlxDto.setXiaoDanJingBi(NumberUtils.toIntMilli(temp[9]));
                         data.add(zjlxDto);
                     }
                 }catch (Exception e){
@@ -112,7 +113,9 @@ public class StockZJLXTask {
                     e.printStackTrace();
                 }
             }
-            updateData(data);
+            List codes = updateData(data);
+            updateTime(codes);
+            logger.info("共完成获取资金流向" + codes.size() + " 条");
         } catch (Exception e){
             logger.error("执行StockZJLXTask任务异常：" + e.getMessage());
             e.printStackTrace();
@@ -121,12 +124,14 @@ public class StockZJLXTask {
     }
 
 
-    private void updateData(List<StocksZJLXDto> data){
+    private List updateData(List<StocksZJLXDto> data){
+        List codes = new ArrayList<String>();
         if(data==null || data.size()==0){
-            return;
+            return codes;
         }
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
+        StocksZJLXDao dao = new StocksZJLXDao();
         for(StocksZJLXDto dto : data){
             StocksZJLXEntity entity = new StocksZJLXEntity();
             entity.setCode(dto.getCode());
@@ -155,15 +160,35 @@ public class StockZJLXTask {
             entity.setXiaoDanLiuChu(dto.getXiaoDanLiuChu());
             entity.setXiaoDanJingLiuRu(dto.getXiaoDanJingLiuRu());
             entity.setXiaoDanJingBi(dto.getXiaoDanJingBi());
+            entity.setCreateAt(new Date());
 
-            StocksZJLXDao dao = new StocksZJLXDao();
-            dao.save(entity, session);
+            if(dao.save(entity, session)){
+                codes.add(entity.getCode());
+            }
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return codes;
+    }
+
+    private void updateTime(List<String> codes){
+        if(codes==null || codes.size()==0){
+            return;
+        }
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        StocksDao dao = new StocksDao();
+        Date date = new Date();
+        for(String code : codes){
+            StocksEntity entity = dao.getByCode(code, session);
+            entity.setZjlsUpdate(date);
+            dao.update(entity, session);
+
         }
         session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
     }
-
-
 
 }

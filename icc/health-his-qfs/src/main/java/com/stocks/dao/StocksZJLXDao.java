@@ -34,12 +34,14 @@ public class StocksZJLXDao {
 
     }
 
-    public void save(StocksZJLXEntity entity, Session session){
+    public boolean save(StocksZJLXEntity entity, Session session){
         try{
             session.save(entity);
+            return true;
         }catch(Exception e){
             e.printStackTrace();
         }
+        return false;
 
     }
 
