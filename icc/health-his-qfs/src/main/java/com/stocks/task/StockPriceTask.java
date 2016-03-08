@@ -51,10 +51,8 @@ public class StockPriceTask {
             List data = new ArrayList<StocksPriceDto>();
             StocksDao stocksDao = new StocksDao();
             List<StocksEntity> list = stocksDao.getAll();
-            DateFormat format = new SimpleDateFormat("yyyy-DD-mm");
-//            Date date = format.parse("2016-03-04");
             Date date = new Date();
-            date.setDate(date.getDate()-2);
+//            date.setDate(date.getDate()-2);
             AsyncHttpClientConfig config = new AsyncHttpClientConfig.Builder()
                     .setMaximumConnectionsPerHost(30)
                     .setMaximumConnectionsTotal(300)
