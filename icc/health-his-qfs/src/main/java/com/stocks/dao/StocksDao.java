@@ -44,6 +44,32 @@ public class StocksDao {
         return null;
     }
 
+    public StocksEntity getByCode(String code){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            if(code==null || code.equals("")) {
+                return null;
+            }
+            Query query = session.createQuery(" from StocksEntity s where s.code = '" + code + "'");
+            List<StocksEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list.get(0);
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
     public StocksEntity getByCode(String code, Session session){
         try{
             if(code==null || code.equals("")) {
@@ -60,6 +86,7 @@ public class StocksDao {
         }catch(Exception e){
             e.printStackTrace();
         }
+
         return null;
 
     }
