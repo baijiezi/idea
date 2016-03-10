@@ -15,7 +15,9 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "sic_stocks_zjlx")
-public class StocksZJLXEntity {
+public class StocksZJLXEntity implements java.io.Serializable {
+
+    private static final long serialVersionUID = -134055668722486042L;
 
     @Id
     @GeneratedValue

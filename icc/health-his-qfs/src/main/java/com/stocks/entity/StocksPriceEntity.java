@@ -1,6 +1,7 @@
 package com.stocks.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +13,9 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "sic_stocks_price")
-public class StocksPriceEntity {
+public class StocksPriceEntity implements Serializable {
+    private static final long serialVersionUID = 4056982271617961504L;
+
     @Id
     @GeneratedValue
     private Integer id;
@@ -65,7 +68,7 @@ public class StocksPriceEntity {
     private Date createTime;
 
     @ManyToOne(cascade = CascadeType.REFRESH, optional = false,fetch=FetchType.LAZY)
-    @JoinColumn(name = "code",insertable = false, updatable = false)
+    @JoinColumn(name = "code", referencedColumnName="code", insertable = false, updatable = false)
     private StocksEntity stocksEntity;//上级科室
 
 
