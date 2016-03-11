@@ -24,10 +24,8 @@ public class StockIndexTask {
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args){
-
         StockIndexTask stockIndexTask = new StockIndexTask();
         stockIndexTask.execute();
-
     }
 
     public void execute(){
