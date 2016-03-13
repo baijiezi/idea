@@ -14,8 +14,8 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "sic_stocks_zjlx")
-public class StocksZJLXEntity implements java.io.Serializable {
+@Table(name = "sic_stocks_zjlx_dfcf")
+public class StocksZjlxDfcfEntity implements java.io.Serializable {
 
     private static final long serialVersionUID = -134055668722486042L;
 

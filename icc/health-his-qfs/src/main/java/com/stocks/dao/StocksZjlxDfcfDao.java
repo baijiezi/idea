@@ -1,6 +1,6 @@
 package com.stocks.dao;
 
-import com.stocks.entity.StocksZJLXEntity;
+import com.stocks.entity.StocksZjlxDfcfEntity;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -13,14 +13,14 @@ import java.util.List;
  * Time: 下午11:41
  * To change this template use File | Settings | File Templates.
  */
-public class StocksZJLXDao {
-    public List<StocksZJLXEntity> queryByCode(String code, Session session){
+public class StocksZjlxDfcfDao {
+    public List<StocksZjlxDfcfEntity> queryByCode(String code, Session session){
         try{
             if(code==null || code.equals("")) {
                 return null;
             }
-            Query query = session.createQuery(" from StocksZJLXEntity s where s.code = '" + code + "'");
-            List<StocksZJLXEntity> list = query.list();
+            Query query = session.createQuery(" from StocksZjlxDfcfEntity s where s.code = '" + code + "'");
+            List<StocksZjlxDfcfEntity> list = query.list();
             if(list!=null && list.size()>0) {
                 return list;
             }
@@ -34,7 +34,7 @@ public class StocksZJLXDao {
 
     }
 
-    public boolean save(StocksZJLXEntity entity, Session session){
+    public boolean save(StocksZjlxDfcfEntity entity, Session session){
         try{
             session.save(entity);
             return true;
@@ -47,7 +47,7 @@ public class StocksZJLXDao {
 
 
 
-    public void update(StocksZJLXEntity entity, Session session){
+    public void update(StocksZjlxDfcfEntity entity, Session session){
         try{
             session.update(entity);
         }catch(Exception e){

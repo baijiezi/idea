@@ -9,7 +9,7 @@ import java.util.Date;
  * Time: 下午11:22
  * To change this template use File | Settings | File Templates.
  */
-public class StocksZJLXDto {
+public class StocksZjlxDfcfDto {
     private Integer id;
     private String code;
     private String name;

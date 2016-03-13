@@ -56,7 +56,7 @@ public class StockPriceTask {
             AsyncHttpClientConfig config = new AsyncHttpClientConfig.Builder()
                     .setMaximumConnectionsPerHost(30)
                     .setMaximumConnectionsTotal(300)
-                    .setConnectionTimeoutInMs(3000000)
+                    .setConnectionTimeoutInMs(20*60*1000)
                     .setRequestTimeoutInMs(5 * 1000 * 60)
                     .build();
             AsyncHttpClient asyncHttpClient = new AsyncHttpClient(config);

@@ -10,8 +10,9 @@
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
             <list>
-                <ref bean="stocksTaskTrigger" />
-                <ref bean="stocksDailyTaskTrigger" />
+                <!--<ref bean="stocksTaskTrigger" />-->
+                <ref bean="stockPriceTaskTrigger" />
+                <ref bean="stockZjlxDfcfTaskTrigger" />
             </list>
         </property>
     </bean>
@@ -22,11 +23,17 @@
         <!-- 每10秒运行一次 -->
         <property name="cronExpression" value="0/60 * * * * ?" />
     </bean>
-    <bean id="stocksDailyTaskTrigger"
+    <bean id="stockPriceTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="jobDetail" ref="stocksDailyTaskJobDetail" />
+        <property name="jobDetail" ref="stockPriceTaskJobDetail" />
         <!-- 每10秒运行一次 -->
-        <property name="cronExpression" value="0/10 * * * * ?" />
+        <property name="cronExpression" value="0 55 18 * * ?" />
+    </bean>
+    <bean id="stockZjlxDfcfTaskTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="stockZjlxDfcfJobDetail" />
+        <!-- 每10秒运行一次 -->
+        <property name="cronExpression" value="0 15 19 * * ?" />
     </bean>
 
     <bean id="stocksTaskJobDetail"
@@ -36,16 +43,24 @@
         <!-- 指定任务执行的方法 -->
         <property name="targetMethod" value="execute" />
     </bean>
-    <bean id="stocksDailyTaskJobDetail"
+    <bean id="stockPriceTaskJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <!-- 指定任务类 -->
-        <property name="targetObject" ref="stocksDailyTask" />
+        <property name="targetObject" ref="stockPriceTask" />
+        <!-- 指定任务执行的方法 -->
+        <property name="targetMethod" value="execute" />
+    </bean>
+    <bean id="stockZjlxDfcfJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 指定任务类 -->
+        <property name="targetObject" ref="stockZjlxDfcf" />
         <!-- 指定任务执行的方法 -->
         <property name="targetMethod" value="execute" />
     </bean>
 
     <bean id="stocksTask" class="com.stocks.task.StockTask"></bean>
-    <bean id="stocksDailyTask" class="com.stocks.task.StockDailyTask"></bean>
+    <bean id="stockPriceTask" class="com.stocks.task.StockPriceTask"></bean>
+    <bean id="stockZjlxDfcf" class="com.stocks.task.StockZjlxDfcfTask"></bean>
 
 
 

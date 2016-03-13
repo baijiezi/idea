@@ -25,7 +25,7 @@
         <!-- Add POJO to here -->
         <mapping class="com.stocks.entity.StocksEntity" />
         <mapping class="com.stocks.entity.StocksPriceEntity" />
-        <mapping class="com.stocks.entity.StocksZJLXEntity" />
+        <mapping class="com.stocks.entity.StocksZjlxDfcfEntity" />
         <mapping class="com.message.entity.MessageEntity" />
 
     </session-factory>

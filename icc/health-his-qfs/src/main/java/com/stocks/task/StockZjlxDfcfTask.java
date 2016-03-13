@@ -4,17 +4,16 @@ import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
 import com.ning.http.client.Response;
 import com.stocks.dao.StocksDao;
-import com.stocks.dao.StocksZJLXDao;
-import com.stocks.dto.StocksZJLXDto;
+import com.stocks.dao.StocksZjlxDfcfDao;
+import com.stocks.dto.StocksZjlxDfcfDto;
 import com.stocks.entity.StocksEntity;
-import com.stocks.entity.StocksZJLXEntity;
+import com.stocks.entity.StocksZjlxDfcfEntity;
 import com.stocks.utils.Constants;
 import com.stocks.utils.HibernateUtil;
 import com.stocks.utils.NumberUtils;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,13 +26,13 @@ import java.util.concurrent.Future;
  * Time: 下午10:29
  * To change this template use File | Settings | File Templates.
  */
-public class StockZJLXTask {
+public class StockZjlxDfcfTask {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args){
 
-        StockZJLXTask stockZJLXTask = new StockZJLXTask();
+        StockZjlxDfcfTask stockZJLXTask = new StockZjlxDfcfTask();
         stockZJLXTask.execute();
 
     }
@@ -42,14 +41,14 @@ public class StockZJLXTask {
         logger.info("StockZJLXTask  execute");
 
         try{
-            List data = new ArrayList<StocksZJLXDto>();
+            List data = new ArrayList<StocksZjlxDfcfDto>();
             StocksDao stocksDao = new StocksDao();
             List<StocksEntity> list = stocksDao.getAll();
             Date date = new Date();
             AsyncHttpClientConfig config = new AsyncHttpClientConfig.Builder()
                     .setMaximumConnectionsPerHost(30)
                     .setMaximumConnectionsTotal(300)
-                    .setConnectionTimeoutInMs(3000)
+                    .setConnectionTimeoutInMs(25*60*1000)
                     .setRequestTimeoutInMs(5 * 1000 * 60)
                     .build();
             AsyncHttpClient asyncHttpClient = new AsyncHttpClient(config);
@@ -59,6 +58,13 @@ public class StockZJLXTask {
 //                if(!stock.getCode().equals("002340")){
 //                    stock.setUrl3Type("1");
 //                }
+                if(stock.getCode().equals("002340")){
+                    logger.info("");
+                }
+                else{
+                    continue;
+                }
+
 
                 try{
                     if(stock.getUrl3Type()!=null && stock.getUrl3Type().equals(Constants.ZJLX_URL_TYPE_1)){
@@ -78,7 +84,7 @@ public class StockZJLXTask {
                         for(int l=0; l<temp.length; l++){
                             logger.info(l + " " + temp[l]);
                         }
-                        StocksZJLXDto zjlxDto = new StocksZJLXDto();
+                        StocksZjlxDfcfDto zjlxDto = new StocksZjlxDfcfDto();
                         zjlxDto.setCode(stock.getCode());
                         zjlxDto.setName(stock.getName());
                         zjlxDto.setDate(date);
@@ -124,16 +130,16 @@ public class StockZJLXTask {
     }
 
 
-    private List updateData(List<StocksZJLXDto> data){
+    private List updateData(List<StocksZjlxDfcfDto> data){
         List codes = new ArrayList<String>();
         if(data==null || data.size()==0){
             return codes;
         }
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
-        StocksZJLXDao dao = new StocksZJLXDao();
-        for(StocksZJLXDto dto : data){
-            StocksZJLXEntity entity = new StocksZJLXEntity();
+        StocksZjlxDfcfDao dao = new StocksZjlxDfcfDao();
+        for(StocksZjlxDfcfDto dto : data){
+            StocksZjlxDfcfEntity entity = new StocksZjlxDfcfEntity();
             entity.setCode(dto.getCode());
             entity.setName(dto.getName());
             entity.setDate(dto.getDate());
