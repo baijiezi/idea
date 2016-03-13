@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50618
+Source Server Version : 50711
 Source Host           : localhost:3306
-Source Database       : icc_test
+Source Database       : icc
 
 Target Server Type    : MYSQL
-Target Server Version : 50618
+Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2016-03-11 17:43:10
+Date: 2016-03-13 22:12:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `sic_message` (
   `sendTime` date DEFAULT NULL,
   `status` int(8) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sic_message
