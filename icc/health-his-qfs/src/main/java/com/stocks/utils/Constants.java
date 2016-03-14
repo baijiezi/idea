@@ -21,4 +21,7 @@ public class Constants {
     //http://hqchart.eastmoney.com/hq20/js/002340.js?2229
     public static String ZJLX_URL_TYPE_1 = "1";
 
+
+    public static String ZJLX_HX_URL_TYPE_1 = "1";
+
 }

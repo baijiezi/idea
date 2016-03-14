@@ -24,7 +24,8 @@ public class AsynHttpClientTest {
                 .build();
         AsyncHttpClient asyncHttpClient = new AsyncHttpClient(config);
 
-        String url = "http://vol.stock.hexun.com/603000.shtm";
+//        String url = "http://vol.stock.hexun.com/603000.shtm";
+        String url = "http://vol.stock.hexun.com/Data/Stock/SMinData.ashx?code=002340&count=20&page=1&callback=hx_json14579481800134419886";
         try{
             Future r = asyncHttpClient.prepareGet(url).execute();
             Response response = (Response) r.get();
