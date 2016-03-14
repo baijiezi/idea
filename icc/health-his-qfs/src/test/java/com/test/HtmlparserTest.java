@@ -21,7 +21,6 @@ public class HtmlparserTest {
         try{
             String url = "http://vol.stock.hexun.com/603000.shtm";
             Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
-            //设置Parser对象的字符编码,一般与网页的字符编码保持一致
             parser.setEncoding("GB2312");
             NodeFilter filter = new TagNameFilter("body");
             NodeList list = parser.extractAllNodesThatMatch(filter);
