@@ -6,10 +6,10 @@ import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
 import com.ning.http.client.Response;
 import com.stocks.dao.StocksDao;
-import com.stocks.dao.StocksZjlxHXDao;
-import com.stocks.dto.StocksZjlxHXDto;
+import com.stocks.dao.StocksZjlxTHSDao;
+import com.stocks.dto.StocksZjlxTHSDto;
 import com.stocks.entity.StocksEntity;
-import com.stocks.entity.StocksZjlxHXEntity;
+import com.stocks.entity.StocksZjlxTHSEntity;
 import com.stocks.utils.Constants;
 import com.stocks.utils.HibernateUtil;
 import com.stocks.utils.NumberUtils;
@@ -17,32 +17,34 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.concurrent.Future;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Administrator
- * Date: 16-3-2
- * Time: 下午10:29
+ * User: BaiJiezi
+ * Date: 16-3-15
+ * Time: 下午4:16
  * To change this template use File | Settings | File Templates.
  */
-public class StockZjlxHXTask {
+public class StockZjlxTHSTask {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args){
 
-        StockZjlxHXTask stockZjlxHXTask = new StockZjlxHXTask();
-        stockZjlxHXTask.execute();
+        StockZjlxTHSTask stockZjlxTHSTask = new StockZjlxTHSTask();
+        stockZjlxTHSTask.execute();
 
     }
 
     public void execute(){
-        logger.info("StockZjlxHXTask  execute");
+        logger.info("StockZjlxTHSTask  execute");
 
         try{
-            List data = new ArrayList<StocksZjlxHXDto>();
+            List data = new ArrayList<StocksZjlxTHSDto>();
             StocksDao stocksDao = new StocksDao();
             List<StocksEntity> list = stocksDao.getAll();
             Date date = new Date();
@@ -85,7 +87,7 @@ public class StockZjlxHXTask {
                             System.out.println(object.get("date0"));
                         }
 
-                        StocksZjlxHXDto dto = new StocksZjlxHXDto();
+                        StocksZjlxTHSDto dto = new StocksZjlxTHSDto();
                         dto.setCode(stock.getCode());
                         dto.setName(stock.getName());
                         dto.setDate(date);
@@ -124,7 +126,7 @@ public class StockZjlxHXTask {
                         data.add(dto);
                     }
                 }catch (Exception e){
-                    logger.error("StockZJLXTask远程异常：" + stock.getCode());
+                    logger.error("StockZjlxTHSTask 远程异常：" + stock.getCode());
                     logger.error(e.getMessage());
                     e.printStackTrace();
                 }
@@ -140,16 +142,16 @@ public class StockZjlxHXTask {
     }
 
 
-    private List updateData(List<StocksZjlxHXDto> data){
+    private List updateData(List<StocksZjlxTHSDto> data){
         List codes = new ArrayList<String>();
         if(data==null || data.size()==0){
             return codes;
         }
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
-        StocksZjlxHXDao dao = new StocksZjlxHXDao();
-        for(StocksZjlxHXDto dto : data){
-            StocksZjlxHXEntity entity = new StocksZjlxHXEntity();
+        StocksZjlxTHSDao dao = new StocksZjlxTHSDao();
+        for(StocksZjlxTHSDto dto : data){
+            StocksZjlxTHSEntity entity = new StocksZjlxTHSEntity();
             entity.setCode(dto.getCode());
             entity.setName(dto.getName());
             entity.setDate(dto.getDate());
