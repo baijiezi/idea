@@ -32,6 +32,7 @@ public class MessageEntity implements Serializable {
     private String content;
     private Date sendTime;
     private Integer status;
+    private String remark;
 
     public Integer getId() {
         return id;
@@ -111,5 +112,13 @@ public class MessageEntity implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }
