@@ -39,8 +39,8 @@ public class StocksEntity implements Serializable {
     private String url5Type;
     private Date createAt;
     private Date priceUpdate;
-    private Date zjlsUpdate;
-    private Date zjlsDetailUpdate;
+    private Date zjlsDfcfUpdate;
+    private Date zjlsHXUpdate;
 
     public Integer getId() {
         return id;
@@ -178,19 +178,19 @@ public class StocksEntity implements Serializable {
         this.priceUpdate = priceUpdate;
     }
 
-    public Date getZjlsUpdate() {
-        return zjlsUpdate;
+    public Date getZjlsDfcfUpdate() {
+        return zjlsDfcfUpdate;
     }
 
-    public void setZjlsUpdate(Date zjlsUpdate) {
-        this.zjlsUpdate = zjlsUpdate;
+    public void setZjlsDfcfUpdate(Date zjlsDfcfUpdate) {
+        this.zjlsDfcfUpdate = zjlsDfcfUpdate;
     }
 
-    public Date getZjlsDetailUpdate() {
-        return zjlsDetailUpdate;
+    public Date getZjlsHXUpdate() {
+        return zjlsHXUpdate;
     }
 
-    public void setZjlsDetailUpdate(Date zjlsDetailUpdate) {
-        this.zjlsDetailUpdate = zjlsDetailUpdate;
+    public void setZjlsHXUpdate(Date zjlsHXUpdate) {
+        this.zjlsHXUpdate = zjlsHXUpdate;
     }
 }

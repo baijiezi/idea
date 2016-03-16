@@ -178,7 +178,7 @@ public class StockZjlxDfcfTask {
         Date date = new Date();
         for(String code : codes){
             StocksEntity entity = dao.getByCode(code, session);
-            entity.setZjlsUpdate(date);
+            entity.setZjlsDfcfUpdate(date);
             dao.update(entity, session);
 
         }

@@ -56,17 +56,15 @@ public class StockZjlxHXTask {
 
             for(StocksEntity stock : list){
                 logger.info("StockZJLXTask:" + stock.getCode());
-                if(!stock.getCode().equals("002340")){
-                    continue;
-                }
-                if(stock.getUrl4Type() == null){
-                    stock.setUrl4Type("1");
-                }
+//                if(!stock.getCode().equals("002340")){
+//                    continue;
+//                }
 
                 try{
                     if(stock.getUrl4Type()!=null && stock.getUrl4Type().equals(Constants.ZJLX_HX_URL_TYPE_1)){
 
                         String url = "http://vol.stock.hexun.com/Data/Stock/SMinData.ashx?code=" + stock.getCode() + "&count=20&page=1&callback=hx_json14579481800134419886";
+                        logger.info("url:" + url);
                         Future r = asyncHttpClient.prepareGet(url).execute();
                         Response response = (Response) r.get();
                         String result = response.getResponseBody();
@@ -89,37 +87,37 @@ public class StockZjlxHXTask {
                         dto.setCode(stock.getCode());
                         dto.setName(stock.getName());
                         dto.setDate(date);
-                        dto.setHeJiChengJiao(NumberUtils.toLong(""));
-                        dto.setJingLiuRu(NumberUtils.toLong(""));
+                        dto.setHeJiChengJiao(NumberUtils.toLong(getText(((JSONObject) li.get(13)).getString("date1"))+"万"));
+                        dto.setChaoDaDanLiuRu(NumberUtils.toLong(getText(((JSONObject) li.get(10)).getString("date1"))+"万"));
+                        dto.setChaoDaDanLiuRuZhanBi(NumberUtils.toIntMilli(getText(((JSONObject) li.get(10)).getString("date2"))));
+                        dto.setChaoDaDanLiuRuZengZhangLv(NumberUtils.toIntMilli(getText(((JSONObject)li.get(10)).getString("date3"))));
+                        dto.setChaoDaDanLiuChu(NumberUtils.toLong(getText(((JSONObject)li.get(11)).getString("date1"))+"万"));
+                        dto.setChaoDaDanLiuChuZhanBi(NumberUtils.toIntMilli(getText(((JSONObject)li.get(11)).getString("date2"))));
+                        dto.setChaoDaDanLiuChuZengZhangLv(NumberUtils.toIntMilli(getText(((JSONObject)li.get(11)).getString("date3"))));
+                        dto.setDaDanLiuRu(NumberUtils.toLong(getText(((JSONObject)li.get(7)).getString("date1"))+"万"));
+                        dto.setDaDanLiuRuZhanBi(NumberUtils.toIntMilli(getText(((JSONObject)li.get(7)).getString("date2"))));
+                        dto.setDaDanLiuRuZengZhangLv(NumberUtils.toIntMilli(getText(((JSONObject)li.get(7)).getString("date3"))));
+                        dto.setDaDanLiuChu(NumberUtils.toLong(getText(((JSONObject)li.get(8)).getString("date1"))+"万"));
+                        dto.setDaDanLiuChuZhanBi(NumberUtils.toIntMilli(getText(((JSONObject)li.get(8)).getString("date2"))));
+                        dto.setDaDanLiuChuZengZhangLv(NumberUtils.toIntMilli(getText(((JSONObject)li.get(8)).getString("date3"))));
+                        dto.setXiaoDanLiuRu(NumberUtils.toLong(getText(((JSONObject)li.get(4)).getString("date1"))+"万"));
+                        dto.setXiaoDanLiuRuZhanBi(NumberUtils.toIntMilli(getText(((JSONObject)li.get(4)).getString("date2"))));
+                        dto.setXiaoDanLiuRuZengZhangLv(NumberUtils.toIntMilli(getText(((JSONObject)li.get(4)).getString("date3"))));
+                        dto.setXiaoDanLiuChu(NumberUtils.toLong(getText(((JSONObject)li.get(5)).getString("date1"))+"万"));
+                        dto.setXiaoDanLiuChuZhanBi(NumberUtils.toIntMilli(getText(((JSONObject)li.get(5)).getString("date2"))));
+                        dto.setXiaoDanLiuChuZengZhangLv(NumberUtils.toIntMilli(getText(((JSONObject)li.get(5)).getString("date3"))));
+                        dto.setSanDanLiuRu(NumberUtils.toLong(getText(((JSONObject)li.get(1)).getString("date1"))+"万"));
+                        dto.setSanDanLiuRuZhanBi(NumberUtils.toIntMilli(getText(((JSONObject)li.get(1)).getString("date2"))));
+                        dto.setSanDanLiuRuZengZhangLv(NumberUtils.toIntMilli(getText(((JSONObject)li.get(1)).getString("date3"))));
+                        dto.setSanDanLiuChu(NumberUtils.toLong(getText(((JSONObject)li.get(2)).getString("date1"))+"万"));
+                        dto.setSanDanLiuChuZhanBi(NumberUtils.toIntMilli(getText(((JSONObject)li.get(2)).getString("date2"))));
+                        dto.setSanDanLiuChuZengZhangLv(NumberUtils.toIntMilli(getText(((JSONObject)li.get(2)).getString("date3"))));
+                        dto.setQiTaChengJiaoJinE(NumberUtils.toLong(getText(((JSONObject)li.get(12)).getString("date1"))+"万"));
+                        dto.setQiTaZhanBi(NumberUtils.toIntMilli(getText(((JSONObject)li.get(12)).getString("date2"))));
+                        dto.setQiTaZengZhanLv(NumberUtils.toIntMilli(getText(((JSONObject)li.get(12)).getString("date3"))));
+                        dto.setJingLiuRu(dto.getChaoDaDanLiuRu() + dto.getDaDanLiuRu() + dto.getXiaoDanLiuRu() + dto.getSanDanLiuRu()
+                                        - dto.getChaoDaDanLiuChu() - dto.getDaDanLiuChu() + dto.getXiaoDanLiuChu() + dto.getSanDanLiuChu());
                         dto.setJingLiuRuLv(NumberUtils.toIntMilli(""));
-                        dto.setChaoDaDanLiuRu(NumberUtils.toLong(""));
-                        dto.setChaoDaDanLiuRuZhanBi(NumberUtils.toIntMilli(""));
-                        dto.setChaoDaDanLiuRuZengZhangLv(NumberUtils.toIntMilli(""));
-                        dto.setChaoDaDanLiuChu(NumberUtils.toLong(""));
-                        dto.setChaoDaDanLiuChuZhanBi(NumberUtils.toIntMilli(""));
-                        dto.setChaoDaDanLiuChuZengZhangLv(NumberUtils.toIntMilli(""));
-                        dto.setDaDanLiuRu(NumberUtils.toLong(""));
-                        dto.setDaDanLiuRuZhanBi(NumberUtils.toIntMilli(""));
-                        dto.setDaDanLiuRuZengZhangLv(NumberUtils.toIntMilli(""));
-                        dto.setDaDanLiuChu(NumberUtils.toLong(""));
-                        dto.setDaDanLiuChuZhanBi(NumberUtils.toIntMilli(""));
-                        dto.setDaDanLiuChuZengZhangLv(NumberUtils.toIntMilli(""));
-                        dto.setXiaoDanLiuRu(NumberUtils.toLong(""));
-                        dto.setXiaoDanLiuRuZhanBi(NumberUtils.toIntMilli(""));
-                        dto.setXiaoDanLiuRuZengZhangLv(NumberUtils.toIntMilli(""));
-                        dto.setXiaoDanLiuChu(NumberUtils.toLong(""));
-                        dto.setXiaoDanLiuChuZhanBi(NumberUtils.toIntMilli(""));
-                        dto.setXiaoDanLiuChuZengZhangLv(NumberUtils.toIntMilli(""));
-                        dto.setSanDanLiuRu(NumberUtils.toLong(""));
-                        dto.setSanDanLiuRuZhanBi(NumberUtils.toIntMilli(""));
-                        dto.setSanDanLiuRuZengZhangLv(NumberUtils.toIntMilli(""));
-                        dto.setSanDanLiuChu(NumberUtils.toLong(""));
-                        dto.setSanDanLiuChuZhanBi(NumberUtils.toIntMilli(""));
-                        dto.setSanDanLiuChuZengZhangLv(NumberUtils.toIntMilli(""));
-                        dto.setQiTaChengJiaoJinE(NumberUtils.toLong(""));
-                        dto.setQiTaZhanBi(NumberUtils.toIntMilli(""));
-                        dto.setQiTaZengZhanLv(NumberUtils.toIntMilli(""));
-
 
                         data.add(dto);
                     }
@@ -153,11 +151,36 @@ public class StockZjlxHXTask {
             entity.setCode(dto.getCode());
             entity.setName(dto.getName());
             entity.setDate(dto.getDate());
-
-
-
-
-
+            entity.setHeJiChengJiao(dto.getHeJiChengJiao());
+            entity.setJingLiuRu(dto.getJingLiuRu());
+            entity.setJingLiuRuLv(dto.getJingLiuRuLv());
+            entity.setChaoDaDanLiuRu(dto.getChaoDaDanLiuRu());
+            entity.setChaoDaDanLiuRuZhanBi(dto.getChaoDaDanLiuRuZhanBi());
+            entity.setChaoDaDanLiuRuZengZhangLv(dto.getChaoDaDanLiuRuZengZhangLv());
+            entity.setChaoDaDanLiuChu(dto.getChaoDaDanLiuChu());
+            entity.setChaoDaDanLiuChuZhanBi(dto.getChaoDaDanLiuChuZhanBi());
+            entity.setChaoDaDanLiuChuZengZhangLv(dto.getChaoDaDanLiuChuZengZhangLv());
+            entity.setDaDanLiuRu(dto.getDaDanLiuRu());
+            entity.setDaDanLiuRuZhanBi(dto.getDaDanLiuRuZhanBi());
+            entity.setDaDanLiuRuZengZhangLv(dto.getDaDanLiuRuZengZhangLv());
+            entity.setDaDanLiuChu(dto.getDaDanLiuChu());
+            entity.setDaDanLiuChuZhanBi(dto.getDaDanLiuChuZhanBi());
+            entity.setDaDanLiuChuZengZhangLv(dto.getDaDanLiuChuZengZhangLv());
+            entity.setXiaoDanLiuRu(dto.getXiaoDanLiuRu());
+            entity.setXiaoDanLiuRuZhanBi(dto.getXiaoDanLiuRuZhanBi());
+            entity.setXiaoDanLiuRuZengZhangLv(dto.getXiaoDanLiuRuZengZhangLv());
+            entity.setXiaoDanLiuChu(dto.getXiaoDanLiuChu());
+            entity.setXiaoDanLiuChuZhanBi(dto.getXiaoDanLiuChuZhanBi());
+            entity.setXiaoDanLiuChuZengZhangLv(dto.getXiaoDanLiuChuZengZhangLv());
+            entity.setSanDanLiuRu(dto.getSanDanLiuRu());
+            entity.setSanDanLiuRuZhanBi(dto.getSanDanLiuRuZhanBi());
+            entity.setSanDanLiuRuZengZhangLv(dto.getSanDanLiuRuZengZhangLv());
+            entity.setSanDanLiuChu(dto.getSanDanLiuChu());
+            entity.setSanDanLiuChuZhanBi(dto.getSanDanLiuChuZhanBi());
+            entity.setSanDanLiuChuZengZhangLv(dto.getSanDanLiuChuZengZhangLv());
+            entity.setQiTaChengJiaoJinE(dto.getQiTaChengJiaoJinE());
+            entity.setQiTaZhanBi(dto.getQiTaZhanBi());
+            entity.setQiTaZengZhanLv(dto.getQiTaZengZhanLv());
             entity.setCreateAt(new Date());
 
             if(dao.save(entity, session)){
@@ -180,13 +203,22 @@ public class StockZjlxHXTask {
         Date date = new Date();
         for(String code : codes){
             StocksEntity entity = dao.getByCode(code, session);
-            entity.setZjlsUpdate(date);
+            entity.setZjlsHXUpdate(date);
             dao.update(entity, session);
 
         }
         session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
+    }
+
+    public String getText(String html){
+        if(html==null || html.equals("") || html.trim().equals("")){
+            return "";
+        }
+        int idx1 = html.indexOf(">");
+        int idx2 = html.lastIndexOf("<");
+        return html.substring(idx1+1, idx2);
     }
 
 }

@@ -182,7 +182,7 @@ public class StockZjlxTHSTask {
         Date date = new Date();
         for(String code : codes){
             StocksEntity entity = dao.getByCode(code, session);
-            entity.setZjlsUpdate(date);
+//            entity.setZjlsUpdate(date);
             dao.update(entity, session);
 
         }

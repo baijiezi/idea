@@ -43,7 +43,7 @@ public class MessageTask {
             for(MessageEntity entity : list){
                 logger.info("==============================MessageTask===============================");
                 try{
-                    service.send(entity);
+//                    service.send(entity);
                 }catch (Exception e){
                     logger.error("MessageTask 异常：", e);
                 }
