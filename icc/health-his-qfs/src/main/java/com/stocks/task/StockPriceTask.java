@@ -88,9 +88,15 @@ public class StockPriceTask {
                         stocksPriceDto.setDate(date);
                         if(stock.getName().equals("上证指数")){
                             stocksPriceDto.setShouPan(NumberUtils.toInt(temp[2]));
+                            stocksPriceDto.setChengJiaoE(NumberUtils.toLong(temp[3]));
+                            stocksPriceDto.setZhangDie(NumberUtils.toIntMilli(temp[4]));
+                            stocksPriceDto.setZhangFu(NumberUtils.toIntMilli(temp[5]));
                         }
                         else if(stock.getName().equals("深证成指")){
                             stocksPriceDto.setShouPan(NumberUtils.toInt(temp[10]));
+                            stocksPriceDto.setChengJiaoE(NumberUtils.toLong(temp[11]));
+                            stocksPriceDto.setZhangDie(NumberUtils.toIntMilli(temp[12]));
+                            stocksPriceDto.setZhangFu(NumberUtils.toIntMilli(temp[13]));
                         }
                         data.add(stocksPriceDto);
                     }

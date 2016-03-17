@@ -49,7 +49,7 @@ public class StocksPriceDao {
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
         try{
-            DateFormat format = new SimpleDateFormat("yyyy-MMdd");
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             String dt = format.format(date);
             Query query = session.createQuery(" from StocksPriceEntity s where s.date = '" + dt + "'");
             List<StocksPriceEntity> list = query.list();
@@ -95,7 +95,7 @@ public class StocksPriceDao {
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
         try{
-            DateFormat format = new SimpleDateFormat("yyyy-MMdd");
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             String dt = format.format(date);
             Query query = session.createQuery(" from StocksPriceEntity s where s.date = '" + dt + "' and s.code = '" + code + "'");
             List<StocksPriceEntity> list = query.list();
