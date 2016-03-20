@@ -78,7 +78,6 @@ public class StockTast2 {
                         stocksDto.setName(text.substring(0, index).replace(" ", ""));
                         stocksDto.setCode(text.substring(index+1));
                         stocksDto.setExchange(exchange);
-                        stocksDto.setDetailUrl2("");
                         data.add(stocksDto);
                     }
                 }
@@ -103,7 +102,6 @@ public class StockTast2 {
             StocksDao dao = new StocksDao();
             StocksEntity entity = dao.getByCode(stocksDto.getCode(), session);
             if(entity!=null){
-                entity.setDetailUrl2(stocksDto.getDetailUrl2());
 //                dao.update(stocksEntity, session);
             }
             else{
@@ -111,7 +109,6 @@ public class StockTast2 {
                 stocksEntity.setName(stocksDto.getName());
                 stocksEntity.setCode(stocksDto.getCode());
                 stocksEntity.setExchange(stocksDto.getExchange());
-                stocksEntity.setDetailUrl2(stocksDto.getDetailUrl2());
                 stocksEntity.setType(stocksDto.getType());
                 stocksEntity.setSubType(stocksDto.getSubType());
                 stocksEntity.setCreateAt(new Date());

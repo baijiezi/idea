@@ -28,19 +28,16 @@ public class StocksEntity implements Serializable {
     private String exchange;
     private String type;
     private String subType;
-    private String detailUrl1;
-    private String detailUrl2;
-    private String url2Type;
-    private String detailUrl3;
-    private String url3Type;
-    private String detailUrl4;
-    private String url4Type;
-    private String detailUrl5;
-    private String url5Type;
-    private Date createAt;
+    private String detailUrl;
+    private String priceTaskType;
     private Date priceUpdate;
+    private String zjlsDfcfTaskType;
     private Date zjlsDfcfUpdate;
-    private Date zjlsHXUpdate;
+    private String zjlsHxTaskType;
+    private Date zjlsHxUpdate;
+    private String zjlsThsTaskType;
+    private Date zjlsThsUpdate;
+    private Date createAt;
 
     public Integer getId() {
         return id;
@@ -50,20 +47,20 @@ public class StocksEntity implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getCode() {
         return code;
     }
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getExchange() {
@@ -90,84 +87,20 @@ public class StocksEntity implements Serializable {
         this.subType = subType;
     }
 
-    public String getDetailUrl1() {
-        return detailUrl1;
+    public String getDetailUrl() {
+        return detailUrl;
     }
 
-    public void setDetailUrl1(String detailUrl1) {
-        this.detailUrl1 = detailUrl1;
+    public void setDetailUrl(String detailUrl) {
+        this.detailUrl = detailUrl;
     }
 
-    public String getDetailUrl2() {
-        return detailUrl2;
+    public String getPriceTaskType() {
+        return priceTaskType;
     }
 
-    public void setDetailUrl2(String detailUrl2) {
-        this.detailUrl2 = detailUrl2;
-    }
-
-    public String getUrl2Type() {
-        return url2Type;
-    }
-
-    public void setUrl2Type(String url2Type) {
-        this.url2Type = url2Type;
-    }
-
-    public String getDetailUrl3() {
-        return detailUrl3;
-    }
-
-    public void setDetailUrl3(String detailUrl3) {
-        this.detailUrl3 = detailUrl3;
-    }
-
-    public String getUrl3Type() {
-        return url3Type;
-    }
-
-    public void setUrl3Type(String url3Type) {
-        this.url3Type = url3Type;
-    }
-
-    public String getDetailUrl4() {
-        return detailUrl4;
-    }
-
-    public void setDetailUrl4(String detailUrl4) {
-        this.detailUrl4 = detailUrl4;
-    }
-
-    public String getUrl4Type() {
-        return url4Type;
-    }
-
-    public void setUrl4Type(String url4Type) {
-        this.url4Type = url4Type;
-    }
-
-    public String getDetailUrl5() {
-        return detailUrl5;
-    }
-
-    public void setDetailUrl5(String detailUrl5) {
-        this.detailUrl5 = detailUrl5;
-    }
-
-    public String getUrl5Type() {
-        return url5Type;
-    }
-
-    public void setUrl5Type(String url5Type) {
-        this.url5Type = url5Type;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
+    public void setPriceTaskType(String priceTaskType) {
+        this.priceTaskType = priceTaskType;
     }
 
     public Date getPriceUpdate() {
@@ -178,6 +111,14 @@ public class StocksEntity implements Serializable {
         this.priceUpdate = priceUpdate;
     }
 
+    public String getZjlsDfcfTaskType() {
+        return zjlsDfcfTaskType;
+    }
+
+    public void setZjlsDfcfTaskType(String zjlsDfcfTaskType) {
+        this.zjlsDfcfTaskType = zjlsDfcfTaskType;
+    }
+
     public Date getZjlsDfcfUpdate() {
         return zjlsDfcfUpdate;
     }
@@ -186,11 +127,43 @@ public class StocksEntity implements Serializable {
         this.zjlsDfcfUpdate = zjlsDfcfUpdate;
     }
 
-    public Date getZjlsHXUpdate() {
-        return zjlsHXUpdate;
+    public String getZjlsHxTaskType() {
+        return zjlsHxTaskType;
     }
 
-    public void setZjlsHXUpdate(Date zjlsHXUpdate) {
-        this.zjlsHXUpdate = zjlsHXUpdate;
+    public void setZjlsHxTaskType(String zjlsHxTaskType) {
+        this.zjlsHxTaskType = zjlsHxTaskType;
+    }
+
+    public Date getZjlsHxUpdate() {
+        return zjlsHxUpdate;
+    }
+
+    public void setZjlsHxUpdate(Date zjlsHxUpdate) {
+        this.zjlsHxUpdate = zjlsHxUpdate;
+    }
+
+    public String getZjlsThsTaskType() {
+        return zjlsThsTaskType;
+    }
+
+    public void setZjlsThsTaskType(String zjlsThsTaskType) {
+        this.zjlsThsTaskType = zjlsThsTaskType;
+    }
+
+    public Date getZjlsThsUpdate() {
+        return zjlsThsUpdate;
+    }
+
+    public void setZjlsThsUpdate(Date zjlsThsUpdate) {
+        this.zjlsThsUpdate = zjlsThsUpdate;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 }

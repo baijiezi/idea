@@ -193,7 +193,7 @@ public class StocksPriceDao {
         StocksPriceEntity entity = list.get(0);
         System.out.println(entity.getShouPan());
         System.out.println(entity.getStocksEntity());
-        System.out.println(entity.getStocksEntity().getDetailUrl1());
+        System.out.println(entity.getStocksEntity().getDetailUrl());
         HibernateUtil.closeSessionFactory();
 
 

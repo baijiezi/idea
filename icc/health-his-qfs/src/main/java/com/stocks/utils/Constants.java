@@ -24,4 +24,7 @@ public class Constants {
 
     public static String ZJLX_HX_URL_TYPE_1 = "1";
 
+
+    public static String ZJLX_THS_URL_TYPE_1 = "1";
+
 }

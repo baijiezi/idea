@@ -75,7 +75,7 @@ public class StockTask {
                             stocksDto.setName(text.substring(0, idx));
                             stocksDto.setCode(text.substring(idx+1, idx2));
                             stocksDto.setExchange(exchange);
-                            stocksDto.setDetailUrl1(href);
+                            stocksDto.setDetailUrl(href);
                             data.add(stocksDto);
                         }
                     }
@@ -98,7 +98,7 @@ public class StockTask {
             StocksDao dao = new StocksDao();
             StocksEntity entity = dao.getByCode(stocksDto.getCode(), session);
             if(entity!=null){
-                entity.setDetailUrl1(stocksDto.getDetailUrl1());
+                entity.setDetailUrl(stocksDto.getDetailUrl());
                 dao.update(entity, session);
             }
             else{
@@ -106,7 +106,7 @@ public class StockTask {
                 stocksEntity.setName(stocksDto.getName());
                 stocksEntity.setCode(stocksDto.getCode());
                 stocksEntity.setExchange(stocksDto.getExchange());
-                stocksEntity.setDetailUrl1(stocksDto.getDetailUrl1());
+                stocksEntity.setDetailUrl(stocksDto.getDetailUrl());
                 stocksEntity.setType(stocksDto.getType());
                 stocksEntity.setSubType(stocksDto.getSubType());
                 stocksEntity.setCreateAt(new Date());

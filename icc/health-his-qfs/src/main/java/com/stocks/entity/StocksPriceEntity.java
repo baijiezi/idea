@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created with IntelliJ IDEA.
+ * Created with IntegerelliJ IDEA.
  * User: BaiJiezi
  * Date: 16-3-3
  * Time: 下午5:38
@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name = "sic_stocks_price")
 public class StocksPriceEntity implements Serializable {
-    private static final long serialVersionUID = 4056982271617961504L;
+    private static final Long serialVersionUID = 4056982271617961504L;
 
     @Id
     @GeneratedValue
@@ -22,49 +22,51 @@ public class StocksPriceEntity implements Serializable {
     private String code;
     private String name;
     private Date date;
-    private int shouPan;
-    private int junJia;
-    private int zhangFu;
-    private int zhangDie;
-    private long chengJiaoLiang;
-    private long ChengJiaoE;
-    private int huanShou;
-    private int liangBi;
-    private int zuiGao;
-    private int zuiDi;
-    private int zhenFu;
-    private int jinKai;
-    private int zuoShou;
-    private int zhangTing;
-    private int dieTing;
-    private int waiPan;
-    private int neiPan;
-    private long shiYing;
-    private long shiJing;
-    private long zongShiZhi;
-    private long liuTongShiZhi;
-    private int weiBi;
-    private int weiCha;
-    private int buyOne1;
-    private int buyOne2;
-    private int buyTwo1;
-    private int buyTwo2;
-    private int buyThree1;
-    private int buyThree2;
-    private int buyFour1;
-    private int buyFour2;
-    private int buyFive1;
-    private int buyFive2;
-    private int saleOne1;
-    private int saleOne2;
-    private int saleTwo1;
-    private int saleTwo2;
-    private int saleThree1;
-    private int saleThree2;
-    private int saleFour1;
-    private int saleFour2;
-    private int saleFive1;
-    private int saleFive2;
+    private Integer shouPan;
+    private Integer junJia;
+    private Integer zhangFu;
+    private Integer zhangDie;
+    private Long chengJiaoLiang;
+    private Long ChengJiaoE;
+    private Integer huanShou;
+    private Integer liangBi;
+    private Integer zuiGao;
+    private Integer zuiDi;
+    private Integer zhenFu;
+    private Integer jinKai;
+    private Integer zuoShou;
+    private Integer zhangTing;
+    private Integer dieTing;
+    private Integer waiPan;
+    private Integer neiPan;
+    private Integer panCha;
+    private Integer panBi;
+    private Long shiYing;
+    private Long shiJing;
+    private Long zongShiZhi;
+    private Long liuTongShiZhi;
+    private Integer weiBi;
+    private Integer weiCha;
+    private Integer buyOne1;
+    private Integer buyOne2;
+    private Integer buyTwo1;
+    private Integer buyTwo2;
+    private Integer buyThree1;
+    private Integer buyThree2;
+    private Integer buyFour1;
+    private Integer buyFour2;
+    private Integer buyFive1;
+    private Integer buyFive2;
+    private Integer saleOne1;
+    private Integer saleOne2;
+    private Integer saleTwo1;
+    private Integer saleTwo2;
+    private Integer saleThree1;
+    private Integer saleThree2;
+    private Integer saleFour1;
+    private Integer saleFour2;
+    private Integer saleFive1;
+    private Integer saleFive2;
     private Date createTime;
 
     @ManyToOne(cascade = CascadeType.REFRESH, optional = false,fetch=FetchType.LAZY)
@@ -104,347 +106,347 @@ public class StocksPriceEntity implements Serializable {
         this.date = date;
     }
 
-    public int getShouPan() {
+    public Integer getShouPan() {
         return shouPan;
     }
 
-    public void setShouPan(int shouPan) {
+    public void setShouPan(Integer shouPan) {
         this.shouPan = shouPan;
     }
 
-    public int getJunJia() {
+    public Integer getJunJia() {
         return junJia;
     }
 
-    public void setJunJia(int junJia) {
+    public void setJunJia(Integer junJia) {
         this.junJia = junJia;
     }
 
-    public int getZhangFu() {
+    public Integer getZhangFu() {
         return zhangFu;
     }
 
-    public void setZhangFu(int zhangFu) {
+    public void setZhangFu(Integer zhangFu) {
         this.zhangFu = zhangFu;
     }
 
-    public int getZhangDie() {
+    public Integer getZhangDie() {
         return zhangDie;
     }
 
-    public void setZhangDie(int zhangDie) {
+    public void setZhangDie(Integer zhangDie) {
         this.zhangDie = zhangDie;
     }
 
-    public long getChengJiaoLiang() {
+    public Long getChengJiaoLiang() {
         return chengJiaoLiang;
     }
 
-    public void setChengJiaoLiang(long chengJiaoLiang) {
+    public void setChengJiaoLiang(Long chengJiaoLiang) {
         this.chengJiaoLiang = chengJiaoLiang;
     }
 
-    public long getChengJiaoE() {
+    public Long getChengJiaoE() {
         return ChengJiaoE;
     }
 
-    public void setChengJiaoE(long chengJiaoE) {
+    public void setChengJiaoE(Long chengJiaoE) {
         ChengJiaoE = chengJiaoE;
     }
 
-    public int getHuanShou() {
+    public Integer getHuanShou() {
         return huanShou;
     }
 
-    public void setHuanShou(int huanShou) {
+    public void setHuanShou(Integer huanShou) {
         this.huanShou = huanShou;
     }
 
-    public int getLiangBi() {
+    public Integer getLiangBi() {
         return liangBi;
     }
 
-    public void setLiangBi(int liangBi) {
+    public void setLiangBi(Integer liangBi) {
         this.liangBi = liangBi;
     }
 
-    public int getZuiGao() {
+    public Integer getZuiGao() {
         return zuiGao;
     }
 
-    public void setZuiGao(int zuiGao) {
+    public void setZuiGao(Integer zuiGao) {
         this.zuiGao = zuiGao;
     }
 
-    public int getZuiDi() {
+    public Integer getZuiDi() {
         return zuiDi;
     }
 
-    public void setZuiDi(int zuiDi) {
+    public void setZuiDi(Integer zuiDi) {
         this.zuiDi = zuiDi;
     }
 
-    public int getJinKai() {
+    public Integer getJinKai() {
         return jinKai;
     }
 
-    public void setJinKai(int jinKai) {
+    public void setJinKai(Integer jinKai) {
         this.jinKai = jinKai;
     }
 
-    public int getZuoShou() {
+    public Integer getZuoShou() {
         return zuoShou;
     }
 
-    public void setZuoShou(int zuoShou) {
+    public void setZuoShou(Integer zuoShou) {
         this.zuoShou = zuoShou;
     }
 
-    public int getZhangTing() {
+    public Integer getZhangTing() {
         return zhangTing;
     }
 
-    public void setZhangTing(int zhangTing) {
+    public void setZhangTing(Integer zhangTing) {
         this.zhangTing = zhangTing;
     }
 
-    public int getDieTing() {
+    public Integer getDieTing() {
         return dieTing;
     }
 
-    public void setDieTing(int dieTing) {
+    public void setDieTing(Integer dieTing) {
         this.dieTing = dieTing;
     }
 
-    public int getWaiPan() {
+    public Integer getWaiPan() {
         return waiPan;
     }
 
-    public void setWaiPan(int waiPan) {
+    public void setWaiPan(Integer waiPan) {
         this.waiPan = waiPan;
     }
 
-    public int getNeiPan() {
+    public Integer getNeiPan() {
         return neiPan;
     }
 
-    public void setNeiPan(int neiPan) {
+    public void setNeiPan(Integer neiPan) {
         this.neiPan = neiPan;
     }
 
-    public long getShiYing() {
+    public Long getShiYing() {
         return shiYing;
     }
 
-    public void setShiYing(long shiYing) {
+    public void setShiYing(Long shiYing) {
         this.shiYing = shiYing;
     }
 
-    public long getShiJing() {
+    public Long getShiJing() {
         return shiJing;
     }
 
-    public void setShiJing(long shiJing) {
+    public void setShiJing(Long shiJing) {
         this.shiJing = shiJing;
     }
 
-    public long getZongShiZhi() {
+    public Long getZongShiZhi() {
         return zongShiZhi;
     }
 
-    public void setZongShiZhi(long zongShiZhi) {
+    public void setZongShiZhi(Long zongShiZhi) {
         this.zongShiZhi = zongShiZhi;
     }
 
-    public long getLiuTongShiZhi() {
+    public Long getLiuTongShiZhi() {
         return liuTongShiZhi;
     }
 
-    public void setLiuTongShiZhi(long liuTongShiZhi) {
+    public void setLiuTongShiZhi(Long liuTongShiZhi) {
         this.liuTongShiZhi = liuTongShiZhi;
     }
 
-    public int getWeiBi() {
+    public Integer getWeiBi() {
         return weiBi;
     }
 
-    public void setWeiBi(int weiBi) {
+    public void setWeiBi(Integer weiBi) {
         this.weiBi = weiBi;
     }
 
-    public int getWeiCha() {
+    public Integer getWeiCha() {
         return weiCha;
     }
 
-    public void setWeiCha(int weiCha) {
+    public void setWeiCha(Integer weiCha) {
         this.weiCha = weiCha;
     }
 
-    public int getBuyOne1() {
+    public Integer getBuyOne1() {
         return buyOne1;
     }
 
-    public void setBuyOne1(int buyOne1) {
+    public void setBuyOne1(Integer buyOne1) {
         this.buyOne1 = buyOne1;
     }
 
-    public int getBuyOne2() {
+    public Integer getBuyOne2() {
         return buyOne2;
     }
 
-    public void setBuyOne2(int buyOne2) {
+    public void setBuyOne2(Integer buyOne2) {
         this.buyOne2 = buyOne2;
     }
 
-    public int getBuyTwo1() {
+    public Integer getBuyTwo1() {
         return buyTwo1;
     }
 
-    public void setBuyTwo1(int buyTwo1) {
+    public void setBuyTwo1(Integer buyTwo1) {
         this.buyTwo1 = buyTwo1;
     }
 
-    public int getBuyTwo2() {
+    public Integer getBuyTwo2() {
         return buyTwo2;
     }
 
-    public void setBuyTwo2(int buyTwo2) {
+    public void setBuyTwo2(Integer buyTwo2) {
         this.buyTwo2 = buyTwo2;
     }
 
-    public int getBuyThree1() {
+    public Integer getBuyThree1() {
         return buyThree1;
     }
 
-    public void setBuyThree1(int buyThree1) {
+    public void setBuyThree1(Integer buyThree1) {
         this.buyThree1 = buyThree1;
     }
 
-    public int getBuyThree2() {
+    public Integer getBuyThree2() {
         return buyThree2;
     }
 
-    public void setBuyThree2(int buyThree2) {
+    public void setBuyThree2(Integer buyThree2) {
         this.buyThree2 = buyThree2;
     }
 
-    public int getBuyFour1() {
+    public Integer getBuyFour1() {
         return buyFour1;
     }
 
-    public void setBuyFour1(int buyFour1) {
+    public void setBuyFour1(Integer buyFour1) {
         this.buyFour1 = buyFour1;
     }
 
-    public int getBuyFour2() {
+    public Integer getBuyFour2() {
         return buyFour2;
     }
 
-    public void setBuyFour2(int buyFour2) {
+    public void setBuyFour2(Integer buyFour2) {
         this.buyFour2 = buyFour2;
     }
 
-    public int getBuyFive1() {
+    public Integer getBuyFive1() {
         return buyFive1;
     }
 
-    public void setBuyFive1(int buyFive1) {
+    public void setBuyFive1(Integer buyFive1) {
         this.buyFive1 = buyFive1;
     }
 
-    public int getBuyFive2() {
+    public Integer getBuyFive2() {
         return buyFive2;
     }
 
-    public void setBuyFive2(int buyFive2) {
+    public void setBuyFive2(Integer buyFive2) {
         this.buyFive2 = buyFive2;
     }
 
-    public int getSaleOne1() {
+    public Integer getSaleOne1() {
         return saleOne1;
     }
 
-    public void setSaleOne1(int saleOne1) {
+    public void setSaleOne1(Integer saleOne1) {
         this.saleOne1 = saleOne1;
     }
 
-    public int getSaleOne2() {
+    public Integer getSaleOne2() {
         return saleOne2;
     }
 
-    public void setSaleOne2(int saleOne2) {
+    public void setSaleOne2(Integer saleOne2) {
         this.saleOne2 = saleOne2;
     }
 
-    public int getSaleTwo1() {
+    public Integer getSaleTwo1() {
         return saleTwo1;
     }
 
-    public void setSaleTwo1(int saleTwo1) {
+    public void setSaleTwo1(Integer saleTwo1) {
         this.saleTwo1 = saleTwo1;
     }
 
-    public int getSaleTwo2() {
+    public Integer getSaleTwo2() {
         return saleTwo2;
     }
 
-    public void setSaleTwo2(int saleTwo2) {
+    public void setSaleTwo2(Integer saleTwo2) {
         this.saleTwo2 = saleTwo2;
     }
 
-    public int getSaleThree1() {
+    public Integer getSaleThree1() {
         return saleThree1;
     }
 
-    public void setSaleThree1(int saleThree1) {
+    public void setSaleThree1(Integer saleThree1) {
         this.saleThree1 = saleThree1;
     }
 
-    public int getSaleThree2() {
+    public Integer getSaleThree2() {
         return saleThree2;
     }
 
-    public void setSaleThree2(int saleThree2) {
+    public void setSaleThree2(Integer saleThree2) {
         this.saleThree2 = saleThree2;
     }
 
-    public int getSaleFour1() {
+    public Integer getSaleFour1() {
         return saleFour1;
     }
 
-    public void setSaleFour1(int saleFour1) {
+    public void setSaleFour1(Integer saleFour1) {
         this.saleFour1 = saleFour1;
     }
 
-    public int getSaleFour2() {
+    public Integer getSaleFour2() {
         return saleFour2;
     }
 
-    public void setSaleFour2(int saleFour2) {
+    public void setSaleFour2(Integer saleFour2) {
         this.saleFour2 = saleFour2;
     }
 
-    public int getSaleFive1() {
+    public Integer getSaleFive1() {
         return saleFive1;
     }
 
-    public void setSaleFive1(int saleFive1) {
+    public void setSaleFive1(Integer saleFive1) {
         this.saleFive1 = saleFive1;
     }
 
-    public int getSaleFive2() {
+    public Integer getSaleFive2() {
         return saleFive2;
     }
 
-    public void setSaleFive2(int saleFive2) {
+    public void setSaleFive2(Integer saleFive2) {
         this.saleFive2 = saleFive2;
     }
 
-    public int getZhenFu() {
+    public Integer getZhenFu() {
         return zhenFu;
     }
 
-    public void setZhenFu(int zhenFu) {
+    public void setZhenFu(Integer zhenFu) {
         this.zhenFu = zhenFu;
     }
 
@@ -462,5 +464,21 @@ public class StocksPriceEntity implements Serializable {
 
     public void setStocksEntity(StocksEntity stocksEntity) {
         this.stocksEntity = stocksEntity;
+    }
+
+    public Integer getPanCha() {
+        return panCha;
+    }
+
+    public void setPanCha(Integer panCha) {
+        this.panCha = panCha;
+    }
+
+    public Integer getPanBi() {
+        return panBi;
+    }
+
+    public void setPanBi(Integer panBi) {
+        this.panBi = panBi;
     }
 }

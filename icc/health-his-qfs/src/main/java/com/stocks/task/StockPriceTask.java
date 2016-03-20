@@ -62,19 +62,15 @@ public class StockPriceTask {
             AsyncHttpClient asyncHttpClient = new AsyncHttpClient(config);
 
             for(StocksEntity stock : list){
-                logger.info("==============================开始StockDailyTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
-//                if(!stock.getCode().equals("000001_2")){
-//                    continue;
-//                }
-
-//                if(stock.getUrl2Type() == null){
-//                    stock.setUrl2Type(Constants.STOCK_PRICS_URL_TYPE_4);
-//                }
+                logger.info("==============================StockPriceTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
+                if(!stock.getCode().equals("002340")){
+                    continue;
+                }
 
                 try{
                     //已指定Url
-                    if(stock.getUrl2Type()!=null && stock.getUrl2Type().equals(Constants.STOCK_PRICS_URL_TYPE_1)){
-                        String url = stock.getDetailUrl2();
+                    if(stock.getPriceTaskType()!=null && stock.getPriceTaskType().equals(Constants.STOCK_PRICS_URL_TYPE_1)){
+                        String url = "http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568";
                         logger.info("url: " + url);
                         Future r = asyncHttpClient.prepareGet(url).execute();
                         Response response = (Response) r.get();
@@ -103,7 +99,7 @@ public class StockPriceTask {
 
 
 
-                    if(stock.getUrl2Type()!=null && stock.getUrl2Type().equals(Constants.STOCK_PRICS_URL_TYPE_2)){
+                    if(stock.getPriceTaskType()!=null && stock.getPriceTaskType().equals(Constants.STOCK_PRICS_URL_TYPE_2)){
                         String url = "http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=" + stock.getCode() + "1&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback08470946825109422&callback=callback08470946825109422&_=1457240176741";
                         logger.info("url:"+ url);
                         Future r = asyncHttpClient.prepareGet(url).execute();
@@ -137,8 +133,10 @@ public class StockPriceTask {
                         dto.setDieTing(NumberUtils.toIntMilli(temp[24]));
                         dto.setWaiPan(NumberUtils.toIntCenti(temp[39]));
                         dto.setNeiPan(NumberUtils.toIntCenti(temp[40]));
-                        dto.setShiYing(NumberUtils.toIntMilli(temp[38]));
-                        dto.setShiJing(NumberUtils.toIntMilli(temp[43]));
+                        dto.setPanCha(dto.getNeiPan()-dto.getWaiPan());
+                        dto.setPanBi(NumberUtils.getBiLv(dto.getPanCha(), dto.getNeiPan()+dto.getWaiPan()));
+                        dto.setShiYing(NumberUtils.toLongMilli(temp[38]));
+                        dto.setShiJing(NumberUtils.toLongMilli(temp[43]));
                         dto.setZongShiZhi(NumberUtils.toLong(temp[46]));
                         dto.setLiuTongShiZhi(NumberUtils.toLong(temp[45]));
                         dto.setWeiBi(NumberUtils.toIntMilli(temp[41]));
@@ -171,7 +169,7 @@ public class StockPriceTask {
 
 
                     //格林美 已测试
-                    if(stock.getUrl2Type()!=null && stock.getUrl2Type().equals(Constants.STOCK_PRICS_URL_TYPE_3)){
+                    if(stock.getPriceTaskType()!=null && stock.getPriceTaskType().equals(Constants.STOCK_PRICS_URL_TYPE_3)){
                         String url = "http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=" + stock.getCode() + "2&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback08212962551042438&callback=callback08212962551042438&_=1457186982524";
                         logger.info("url:"+ url);
                         Future r = asyncHttpClient.prepareGet(url).execute();
@@ -205,12 +203,14 @@ public class StockPriceTask {
                         dto.setDieTing(NumberUtils.toIntMilli(temp[24]));
                         dto.setWaiPan(NumberUtils.toIntCenti(temp[39]));
                         dto.setNeiPan(NumberUtils.toIntCenti(temp[40]));
-                        dto.setShiYing(NumberUtils.toIntMilli(temp[38]));
-                        dto.setShiJing(NumberUtils.toIntMilli(temp[43]));
+                        dto.setShiYing(NumberUtils.toLongMilli(temp[38]));
+                        dto.setShiJing(NumberUtils.toLongMilli(temp[43]));
                         dto.setZongShiZhi(NumberUtils.toLong(temp[46]));
                         dto.setLiuTongShiZhi(NumberUtils.toLong(temp[45]));
                         dto.setWeiBi(NumberUtils.toIntMilli(temp[41]));
                         dto.setWeiCha(NumberUtils.toIntCenti(temp[42]));
+                        dto.setPanCha(dto.getNeiPan()-dto.getWaiPan());
+                        dto.setPanBi(NumberUtils.getBiLv(dto.getPanCha(), dto.getNeiPan()+dto.getWaiPan()));
                         dto.setBuyOne1(NumberUtils.toIntMilli(temp[3]));
                         dto.setBuyOne2(NumberUtils.toIntCenti(temp[13]));
                         dto.setBuyTwo1(NumberUtils.toIntMilli(temp[4]));
@@ -234,84 +234,6 @@ public class StockPriceTask {
 
                         data.add(dto);
                     }
-
-
-
-
-
-//                    if(stock.getUrl2Type()!=null && stock.getUrl2Type()==Constants.STOCK_PRICS_URL_TYPE_4){
-//                        String url = "http://hqdigi2.eastmoney.com/EM_Quote2010NumericApplication/CompatiblePage.aspx?Type=fs&jsName=js&stk="+stock.getCode()+"1&Reference=xml&rt=0.33757628477178514";
-//                        logger.info("url:"+ url);
-//                        Future r = asyncHttpClient.prepareGet(url).execute();
-//                        Response response = (Response) r.get();
-//                        String result = response.getResponseBody();
-//                        logger.info("result: " + result);
-//                        int idx1 = result.indexOf("{");
-//                        int idx2 = result.lastIndexOf("}");
-//                        String rs = result.substring(idx1, idx2+1);
-//                        System.out.println(rs);
-//                        JSONObject jsonObject = JSON.parseObject(rs);
-//                        String[] skif = jsonObject.get("skif").toString().split(",");
-//                        List<String> bsif = (List<String>)jsonObject.get("bsif");
-//                        List dtif = (List)jsonObject.get("dtif");
-//                        for(int i=0; i<skif.length; i++){
-//                            logger.info(i + "  " + skif[i]);
-//                        }
-//
-//                        StocksPriceDto stocksPriceDto = new StocksPriceDto();
-//                        stocksPriceDto.setCode(stock.getCode());
-//                        stocksPriceDto.setName(stock.getName());
-//                        stocksPriceDto.setDate(date);
-//                        stocksPriceDto.setShouPan(NumberUtils.toIntMilli(skif[3]));
-//                        stocksPriceDto.setJunJia(NumberUtils.toIntMilli(skif[16]));
-//                        stocksPriceDto.setZhangFu(NumberUtils.toIntMilli(skif[5]));
-//                        stocksPriceDto.setZhangDie(NumberUtils.toIntMilli(skif[4]));
-//                        stocksPriceDto.setChengJiaoLiang(NumberUtils.toLongCenti(skif[17]));
-//                        stocksPriceDto.setChengJiaoE(NumberUtils.toLong(skif[19]+"万"));
-//                        stocksPriceDto.setHuanShou(NumberUtils.toIntMilli(skif[12]));
-//                        stocksPriceDto.setLiangBi(NumberUtils.toIntMilli(skif[14]));
-//                        stocksPriceDto.setZuiGao(NumberUtils.toIntMilli(skif[10]));
-//                        stocksPriceDto.setZuiDi(NumberUtils.toIntMilli(skif[11]));
-//                        stocksPriceDto.setZhenFu(NumberUtils.toIntMilli(skif[15]));
-//                        stocksPriceDto.setJinKai(NumberUtils.toIntMilli(skif[8]));
-//                        stocksPriceDto.setZuoShou(NumberUtils.toIntMilli(skif[9]));
-//                        stocksPriceDto.setZhangTing(NumberUtils.toIntMilli(""));
-//                        stocksPriceDto.setDieTing(NumberUtils.toIntMilli(""));
-//                        stocksPriceDto.setWaiPan(NumberUtils.toIntCenti(skif[23]));
-//                        stocksPriceDto.setNeiPan(NumberUtils.toIntCenti(skif[22]));
-//                        stocksPriceDto.setShiYing(NumberUtils.toIntMilli(""));
-//                        stocksPriceDto.setShiJing(NumberUtils.toIntMilli(""));
-//                        stocksPriceDto.setZongShiZhi(NumberUtils.toLong(""));
-//                        stocksPriceDto.setLiuTongShiZhi(NumberUtils.toLong(""));
-//                        stocksPriceDto.setWeiBi(NumberUtils.toIntMilli(skif[24]));
-//                        stocksPriceDto.setWeiCha(NumberUtils.toIntCenti(skif[25]));
-//                        stocksPriceDto.setBuyOne1(NumberUtils.toIntMilli(bsif.get(5).split(",")[0]));
-//                        stocksPriceDto.setBuyOne2(NumberUtils.toIntCenti(bsif.get(5).split(",")[1]));
-//                        stocksPriceDto.setBuyTwo1(NumberUtils.toIntMilli(bsif.get(6).split(",")[0]));
-//                        stocksPriceDto.setBuyTwo2(NumberUtils.toIntCenti(bsif.get(6).split(",")[1]));
-//                        stocksPriceDto.setBuyThree1(NumberUtils.toIntMilli(bsif.get(7).split(",")[0]));
-//                        stocksPriceDto.setBuyThree2(NumberUtils.toIntCenti(bsif.get(7).split(",")[1]));
-//                        stocksPriceDto.setBuyFour1(NumberUtils.toIntMilli(bsif.get(8).split(",")[0]));
-//                        stocksPriceDto.setBuyFour2(NumberUtils.toIntCenti(bsif.get(8).split(",")[1]));
-//                        stocksPriceDto.setBuyFive1(NumberUtils.toIntMilli(bsif.get(9).split(",")[0]));
-//                        stocksPriceDto.setBuyFive2(NumberUtils.toIntCenti(bsif.get(9).split(",")[1]));
-//                        stocksPriceDto.setSaleOne1(NumberUtils.toIntMilli(bsif.get(4).split(",")[0]));
-//                        stocksPriceDto.setSaleOne2(NumberUtils.toIntCenti(bsif.get(4).split(",")[1]));
-//                        stocksPriceDto.setSaleTwo1(NumberUtils.toIntMilli(bsif.get(3).split(",")[0]));
-//                        stocksPriceDto.setSaleTwo2(NumberUtils.toIntCenti(bsif.get(3).split(",")[1]));
-//                        stocksPriceDto.setSaleThree1(NumberUtils.toIntMilli(bsif.get(2).split(",")[0]));
-//                        stocksPriceDto.setSaleThree2(NumberUtils.toIntCenti(bsif.get(2).split(",")[1]));
-//                        stocksPriceDto.setSaleFour1(NumberUtils.toIntMilli(bsif.get(1).split(",")[0]));
-//                        stocksPriceDto.setSaleFour2(NumberUtils.toIntCenti(bsif.get(1).split(",")[1]));
-//                        stocksPriceDto.setSaleFive1(NumberUtils.toIntCenti(bsif.get(0).split(",")[0]));
-//                        stocksPriceDto.setSaleFive2(NumberUtils.toIntMilli(bsif.get(0).split(",")[1]));
-//
-//                        data.add(stocksPriceDto);
-//                    }
-
-
-
-
 
                 }catch (Exception e){
                     logger.error("StockDailyTask远程异常："+stock.getCode(), e);
@@ -359,6 +281,8 @@ public class StockPriceTask {
             entity.setDieTing(dto.getDieTing());
             entity.setWaiPan(dto.getWaiPan());
             entity.setNeiPan(dto.getNeiPan());
+            entity.setPanCha(dto.getPanCha());
+            entity.setPanBi(dto.getPanBi());
             entity.setShiYing(dto.getShiYing());
             entity.setShiJing(dto.getShiJing());
             entity.setZongShiZhi(dto.getZongShiZhi());

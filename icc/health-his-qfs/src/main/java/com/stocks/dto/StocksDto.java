@@ -12,48 +12,21 @@ import java.util.Date;
 public class StocksDto {
 
     private Integer id;
-    private String name;
     private String code;
+    private String name;
     private String exchange;
     private String type;
     private String subType;
-    private String detailUrl1;
-    private String detailUrl2;
-    private String url2Type;
-    private String detailUrl3;
-    private String url3Type;
-    private String detailUrl4;
-    private String url4Type;
-    private String detailUrl5;
-    private String url5Type;
-    private Date createAt;
+    private String detailUrl;
+    private String priceTaskType;
     private Date priceUpdate;
+    private String zjlsDfcfTaskType;
     private Date zjlsDfcfUpdate;
-    private Date zjlsHXUpdate;
-
-    public Date getPriceUpdate() {
-        return priceUpdate;
-    }
-
-    public void setPriceUpdate(Date priceUpdate) {
-        this.priceUpdate = priceUpdate;
-    }
-
-    public Date getZjlsDfcfUpdate() {
-        return zjlsDfcfUpdate;
-    }
-
-    public void setZjlsDfcfUpdate(Date zjlsDfcfUpdate) {
-        this.zjlsDfcfUpdate = zjlsDfcfUpdate;
-    }
-
-    public Date getZjlsHXUpdate() {
-        return zjlsHXUpdate;
-    }
-
-    public void setZjlsHXUpdate(Date zjlsHXUpdate) {
-        this.zjlsHXUpdate = zjlsHXUpdate;
-    }
+    private String zjlsHxTaskType;
+    private Date zjlsHxUpdate;
+    private String zjlsThsTaskType;
+    private Date zjlsThsUpdate;
+    private Date createAt;
 
     public Integer getId() {
         return id;
@@ -63,20 +36,20 @@ public class StocksDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getCode() {
         return code;
     }
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getExchange() {
@@ -103,76 +76,76 @@ public class StocksDto {
         this.subType = subType;
     }
 
-    public String getDetailUrl1() {
-        return detailUrl1;
+    public String getDetailUrl() {
+        return detailUrl;
     }
 
-    public void setDetailUrl1(String detailUrl1) {
-        this.detailUrl1 = detailUrl1;
+    public void setDetailUrl(String detailUrl) {
+        this.detailUrl = detailUrl;
     }
 
-    public String getDetailUrl2() {
-        return detailUrl2;
+    public String getPriceTaskType() {
+        return priceTaskType;
     }
 
-    public void setDetailUrl2(String detailUrl2) {
-        this.detailUrl2 = detailUrl2;
+    public void setPriceTaskType(String priceTaskType) {
+        this.priceTaskType = priceTaskType;
     }
 
-    public String getUrl2Type() {
-        return url2Type;
+    public Date getPriceUpdate() {
+        return priceUpdate;
     }
 
-    public void setUrl2Type(String url2Type) {
-        this.url2Type = url2Type;
+    public void setPriceUpdate(Date priceUpdate) {
+        this.priceUpdate = priceUpdate;
     }
 
-    public String getDetailUrl3() {
-        return detailUrl3;
+    public String getZjlsDfcfTaskType() {
+        return zjlsDfcfTaskType;
     }
 
-    public void setDetailUrl3(String detailUrl3) {
-        this.detailUrl3 = detailUrl3;
+    public void setZjlsDfcfTaskType(String zjlsDfcfTaskType) {
+        this.zjlsDfcfTaskType = zjlsDfcfTaskType;
     }
 
-    public String getUrl3Type() {
-        return url3Type;
+    public Date getZjlsDfcfUpdate() {
+        return zjlsDfcfUpdate;
     }
 
-    public void setUrl3Type(String url3Type) {
-        this.url3Type = url3Type;
+    public void setZjlsDfcfUpdate(Date zjlsDfcfUpdate) {
+        this.zjlsDfcfUpdate = zjlsDfcfUpdate;
     }
 
-    public String getDetailUrl4() {
-        return detailUrl4;
+    public String getZjlsHxTaskType() {
+        return zjlsHxTaskType;
     }
 
-    public void setDetailUrl4(String detailUrl4) {
-        this.detailUrl4 = detailUrl4;
+    public void setZjlsHxTaskType(String zjlsHxTaskType) {
+        this.zjlsHxTaskType = zjlsHxTaskType;
     }
 
-    public String getUrl4Type() {
-        return url4Type;
+    public Date getZjlsHxUpdate() {
+        return zjlsHxUpdate;
     }
 
-    public void setUrl4Type(String url4Type) {
-        this.url4Type = url4Type;
+    public void setZjlsHxUpdate(Date zjlsHxUpdate) {
+        this.zjlsHxUpdate = zjlsHxUpdate;
     }
 
-    public String getDetailUrl5() {
-        return detailUrl5;
+    public String getZjlsThsTaskType() {
+        return zjlsThsTaskType;
     }
 
-    public void setDetailUrl5(String detailUrl5) {
-        this.detailUrl5 = detailUrl5;
+    public void setZjlsThsTaskType(String zjlsThsTaskType) {
+        this.zjlsThsTaskType = zjlsThsTaskType;
     }
 
-    public String getUrl5Type() {
-        return url5Type;
+    public Date getZjlsThsUpdate() {
+        return zjlsThsUpdate;
     }
 
-    public void setUrl5Type(String url5Type) {
-        this.url5Type = url5Type;
+    public void setZjlsThsUpdate(Date zjlsThsUpdate) {
+        this.zjlsThsUpdate = zjlsThsUpdate;
     }
 
     public Date getCreateAt() {

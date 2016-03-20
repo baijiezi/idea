@@ -55,9 +55,12 @@ public class StockZjlxDfcfTask {
 
             for(StocksEntity stock : list){
                 logger.info("StockZJLXTask:" + stock.getCode());
+                if(!stock.getCode().equals("002340")){
+                    continue;
+                }
 
                 try{
-                    if(stock.getUrl3Type()!=null && stock.getUrl3Type().equals(Constants.ZJLX_URL_TYPE_1)){
+                    if(stock.getZjlsDfcfTaskType()!=null && stock.getZjlsDfcfTaskType().equals(Constants.ZJLX_URL_TYPE_1)){
 
                         String url = "http://s1.dfcfw.com/js/" + stock.getCode() + ".js?rt=0.7480427355039865";
                         Future r = asyncHttpClient.prepareGet(url).execute();
@@ -104,9 +107,7 @@ public class StockZjlxDfcfTask {
                         data.add(zjlxDto);
                     }
                 }catch (Exception e){
-                    logger.error("StockZJLXTask远程异常：" + stock.getCode());
-                    logger.error(e.getMessage());
-                    e.printStackTrace();
+                    logger.error("StockZJLXTask远程异常：" + stock.getCode(), e);
                 }
             }
             List codes = updateData(data);

@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * Created with IntelliJ IDEA.
+ * Created with IntegerelliJ IDEA.
  * User: BaiJiezi
  * Date: 16-3-3
  * Time: 下午6:50
@@ -23,10 +23,10 @@ public class StocksZJLXDetailEntity {
     private String code;
     private String name;
     private Date date;
-    private int chengJiaoJia;
-    private int chengJiaoLiang;
-    private long chengJiaoE;
-    private int shift;
+    private Integer chengJiaoJia;
+    private Integer chengJiaoLiang;
+    private Long chengJiaoE;
+    private Integer shift;
 
     public Integer getId() {
         return id;
@@ -60,35 +60,35 @@ public class StocksZJLXDetailEntity {
         this.date = date;
     }
 
-    public int getChengJiaoJia() {
+    public Integer getChengJiaoJia() {
         return chengJiaoJia;
     }
 
-    public void setChengJiaoJia(int chengJiaoJia) {
+    public void setChengJiaoJia(Integer chengJiaoJia) {
         this.chengJiaoJia = chengJiaoJia;
     }
 
-    public int getChengJiaoLiang() {
+    public Integer getChengJiaoLiang() {
         return chengJiaoLiang;
     }
 
-    public void setChengJiaoLiang(int chengJiaoLiang) {
+    public void setChengJiaoLiang(Integer chengJiaoLiang) {
         this.chengJiaoLiang = chengJiaoLiang;
     }
 
-    public long getChengJiaoE() {
+    public Long getChengJiaoE() {
         return chengJiaoE;
     }
 
-    public void setChengJiaoE(long chengJiaoE) {
+    public void setChengJiaoE(Long chengJiaoE) {
         this.chengJiaoE = chengJiaoE;
     }
 
-    public int getShift() {
+    public Integer getShift() {
         return shift;
     }
 
-    public void setShift(int shift) {
+    public void setShift(Integer shift) {
         this.shift = shift;
     }
 }

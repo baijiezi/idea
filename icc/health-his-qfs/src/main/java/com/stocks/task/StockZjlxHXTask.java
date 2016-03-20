@@ -27,14 +27,14 @@ import java.util.concurrent.Future;
  * Time: 下午10:29
  * To change this template use File | Settings | File Templates.
  */
-public class StockZjlxHXTask {
+public class StockZjlxHxTask {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args){
 
-        StockZjlxHXTask stockZjlxHXTask = new StockZjlxHXTask();
-        stockZjlxHXTask.execute();
+        StockZjlxHxTask stockZjlxHxTask = new StockZjlxHxTask();
+        stockZjlxHxTask.execute();
 
     }
 
@@ -61,7 +61,7 @@ public class StockZjlxHXTask {
 //                }
 
                 try{
-                    if(stock.getUrl4Type()!=null && stock.getUrl4Type().equals(Constants.ZJLX_HX_URL_TYPE_1)){
+                    if(stock.getZjlsHxTaskType()!=null && stock.getZjlsHxTaskType().equals(Constants.ZJLX_HX_URL_TYPE_1)){
 
                         String url = "http://vol.stock.hexun.com/Data/Stock/SMinData.ashx?code=" + stock.getCode() + "&count=20&page=1&callback=hx_json14579481800134419886";
                         logger.info("url:" + url);
@@ -116,15 +116,13 @@ public class StockZjlxHXTask {
                         dto.setQiTaZhanBi(NumberUtils.toIntMilli(getText(((JSONObject)li.get(12)).getString("date2"))));
                         dto.setQiTaZengZhanLv(NumberUtils.toIntMilli(getText(((JSONObject)li.get(12)).getString("date3"))));
                         dto.setJingLiuRu(dto.getChaoDaDanLiuRu() + dto.getDaDanLiuRu() + dto.getXiaoDanLiuRu() + dto.getSanDanLiuRu()
-                                        - dto.getChaoDaDanLiuChu() - dto.getDaDanLiuChu() + dto.getXiaoDanLiuChu() + dto.getSanDanLiuChu());
+                                - dto.getChaoDaDanLiuChu() - dto.getDaDanLiuChu() + dto.getXiaoDanLiuChu() + dto.getSanDanLiuChu());
                         dto.setJingLiuRuLv(NumberUtils.toIntMilli(""));
 
                         data.add(dto);
                     }
                 }catch (Exception e){
-                    logger.error("StockZJLXTask远程异常：" + stock.getCode());
-                    logger.error(e.getMessage());
-                    e.printStackTrace();
+                    logger.error("StockZJLXTask远程异常：" + stock.getCode(), e);
                 }
             }
             List codes = updateData(data);
@@ -203,7 +201,7 @@ public class StockZjlxHXTask {
         Date date = new Date();
         for(String code : codes){
             StocksEntity entity = dao.getByCode(code, session);
-            entity.setZjlsHXUpdate(date);
+            entity.setZjlsHxUpdate(date);
             dao.update(entity, session);
 
         }

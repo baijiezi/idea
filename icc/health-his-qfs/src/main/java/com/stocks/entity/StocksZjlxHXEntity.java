@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * Created with IntelliJ IDEA.
+ * Created with IntegerelliJ IDEA.
  * User: Administrator
  * Date: 16-3-14
  * Time: 下午9:55
@@ -17,7 +17,7 @@ import java.util.Date;
 @Table(name = "sic_stocks_zjlx_hx")
 public class StocksZjlxHXEntity  implements java.io.Serializable  {
 
-    private static final long serialVersionUID = -134014788722369842L;
+    private static final Long serialVersionUID = -134014788722369842L;
 
     @Id
     @GeneratedValue
@@ -25,36 +25,36 @@ public class StocksZjlxHXEntity  implements java.io.Serializable  {
     private String code;
     private String name;
     private Date date;
-    private long heJiChengJiao;
-    private long jingLiuRu;
-    private int jingLiuRuLv;
-    private long chaoDaDanLiuRu;
-    private int chaoDaDanLiuRuZhanBi;
-    private int chaoDaDanLiuRuZengZhangLv;
-    private long chaoDaDanLiuChu;
-    private int chaoDaDanLiuChuZhanBi;
-    private int chaoDaDanLiuChuZengZhangLv;
-    private long daDanLiuRu;
-    private int daDanLiuRuZhanBi;
-    private int daDanLiuRuZengZhangLv;
-    private long daDanLiuChu;
-    private int daDanLiuChuZhanBi;
-    private int daDanLiuChuZengZhangLv;
-    private long xiaoDanLiuRu;
-    private int xiaoDanLiuRuZhanBi;
-    private int xiaoDanLiuRuZengZhangLv;
-    private long xiaoDanLiuChu;
-    private int xiaoDanLiuChuZhanBi;
-    private int xiaoDanLiuChuZengZhangLv;
-    private long sanDanLiuRu;
-    private int sanDanLiuRuZhanBi;
-    private int sanDanLiuRuZengZhangLv;
-    private long sanDanLiuChu;
-    private int sanDanLiuChuZhanBi;
-    private int sanDanLiuChuZengZhangLv;
-    private long qiTaChengJiaoJinE;
-    private int qiTaZhanBi;
-    private int qiTaZengZhanLv;
+    private Long heJiChengJiao;
+    private Long jingLiuRu;
+    private Integer jingLiuRuLv;
+    private Long chaoDaDanLiuRu;
+    private Integer chaoDaDanLiuRuZhanBi;
+    private Integer chaoDaDanLiuRuZengZhangLv;
+    private Long chaoDaDanLiuChu;
+    private Integer chaoDaDanLiuChuZhanBi;
+    private Integer chaoDaDanLiuChuZengZhangLv;
+    private Long daDanLiuRu;
+    private Integer daDanLiuRuZhanBi;
+    private Integer daDanLiuRuZengZhangLv;
+    private Long daDanLiuChu;
+    private Integer daDanLiuChuZhanBi;
+    private Integer daDanLiuChuZengZhangLv;
+    private Long xiaoDanLiuRu;
+    private Integer xiaoDanLiuRuZhanBi;
+    private Integer xiaoDanLiuRuZengZhangLv;
+    private Long xiaoDanLiuChu;
+    private Integer xiaoDanLiuChuZhanBi;
+    private Integer xiaoDanLiuChuZengZhangLv;
+    private Long sanDanLiuRu;
+    private Integer sanDanLiuRuZhanBi;
+    private Integer sanDanLiuRuZengZhangLv;
+    private Long sanDanLiuChu;
+    private Integer sanDanLiuChuZhanBi;
+    private Integer sanDanLiuChuZengZhangLv;
+    private Long qiTaChengJiaoJinE;
+    private Integer qiTaZhanBi;
+    private Integer qiTaZengZhanLv;
     private Date createAt;
 
     public Integer getId() {
@@ -89,243 +89,243 @@ public class StocksZjlxHXEntity  implements java.io.Serializable  {
         this.date = date;
     }
 
-    public long getHeJiChengJiao() {
+    public Long getHeJiChengJiao() {
         return heJiChengJiao;
     }
 
-    public void setHeJiChengJiao(long heJiChengJiao) {
+    public void setHeJiChengJiao(Long heJiChengJiao) {
         this.heJiChengJiao = heJiChengJiao;
     }
 
-    public long getJingLiuRu() {
+    public Long getJingLiuRu() {
         return jingLiuRu;
     }
 
-    public void setJingLiuRu(long jingLiuRu) {
+    public void setJingLiuRu(Long jingLiuRu) {
         this.jingLiuRu = jingLiuRu;
     }
 
-    public int getJingLiuRuLv() {
+    public Integer getJingLiuRuLv() {
         return jingLiuRuLv;
     }
 
-    public void setJingLiuRuLv(int jingLiuRuLv) {
+    public void setJingLiuRuLv(Integer jingLiuRuLv) {
         this.jingLiuRuLv = jingLiuRuLv;
     }
 
-    public long getChaoDaDanLiuRu() {
+    public Long getChaoDaDanLiuRu() {
         return chaoDaDanLiuRu;
     }
 
-    public void setChaoDaDanLiuRu(long chaoDaDanLiuRu) {
+    public void setChaoDaDanLiuRu(Long chaoDaDanLiuRu) {
         this.chaoDaDanLiuRu = chaoDaDanLiuRu;
     }
 
-    public int getChaoDaDanLiuRuZhanBi() {
+    public Integer getChaoDaDanLiuRuZhanBi() {
         return chaoDaDanLiuRuZhanBi;
     }
 
-    public void setChaoDaDanLiuRuZhanBi(int chaoDaDanLiuRuZhanBi) {
+    public void setChaoDaDanLiuRuZhanBi(Integer chaoDaDanLiuRuZhanBi) {
         this.chaoDaDanLiuRuZhanBi = chaoDaDanLiuRuZhanBi;
     }
 
-    public int getChaoDaDanLiuRuZengZhangLv() {
+    public Integer getChaoDaDanLiuRuZengZhangLv() {
         return chaoDaDanLiuRuZengZhangLv;
     }
 
-    public void setChaoDaDanLiuRuZengZhangLv(int chaoDaDanLiuRuZengZhangLv) {
+    public void setChaoDaDanLiuRuZengZhangLv(Integer chaoDaDanLiuRuZengZhangLv) {
         this.chaoDaDanLiuRuZengZhangLv = chaoDaDanLiuRuZengZhangLv;
     }
 
-    public long getChaoDaDanLiuChu() {
+    public Long getChaoDaDanLiuChu() {
         return chaoDaDanLiuChu;
     }
 
-    public void setChaoDaDanLiuChu(long chaoDaDanLiuChu) {
+    public void setChaoDaDanLiuChu(Long chaoDaDanLiuChu) {
         this.chaoDaDanLiuChu = chaoDaDanLiuChu;
     }
 
-    public int getChaoDaDanLiuChuZhanBi() {
+    public Integer getChaoDaDanLiuChuZhanBi() {
         return chaoDaDanLiuChuZhanBi;
     }
 
-    public void setChaoDaDanLiuChuZhanBi(int chaoDaDanLiuChuZhanBi) {
+    public void setChaoDaDanLiuChuZhanBi(Integer chaoDaDanLiuChuZhanBi) {
         this.chaoDaDanLiuChuZhanBi = chaoDaDanLiuChuZhanBi;
     }
 
-    public int getChaoDaDanLiuChuZengZhangLv() {
+    public Integer getChaoDaDanLiuChuZengZhangLv() {
         return chaoDaDanLiuChuZengZhangLv;
     }
 
-    public void setChaoDaDanLiuChuZengZhangLv(int chaoDaDanLiuChuZengZhangLv) {
+    public void setChaoDaDanLiuChuZengZhangLv(Integer chaoDaDanLiuChuZengZhangLv) {
         this.chaoDaDanLiuChuZengZhangLv = chaoDaDanLiuChuZengZhangLv;
     }
 
-    public long getDaDanLiuRu() {
+    public Long getDaDanLiuRu() {
         return daDanLiuRu;
     }
 
-    public void setDaDanLiuRu(long daDanLiuRu) {
+    public void setDaDanLiuRu(Long daDanLiuRu) {
         this.daDanLiuRu = daDanLiuRu;
     }
 
-    public int getDaDanLiuRuZhanBi() {
+    public Integer getDaDanLiuRuZhanBi() {
         return daDanLiuRuZhanBi;
     }
 
-    public void setDaDanLiuRuZhanBi(int daDanLiuRuZhanBi) {
+    public void setDaDanLiuRuZhanBi(Integer daDanLiuRuZhanBi) {
         this.daDanLiuRuZhanBi = daDanLiuRuZhanBi;
     }
 
-    public int getDaDanLiuRuZengZhangLv() {
+    public Integer getDaDanLiuRuZengZhangLv() {
         return daDanLiuRuZengZhangLv;
     }
 
-    public void setDaDanLiuRuZengZhangLv(int daDanLiuRuZengZhangLv) {
+    public void setDaDanLiuRuZengZhangLv(Integer daDanLiuRuZengZhangLv) {
         this.daDanLiuRuZengZhangLv = daDanLiuRuZengZhangLv;
     }
 
-    public long getDaDanLiuChu() {
+    public Long getDaDanLiuChu() {
         return daDanLiuChu;
     }
 
-    public void setDaDanLiuChu(long daDanLiuChu) {
+    public void setDaDanLiuChu(Long daDanLiuChu) {
         this.daDanLiuChu = daDanLiuChu;
     }
 
-    public int getDaDanLiuChuZhanBi() {
+    public Integer getDaDanLiuChuZhanBi() {
         return daDanLiuChuZhanBi;
     }
 
-    public void setDaDanLiuChuZhanBi(int daDanLiuChuZhanBi) {
+    public void setDaDanLiuChuZhanBi(Integer daDanLiuChuZhanBi) {
         this.daDanLiuChuZhanBi = daDanLiuChuZhanBi;
     }
 
-    public int getDaDanLiuChuZengZhangLv() {
+    public Integer getDaDanLiuChuZengZhangLv() {
         return daDanLiuChuZengZhangLv;
     }
 
-    public void setDaDanLiuChuZengZhangLv(int daDanLiuChuZengZhangLv) {
+    public void setDaDanLiuChuZengZhangLv(Integer daDanLiuChuZengZhangLv) {
         this.daDanLiuChuZengZhangLv = daDanLiuChuZengZhangLv;
     }
 
-    public long getXiaoDanLiuRu() {
+    public Long getXiaoDanLiuRu() {
         return xiaoDanLiuRu;
     }
 
-    public void setXiaoDanLiuRu(long xiaoDanLiuRu) {
+    public void setXiaoDanLiuRu(Long xiaoDanLiuRu) {
         this.xiaoDanLiuRu = xiaoDanLiuRu;
     }
 
-    public int getXiaoDanLiuRuZhanBi() {
+    public Integer getXiaoDanLiuRuZhanBi() {
         return xiaoDanLiuRuZhanBi;
     }
 
-    public void setXiaoDanLiuRuZhanBi(int xiaoDanLiuRuZhanBi) {
+    public void setXiaoDanLiuRuZhanBi(Integer xiaoDanLiuRuZhanBi) {
         this.xiaoDanLiuRuZhanBi = xiaoDanLiuRuZhanBi;
     }
 
-    public int getXiaoDanLiuRuZengZhangLv() {
+    public Integer getXiaoDanLiuRuZengZhangLv() {
         return xiaoDanLiuRuZengZhangLv;
     }
 
-    public void setXiaoDanLiuRuZengZhangLv(int xiaoDanLiuRuZengZhangLv) {
+    public void setXiaoDanLiuRuZengZhangLv(Integer xiaoDanLiuRuZengZhangLv) {
         this.xiaoDanLiuRuZengZhangLv = xiaoDanLiuRuZengZhangLv;
     }
 
-    public long getXiaoDanLiuChu() {
+    public Long getXiaoDanLiuChu() {
         return xiaoDanLiuChu;
     }
 
-    public void setXiaoDanLiuChu(long xiaoDanLiuChu) {
+    public void setXiaoDanLiuChu(Long xiaoDanLiuChu) {
         this.xiaoDanLiuChu = xiaoDanLiuChu;
     }
 
-    public int getXiaoDanLiuChuZhanBi() {
+    public Integer getXiaoDanLiuChuZhanBi() {
         return xiaoDanLiuChuZhanBi;
     }
 
-    public void setXiaoDanLiuChuZhanBi(int xiaoDanLiuChuZhanBi) {
+    public void setXiaoDanLiuChuZhanBi(Integer xiaoDanLiuChuZhanBi) {
         this.xiaoDanLiuChuZhanBi = xiaoDanLiuChuZhanBi;
     }
 
-    public int getXiaoDanLiuChuZengZhangLv() {
+    public Integer getXiaoDanLiuChuZengZhangLv() {
         return xiaoDanLiuChuZengZhangLv;
     }
 
-    public void setXiaoDanLiuChuZengZhangLv(int xiaoDanLiuChuZengZhangLv) {
+    public void setXiaoDanLiuChuZengZhangLv(Integer xiaoDanLiuChuZengZhangLv) {
         this.xiaoDanLiuChuZengZhangLv = xiaoDanLiuChuZengZhangLv;
     }
 
-    public long getSanDanLiuRu() {
+    public Long getSanDanLiuRu() {
         return sanDanLiuRu;
     }
 
-    public void setSanDanLiuRu(long sanDanLiuRu) {
+    public void setSanDanLiuRu(Long sanDanLiuRu) {
         this.sanDanLiuRu = sanDanLiuRu;
     }
 
-    public int getSanDanLiuRuZhanBi() {
+    public Integer getSanDanLiuRuZhanBi() {
         return sanDanLiuRuZhanBi;
     }
 
-    public void setSanDanLiuRuZhanBi(int sanDanLiuRuZhanBi) {
+    public void setSanDanLiuRuZhanBi(Integer sanDanLiuRuZhanBi) {
         this.sanDanLiuRuZhanBi = sanDanLiuRuZhanBi;
     }
 
-    public int getSanDanLiuRuZengZhangLv() {
+    public Integer getSanDanLiuRuZengZhangLv() {
         return sanDanLiuRuZengZhangLv;
     }
 
-    public void setSanDanLiuRuZengZhangLv(int sanDanLiuRuZengZhangLv) {
+    public void setSanDanLiuRuZengZhangLv(Integer sanDanLiuRuZengZhangLv) {
         this.sanDanLiuRuZengZhangLv = sanDanLiuRuZengZhangLv;
     }
 
-    public long getSanDanLiuChu() {
+    public Long getSanDanLiuChu() {
         return sanDanLiuChu;
     }
 
-    public void setSanDanLiuChu(long sanDanLiuChu) {
+    public void setSanDanLiuChu(Long sanDanLiuChu) {
         this.sanDanLiuChu = sanDanLiuChu;
     }
 
-    public int getSanDanLiuChuZhanBi() {
+    public Integer getSanDanLiuChuZhanBi() {
         return sanDanLiuChuZhanBi;
     }
 
-    public void setSanDanLiuChuZhanBi(int sanDanLiuChuZhanBi) {
+    public void setSanDanLiuChuZhanBi(Integer sanDanLiuChuZhanBi) {
         this.sanDanLiuChuZhanBi = sanDanLiuChuZhanBi;
     }
 
-    public int getSanDanLiuChuZengZhangLv() {
+    public Integer getSanDanLiuChuZengZhangLv() {
         return sanDanLiuChuZengZhangLv;
     }
 
-    public void setSanDanLiuChuZengZhangLv(int sanDanLiuChuZengZhangLv) {
+    public void setSanDanLiuChuZengZhangLv(Integer sanDanLiuChuZengZhangLv) {
         this.sanDanLiuChuZengZhangLv = sanDanLiuChuZengZhangLv;
     }
 
-    public long getQiTaChengJiaoJinE() {
+    public Long getQiTaChengJiaoJinE() {
         return qiTaChengJiaoJinE;
     }
 
-    public void setQiTaChengJiaoJinE(long qiTaChengJiaoJinE) {
+    public void setQiTaChengJiaoJinE(Long qiTaChengJiaoJinE) {
         this.qiTaChengJiaoJinE = qiTaChengJiaoJinE;
     }
 
-    public int getQiTaZhanBi() {
+    public Integer getQiTaZhanBi() {
         return qiTaZhanBi;
     }
 
-    public void setQiTaZhanBi(int qiTaZhanBi) {
+    public void setQiTaZhanBi(Integer qiTaZhanBi) {
         this.qiTaZhanBi = qiTaZhanBi;
     }
 
-    public int getQiTaZengZhanLv() {
+    public Integer getQiTaZengZhanLv() {
         return qiTaZengZhanLv;
     }
 
-    public void setQiTaZengZhanLv(int qiTaZengZhanLv) {
+    public void setQiTaZengZhanLv(Integer qiTaZengZhanLv) {
         this.qiTaZengZhanLv = qiTaZengZhanLv;
     }
 

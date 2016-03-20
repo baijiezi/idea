@@ -19,7 +19,7 @@ public class IndexStatistics {
     public static void main(String[] args){
         try{
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = format.parse("2016-03-10");
+            Date date = format.parse("2016-03-15");
             StocksPriceDao dao  = new StocksPriceDao();
             List<StocksPriceEntity> list = dao.getByDate(date);
             date.setDate(date.getDate()+1);
