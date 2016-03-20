@@ -63,9 +63,9 @@ public class StockPriceTask {
 
             for(StocksEntity stock : list){
                 logger.info("==============================StockPriceTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
-                if(!stock.getCode().equals("002340")){
-                    continue;
-                }
+//                if(!stock.getCode().equals("002340")){
+//                    continue;
+//                }
 
                 try{
                     //已指定Url

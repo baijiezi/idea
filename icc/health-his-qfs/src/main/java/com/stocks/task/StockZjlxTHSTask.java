@@ -59,9 +59,9 @@ public class StockZjlxThsTask {
 
             for(StocksEntity stock : list){
                 logger.info("StockZjlxThsTask:" + stock.getCode());
-                if(!stock.getCode().equals("002550")){
-                    continue;
-                }
+//                if(!stock.getCode().equals("002550")){
+//                    continue;
+//                }
 
                 try{
                     if(stock.getZjlsThsTaskType()!=null && stock.getZjlsThsTaskType().equals(Constants.ZJLX_THS_URL_TYPE_1)){
