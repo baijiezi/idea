@@ -1,31 +1,23 @@
-package com.stocks.entity;
+package com.stocks.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
  * User: BaiJiezi
  * Date: 16-3-21
- * Time: 下午2:29
+ * Time: 下午3:40
  * To change this template use File | Settings | File Templates.
  */
-@Entity
-@Table(name = "sic_stocks_gqdjr")
-public class StocksGqdjrEntity implements Serializable {
-
-    private static final Long serialVersionUID = 4025472263257964504L;
-
-    @Id
-    @GeneratedValue
+public class StocksFenHongDto {
     private Integer id;
     private String code;
     private String name;
     private Date date;
+    private String fenHongFangAn;
+    private Long paiXianJinE;
+    private Integer meiGuShouYi;
+    private String remark;
     private Date createAt;
 
     public Integer getId() {
@@ -58,6 +50,38 @@ public class StocksGqdjrEntity implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getFenHongFangAn() {
+        return fenHongFangAn;
+    }
+
+    public void setFenHongFangAn(String fenHongFangAn) {
+        this.fenHongFangAn = fenHongFangAn;
+    }
+
+    public Long getPaiXianJinE() {
+        return paiXianJinE;
+    }
+
+    public void setPaiXianJinE(Long paiXianJinE) {
+        this.paiXianJinE = paiXianJinE;
+    }
+
+    public Integer getMeiGuShouYi() {
+        return meiGuShouYi;
+    }
+
+    public void setMeiGuShouYi(Integer meiGuShouYi) {
+        this.meiGuShouYi = meiGuShouYi;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public Date getCreateAt() {
