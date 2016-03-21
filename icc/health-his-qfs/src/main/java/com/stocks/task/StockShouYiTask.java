@@ -1,5 +1,8 @@
 package com.stocks.task;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created with IntelliJ IDEA.
  * User: BaiJiezi
@@ -10,8 +13,15 @@ package com.stocks.task;
 public class StockShouYiTask {
 
 
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    public static void main(String[] args){
+        StockShouYiTask stockShouYiTask = new StockShouYiTask();
+        stockShouYiTask.execute();
 
+    }
 
-
+    public void execute(){
+        logger.info("StockPriceTask  execute");
+    }
 }
