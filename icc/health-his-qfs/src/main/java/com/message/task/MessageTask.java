@@ -43,7 +43,7 @@ public class MessageTask {
             for(MessageEntity entity : list){
                 logger.info("==============================MessageTask===============================");
                 try{
-//                    service.send(entity);
+                    service.send(entity);
                 }catch (Exception e){
                     logger.error("MessageTask 异常：", e);
                 }
@@ -53,7 +53,7 @@ public class MessageTask {
             session.getTransaction().commit();
             session.close();
             HibernateUtil.closeSessionFactory();
-            logger.info("共发送信息 " + list.size() + " 条");
+            logger.info("共发 " + list.size() + " 条");
         } catch (Exception e){
             logger.error("MessageTask 任务异常：", e);
         }
