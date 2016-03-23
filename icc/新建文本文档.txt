@@ -1,15 +1,12 @@
+http://stock.quote.stockstar.com/dividend/bonus_600887.shtml
 
-曲线
-
-连接池
-
-价格K图
-
-
-zjlx K图
-
-
-《证券市场基础知识》
-《证券交易》
-
-
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding:gzip, deflate, sdch
+Accept-Language:zh-CN,zh;q=0.8
+Cache-Control:max-age=0
+Connection:keep-alive
+Cookie:SSUID=SS145655535615502038832572672067; tma=39192929.30872889.1458656711278.1458656711278.1458656711278.1; tmd=1.39192929.30872889.1458656711278.; bfd_g=8a7bc81f66bd068d00007a8a0024cc5f5621e7f8; vjuids=36ab94abf.1539eb73a26.0.37136682; vjlast=1458656721.1458656721.30; STOCK_STAR_ADID=https%3A//www.baidu.com/link%3Furl%3DS1Lqg1gXr0u35r2HI1LRm3OYk2yEZZq22dgbadzfU1n0qfrjemhCynLFR7zHQkVMdTuarIHztwqpJKfCqzmX4QSsnOivpac8qQ8CtfkLhUC%26wd%3D%26eqid%3Df0bbe17d0002784a0000000656f2a9c9; WT_FPC=id=23a7a5c6014066e0c171458655225868:lv=1458744231679:ss=1458744016881; Hm_lvt_d2eddf9b155bdbd9ea015490aef570fa=1456555965,1458655226,1458656723,1458744017; Hm_lpvt_d2eddf9b155bdbd9ea015490aef570fa=1458744232
+Host:stock.quote.stockstar.com
+Referer:http://stock.quote.stockstar.com/dividend_600887.shtml
+Upgrade-Insecure-Requests:1
+User-Agent:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36
