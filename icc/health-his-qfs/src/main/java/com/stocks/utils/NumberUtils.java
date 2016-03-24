@@ -18,7 +18,7 @@ public class NumberUtils {
     //单位：个，元
     public static int toInt(String str){
         System.out.println("str:" + str);
-        if(str==null || str.equals("") || str.equals("null")){
+        if(str==null || str.equals("") || str.equals("null") || str.equals("--")){
             return 0;
         }
         str = str.replace("%", "");
@@ -62,7 +62,7 @@ public class NumberUtils {
     //单位：角， 十分之一
     public static int toIntDeci(String str){
         System.out.println("str:" + str);
-        if(str==null || str.equals("") || str.equals("null")){
+        if(str==null || str.equals("") || str.equals("null") || str.equals("--")){
             return 0;
         }
         str = str.replace("%", "");
@@ -109,7 +109,7 @@ public class NumberUtils {
     //单位：分，百分之一
     public static int toIntCenti(String str){
         System.out.println("str:" + str);
-        if(str==null || str.equals("") || str.equals("null")){
+        if(str==null || str.equals("") || str.equals("null") || str.equals("--")){
             return 0;
         }
         str = str.replace("%", "");
@@ -156,7 +156,7 @@ public class NumberUtils {
     //单位：毫，千分之一
     public static int toIntMilli(String str){
         System.out.println("str:" + str);
-        if(str==null || str.equals("") || str.equals("null")){
+        if(str==null || str.equals("") || str.equals("null") || str.equals("--")){
             return 0;
         }
         str = str.replace("%", "");
