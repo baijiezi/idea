@@ -2,6 +2,7 @@ package com.test;
 
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
+import org.htmlparser.filters.CssSelectorNodeFilter;
 import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.util.NodeList;
 
@@ -19,10 +20,12 @@ public class HtmlparserTest {
 
     public static void main(String[] args){
         try{
-            String url = "http://vol.stock.hexun.com/603000.shtm";
+            String url = "http://stock.quote.stockstar.com/dividend/bonus_600887.shtml";
             Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
             parser.setEncoding("GB2312");
-            NodeFilter filter = new TagNameFilter("body");
+//            NodeFilter filter = new TagNameFilter("tbody");
+
+            CssSelectorNodeFilter filter = new CssSelectorNodeFilter("tbody[class='tbody_right']");
             NodeList list = parser.extractAllNodesThatMatch(filter);
             System.out.println(list.size());
 

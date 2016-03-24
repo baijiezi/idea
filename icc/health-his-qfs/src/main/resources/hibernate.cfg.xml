@@ -28,8 +28,7 @@
         <mapping class="com.stocks.entity.StocksZjlxDfcfEntity" />
         <mapping class="com.stocks.entity.StocksZjlxHXEntity" />
         <mapping class="com.stocks.entity.StocksZjlxTHSEntity" />
-        <mapping class="com.stocks.entity.StocksGqdjrEntity" />
-        <mapping class="com.stocks.entity.StocksFenHongEntity" />
+        <mapping class="com.stocks.entity.StocksFhsgEntity" />
         <mapping class="com.message.entity.MessageEntity" />
 
     </session-factory>

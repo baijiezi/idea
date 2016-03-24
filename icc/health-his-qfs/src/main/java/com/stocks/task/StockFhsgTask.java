@@ -24,75 +24,51 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Administrator
- * Date: 16-2-27
- * Time: 下午2:05
+ * User: BaiJiezi
+ * Date: 16-3-24
+ * Time: 上午11:53
  * To change this template use File | Settings | File Templates.
  */
-
-
-public class StockTast2 {
+public class StockFhsgTask {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args){
-        StockTast2 stockTask2 = new StockTast2();
-        stockTask2.execute();
+        StockFhsgTask stockFhsgTask = new StockFhsgTask();
+        stockFhsgTask.execute();
     }
 
     public void execute(){
-        logger.info("StockTast2  execute");
+        logger.info("StockFhsgTask  execute");
 
         try{
-            String url = "http://bbs.10jqka.com.cn/codelist.html";
+            String url = "http://stock.quote.stockstar.com/dividend/bonus_600887.shtml";
             Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
-            //设置Parser对象的字符编码,一般与网页的字符编码保持一致
-            parser.setEncoding("gbk");
-            CssSelectorNodeFilter divFilter = new CssSelectorNodeFilter("div[class='bbsilst_wei3']");      //  "div[id='someid'] .className a"       "div[class='dd']"
-            NodeList list = parser.extractAllNodesThatMatch(divFilter);
+            parser.setEncoding("GB2312");
+//            CssSelectorNodeFilter filter = new CssSelectorNodeFilter("tbody[class='tbody_right']");
+            TagNameFilter filter = new TagNameFilter("table");
+            NodeList list = parser.extractAllNodesThatMatch(filter);
+            System.out.println("list.size: " + list.size());
             List data = new ArrayList<StocksDto>();
             for(NodeIterator i = list.elements(); i.hasMoreNodes(); ){
                 Node node = i.nextNode();
-                NodeList childs = node.getChildren();
-                String exchange = "";
-                for(NodeIterator j = childs.elements(); j.hasMoreNodes(); ){
-                    Node child = j.nextNode();
-                    if(child.getText()!=null && child.getText().equals("h2")){
-                        exchange = child.toPlainTextString();
-                    }
-                }
-                //去除基金部分
-                if(exchange!=null &&exchange.equals("基金")){
-                    continue;
-                }
-
+                System.out.println(node.toHtml());
                 Parser parser1 = new Parser(node.toHtml());
-                NodeFilter filter = new TagNameFilter("a");
-                NodeList list2 = parser1.extractAllNodesThatMatch(filter);
-                for(NodeIterator k = list2.elements(); k.hasMoreNodes(); ){
-                    LinkTag n = (LinkTag) k.nextNode();
-                    if(n.getAttribute("title")!=null && !n.getAttribute("title").equals("")){
-                        String text = n.toPlainTextString();
-                        int index = text.lastIndexOf(" ");
-                        StocksDto stocksDto = new StocksDto();
-                        stocksDto.setName(text.substring(0, index).replace(" ", ""));
-                        stocksDto.setCode(text.substring(index+1));
-                        stocksDto.setExchange(exchange);
-                        data.add(stocksDto);
-                    }
-                }
+                NodeFilter filter2 = new TagNameFilter("tr");
+                NodeList list2 = parser1.extractAllNodesThatMatch(filter2);
+                System.out.println("list2.size: " + list2.size());
+//                for(NodeIterator k = list2.elements(); k.hasMoreNodes(); ){
+//                    System.out.println("==");
+//                }
             }
-
-            updateData(data);
-
+//            updateData(data);
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
 
-    public void updateData(List<StocksDto> data){
+    private void updateData(List<StocksDto> data){
         if(data==null || data.size()==0){
             return;
         }
@@ -102,13 +78,15 @@ public class StockTast2 {
             StocksDao dao = new StocksDao();
             StocksEntity entity = dao.getByCode(stocksDto.getCode(), session);
             if(entity!=null){
-//                dao.update(stocksEntity, session);
+                entity.setDetailUrl(stocksDto.getDetailUrl());
+                dao.update(entity, session);
             }
             else{
                 StocksEntity stocksEntity = new StocksEntity();
                 stocksEntity.setName(stocksDto.getName());
                 stocksEntity.setCode(stocksDto.getCode());
                 stocksEntity.setExchange(stocksDto.getExchange());
+                stocksEntity.setDetailUrl(stocksDto.getDetailUrl());
                 stocksEntity.setType(stocksDto.getType());
                 stocksEntity.setSubType(stocksDto.getSubType());
                 stocksEntity.setCreateAt(new Date());
@@ -119,5 +97,7 @@ public class StockTast2 {
         session.close();
         HibernateUtil.closeSessionFactory();
     }
+
+
 
 }
