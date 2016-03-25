@@ -99,13 +99,12 @@ public class StockFhsgTask {
                             }
                         }
                     }
-                    updateData(data);
-                    logger.info("共完成更新分红送股数据 " + data.size() + " 条");
                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }
-
+            updateData(data);
+            logger.info("完成更新分红送股数据 " + data.size() + " 条");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -121,10 +120,7 @@ public class StockFhsgTask {
         StocksFhsgDao dao = new StocksFhsgDao();
         for(StocksFhsgDto dto : data){
             StocksFhsgEntity entity = dao.getByCodeAndGongGaoRi(dto.getCode(), dto.getGongGaoRi());
-            if(entity!=null){
-                dao.update(entity, session);
-            }
-            else{
+            if(entity == null){
                 StocksFhsgEntity entity1 = new StocksFhsgEntity();
                 entity1.setCode(dto.getCode());
                 entity1.setName(dto.getName());
