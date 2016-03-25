@@ -26,7 +26,7 @@ public class StocksDao {
         session.beginTransaction();
 
         try{
-            Query query = session.createQuery(" from StocksEntity ");
+            Query query = session.createQuery(" from StocksEntity s where s.status = 0");
             List<StocksEntity> list = query.list();
             if(list!=null && list.size()>0) {
                 return list;
@@ -109,6 +109,13 @@ public class StocksDao {
             e.printStackTrace();
         }
 
+    }
+
+
+    public static void main(String[] args){
+        StocksDao dao = new StocksDao();
+        List<StocksEntity> list = dao.getAll();
+        System.out.println(list.size());
     }
 
 }

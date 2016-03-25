@@ -26,6 +26,7 @@ public class StocksDto {
     private Date zjlsHxUpdate;
     private String zjlsThsTaskType;
     private Date zjlsThsUpdate;
+    private Integer status;
     private Date createAt;
 
     public Integer getId() {
@@ -146,6 +147,14 @@ public class StocksDto {
 
     public void setZjlsThsUpdate(Date zjlsThsUpdate) {
         this.zjlsThsUpdate = zjlsThsUpdate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Date getCreateAt() {
