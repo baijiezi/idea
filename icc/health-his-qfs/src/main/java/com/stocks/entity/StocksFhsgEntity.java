@@ -32,6 +32,7 @@ public class StocksFhsgEntity  implements Serializable {
     private Date dengJiRi;
     private Date chuQuanRi;
     private String remark;
+    private Integer meiGuFenHong;
     private Date createAt;
 
     public Integer getId() {
@@ -112,6 +113,14 @@ public class StocksFhsgEntity  implements Serializable {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Integer getMeiGuFenHong() {
+        return meiGuFenHong;
+    }
+
+    public void setMeiGuFenHong(Integer meiGuFenHong) {
+        this.meiGuFenHong = meiGuFenHong;
     }
 
     public Date getCreateAt() {

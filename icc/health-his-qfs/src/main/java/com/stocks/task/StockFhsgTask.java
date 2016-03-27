@@ -57,51 +57,55 @@ public class StockFhsgTask {
 
             for(StocksEntity stock : list){
                 logger.info("==============================StockFhsgTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
-//                if(!stock.getCode().equals("600887")){
-//                    continue;
-//                }
-                try{
-                    String url = "http://stock.quote.stockstar.com/dividend/bonus_"+stock.getCode()+".shtml";
-                    Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
-                    parser.setEncoding("GB2312");
-                    TagNameFilter filter = new TagNameFilter("table");
-                    NodeList li = parser.extractAllNodesThatMatch(filter);
-                    System.out.println("list.size: " + li.size());
-                    for(NodeIterator i = li.elements(); i.hasMoreNodes(); ){
-                        TableTag node = (TableTag) i.nextNode();
-                        if(node.getAttribute("class")==null || !node.getAttribute("class").equals("globalTable trHover")){
-                            continue;
-                        }
-                        System.out.println(node.toHtml());
-                        Parser parser1 = new Parser(node.toHtml());
-                        NodeFilter filter2 = new TagNameFilter("tr");
-                        NodeList list2 = parser1.extractAllNodesThatMatch(filter2);
-                        System.out.println("list2.size: " + list2.size());
-                        for(NodeIterator k = list2.elements(); k.hasMoreNodes(); ){
-                            try{
-                                Node n = k.nextNode();
-                                Parser parser3 = new Parser(n.toHtml());
-                                NodeFilter filter3 = new TagNameFilter("td");
-                                NodeList list3 = parser3.extractAllNodesThatMatch(filter3);
-                                StocksFhsgDto dto = new StocksFhsgDto();
-                                dto.setCode(stock.getCode());
-                                dto.setName(stock.getName());
-                                dto.setGongGaoRi(DateUtils.strToDate(list3.elementAt(1).toPlainTextString()));
-                                dto.setFenHong(NumberUtils.toIntMilli(list3.elementAt(2).toPlainTextString()));
-                                dto.setSongGu(NumberUtils.toInt(list3.elementAt(3).toPlainTextString()));
-                                dto.setZhuanZeng(NumberUtils.toInt(list3.elementAt(4).toPlainTextString()));
-                                dto.setDengJiRi(DateUtils.strToDate(list3.elementAt(5).toPlainTextString()));
-                                dto.setChuQuanRi(DateUtils.strToDate(list3.elementAt(6).toPlainTextString()));
-                                dto.setRemark(list3.elementAt(7).toPlainTextString());
-                                data.add(dto);
-                            }catch (Exception e){
-                                logger.info("StockFhsgTask异常:", e);
+                if(stock.getId()>=3000 && stock.getId()<3800){
+                    try{
+//                        if(stock.getCode().equals("300489")){
+//                            logger.info("");
+//                        }
+                        String url = "http://stock.quote.stockstar.com/dividend/bonus_"+stock.getCode()+".shtml";
+                        Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
+                        parser.setEncoding("GB2312");
+                        TagNameFilter filter = new TagNameFilter("table");
+                        NodeList li = parser.extractAllNodesThatMatch(filter);
+                        System.out.println("list.size: " + li.size());
+                        for(NodeIterator i = li.elements(); i.hasMoreNodes(); ){
+                            TableTag node = (TableTag) i.nextNode();
+                            if(node.getAttribute("class")==null || !node.getAttribute("class").equals("globalTable trHover")){
+                                continue;
+                            }
+                            System.out.println(node.toHtml());
+                            Parser parser1 = new Parser(node.toHtml());
+                            NodeFilter filter2 = new TagNameFilter("tr");
+                            NodeList list2 = parser1.extractAllNodesThatMatch(filter2);
+                            System.out.println("list2.size: " + list2.size());
+                            for(NodeIterator k = list2.elements(); k.hasMoreNodes(); ){
+                                try{
+                                    Node n = k.nextNode();
+                                    Parser parser3 = new Parser(n.toHtml());
+                                    NodeFilter filter3 = new TagNameFilter("td");
+                                    NodeList list3 = parser3.extractAllNodesThatMatch(filter3);
+                                    StocksFhsgDto dto = new StocksFhsgDto();
+                                    dto.setCode(stock.getCode());
+                                    dto.setName(stock.getName());
+                                    dto.setGongGaoRi(DateUtils.strToDate(list3.elementAt(1).toPlainTextString()));
+                                    dto.setFenHong(NumberUtils.toIntMilli(list3.elementAt(2).toPlainTextString()));
+                                    dto.setSongGu(NumberUtils.toInt(list3.elementAt(3).toPlainTextString()));
+                                    dto.setZhuanZeng(NumberUtils.toInt(list3.elementAt(4).toPlainTextString()));
+                                    dto.setDengJiRi(DateUtils.strToDate(list3.elementAt(5).toPlainTextString()));
+                                    dto.setChuQuanRi(DateUtils.strToDate(list3.elementAt(6).toPlainTextString()));
+                                    dto.setRemark(list3.elementAt(7).toPlainTextString());
+                                    dto.setMeiGuFenHong(dto.getFenHong()/10);
+                                    data.add(dto);
+                                }catch (Exception e){
+                                    logger.info("StockFhsgTask异常:", e);
+                                }
                             }
                         }
+                    }catch (Exception e){
+                        e.printStackTrace();
                     }
-                }catch (Exception e){
-                    e.printStackTrace();
                 }
+
             }
             updateData(data);
             logger.info("完成更新分红送股数据 " + data.size() + " 条");
@@ -119,20 +123,22 @@ public class StockFhsgTask {
         session.beginTransaction();
         StocksFhsgDao dao = new StocksFhsgDao();
         for(StocksFhsgDto dto : data){
-            StocksFhsgEntity entity = dao.getByCodeAndGongGaoRi(dto.getCode(), dto.getGongGaoRi());
+//            StocksFhsgEntity entity = dao.getByCodeAndGongGaoRi(dto.getCode(), dto.getGongGaoRi());
+            StocksFhsgEntity entity = null;
             if(entity == null){
-                StocksFhsgEntity entity1 = new StocksFhsgEntity();
-                entity1.setCode(dto.getCode());
-                entity1.setName(dto.getName());
-                entity1.setGongGaoRi(dto.getGongGaoRi());
-                entity1.setFenHong(dto.getFenHong());
-                entity1.setSongGu(dto.getSongGu());
-                entity1.setZhuanZeng(dto.getZhuanZeng());
-                entity1.setDengJiRi(dto.getDengJiRi());
-                entity1.setChuQuanRi(dto.getChuQuanRi());
-                entity1.setRemark(dto.getRemark());
-                entity1.setCreateAt(new Date());
-                dao.save(entity1, session);
+                entity = new StocksFhsgEntity();
+                entity.setCode(dto.getCode());
+                entity.setName(dto.getName());
+                entity.setGongGaoRi(dto.getGongGaoRi());
+                entity.setFenHong(dto.getFenHong());
+                entity.setSongGu(dto.getSongGu());
+                entity.setZhuanZeng(dto.getZhuanZeng());
+                entity.setDengJiRi(dto.getDengJiRi());
+                entity.setChuQuanRi(dto.getChuQuanRi());
+                entity.setRemark(dto.getRemark());
+                entity.setMeiGuFenHong(dto.getMeiGuFenHong());
+                entity.setCreateAt(new Date());
+                dao.save(entity, session);
             }
         }
         session.getTransaction().commit();
