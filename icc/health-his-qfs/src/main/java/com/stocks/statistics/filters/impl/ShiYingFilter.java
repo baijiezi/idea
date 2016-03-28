@@ -15,6 +15,12 @@ public class ShiYingFilter implements IStockChooseFilter{
 
     @Override
     public boolean doFilt(StocksEntity stock) {
+
+
+
+
+
+
         return false;
     }
 }

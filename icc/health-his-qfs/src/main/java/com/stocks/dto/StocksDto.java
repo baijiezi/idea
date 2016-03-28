@@ -17,6 +17,7 @@ public class StocksDto {
     private String exchange;
     private String type;
     private String subType;
+    private String hangYe;
     private String detailUrl;
     private String priceTaskType;
     private Date priceUpdate;
@@ -163,5 +164,13 @@ public class StocksDto {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public String getHangYe() {
+        return hangYe;
+    }
+
+    public void setHangYe(String hangYe) {
+        this.hangYe = hangYe;
     }
 }
