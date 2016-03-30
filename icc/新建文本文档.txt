@@ -1,3 +1,6 @@
+UPDATE sic_stocks s SET s.hangYe = concat_ws(',', hangYe, 'b') WHERE s.`code` IN('166105', '201000', '201001')
+
+
 е╘аждасФ
 600359
 002458
