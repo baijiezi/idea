@@ -52,7 +52,7 @@ public class StockPriceTask {
             StocksDao stocksDao = new StocksDao();
             List<StocksEntity> list = stocksDao.getAll();
             Date date = new Date();
-//            date.setDate(date.getDate()-2);
+//            date.setDate(date.getDate()-1);
             AsyncHttpClientConfig config = new AsyncHttpClientConfig.Builder()
                     .setMaximumConnectionsPerHost(30)
                     .setMaximumConnectionsTotal(300)
