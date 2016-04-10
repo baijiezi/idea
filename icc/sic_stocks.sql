@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
@@ -6,7 +6,7 @@ Source Server Version : 50711
 Source Host           : localhost:3306
 Source Database       : icc
 
-Target Server Type    : MYSQL
+Target Server Type    : MYSQL  aa
 Target Server Version : 50711
 File Encoding         : 65001
 
