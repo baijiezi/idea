@@ -1,5 +1,6 @@
 package com.message.service;
 
+import com.message.dao.MessageDao;
 import com.message.entity.MessageEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +8,8 @@ import com.shcm.bean.BalanceResultBean;
 import com.shcm.bean.SendResultBean;
 import com.shcm.send.DataApi;
 import com.shcm.send.OpenApi;
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +38,62 @@ public class MessageService {
     {
         // 发送短信
         return OpenApi.sendOnce(mobile, content, 0, 0, null);
+    }
+
+    public MessageEntity send(String mobile, String content){
+        MessageDao dao = new MessageDao();
+        MessageEntity entity = new MessageEntity();
+        try{
+            entity.setMobile(mobile);
+            entity.setContent(content);
+
+            // 发送参数
+            OpenApi.initialzeAccount(sOpenUrl, account, authkey, cgid, csid);
+            // 状态及回复参数
+            DataApi.initialzeAccount(sDataUrl, account, authkey);
+            // 取帐户余额
+            BalanceResultBean br = OpenApi.getBalance();
+            if(br == null)
+            {
+                logger.info("获取可用余额时发生异常!");
+                entity.setRemark("获取可用余额时发生异常!");
+                return entity;
+            }
+
+            if(br.getResult() < 1)
+            {
+                logger.info("获取可用余额失败: " + br.getErrMsg());
+                entity.setRemark("获取可用余额失败: " + br.getErrMsg());
+                return entity;
+            }
+            logger.info("可用条数: " + br.getRemain());
+            entity.setRemark("可用条数: " + br.getRemain());
+
+            List<SendResultBean> listItem = sendOnce(entity.getMobile(), entity.getContent());
+            if(listItem != null)
+            {
+                for(SendResultBean t:listItem)
+                {
+                    if(t.getResult() < 1)
+                    {
+                        logger.info("发送提交失败: " + t.getErrMsg());
+                        entity.setRemark("发送提交失败: " + t.getErrMsg());
+                        return entity;
+                    }
+                    logger.info("发送成功: 消息编号<" + t.getMsgId() + "> 总数<" + t.getTotal() + "> 余额<" + t.getRemain() + ">");
+                    entity.setRemark("发送成功: 消息编号<" + t.getMsgId() + "> 总数<" + t.getTotal() + "> 余额<" + t.getRemain() + ">");
+                    entity.setStatus(0);
+                }
+            }
+            entity.setSendTime(new Date());
+            dao.save(entity);
+        }catch(Exception e){
+            logger.error("发送信息异常：", e);
+            entity.setRemark("发送信息异常："+e.getMessage());
+            dao.save(entity);
+        }
+        return entity;
+
     }
 
     public MessageEntity send(MessageEntity entity){

@@ -48,7 +48,19 @@ public class MessageDao {
 
     }
 
+    public void save(MessageEntity entity){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            session.save(entity);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+    }
 
     public void update(MessageEntity entity, Session session){
         try{
@@ -56,7 +68,6 @@ public class MessageDao {
         }catch(Exception e){
             e.printStackTrace();
         }
-
     }
 
 

@@ -21,9 +21,16 @@ public class DateUtils {
     }
 
     public static Date strToDate(String dateStr) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date preTime = sdf.parse(dateStr);
+            Date preTime = null;
+            if(dateStr.length() == 10){
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                preTime = sdf.parse(dateStr);
+            }
+            else if(dateStr.length() == 19){
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                preTime = sdf.parse(dateStr);
+            }
             return preTime;
         } catch (ParseException e) {
             return null;

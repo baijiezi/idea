@@ -19,6 +19,8 @@ public class StocksDto {
     private String subType;
     private String hangYe;
     private String detailUrl;
+    private Integer buyPrice;
+    private Integer salePrice;
     private String priceTaskType;
     private Date priceUpdate;
     private String zjlsDfcfTaskType;
@@ -172,5 +174,21 @@ public class StocksDto {
 
     public void setHangYe(String hangYe) {
         this.hangYe = hangYe;
+    }
+
+    public Integer getBuyPrice() {
+        return buyPrice;
+    }
+
+    public void setBuyPrice(Integer buyPrice) {
+        this.buyPrice = buyPrice;
+    }
+
+    public Integer getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(Integer salePrice) {
+        this.salePrice = salePrice;
     }
 }

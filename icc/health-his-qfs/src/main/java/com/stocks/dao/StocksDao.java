@@ -44,6 +44,29 @@ public class StocksDao {
         return null;
     }
 
+    public List<StocksEntity> getBuySalePrice(){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+
+        try{
+            Query query = session.createQuery(" from StocksEntity s where s.buyPrice > 0 or s.salePrice > 0");
+            List<StocksEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
     public StocksEntity getByCode(String code){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
