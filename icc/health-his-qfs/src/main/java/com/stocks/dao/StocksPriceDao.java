@@ -138,6 +138,31 @@ public class StocksPriceDao {
     }
 
 
+    //SELECT AVG(shouPan) FROM (SELECT * FROM sic_stocks_price p where p.`code`='002340' ORDER BY p.date DESC LIMIT 5) as A
+    public StocksPriceEntity getMA5(String code){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            Query query = session.createSQLQuery("SELECT code, name, date, AVG(shouPan), AVG(junJia), AVG(zhangFu), AVG(zhangDie), AVG(chengJiaoLiang), AVG(ChengJiaoE), AVG(huanShou),AVG(liangBi),MAX(zuiGao)," +
+                    "MIN(zuiDi), AVG(zhenFu), AVG(weiBi), AVG(weiCha) FROM (SELECT * FROM sic_stocks_price p where p.`code`='002340' ORDER BY p.date DESC LIMIT 5) as A");
+            List<StocksPriceEntity> list = query.list();
+                if(list!=null && list.size()>0) {
+                return list.get(0);
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
+
     public boolean save(StocksPriceEntity stocksDailyEntity, Session session){
         try{
             session.save(stocksDailyEntity);
@@ -176,7 +201,8 @@ public class StocksPriceDao {
 
 
     public static void main(String[] args){
-//        StocksPriceDao dao = new StocksPriceDao();
+        StocksPriceDao dao = new StocksPriceDao();
+
 //        List<StocksPriceEntity> list = dao.getByCode("002340");
 //        System.out.println(list.size());
 //        StocksPriceEntity entity = list.get(0);
@@ -187,14 +213,15 @@ public class StocksPriceDao {
 //        HibernateUtil.closeSessionFactory();
 
 
-        StocksPriceDao dao = new StocksPriceDao();
-        List<StocksPriceEntity> list = dao.getByDate("2016-03-08");
-        System.out.println(list.size());
-        StocksPriceEntity entity = list.get(0);
-        System.out.println(entity.getShouPan());
-        System.out.println(entity.getStocksEntity());
-        System.out.println(entity.getStocksEntity().getDetailUrl());
-        HibernateUtil.closeSessionFactory();
+//        List<StocksPriceEntity> list = dao.getByDate("2016-03-08");
+//        System.out.println(list.size());
+//        StocksPriceEntity entity = list.get(0);
+//        System.out.println(entity.getShouPan());
+//        System.out.println(entity.getStocksEntity());
+//        System.out.println(entity.getStocksEntity().getDetailUrl());
+//        HibernateUtil.closeSessionFactory();
+
+        dao.getMA5("");
 
 
 
