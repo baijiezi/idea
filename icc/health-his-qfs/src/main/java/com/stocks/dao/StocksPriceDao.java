@@ -1,11 +1,12 @@
 package com.stocks.dao;
 
-import com.stocks.entity.StocksEntity;
-import com.stocks.entity.StocksPriceEntity;
+import com.stocks.entity.*;
+import com.stocks.utils.DateUtils;
 import com.stocks.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -138,26 +139,133 @@ public class StocksPriceDao {
     }
 
 
-    //SELECT AVG(shouPan) FROM (SELECT * FROM sic_stocks_price p where p.`code`='002340' ORDER BY p.date DESC LIMIT 5) as A
-    public StocksPriceEntity getMA5(String code){
-        Session session = HibernateUtil.getOpenSession();
-        session.beginTransaction();
+    public StocksDailyKLineMA5Entity getMA5(String code, String date, Session session){
         try{
             Query query = session.createSQLQuery("SELECT code, name, date, AVG(shouPan), AVG(junJia), AVG(zhangFu), AVG(zhangDie), AVG(chengJiaoLiang), AVG(ChengJiaoE), AVG(huanShou),AVG(liangBi),MAX(zuiGao)," +
-                    "MIN(zuiDi), AVG(zhenFu), AVG(weiBi), AVG(weiCha) FROM (SELECT * FROM sic_stocks_price p where p.`code`='002340' ORDER BY p.date DESC LIMIT 5) as A");
-            List<StocksPriceEntity> list = query.list();
-                if(list!=null && list.size()>0) {
-                return list.get(0);
+                    "MIN(zuiDi), AVG(zhenFu), AVG(waiPan), AVG(neiPan), AVG(panCha), AVG(panBi), AVG(weiBi), AVG(weiCha) FROM (SELECT * FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 5) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                Object[] temp = (Object[])list.get(0);
+                Date d = (Date)temp[2];
+                if(!DateUtils.getSimpleDate(d).equals(date)){
+                    return null;
+                }
+                StocksDailyKLineMA5Entity entity = new StocksDailyKLineMA5Entity();
+                entity.setCode((String)temp[0]);
+                entity.setName((String) temp[1]);
+                entity.setDate((Date) temp[2]);
+                entity.setShouPan(temp[3]==null ? null : ((BigDecimal)temp[3]).intValue());
+                entity.setJunJia(temp[4]==null ? null : ((BigDecimal)temp[4]).intValue());
+                entity.setZhangFu(temp[5]==null ? null : ((BigDecimal)temp[5]).intValue());
+                entity.setZhangDie(temp[6]==null ? null : ((BigDecimal)temp[6]).intValue());
+                entity.setChengJiaoLiang(temp[7]==null ? null : ((BigDecimal)temp[7]).longValue());
+                entity.setChengJiaoE(temp[8]==null ? null : ((BigDecimal)temp[8]).longValue());
+                entity.setHuanShou(temp[9]==null ? null : ((BigDecimal)temp[9]).intValue());
+                entity.setLiangBi(temp[10]==null ? null : ((BigDecimal)temp[10]).intValue());
+                entity.setZuiGao(temp[11]==null ? null : (Integer)temp[11]);
+                entity.setZuiDi(temp[12]==null ? null : (Integer)temp[12]);
+                entity.setZhenFu(temp[13]==null ? null : ((BigDecimal)temp[13]).intValue());
+                entity.setWaiPan(temp[14]==null ? null : ((BigDecimal)temp[14]).intValue());
+                entity.setNeiPan(temp[15]==null ? null : ((BigDecimal)temp[15]).intValue());
+                entity.setPanCha(temp[16]==null ? null : ((BigDecimal)temp[16]).intValue());
+                entity.setPanBi(temp[17]==null ? null : ((BigDecimal)temp[17]).intValue());
+                entity.setWeiBi(temp[18]==null ? null : ((BigDecimal)temp[18]).intValue());
+                entity.setWeiCha(temp[19]==null ? null : ((BigDecimal)temp[19]).intValue());
+                return entity;
             }
-            else{
-                return null;
-            }
+
+            return null;
         }catch(Exception e){
             e.printStackTrace();
         }
-        session.getTransaction().commit();
-        session.close();
-        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
+
+    public StocksDailyKLineMA10Entity getMA10(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT code, name, date, AVG(shouPan), AVG(junJia), AVG(zhangFu), AVG(zhangDie), AVG(chengJiaoLiang), AVG(ChengJiaoE), AVG(huanShou),AVG(liangBi),MAX(zuiGao)," +
+                    "MIN(zuiDi), AVG(zhenFu), AVG(waiPan), AVG(neiPan), AVG(panCha), AVG(panBi), AVG(weiBi), AVG(weiCha) FROM (SELECT * FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 10) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                Object[] temp = (Object[])list.get(0);
+                Date d = (Date)temp[2];
+                if(!DateUtils.getSimpleDate(d).equals(date)){
+                    return null;
+                }
+                StocksDailyKLineMA10Entity entity = new StocksDailyKLineMA10Entity();
+                entity.setCode((String)temp[0]);
+                entity.setName((String) temp[1]);
+                entity.setDate((Date) temp[2]);
+                entity.setShouPan(temp[3]==null ? null : ((BigDecimal)temp[3]).intValue());
+                entity.setJunJia(temp[4]==null ? null : ((BigDecimal)temp[4]).intValue());
+                entity.setZhangFu(temp[5]==null ? null : ((BigDecimal)temp[5]).intValue());
+                entity.setZhangDie(temp[6]==null ? null : ((BigDecimal)temp[6]).intValue());
+                entity.setChengJiaoLiang(temp[7]==null ? null : ((BigDecimal)temp[7]).longValue());
+                entity.setChengJiaoE(temp[8]==null ? null : ((BigDecimal)temp[8]).longValue());
+                entity.setHuanShou(temp[9]==null ? null : ((BigDecimal)temp[9]).intValue());
+                entity.setLiangBi(temp[10]==null ? null : ((BigDecimal)temp[10]).intValue());
+                entity.setZuiGao(temp[11]==null ? null : (Integer)temp[11]);
+                entity.setZuiDi(temp[12]==null ? null : (Integer)temp[12]);
+                entity.setZhenFu(temp[13]==null ? null : ((BigDecimal)temp[13]).intValue());
+                entity.setWaiPan(temp[14]==null ? null : ((BigDecimal)temp[14]).intValue());
+                entity.setNeiPan(temp[15]==null ? null : ((BigDecimal)temp[15]).intValue());
+                entity.setPanCha(temp[16]==null ? null : ((BigDecimal)temp[16]).intValue());
+                entity.setPanBi(temp[17]==null ? null : ((BigDecimal)temp[17]).intValue());
+                entity.setWeiBi(temp[18]==null ? null : ((BigDecimal)temp[18]).intValue());
+                entity.setWeiCha(temp[19]==null ? null : ((BigDecimal)temp[19]).intValue());
+                return entity;
+            }
+
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+
+    public StocksDailyKLineMA30Entity getMA30(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT code, name, date, AVG(shouPan), AVG(junJia), AVG(zhangFu), AVG(zhangDie), AVG(chengJiaoLiang), AVG(ChengJiaoE), AVG(huanShou),AVG(liangBi),MAX(zuiGao)," +
+                    "MIN(zuiDi), AVG(zhenFu), AVG(waiPan), AVG(neiPan), AVG(panCha), AVG(panBi), AVG(weiBi), AVG(weiCha) FROM (SELECT * FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 30) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                Object[] temp = (Object[])list.get(0);
+                Date d = (Date)temp[2];
+                if(!DateUtils.getSimpleDate(d).equals(date)){
+                    return null;
+                }
+                StocksDailyKLineMA30Entity entity = new StocksDailyKLineMA30Entity();
+                entity.setCode((String)temp[0]);
+                entity.setName((String) temp[1]);
+                entity.setDate((Date) temp[2]);
+                entity.setShouPan(temp[3]==null ? null : ((BigDecimal)temp[3]).intValue());
+                entity.setJunJia(temp[4]==null ? null : ((BigDecimal)temp[4]).intValue());
+                entity.setZhangFu(temp[5]==null ? null : ((BigDecimal)temp[5]).intValue());
+                entity.setZhangDie(temp[6]==null ? null : ((BigDecimal)temp[6]).intValue());
+                entity.setChengJiaoLiang(temp[7]==null ? null : ((BigDecimal)temp[7]).longValue());
+                entity.setChengJiaoE(temp[8]==null ? null : ((BigDecimal)temp[8]).longValue());
+                entity.setHuanShou(temp[9]==null ? null : ((BigDecimal)temp[9]).intValue());
+                entity.setLiangBi(temp[10]==null ? null : ((BigDecimal)temp[10]).intValue());
+                entity.setZuiGao(temp[11]==null ? null : (Integer)temp[11]);
+                entity.setZuiDi(temp[12]==null ? null : (Integer)temp[12]);
+                entity.setZhenFu(temp[13]==null ? null : ((BigDecimal)temp[13]).intValue());
+                entity.setWaiPan(temp[14]==null ? null : ((BigDecimal)temp[14]).intValue());
+                entity.setNeiPan(temp[15]==null ? null : ((BigDecimal)temp[15]).intValue());
+                entity.setPanCha(temp[16]==null ? null : ((BigDecimal)temp[16]).intValue());
+                entity.setPanBi(temp[17]==null ? null : ((BigDecimal)temp[17]).intValue());
+                entity.setWeiBi(temp[18]==null ? null : ((BigDecimal)temp[18]).intValue());
+                entity.setWeiCha(temp[19]==null ? null : ((BigDecimal)temp[19]).intValue());
+                return entity;
+            }
+
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return null;
 
     }
@@ -201,6 +309,7 @@ public class StocksPriceDao {
 
 
     public static void main(String[] args){
+        Session session = HibernateUtil.getOpenSession();
         StocksPriceDao dao = new StocksPriceDao();
 
 //        List<StocksPriceEntity> list = dao.getByCode("002340");
@@ -221,7 +330,7 @@ public class StocksPriceDao {
 //        System.out.println(entity.getStocksEntity().getDetailUrl());
 //        HibernateUtil.closeSessionFactory();
 
-        dao.getMA5("");
+        dao.getMA5("002340", "2016-04-01", session);
 
 
 

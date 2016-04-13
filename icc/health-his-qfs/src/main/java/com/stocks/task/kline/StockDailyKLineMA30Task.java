@@ -1,19 +1,12 @@
 package com.stocks.task.kline;
 
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.AsyncHttpClientConfig;
-import com.ning.http.client.Response;
-import com.stocks.dao.StocksDailyKLineMA5Dao;
+import com.stocks.dao.StocksDailyKLineMA30Dao;
 import com.stocks.dao.StocksDao;
 import com.stocks.dao.StocksPriceDao;
-import com.stocks.dto.StocksPriceDto;
-import com.stocks.entity.StocksDailyKLineMA5Entity;
+import com.stocks.entity.StocksDailyKLineMA30Entity;
 import com.stocks.entity.StocksEntity;
-import com.stocks.entity.StocksPriceEntity;
-import com.stocks.utils.Constants;
 import com.stocks.utils.DateUtils;
 import com.stocks.utils.HibernateUtil;
-import com.stocks.utils.NumberUtils;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,30 +14,28 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.Future;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Administrator
- * Date: 16-4-12
- * Time: 下午4:48
+ * User: BaiJiezi
+ * Date: 16-4-13
+ * Time: 下午11:11
  * To change this template use File | Settings | File Templates.
  */
-public class StockDailyKLineMA5Task {
-
+public class StockDailyKLineMA30Task {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args){
-        StockDailyKLineMA5Task stockDailyKLineMA5Task = new StockDailyKLineMA5Task();
-        stockDailyKLineMA5Task.execute();
+        StockDailyKLineMA30Task stockDailyKLineMA30Task = new StockDailyKLineMA30Task();
+        stockDailyKLineMA30Task.execute();
     }
 
     public void execute(){
-        logger.info("StockDailyKLineMA5Task  execute");
+        logger.info("StockDailyKLineMA30Task  execute");
 
         try{
-            List data = new ArrayList<StocksDailyKLineMA5Entity>();
+            List data = new ArrayList<StocksDailyKLineMA30Entity>();
             StocksDao stocksDao = new StocksDao();
             StocksPriceDao priceDao = new StocksPriceDao();
             List<StocksEntity> list = stocksDao.getAll();
@@ -53,34 +44,34 @@ public class StockDailyKLineMA5Task {
             Session session = HibernateUtil.getOpenSession();
 
             for(StocksEntity stock : list){
-                logger.info("==============================StockDailyKLineMA5Task:" + stock.getName() + "    " + stock.getCode() + "===============================");
+                logger.info("==============================StockDailyKLineMA30Task:" + stock.getName() + "    " + stock.getCode() + "===============================");
                 try{
-                    StocksDailyKLineMA5Entity entity = priceDao.getMA5(stock.getCode(), DateUtils.getSimpleDate(date), session);
+                    StocksDailyKLineMA30Entity entity = priceDao.getMA30(stock.getCode(), DateUtils.getSimpleDate(date), session);
                     if(entity == null){
                         continue;
                     }
                     data.add(entity);
 
                 }catch (Exception e){
-                    logger.error("StockDailyKLineMA5Task异常："+stock.getCode(), e);
+                    logger.error("StockDailyKLineMA30Task异常："+stock.getCode(), e);
                 }
 
             }
             session.close();
             updateData(data);
-            logger.info("共完成DailyKLineMA5 数据" + data.size() + " 条");
+            logger.info("共完成DailyKLineMA30 数据" + data.size() + " 条");
         } catch (Exception e){
-            logger.error("执行StockDailyKLineMA5Task任务异常：", e);
+            logger.error("执行StockDailyKLineMA30Task任务异常：", e);
         }
 
     }
 
 
-    private void updateData(List<StocksDailyKLineMA5Entity> data){
+    private void updateData(List<StocksDailyKLineMA30Entity> data){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
-        StocksDailyKLineMA5Dao dao = new StocksDailyKLineMA5Dao();
-        for(StocksDailyKLineMA5Entity entity : data){
+        StocksDailyKLineMA30Dao dao = new StocksDailyKLineMA30Dao();
+        for(StocksDailyKLineMA30Entity entity : data){
             entity.setCreateTime(new Date());
             dao.save(entity, session);
         }
@@ -88,5 +79,4 @@ public class StockDailyKLineMA5Task {
         session.close();
         HibernateUtil.closeSessionFactory();
     }
-
 }
