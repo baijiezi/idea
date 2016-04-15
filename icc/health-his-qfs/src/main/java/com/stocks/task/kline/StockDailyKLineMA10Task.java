@@ -33,37 +33,36 @@ public class StockDailyKLineMA10Task {
 
     public void execute(){
         logger.info("StockDailyKLineMA10Task  execute");
-
         try{
-            List data = new ArrayList<StocksDailyKLineMA10Entity>();
             StocksDao stocksDao = new StocksDao();
             StocksPriceDao priceDao = new StocksPriceDao();
             List<StocksEntity> list = stocksDao.getAll();
 //            Date date = new Date();
             Date date = DateUtils.strToDate("2016-03-17");
-            Session session = HibernateUtil.getOpenSession();
-
-            for(StocksEntity stock : list){
-                logger.info("==============================StockDailyKLineMA10Task:" + stock.getName() + "    " + stock.getCode() + "===============================");
-                try{
-                    StocksDailyKLineMA10Entity entity = priceDao.getMA10(stock.getCode(), DateUtils.getSimpleDate(date), session);
-                    if(entity == null){
-                        continue;
+            while(date.before(new Date())){
+                List data = new ArrayList<StocksDailyKLineMA10Entity>();
+                Session session = HibernateUtil.getOpenSession();
+                for(StocksEntity stock : list){
+                    logger.info("==============================StockDailyKLineMA10Task:" + stock.getName() + "    " + stock.getCode() + "  " + DateUtils.getSimpleDate(date) +"===============================");
+                    try{
+                        StocksDailyKLineMA10Entity entity = priceDao.getMA10(stock.getCode(), DateUtils.getSimpleDate(date), session);
+                        if(entity == null){
+                            continue;
+                        }
+                        data.add(entity);
+                    }catch (Exception e){
+                        logger.error("StockDailyKLineMA10Task异常："+stock.getCode(), e);
                     }
-                    data.add(entity);
-
-                }catch (Exception e){
-                    logger.error("StockDailyKLineMA10Task异常："+stock.getCode(), e);
                 }
-
+                session.close();
+                HibernateUtil.closeSessionFactory();
+                updateData(data);
+                logger.info(DateUtils.getSimpleDate(date)+ " 共完成DailyKLineMA10 数据" + data.size() + " 条");
+                date.setDate(date.getDate()+1);
             }
-            session.close();
-            updateData(data);
-            logger.info("共完成DailyKLineMA10 数据" + data.size() + " 条");
         } catch (Exception e){
             logger.error("执行StockDailyKLineMA10Task任务异常：", e);
         }
-
     }
 
 

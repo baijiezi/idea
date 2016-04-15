@@ -227,6 +227,50 @@ public class StocksPriceDao {
     }
 
 
+    public StocksDailyKLineMA20Entity getMA20(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT code, name, date, AVG(shouPan), AVG(junJia), AVG(zhangFu), AVG(zhangDie), AVG(chengJiaoLiang), AVG(ChengJiaoE), AVG(huanShou),AVG(liangBi),MAX(zuiGao)," +
+                    "MIN(zuiDi), AVG(zhenFu), AVG(waiPan), AVG(neiPan), AVG(panCha), AVG(panBi), AVG(weiBi), AVG(weiCha) FROM (SELECT * FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 20) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                Object[] temp = (Object[])list.get(0);
+                Date d = (Date)temp[2];
+                if(!DateUtils.getSimpleDate(d).equals(date)){
+                    return null;
+                }
+                StocksDailyKLineMA20Entity entity = new StocksDailyKLineMA20Entity();
+                entity.setCode((String)temp[0]);
+                entity.setName((String) temp[1]);
+                entity.setDate((Date) temp[2]);
+                entity.setShouPan(temp[3]==null ? null : ((BigDecimal)temp[3]).intValue());
+                entity.setJunJia(temp[4]==null ? null : ((BigDecimal)temp[4]).intValue());
+                entity.setZhangFu(temp[5]==null ? null : ((BigDecimal)temp[5]).intValue());
+                entity.setZhangDie(temp[6]==null ? null : ((BigDecimal)temp[6]).intValue());
+                entity.setChengJiaoLiang(temp[7]==null ? null : ((BigDecimal)temp[7]).longValue());
+                entity.setChengJiaoE(temp[8]==null ? null : ((BigDecimal)temp[8]).longValue());
+                entity.setHuanShou(temp[9]==null ? null : ((BigDecimal)temp[9]).intValue());
+                entity.setLiangBi(temp[10]==null ? null : ((BigDecimal)temp[10]).intValue());
+                entity.setZuiGao(temp[11]==null ? null : (Integer)temp[11]);
+                entity.setZuiDi(temp[12]==null ? null : (Integer)temp[12]);
+                entity.setZhenFu(temp[13]==null ? null : ((BigDecimal)temp[13]).intValue());
+                entity.setWaiPan(temp[14]==null ? null : ((BigDecimal)temp[14]).intValue());
+                entity.setNeiPan(temp[15]==null ? null : ((BigDecimal)temp[15]).intValue());
+                entity.setPanCha(temp[16]==null ? null : ((BigDecimal)temp[16]).intValue());
+                entity.setPanBi(temp[17]==null ? null : ((BigDecimal)temp[17]).intValue());
+                entity.setWeiBi(temp[18]==null ? null : ((BigDecimal)temp[18]).intValue());
+                entity.setWeiCha(temp[19]==null ? null : ((BigDecimal)temp[19]).intValue());
+                return entity;
+            }
+
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+
     public StocksDailyKLineMA30Entity getMA30(String code, String date, Session session){
         try{
             Query query = session.createSQLQuery("SELECT code, name, date, AVG(shouPan), AVG(junJia), AVG(zhangFu), AVG(zhangDie), AVG(chengJiaoLiang), AVG(ChengJiaoE), AVG(huanShou),AVG(liangBi),MAX(zuiGao)," +

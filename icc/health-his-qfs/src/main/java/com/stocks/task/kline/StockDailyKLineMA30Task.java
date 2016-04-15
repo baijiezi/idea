@@ -33,37 +33,35 @@ public class StockDailyKLineMA30Task {
 
     public void execute(){
         logger.info("StockDailyKLineMA30Task  execute");
-
         try{
-            List data = new ArrayList<StocksDailyKLineMA30Entity>();
             StocksDao stocksDao = new StocksDao();
             StocksPriceDao priceDao = new StocksPriceDao();
             List<StocksEntity> list = stocksDao.getAll();
 //            Date date = new Date();
-            Date date = DateUtils.strToDate("2016-03-10");
-            Session session = HibernateUtil.getOpenSession();
-
-            for(StocksEntity stock : list){
-                logger.info("==============================StockDailyKLineMA30Task:" + stock.getName() + "    " + stock.getCode() + "===============================");
-                try{
-                    StocksDailyKLineMA30Entity entity = priceDao.getMA30(stock.getCode(), DateUtils.getSimpleDate(date), session);
-                    if(entity == null){
-                        continue;
+            Date date = DateUtils.strToDate("2016-04-14");
+            while(date.before(new Date())){
+                List data = new ArrayList<StocksDailyKLineMA30Entity>();
+                Session session = HibernateUtil.getOpenSession();
+                for(StocksEntity stock : list){
+                    logger.info("==============================StockDailyKLineMA30Task:" + stock.getName() + "    " + stock.getCode() + "  " + DateUtils.getSimpleDate(date) +"===============================");
+                    try{
+                        StocksDailyKLineMA30Entity entity = priceDao.getMA30(stock.getCode(), DateUtils.getSimpleDate(date), session);
+                        if(entity == null){
+                            continue;
+                        }
+                        data.add(entity);
+                    }catch (Exception e){
+                        logger.error("StockDailyKLineMA30Task异常："+stock.getCode(), e);
                     }
-                    data.add(entity);
-
-                }catch (Exception e){
-                    logger.error("StockDailyKLineMA30Task异常："+stock.getCode(), e);
                 }
-
+                session.close();
+                updateData(data);
+                logger.info(DateUtils.getSimpleDate(date) + " 共完成DailyKLineMA30 数据" + data.size() + " 条");
+                date.setDate(date.getDate()+1);
             }
-            session.close();
-            updateData(data);
-            logger.info("共完成DailyKLineMA30 数据" + data.size() + " 条");
         } catch (Exception e){
             logger.error("执行StockDailyKLineMA30Task任务异常：", e);
         }
-
     }
 
 
