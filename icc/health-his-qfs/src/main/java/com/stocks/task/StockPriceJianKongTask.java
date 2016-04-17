@@ -63,37 +63,37 @@ public class StockPriceJianKongTask {
 
                     for(StocksEntity stock : list){
                         logger.info("==============================StockPriceJianKongTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
-
+                        //http://qt.gtimg.cn/r=0.9694567599799484q=s_sz002340,s_sh600399,s_sh601919,s_sh600372,s_sh600868,s_sh600030,s_sz002547,s_sz000932,s_sz000089,s_sh601668,s_sh600880,s_sh601633
                         try{
                             StocksPriceDto dto = new StocksPriceDto();
                             if(stock.getPriceTaskType()!=null && stock.getPriceTaskType().equals(Constants.STOCK_PRICS_URL_TYPE_2)){
-                                String url = "http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=" + stock.getCode() + "1&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback08470946825109422&callback=callback08470946825109422&_=1457240176741";
+                                String url = "http://qt.gtimg.cn/r=0.9694567599799484q=s_sh" + stock.getCode();
                                 logger.info("url:"+ url);
                                 Future r = asyncHttpClient.prepareGet(url).execute();
                                 Response response = (Response) r.get();
                                 String result = response.getResponseBody();
                                 logger.info(result);
-                                String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
-                                String[] temp = str.split(",");
+                                String str = result.substring(result.indexOf("\"")+1, result.lastIndexOf("\""));
+                                String[] temp = str.split("~");
                                 for(int v=0; v<temp.length; v++){
                                     logger.info(v + " " + temp[v]);
                                 }
-                                dto.setShouPan(NumberUtils.toIntMilli(temp[25]));
+                                dto.setShouPan(NumberUtils.toIntMilli(temp[3]));
                             }
 
                             if(stock.getPriceTaskType()!=null && stock.getPriceTaskType().equals(Constants.STOCK_PRICS_URL_TYPE_3)){
-                                String url = "http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=" + stock.getCode() + "2&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback08212962551042438&callback=callback08212962551042438&_=1457186982524";
+                                String url = "http://qt.gtimg.cn/r=0.9694567599799484q=s_sz" + stock.getCode();
                                 logger.info("url:"+ url);
                                 Future r = asyncHttpClient.prepareGet(url).execute();
                                 Response response = (Response) r.get();
                                 String result = response.getResponseBody();
                                 logger.info(result);
-                                String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
-                                String[] temp = str.split(",");
+                                String str = result.substring(result.indexOf("\"")+1, result.lastIndexOf("\""));
+                                String[] temp = str.split("~");
                                 for(int v=0; v<temp.length; v++){
                                     logger.info(v + " " + temp[v]);
                                 }
-                                dto.setShouPan(NumberUtils.toIntMilli(temp[25]));
+                                dto.setShouPan(NumberUtils.toIntMilli(temp[3]));
                             }
 
                             if(stock.getBuyPrice()!=null && stock.getBuyPrice()>0){
@@ -114,7 +114,7 @@ public class StockPriceJianKongTask {
 
                     }
                 }
-                Thread.sleep(10*60*1000);
+                Thread.sleep(5*60*1000);
             }
         } catch (Exception e){
             logger.error("执行StockDailyTask任务异常：", e);
