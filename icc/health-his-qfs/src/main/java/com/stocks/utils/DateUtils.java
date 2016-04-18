@@ -36,4 +36,22 @@ public class DateUtils {
             return null;
         }
     }
+
+    /**
+     * 将一个日期设置成时间是 0时 0分 0秒 的日期
+     */
+    public static Date getDate(Date date) {
+        try{
+            if (date == null) {
+                return null;
+            }
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String dt = format.format(date);
+            Date date1 = format.parse(dt);
+            return date1;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
