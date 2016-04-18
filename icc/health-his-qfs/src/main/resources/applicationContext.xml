@@ -19,6 +19,7 @@
                 <ref bean="stockDailyKLineMA10TaskTrigger" />
                 <ref bean="stockDailyKLineMA20TaskTrigger" />
                 <ref bean="stockDailyKLineMA30TaskTrigger" />
+                <ref bean="stockPriceJianKongTaskTrigger" />
             </list>
         </property>
     </bean>
@@ -157,6 +158,21 @@
         <property name="targetMethod" value="execute" />
     </bean>
     <bean id="stockDailyKLineMA30" class="com.stocks.task.kline.StockDailyKLineMA20Task"></bean>
+
+    <bean id="stockPriceJianKongTaskTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="stockPriceJianKongJobDetail" />
+        <!-- 每10秒运行一次 -->
+        <property name="cronExpression" value="0 25 9 * * ?" />
+    </bean>
+    <bean id="stockPriceJianKongJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 指定任务类 -->
+        <property name="targetObject" ref="stockPriceJianKong" />
+        <!-- 指定任务执行的方法 -->
+        <property name="targetMethod" value="execute" />
+    </bean>
+    <bean id="stockPriceJianKong" class="com.stocks.task.StockPriceJianKongTask"></bean>
 
 
 </beans>

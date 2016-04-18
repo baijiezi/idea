@@ -1,5 +1,6 @@
 package com.stocks.task;
 
+import com.message.dao.MessageDao;
 import com.message.service.MessageService;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
@@ -45,6 +46,7 @@ public class StockPriceJianKongTask {
             Date time2 = DateUtils.strToDate(DateUtils.getSimpleDate(now) + " 13:00:00");
             Date endTime = DateUtils.strToDate(DateUtils.getSimpleDate(now) + " 15:00:00");
             StocksDao stocksDao = new StocksDao();
+            MessageDao messageDao = new MessageDao();
             List<StocksEntity> list = stocksDao.getBuySalePrice();
             MessageService messageService = new MessageService();
             while (now.before(endTime)){
@@ -95,12 +97,19 @@ public class StockPriceJianKongTask {
                         }
                         if(stock.getBuyPrice()!=null && stock.getBuyPrice()>0){
                             if(dto.getShouPan() < stock.getBuyPrice()){
-                                messageService.send("18825187648", stock.getCode());
+                                List messageList = messageDao.getByTypeAndSendTime(stock.getCode(), DateUtils.getSimpleDate(new Date()));
+                                if(messageList==null || messageList.size()==0){
+                                    messageService.send("18825187648", stock.getCode(), stock.getCode());
+                                }
+
                             }
                         }
                         if(stock.getSalePrice()!=null && stock.getSalePrice()>0){
                             if(dto.getShouPan() > stock.getSalePrice()){
-                                messageService.send("18825187648", stock.getCode());
+                                List messageList = messageDao.getByTypeAndSendTime(stock.getCode(), DateUtils.getSimpleDate(new Date()));
+                                if(messageList==null || messageList.size()==0){
+                                    messageService.send("18825187648", stock.getCode(), stock.getCode());
+                                }
                             }
                         }
                     }

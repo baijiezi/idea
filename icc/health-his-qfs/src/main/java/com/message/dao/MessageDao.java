@@ -1,10 +1,12 @@
 package com.message.dao;
 
 import com.message.entity.MessageEntity;
+import com.stocks.utils.DateUtils;
 import com.stocks.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,6 +40,30 @@ public class MessageDao {
         return null;
 
     }
+
+    public List<MessageEntity> getByTypeAndSendTime(String type, String date){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            Query query = session.createQuery(" from MessageEntity s where s.type = '" + type + "' and s.sendTime > '" + date + "'");
+            List<MessageEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
 
     public void save(MessageEntity entity, Session session){
         try{
@@ -82,7 +108,8 @@ public class MessageDao {
 
         MessageDao dao = new MessageDao();
 //        dao.save(entity, session);
-        List list = dao.getByStatus(0);
+//        List list = dao.getByStatus(0);
+        List list = dao.getByTypeAndSendTime("111", DateUtils.getSimpleDate(new Date()));
         System.out.println(list.size());
 
 

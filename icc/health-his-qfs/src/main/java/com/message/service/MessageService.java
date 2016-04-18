@@ -40,12 +40,13 @@ public class MessageService {
         return OpenApi.sendOnce(mobile, content, 0, 0, null);
     }
 
-    public MessageEntity send(String mobile, String content){
+    public MessageEntity send(String mobile, String content, String type){
         MessageDao dao = new MessageDao();
         MessageEntity entity = new MessageEntity();
         try{
             entity.setMobile(mobile);
             entity.setContent(content);
+            entity.setType(type);
 
             // 发送参数
             OpenApi.initialzeAccount(sOpenUrl, account, authkey, cgid, csid);
