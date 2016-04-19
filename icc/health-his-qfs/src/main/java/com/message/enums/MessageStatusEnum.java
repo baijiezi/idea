@@ -9,7 +9,8 @@ package com.message.enums;
  */
 public enum  MessageStatusEnum {
     发送成功(0),
-    发送失败(1);
+    等待发送(1),
+    发送失败(2);
 
     private int status;
 
@@ -26,6 +27,8 @@ public enum  MessageStatusEnum {
             case 0:
                 return 发送成功;
             case 1:
+                return 等待发送;
+            case 2:
                 return 发送失败;
             default:
                 return null;

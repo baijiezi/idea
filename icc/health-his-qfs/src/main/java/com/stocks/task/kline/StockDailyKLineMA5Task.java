@@ -48,7 +48,7 @@ public class StockDailyKLineMA5Task {
             List<StocksEntity> list = stocksDao.getAll();
             Date date = new Date();
 //            Date date = DateUtils.strToDate("2016-03-10");
-            while(DateUtils.getDate(date).before(new Date())){
+            while(DateUtils.getDateStartTime(date).before(new Date())){
                 List data = new ArrayList<StocksDailyKLineMA5Entity>();
                 Session session = HibernateUtil.getOpenSession();
                 for(StocksEntity stock : list){

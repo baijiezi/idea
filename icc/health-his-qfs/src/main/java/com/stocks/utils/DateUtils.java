@@ -20,6 +20,18 @@ public class DateUtils {
         return result;
     }
 
+    /**
+     * 把 Date 对象转成 yyyy-MM-dd hh:mm:ss
+     */
+    public static String getSimpleDateTime(Date date) {
+        if (date == null) {
+            return "";
+        }
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String result = format.format(date);
+        return result;
+    }
+
     public static Date strToDate(String dateStr) {
         try {
             Date preTime = null;
@@ -28,7 +40,7 @@ public class DateUtils {
                 preTime = sdf.parse(dateStr);
             }
             else if(dateStr.length() == 19){
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 preTime = sdf.parse(dateStr);
             }
             return preTime;
@@ -38,9 +50,9 @@ public class DateUtils {
     }
 
     /**
-     * 将一个日期设置成时间是 0时 0分 0秒 的日期
+     * 获取某天 0时0分0秒的时间
      */
-    public static Date getDate(Date date) {
+    public static Date getDateStartTime(Date date) {
         try{
             if (date == null) {
                 return null;
@@ -54,4 +66,51 @@ public class DateUtils {
         }
         return null;
     }
+
+    /**
+     * 获取日期的年份和月份
+     */
+    public static String getYearMonth(Date date) {
+        try{
+            if (date == null) {
+                return null;
+            }
+            DateFormat format = new SimpleDateFormat("yyyy-MM-");
+            String dt = format.format(date);
+            return dt;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 获取某月1号0时0分0秒的时间
+     */
+    public static Date getMonthStartTime(Date date) {
+        try{
+            if (date == null) {
+                return null;
+            }
+            DateFormat format = new SimpleDateFormat("yyyy-MM");
+            String dt = format.format(date);
+            Date date1 = format.parse(dt);
+            return date1;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 日期计算
+     */
+    public static Date addDate(Date date, int d) {
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        calendar.add(calendar.DATE, d);
+        Date dt = calendar.getTime();
+        return dt;
+    }
+
 }

@@ -10,15 +10,11 @@ package com.stocks.utils;
 public class Constants {
 
     public static String STOCK_PRICS_URL_TYPE_1 = "1";
-
     public static String STOCK_PRICS_URL_TYPE_2 = "2";
-
     public static String STOCK_PRICS_URL_TYPE_3 = "3";
-
     public static String STOCK_PRICS_URL_TYPE_4 = "4";
 
 
-    //http://hqchart.eastmoney.com/hq20/js/002340.js?2229
     public static String ZJLX_URL_TYPE_1 = "1";
 
 
@@ -26,5 +22,12 @@ public class Constants {
 
 
     public static String ZJLX_THS_URL_TYPE_1 = "1";
+
+
+    public static String MESSAGE_TYPE_PRICEJIANKONG = "stock_priceJianKong";
+    public static String MESSAGE_TYPE_XINGYONGKA = "life_xinYongKa";
+    public static String MESSAGE_TYPE_TEHUIHAOMA = "life_TeHuiHaoMa";
+    public static String MESSAGE_TYPE_NONGLI = "life_nongLi";
+
 
 }

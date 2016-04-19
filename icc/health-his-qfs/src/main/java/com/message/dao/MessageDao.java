@@ -18,11 +18,53 @@ import java.util.List;
  */
 public class MessageDao {
 
+    public List<MessageEntity> getToSends(String toSendTime){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            Query query = session.createQuery(" from MessageEntity s where s.status in(1,2) and s.toSendTime <  '" + toSendTime + "'");
+            List<MessageEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
     public List<MessageEntity> getByStatus(Integer status){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
         try{
             Query query = session.createQuery(" from MessageEntity s where s.status = " + status);
+            List<MessageEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
+    public List<MessageEntity> getByTypeAndSendTime(String type, String date){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            Query query = session.createQuery(" from MessageEntity s where s.type = '" + type + "' and s.sendTime >= '" + date + "'");
             List<MessageEntity> list = query.list();
             if(list!=null && list.size()>0) {
                 return list;
@@ -41,11 +83,11 @@ public class MessageDao {
 
     }
 
-    public List<MessageEntity> getByTypeAndSendTime(String type, String date){
+    public List<MessageEntity> getByTypeAndToSendTime(String type, String date){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
         try{
-            Query query = session.createQuery(" from MessageEntity s where s.type = '" + type + "' and s.sendTime > '" + date + "'");
+            Query query = session.createQuery(" from MessageEntity s where s.type = '" + type + "' and s.toSendTime >= '" + date + "'");
             List<MessageEntity> list = query.list();
             if(list!=null && list.size()>0) {
                 return list;
@@ -102,14 +144,16 @@ public class MessageDao {
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
 
-        MessageEntity entity = new MessageEntity();
-        entity.setMobile("222");
-        entity.setContent("aaa");
+//        MessageEntity entity = new MessageEntity();
+//        entity.setMobile("222");
+//        entity.setContent("aaa");
 
         MessageDao dao = new MessageDao();
 //        dao.save(entity, session);
 //        List list = dao.getByStatus(0);
-        List list = dao.getByTypeAndSendTime("111", DateUtils.getSimpleDate(new Date()));
+//        List list = dao.getByTypeAndSendTime("111", DateUtils.getSimpleDate(new Date()));
+
+        List list = dao.getToSends(DateUtils.getSimpleDateTime(new Date()));
         System.out.println(list.size());
 
 

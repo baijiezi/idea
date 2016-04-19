@@ -1,5 +1,7 @@
 package com.message.entity;
 
+import com.stocks.utils.DateUtils;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -30,10 +32,21 @@ public class MessageEntity implements Serializable {
     private String mobile;
     private String type;
     private String content;
+    private Date toSendTime;
     private Date sendTime;
     private Integer status;
     private String remark;
 
+    public MessageEntity(){
+    }
+
+    public MessageEntity(String mobile, String content, String type, String toSendTime){
+        this.mobile = mobile;
+        this.content = content;
+        this.type = type;
+        this.toSendTime = DateUtils.strToDate(toSendTime);
+        this.status = 1;
+    }
     public Integer getId() {
         return id;
     }
@@ -96,6 +109,14 @@ public class MessageEntity implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Date getToSendTime() {
+        return toSendTime;
+    }
+
+    public void setToSendTime(Date toSendTime) {
+        this.toSendTime = toSendTime;
     }
 
     public Date getSendTime() {

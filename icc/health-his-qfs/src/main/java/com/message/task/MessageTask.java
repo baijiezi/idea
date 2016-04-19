@@ -8,7 +8,10 @@ import com.stocks.dao.StocksPriceDao;
 import com.stocks.dto.StocksPriceDto;
 import com.stocks.entity.StocksEntity;
 import com.stocks.entity.StocksPriceEntity;
+import com.stocks.utils.Constants;
+import com.stocks.utils.DateUtils;
 import com.stocks.utils.HibernateUtil;
+import com.stocks.utils.LunarCalendar;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +38,10 @@ public class MessageTask {
         logger.info("MessageTask  execute");
 
         try{
+            insertMessages();
+
             MessageDao dao = new MessageDao();
-            List<MessageEntity> list = dao.getByStatus(1);
+            List<MessageEntity> list = dao.getToSends(DateUtils.getSimpleDateTime(new Date()));
             MessageService service = new MessageService();
             Session session = HibernateUtil.getOpenSession();
             session.beginTransaction();
@@ -56,6 +61,46 @@ public class MessageTask {
             logger.info("共发 " + list.size() + " 条");
         } catch (Exception e){
             logger.error("MessageTask 任务异常：", e);
+        }
+
+    }
+
+
+    public void insertMessages(){
+        Date now = new Date();
+        MessageDao dao = new MessageDao();
+        String yyyy_MM_ = DateUtils.getYearMonth(now);
+
+        List<MessageEntity> list = dao.getByTypeAndToSendTime(Constants.MESSAGE_TYPE_XINGYONGKA, yyyy_MM_+"01");
+        if(list==null || list.size()==0){
+            MessageEntity entity = new MessageEntity("18825187648", "银行卡", Constants.MESSAGE_TYPE_XINGYONGKA, yyyy_MM_+"01");
+            dao.save(entity);
+            MessageEntity entity1 = new MessageEntity("18825187648", "银行卡", Constants.MESSAGE_TYPE_XINGYONGKA, yyyy_MM_+"25");
+            dao.save(entity1);
+        }
+
+        list = dao.getByTypeAndToSendTime(Constants.MESSAGE_TYPE_TEHUIHAOMA, yyyy_MM_+"01");
+        if(list==null || list.size()==0){
+            MessageEntity entity = new MessageEntity("18825187648", "TeHuiHaoMa", Constants.MESSAGE_TYPE_TEHUIHAOMA, yyyy_MM_+"01");
+            dao.save(entity);
+        }
+
+
+        LunarCalendar lunarCalendar = new LunarCalendar();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(now);
+        long[] longs = lunarCalendar.calElement(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)+1, cal.get(Calendar.DAY_OF_MONTH));
+        if(longs[2] == 14){
+            MessageEntity entity = new MessageEntity("18825187648", "14", Constants.MESSAGE_TYPE_NONGLI, DateUtils.getSimpleDate(now));
+            dao.save(entity);
+        }
+        if(longs[2] == 29){
+            cal.add(Calendar.DAY_OF_MONTH, 1);
+            long[] longs2 = lunarCalendar.calElement(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)+1, cal.get(Calendar.DAY_OF_MONTH));
+            if(longs2[2] == 1){
+                MessageEntity entity = new MessageEntity("18825187648", "29", Constants.MESSAGE_TYPE_NONGLI, DateUtils.getSimpleDate(now));
+                dao.save(entity);
+            }
         }
 
     }
