@@ -99,7 +99,7 @@ public class StockPriceJianKongTask {
                             if(dto.getShouPan() < stock.getBuyPrice()){
                                 List messageList = messageDao.getByTypeAndSendTime(stock.getCode(), DateUtils.getSimpleDate(new Date()));
                                 if(messageList==null || messageList.size()==0){
-                                    messageService.send("18825187648", stock.getCode(), stock.getCode());
+                                    messageService.send("18825187648", stock.getCode()+"buy", stock.getCode());
                                 }
 
                             }
@@ -108,7 +108,7 @@ public class StockPriceJianKongTask {
                             if(dto.getShouPan() > stock.getSalePrice()){
                                 List messageList = messageDao.getByTypeAndSendTime(stock.getCode(), DateUtils.getSimpleDate(new Date()));
                                 if(messageList==null || messageList.size()==0){
-                                    messageService.send("18825187648", stock.getCode(), stock.getCode());
+                                    messageService.send("18825187648", stock.getCode()+"sale", stock.getCode());
                                 }
                             }
                         }
