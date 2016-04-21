@@ -73,10 +73,20 @@ public class KLineChoose extends TestCase {
                 continue;
             }
 
+//            if(entity.getHuanShou() == 0){
+//                continue;
+//            }
+
             StocksPriceEntity priceEntity = (StocksPriceEntity)priceMap.get(entity.getCode());
-            if(priceEntity==null || priceEntity.getShouPan()<=entity.getShouPan()){
+            //过滤减的
+            if(priceEntity==null || priceEntity.getShouPan()<entity.getShouPan()){
                 continue;
             }
+
+            //过滤增的
+//            if(priceEntity!=null && priceEntity.getShouPan()>=entity.getShouPan()){
+//                continue;
+//            }
 
             data.add(entity);
 
