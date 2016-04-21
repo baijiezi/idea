@@ -73,15 +73,15 @@ public class MessageTask {
 
         List<MessageEntity> list = dao.getByTypeAndToSendTime(Constants.MESSAGE_TYPE_XINGYONGKA, yyyy_MM_+"01");
         if(list==null || list.size()==0){
-            MessageEntity entity = new MessageEntity("18825187648", "银行卡", Constants.MESSAGE_TYPE_XINGYONGKA, yyyy_MM_+"01");
+            MessageEntity entity = new MessageEntity("18825187648", "Huan GongHang XinYongKa", Constants.MESSAGE_TYPE_XINGYONGKA, yyyy_MM_+"01");
             dao.save(entity);
-            MessageEntity entity1 = new MessageEntity("18825187648", "银行卡", Constants.MESSAGE_TYPE_XINGYONGKA, yyyy_MM_+"25");
+            MessageEntity entity1 = new MessageEntity("18825187648", "Huan XinYongKa", Constants.MESSAGE_TYPE_XINGYONGKA, yyyy_MM_+"25");
             dao.save(entity1);
         }
 
         list = dao.getByTypeAndToSendTime(Constants.MESSAGE_TYPE_TEHUIHAOMA, yyyy_MM_+"01");
         if(list==null || list.size()==0){
-            MessageEntity entity = new MessageEntity("18825187648", "TeHuiHaoMa", Constants.MESSAGE_TYPE_TEHUIHAOMA, yyyy_MM_+"01");
+            MessageEntity entity = new MessageEntity("18825187648", "SheZhi TeHui HaoMa", Constants.MESSAGE_TYPE_TEHUIHAOMA, yyyy_MM_+"01");
             dao.save(entity);
         }
 
@@ -91,14 +91,14 @@ public class MessageTask {
         cal.setTime(now);
         long[] longs = lunarCalendar.calElement(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)+1, cal.get(Calendar.DAY_OF_MONTH));
         if(longs[2] == 14){
-            MessageEntity entity = new MessageEntity("18825187648", "14", Constants.MESSAGE_TYPE_NONGLI, DateUtils.getSimpleDate(now));
+            MessageEntity entity = new MessageEntity("18825187648", "NongLi 14", Constants.MESSAGE_TYPE_NONGLI, DateUtils.getSimpleDate(now));
             dao.save(entity);
         }
         if(longs[2] == 29){
             cal.add(Calendar.DAY_OF_MONTH, 1);
             long[] longs2 = lunarCalendar.calElement(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH)+1, cal.get(Calendar.DAY_OF_MONTH));
             if(longs2[2] == 1){
-                MessageEntity entity = new MessageEntity("18825187648", "29", Constants.MESSAGE_TYPE_NONGLI, DateUtils.getSimpleDate(now));
+                MessageEntity entity = new MessageEntity("18825187648", "NongLi 29", Constants.MESSAGE_TYPE_NONGLI, DateUtils.getSimpleDate(now));
                 dao.save(entity);
             }
         }

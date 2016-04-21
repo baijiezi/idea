@@ -99,7 +99,7 @@ public class StockPriceJianKongTask {
                             if(dto.getShouPan() < stock.getBuyPrice()){
                                 List messageList = messageDao.getByTypeAndSendTime(stock.getCode(), DateUtils.getSimpleDate(new Date()));
                                 if(messageList==null || messageList.size()==0){
-                                    messageService.send("18825187648", stock.getCode()+"B", stock.getCode());
+                                    messageService.send("18825187648", stock.getName().substring(0,1)+stock.getCode()+"B"+dto.getShouPan(), stock.getCode());
                                 }
 
                             }
@@ -108,13 +108,13 @@ public class StockPriceJianKongTask {
                             if(dto.getShouPan() > stock.getSalePrice()){
                                 List messageList = messageDao.getByTypeAndSendTime(stock.getCode(), DateUtils.getSimpleDate(new Date()));
                                 if(messageList==null || messageList.size()==0){
-                                    messageService.send("18825187648", stock.getCode()+"S", stock.getCode());
+                                    messageService.send("18825187648", stock.getName().substring(0,1)+stock.getCode()+"S"+dto.getShouPan(), stock.getCode());
                                 }
                             }
                         }
                     }
                 }
-                Thread.sleep(2*60*1000);
+                Thread.sleep(1*60*1000);
             }
         } catch (Exception e){
             logger.error("执行StockPriceJianKongTask任务异常：", e);
