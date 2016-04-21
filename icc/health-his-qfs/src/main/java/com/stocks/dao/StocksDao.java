@@ -131,7 +131,6 @@ public class StocksDao {
         }catch(Exception e){
             e.printStackTrace();
         }
-
     }
 
 
@@ -139,6 +138,13 @@ public class StocksDao {
         StocksDao dao = new StocksDao();
         List<StocksEntity> list = dao.getAll();
         System.out.println(list.size());
+        for(StocksEntity entity : list){
+            String exchange = entity.getExchange() == null ? "" : entity.getExchange();
+            Integer buyPrice = entity.getBuyPrice() == null ? 0 : entity.getBuyPrice();
+            Integer salePrice = entity.getSalePrice() == null ? 0 : entity.getSalePrice();
+            System.out.print(entity.getCode() + "," + exchange + "," + buyPrice + "," + salePrice);
+            System.out.println();
+        }
     }
 
 }

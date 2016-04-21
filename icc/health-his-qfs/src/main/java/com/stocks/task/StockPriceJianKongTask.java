@@ -18,6 +18,10 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.Future;
 
@@ -35,6 +39,7 @@ public class StockPriceJianKongTask {
     public static void main(String[] args){
         StockPriceJianKongTask stockPriceJianKongTask = new StockPriceJianKongTask();
         stockPriceJianKongTask.execute();
+
     }
 
     public void execute(){
@@ -45,9 +50,8 @@ public class StockPriceJianKongTask {
             Date time1 = DateUtils.strToDate(DateUtils.getSimpleDate(now) + " 11:30:00");
             Date time2 = DateUtils.strToDate(DateUtils.getSimpleDate(now) + " 13:00:00");
             Date endTime = DateUtils.strToDate(DateUtils.getSimpleDate(now) + " 15:00:00");
-            StocksDao stocksDao = new StocksDao();
             MessageDao messageDao = new MessageDao();
-            List<StocksEntity> list = stocksDao.getBuySalePrice();
+            List<StocksEntity> list = getStocks();
             MessageService messageService = new MessageService();
             while (now.before(endTime)){
                 now = new Date();
@@ -62,10 +66,10 @@ public class StockPriceJianKongTask {
                     StringBuffer sb = new StringBuffer("http://qt.gtimg.cn/r=0.9694567599799484q=");
                     for(StocksEntity stock : list){
                         //http://qt.gtimg.cn/r=0.9694567599799484q=s_sz002340,s_sh600399,s_sh601919,s_sh600372,s_sh600868,s_sh600030,s_sz002547,s_sz000932,s_sz000089,s_sh601668,s_sh600880,s_sh601633
-                        if(stock.getExchange().startsWith("沪")){
+                        if(stock.getExchange().startsWith("沪") || stock.getExchange().equals("sh")){
                             sb.append("s_sh").append(stock.getCode()).append(",");
                         }
-                        if(stock.getExchange().startsWith("深")){
+                        if(stock.getExchange().startsWith("深") || stock.getExchange().equals("sz")){
                             sb.append("s_sz").append(stock.getCode()).append(",");
                         }
                     }
@@ -119,6 +123,41 @@ public class StockPriceJianKongTask {
         } catch (Exception e){
             logger.error("执行StockPriceJianKongTask任务异常：", e);
         }
+
+    }
+
+    public List<StocksEntity> getStocks(){
+        //从数据库获取
+        StocksDao stocksDao = new StocksDao();
+        return stocksDao.getBuySalePrice();
+
+
+        //从文件读取
+//        List<StocksEntity> data = new ArrayList<StocksEntity>();
+//        ClassLoader classLoader = getClass().getClassLoader();
+//        File file = new File(classLoader.getResource("file/a.txt").getFile());
+//        try {
+//            Scanner scanner = new Scanner(file);
+//            while (scanner.hasNextLine()) {
+//                String line = scanner.nextLine();
+//                if(line.trim().equals("")){
+//                    continue;
+//                }
+//                String[] temp = line.split(",");
+//                if(!temp[2].equals("0") || !temp[3].equals("0")){
+//                    StocksEntity entity = new StocksEntity();
+//                    entity.setCode(temp[0]);
+//                    entity.setExchange(temp[1]);
+//                    entity.setBuyPrice(Integer.valueOf(temp[2]));
+//                    entity.setSalePrice(Integer.valueOf(temp[3]));
+//                    data.add(entity);
+//                }
+//            }
+//            scanner.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return data;
 
     }
 
