@@ -153,7 +153,7 @@ public class MessageDao {
 //        List list = dao.getByStatus(0);
 //        List list = dao.getByTypeAndSendTime("111", DateUtils.getSimpleDate(new Date()));
 
-        List list = dao.getToSends(DateUtils.getSimpleDateTime(new Date()));
+        List list = dao.getToSends(DateUtils.getStrTime(new Date()));
         System.out.println(list.size());
 
 

@@ -17,7 +17,7 @@ import java.util.*;
 public class KLineChoose extends TestCase {
 
     public void testGetTT(){
-        Date date = DateUtils.strToDate("2016-04-07");
+        Date date = DateUtils.strToDate("2016-03-31");
         StocksPriceDao priceDao = new StocksPriceDao();
         StocksDailyKLineMA5Dao kLineMA5Dao = new StocksDailyKLineMA5Dao();
         StocksDailyKLineMA10Dao kLineMA10Dao = new StocksDailyKLineMA10Dao();
@@ -25,22 +25,32 @@ public class KLineChoose extends TestCase {
         StocksDailyKLineMA30Dao kLineMA30Dao = new StocksDailyKLineMA30Dao();
         List<StocksPriceEntity> data = new ArrayList<StocksPriceEntity>();
         List<StocksPriceEntity> list = priceDao.getByDate(date);
+
+        List<StocksPriceEntity> list2 = priceDao.getByDate(DateUtils.strToDate("2016-04-07"));
+        Map priceMap = new HashMap<String, StocksPriceEntity>();
+        for(StocksPriceEntity entity : list2){
+            priceMap.put(entity.getCode(), entity);
+        }
+
         List<StocksDailyKLineMA5Entity> ma5List = kLineMA5Dao.getByDate(date);
         Map ma5Map = new HashMap<String, StocksDailyKLineMA5Entity>();
         for(StocksDailyKLineMA5Entity entity : ma5List){
             ma5Map.put(entity.getCode(), entity);
         }
+
         List<StocksDailyKLineMA10Entity> ma10List = kLineMA10Dao.getByDate(date);
         Map ma10Map = new HashMap<String, StocksDailyKLineMA10Entity>();
         for(StocksDailyKLineMA10Entity entity : ma10List){
             ma10Map.put(entity.getCode(), entity);
         }
+
         List<StocksDailyKLineMA20Entity> ma20List = kLineMA20Dao.getByDate(date);
         Map ma20Map = new HashMap<String, StocksDailyKLineMA20Entity>();
         for(StocksDailyKLineMA20Entity entity : ma20List){
             ma20Map.put(entity.getCode(), entity);
         }
-        List<StocksDailyKLineMA30Entity> ma30List = kLineMA30Dao.getByDate(date);
+
+//        List<StocksDailyKLineMA30Entity> ma30List = kLineMA30Dao.getByDate(date);
 //        Map ma30Map = new HashMap<String, StocksDailyKLineMA30Entity>();
 //        for(StocksDailyKLineMA30Entity entity : ma30List){
 //            ma30Map.put(entity.getCode(), entity);
@@ -59,14 +69,24 @@ public class KLineChoose extends TestCase {
                 continue;
             }
 
+            if(entity.getShiYing()>20000 || entity.getShiYing()<0){
+                continue;
+            }
+
+            StocksPriceEntity priceEntity = (StocksPriceEntity)priceMap.get(entity.getCode());
+            if(priceEntity==null || priceEntity.getShouPan()<=entity.getShouPan()){
+                continue;
+            }
+
             data.add(entity);
 
         }
 
         System.out.println(data.size());
         for(StocksPriceEntity entity : data){
-            System.out.println(entity.getCode());
+            System.out.print("'"+entity.getCode()+"',");
         }
+        System.out.println();
 
     }
 

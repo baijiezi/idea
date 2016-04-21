@@ -23,7 +23,7 @@ public class DateUtils {
     /**
      * 把 Date 对象转成 yyyy-MM-dd hh:mm:ss
      */
-    public static String getSimpleDateTime(Date date) {
+    public static String getStrTime(Date date) {
         if (date == null) {
             return "";
         }

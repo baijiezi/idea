@@ -41,7 +41,7 @@ public class MessageTask {
             insertMessages();
 
             MessageDao dao = new MessageDao();
-            List<MessageEntity> list = dao.getToSends(DateUtils.getSimpleDateTime(new Date()));
+            List<MessageEntity> list = dao.getToSends(DateUtils.getStrTime(new Date()));
             MessageService service = new MessageService();
             Session session = HibernateUtil.getOpenSession();
             session.beginTransaction();
