@@ -93,10 +93,11 @@ public class KLineChoose extends TestCase {
         }
 
         System.out.println(data.size());
+        StringBuffer sb = new StringBuffer();
         for(StocksPriceEntity entity : data){
-            System.out.print("'"+entity.getCode()+"',");
+            sb.append("'"+entity.getCode()+"',");
         }
-        System.out.println();
+        System.out.println(sb.substring(0, sb.length()-1));
 
     }
 

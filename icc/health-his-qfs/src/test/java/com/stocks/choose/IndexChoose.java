@@ -74,7 +74,11 @@ public class IndexChoose extends TestCase {
             data.add(entity);
         }
         System.out.println(data.size());
-
+        StringBuffer sb = new StringBuffer();
+        for(StocksPriceEntity entity : data){
+            sb.append("'"+entity.getCode()+"',");
+        }
+        System.out.println(sb.substring(0, sb.length()-1));
 
 
     }
