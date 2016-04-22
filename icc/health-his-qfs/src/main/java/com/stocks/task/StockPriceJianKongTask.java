@@ -64,13 +64,13 @@ public class StockPriceJianKongTask {
                             .build();
                     AsyncHttpClient asyncHttpClient = new AsyncHttpClient(config);
                     StringBuffer sb = new StringBuffer("http://qt.gtimg.cn/r=0.9694567599799484q=");
-                    for(StocksEntity stock : list){
+                    for(StocksEntity entity : list){
                         //http://qt.gtimg.cn/r=0.9694567599799484q=s_sz002340,s_sh600399,s_sh601919,s_sh600372,s_sh600868,s_sh600030,s_sz002547,s_sz000932,s_sz000089,s_sh601668,s_sh600880,s_sh601633
-                        if(stock.getExchange().startsWith("沪") || stock.getExchange().equals("sh")){
-                            sb.append("s_sh").append(stock.getCode()).append(",");
+                        if(entity.getExchange().equals("sh")){
+                            sb.append("s_sh").append(entity.getCode()).append(",");
                         }
-                        if(stock.getExchange().startsWith("深") || stock.getExchange().equals("sz")){
-                            sb.append("s_sz").append(stock.getCode()).append(",");
+                        if(entity.getExchange().equals("sz")){
+                            sb.append("s_sz").append(entity.getCode()).append(",");
                         }
                     }
 
@@ -90,29 +90,30 @@ public class StockPriceJianKongTask {
                         String[] temp = str.split("~");
                         StocksPriceDto dto = new StocksPriceDto();
                         dto.setShouPan(NumberUtils.toIntMilli(temp[3]));
+                        dto.setName(temp[1]);
                         map.put(temp[2], dto);
                     }
 
-                    for(StocksEntity stock : list){
-                        StocksPriceDto dto = (StocksPriceDto)map.get(stock.getCode());
+                    for(StocksEntity entity : list){
+                        StocksPriceDto dto = (StocksPriceDto)map.get(entity.getCode());
                         if(dto == null){
-                            logger.info("StockPriceJianKong数据为空: " + stock.getCode());
+                            logger.info("StockPriceJianKong数据为空: " + entity.getCode());
                             continue;
                         }
-                        if(stock.getBuyPrice()!=null && stock.getBuyPrice()>0){
-                            if(dto.getShouPan() < stock.getBuyPrice()){
-                                List messageList = messageDao.getByTypeAndSendTime(stock.getCode(), DateUtils.getSimpleDate(new Date()));
+                        if(entity.getBuyPrice()!=null && entity.getBuyPrice()>0){
+                            if(dto.getShouPan() < entity.getBuyPrice()){
+                                List messageList = messageDao.getByTypeAndSendTime(entity.getCode(), DateUtils.getSimpleDate(new Date()));
                                 if(messageList==null || messageList.size()==0){
-                                    messageService.send("18825187648", stock.getName().substring(0,1)+stock.getCode()+"B"+dto.getShouPan(), stock.getCode());
+                                    messageService.send("18825187648", dto.getName().substring(0,1)+entity.getCode()+"B"+dto.getShouPan(), entity.getCode());
                                 }
 
                             }
                         }
-                        if(stock.getSalePrice()!=null && stock.getSalePrice()>0){
-                            if(dto.getShouPan() > stock.getSalePrice()){
-                                List messageList = messageDao.getByTypeAndSendTime(stock.getCode(), DateUtils.getSimpleDate(new Date()));
+                        if(entity.getSalePrice()!=null && entity.getSalePrice()>0){
+                            if(dto.getShouPan() > entity.getSalePrice()){
+                                List messageList = messageDao.getByTypeAndSendTime(entity.getCode(), DateUtils.getSimpleDate(new Date()));
                                 if(messageList==null || messageList.size()==0){
-                                    messageService.send("18825187648", stock.getName().substring(0,1)+stock.getCode()+"S"+dto.getShouPan(), stock.getCode());
+                                    messageService.send("18825187648", dto.getName().substring(0,1)+entity.getCode()+"S"+dto.getShouPan(), entity.getCode());
                                 }
                             }
                         }
@@ -128,36 +129,36 @@ public class StockPriceJianKongTask {
 
     public List<StocksEntity> getStocks(){
         //从数据库获取
-        StocksDao stocksDao = new StocksDao();
-        return stocksDao.getBuySalePrice();
+//        StocksDao stocksDao = new StocksDao();
+//        return stocksDao.getBuySalePrice();
 
 
         //从文件读取
-//        List<StocksEntity> data = new ArrayList<StocksEntity>();
-//        ClassLoader classLoader = getClass().getClassLoader();
-//        File file = new File(classLoader.getResource("file/a.txt").getFile());
-//        try {
-//            Scanner scanner = new Scanner(file);
-//            while (scanner.hasNextLine()) {
-//                String line = scanner.nextLine();
-//                if(line.trim().equals("")){
-//                    continue;
-//                }
-//                String[] temp = line.split(",");
-//                if(!temp[2].equals("0") || !temp[3].equals("0")){
-//                    StocksEntity entity = new StocksEntity();
-//                    entity.setCode(temp[0]);
-//                    entity.setExchange(temp[1]);
-//                    entity.setBuyPrice(Integer.valueOf(temp[2]));
-//                    entity.setSalePrice(Integer.valueOf(temp[3]));
-//                    data.add(entity);
-//                }
-//            }
-//            scanner.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return data;
+        List<StocksEntity> data = new ArrayList<StocksEntity>();
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("file/a.txt").getFile());
+        try {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                if(line.trim().equals("")){
+                    continue;
+                }
+                String[] temp = line.split(",");
+                if(!temp[2].equals("0") || !temp[3].equals("0")){
+                    StocksEntity entity = new StocksEntity();
+                    entity.setCode(temp[0]);
+                    entity.setExchange(temp[1]);
+                    entity.setBuyPrice(Integer.valueOf(temp[2]));
+                    entity.setSalePrice(Integer.valueOf(temp[3]));
+                    data.add(entity);
+                }
+            }
+            scanner.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return data;
 
     }
 
