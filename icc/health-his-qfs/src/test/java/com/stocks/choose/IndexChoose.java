@@ -1,14 +1,13 @@
 package com.stocks.choose;
 
+import com.stocks.dao.StocksDailyKLineMA20Dao;
 import com.stocks.dao.StocksPriceDao;
+import com.stocks.entity.StocksDailyKLineMA20Entity;
 import com.stocks.entity.StocksPriceEntity;
 import com.stocks.utils.DateUtils;
 import junit.framework.TestCase;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -50,5 +49,33 @@ public class IndexChoose extends TestCase {
         System.out.println("增：" + i);
         System.out.println("减：" + j);
         System.out.println("平：" + k);
+    }
+
+
+    public void testTT(){
+        Date date = DateUtils.strToDate("2016-04-07");
+        StocksPriceDao priceDao = new StocksPriceDao();
+        List<StocksPriceEntity> list = priceDao.getByDate(date);
+        StocksDailyKLineMA20Dao ma20Dao = new StocksDailyKLineMA20Dao();
+        List<StocksDailyKLineMA20Entity> ma20List = ma20Dao.getByDate(date);
+        Map ma20Map = new HashMap<String, StocksPriceEntity>();
+        for(StocksDailyKLineMA20Entity entity : ma20List){
+            ma20Map.put(entity.getCode(), entity);
+        }
+        List<StocksPriceEntity> data = new ArrayList<StocksPriceEntity>();
+        for(StocksPriceEntity entity : list){
+            if(entity.getShiYing()>20000 || entity.getShiYing()<=0){
+                continue;
+            }
+            StocksDailyKLineMA20Entity ma20Entity = (StocksDailyKLineMA20Entity)ma20Map.get(entity.getCode());
+            if(ma20Entity.getZhenFu() < 4000){
+                continue;
+            }
+            data.add(entity);
+        }
+        System.out.println(data.size());
+
+
+
     }
 }
