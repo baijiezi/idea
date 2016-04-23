@@ -64,11 +64,11 @@ public class IndexChoose extends TestCase {
         }
         List<StocksPriceEntity> data = new ArrayList<StocksPriceEntity>();
         for(StocksPriceEntity entity : list){
-            if(entity.getShiYing()>20000 || entity.getShiYing()<=0){
+            if(entity.getShiYing()==null || entity.getShiYing()>20000 || entity.getShiYing()<=0){
                 continue;
             }
             StocksDailyKLineMA20Entity ma20Entity = (StocksDailyKLineMA20Entity)ma20Map.get(entity.getCode());
-            if(ma20Entity.getZhenFu() < 4000){
+            if(entity.getZhenFu()==null || ma20Entity.getZhenFu()<4000){
                 continue;
             }
             data.add(entity);
