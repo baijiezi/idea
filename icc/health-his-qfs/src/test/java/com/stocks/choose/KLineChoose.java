@@ -105,7 +105,7 @@ public class KLineChoose extends TestCase {
 
 
     public void testGetTT(){
-        Date date = DateUtils.strToDate("2016-04-22");
+        Date date = DateUtils.strToDate("2016-04-20");
         StocksPriceDao priceDao = new StocksPriceDao();
         StocksDailyKLineMA5Dao kLineMA5Dao = new StocksDailyKLineMA5Dao();
         StocksDailyKLineMA10Dao kLineMA10Dao = new StocksDailyKLineMA10Dao();
