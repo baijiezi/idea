@@ -1,7 +1,9 @@
 package com.stocks.task.choose;
 
+import com.message.service.MessageService;
 import com.stocks.dao.*;
 import com.stocks.entity.*;
+import com.stocks.utils.Constants;
 import com.stocks.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,37 +28,30 @@ public class ChooseTask {
 
     public void execute(){
         logger.info("ChooseTask  execute");
-        getT();
-
+        String result1 = getT();
+        String result2 = getTT();
+        if(!result1.equals("") || !result2.equals("")){
+            MessageService messageService = new MessageService();
+            messageService.send("18825187648", "ZLJB_DFCF"+result1+"KLINE"+result2, Constants.MESSAGE_TYPE_CHOOSE);
+        }
     }
 
 
 
-     public void getT(){
+     public String getT(){
          StocksZjlxDfcfDao dao = new StocksZjlxDfcfDao();
          List<StocksZjlxDfcfEntity> list = dao.getByZhuLiJingBi("2016-04-06", 50000);
+         StringBuffer sb = new StringBuffer("");
          if(list!=null && list.size()>0){
-             //发送通知
-             System.out.println(list.size());
+             for(StocksZjlxDfcfEntity entity : list){
+                 sb.append(entity.getCode());
+             }
          }
-
-
-
-
+         return sb.toString();
      }
 
 
-
-
-
-
-
-
-
-
-
-
-    public void getTT(){
+    public String getTT(){
         Date date = DateUtils.strToDate("2016-04-20");
         StocksPriceDao priceDao = new StocksPriceDao();
         StocksDailyKLineMA5Dao kLineMA5Dao = new StocksDailyKLineMA5Dao();
@@ -124,12 +119,14 @@ public class ChooseTask {
         }
 
         System.out.println(data.size());
-        StringBuffer sb = new StringBuffer(" ");
-        for(StocksPriceEntity entity : data){
-            sb.append("'"+entity.getCode()+"',");
+        StringBuffer sb = new StringBuffer("");
+        if(data.size() > 0){
+            for(StocksPriceEntity entity : data){
+                sb.append("'"+entity.getCode()+"',");
+            }
+            System.out.println(sb.substring(0, sb.length()-1));
         }
-        System.out.println(sb.substring(0, sb.length()-1));
-
+        return sb.toString();
     }
 
 

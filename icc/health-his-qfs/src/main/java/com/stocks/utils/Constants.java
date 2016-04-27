@@ -25,6 +25,7 @@ public class Constants {
 
 
     public static String MESSAGE_TYPE_PRICEJIANKONG = "stock_priceJianKong";
+    public static String MESSAGE_TYPE_CHOOSE = "stock_choose";
     public static String MESSAGE_TYPE_XINGYONGKA = "life_xinYongKa";
     public static String MESSAGE_TYPE_TEHUIHAOMA = "life_TeHuiHaoMa";
     public static String MESSAGE_TYPE_NONGLI = "life_nongLi";

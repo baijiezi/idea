@@ -1,10 +1,12 @@
 package com.stocks.dao;
 
 import com.stocks.entity.StocksZjlxDfcfEntity;
+import com.stocks.utils.DateUtils;
 import com.stocks.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,6 +45,32 @@ public class StocksZjlxDfcfDao {
                 return null;
             }
             Query query = session.createQuery(" from StocksZjlxDfcfEntity s where s.date = '" + date + "' and s.zhuLiJingBi > " + zhuLiJingBi);
+            List<StocksZjlxDfcfEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
+    public List<StocksZjlxDfcfEntity> getByZhuLiJingBi(Date date, int zhuLiJingBi){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            if(date==null) {
+                return null;
+            }
+            String dt = DateUtils.getSimpleDate(date);
+            Query query = session.createQuery(" from StocksZjlxDfcfEntity s where s.date = '" + dt + "' and s.zhuLiJingBi > " + zhuLiJingBi);
             List<StocksZjlxDfcfEntity> list = query.list();
             if(list!=null && list.size()>0) {
                 return list;

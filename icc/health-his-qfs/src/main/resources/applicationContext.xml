@@ -21,6 +21,7 @@
                 <ref bean="stockDailyKLineMA30TaskTrigger" />
                 <ref bean="stockPriceJianKongTaskTrigger" />
                 <ref bean="messageTaskTrigger" />
+                <ref bean="chooseTaskTrigger" />
             </list>
         </property>
     </bean>
@@ -54,6 +55,21 @@
         <property name="targetMethod" value="execute" />
     </bean>
     <bean id="stocksTask" class="com.stocks.task.StockTask"></bean>
+
+    <bean id="messageTaskTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="messageJobDetail" />
+        <!-- 每10秒运行一次 -->
+        <property name="cronExpression" value="0 35 11 * * ?" />
+    </bean>
+    <bean id="messageJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 指定任务类 -->
+        <property name="targetObject" ref="messageTask" />
+        <!-- 指定任务执行的方法 -->
+        <property name="targetMethod" value="execute" />
+    </bean>
+    <bean id="messageTask" class="com.message.task.MessageTask"></bean>
 
     <bean id="stockPriceTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
@@ -134,7 +150,7 @@
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockDailyKLineMA10JobDetail" />
         <!-- 每10秒运行一次 -->
-        <property name="cronExpression" value="0 10 19 * * ?" />
+        <property name="cronExpression" value="0 05 19 * * ?" />
     </bean>
     <bean id="stockDailyKLineMA10JobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -149,7 +165,7 @@
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockDailyKLineMA20JobDetail" />
         <!-- 每10秒运行一次 -->
-        <property name="cronExpression" value="0 20 19 * * ?" />
+        <property name="cronExpression" value="0 10 19 * * ?" />
     </bean>
     <bean id="stockDailyKLineMA20JobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -164,7 +180,7 @@
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockDailyKLineMA30JobDetail" />
         <!-- 每10秒运行一次 -->
-        <property name="cronExpression" value="0 30 19 * * ?" />
+        <property name="cronExpression" value="0 15 19 * * ?" />
     </bean>
     <bean id="stockDailyKLineMA30JobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -175,20 +191,20 @@
     </bean>
     <bean id="stockDailyKLineMA30" class="com.stocks.task.kline.StockDailyKLineMA30Task"></bean>
 
-    <bean id="messageTaskTrigger"
+    <bean id="chooseTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="jobDetail" ref="messageJobDetail" />
+        <property name="jobDetail" ref="chooseJobDetail" />
         <!-- 每10秒运行一次 -->
-        <property name="cronExpression" value="0 35 11 * * ?" />
+        <property name="cronExpression" value="0 20 19 * * ?" />
     </bean>
-    <bean id="messageJobDetail"
+    <bean id="chooseJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <!-- 指定任务类 -->
-        <property name="targetObject" ref="messageTask" />
+        <property name="targetObject" ref="chooseTask" />
         <!-- 指定任务执行的方法 -->
         <property name="targetMethod" value="execute" />
     </bean>
-    <bean id="messageTask" class="com.message.task.MessageTask"></bean>
+    <bean id="chooseTask" class="com.stocks.task.choose.ChooseTask"></bean>
 
 
 
