@@ -26,6 +26,7 @@ public class ChooseTask {
 
     }
 
+
     public void execute(){
         logger.info("ChooseTask  execute");
         String result1 = getT();
@@ -37,10 +38,9 @@ public class ChooseTask {
     }
 
 
-
      public String getT(){
          StocksZjlxDfcfDao dao = new StocksZjlxDfcfDao();
-         List<StocksZjlxDfcfEntity> list = dao.getByZhuLiJingBi("2016-04-06", 50000);
+         List<StocksZjlxDfcfEntity> list = dao.getByZhuLiJingBi(new Date(), 50000);
          StringBuffer sb = new StringBuffer("");
          if(list!=null && list.size()>0){
              for(StocksZjlxDfcfEntity entity : list){
@@ -52,7 +52,8 @@ public class ChooseTask {
 
 
     public String getTT(){
-        Date date = DateUtils.strToDate("2016-04-20");
+//        Date date = DateUtils.strToDate("2016-04-20");
+        Date date = new Date();
         StocksPriceDao priceDao = new StocksPriceDao();
         StocksDailyKLineMA5Dao kLineMA5Dao = new StocksDailyKLineMA5Dao();
         StocksDailyKLineMA10Dao kLineMA10Dao = new StocksDailyKLineMA10Dao();
@@ -86,9 +87,9 @@ public class ChooseTask {
         }
 
         for(StocksPriceEntity entity : list){
-            if(entity.getCode().equals("002424")){
-                System.out.print("");
-            }
+//            if(entity.getCode().equals("002424")){
+//                System.out.print("");
+//            }
             StocksDailyKLineMA5Entity ma5Entity = (StocksDailyKLineMA5Entity)ma5Map.get(entity.getCode());
             if(ma5Entity==null || entity.getShouPan()>ma5Entity.getShouPan()){
                 continue;
@@ -128,7 +129,5 @@ public class ChooseTask {
         }
         return sb.toString();
     }
-
-
 
 }
