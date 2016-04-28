@@ -124,7 +124,7 @@ public class StockPriceJianKongTask {
         } catch (Exception e){
             logger.error("执行StockPriceJianKongTask任务异常：", e);
         }
-
+        logger.info("执行StockPriceJianKongTask任务结束");
     }
 
     public List<StocksEntity> getStocks(){
