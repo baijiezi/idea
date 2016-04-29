@@ -33,7 +33,7 @@ public class ChooseTask {
         String result2 = getTT();
         if(!result1.equals("") || !result2.equals("")){
             MessageService messageService = new MessageService();
-            messageService.send("18825187648", "ZLJB_DFCF"+result1+"KLINE"+result2, Constants.MESSAGE_TYPE_CHOOSE);
+            messageService.send("18825187648", "ZLJB_DFCF"+result1+";    KLINE"+result2, Constants.MESSAGE_TYPE_CHOOSE);
         }
     }
 
