@@ -1,5 +1,6 @@
 package com.stocks.dao;
 
+import com.stocks.dto.StocksFhsgDto;
 import com.stocks.entity.StocksFhsgEntity;
 import com.stocks.utils.HibernateUtil;
 import org.hibernate.Query;
@@ -89,6 +90,50 @@ public class StocksFhsgDao {
         session.close();
         HibernateUtil.closeSessionFactory();
         return null;
+
+    }
+
+    public boolean isExit(StocksFhsgDto dto){
+        String code = dto.getCode();
+        Date gongGaoRi = dto.getGongGaoRi();
+        Integer fenHong = dto.getFenHong();
+        Integer songGu = dto.getSongGu();
+        Integer zhuanZeng = dto.getZhuanZeng();
+        Date dengJiRi = dto.getDengJiRi();
+        Date chuQuanRi = dto.getChuQuanRi();
+        String remark = dto.getRemark();
+
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            StringBuffer sb = new StringBuffer(" from StocksFhsgEntity s where s.code = '" + code + "' and s.fenHong = " + fenHong + " and s.songGu = " + songGu + " and s.zhuanZeng = " + zhuanZeng);
+            if(gongGaoRi != null){
+                sb.append(" and s.gongGaoRi = '" + DateUtils.getSimpleDate(gongGaoRi) + "'");
+            }
+            if(dengJiRi != null){
+                sb.append(" and s.dengJiRi = '" + DateUtils.getSimpleDate(dengJiRi) + "'");
+            }
+            if(dengJiRi != null){
+                sb.append(" and s.chuQuanRi = '" + DateUtils.getSimpleDate(chuQuanRi) + "'");
+            }
+            if(remark!=null && !remark.equals("")){
+                sb.append(" and s.remark = '" + remark + "'");
+            }
+            Query query = session.createQuery(sb.toString());
+            List<StocksFhsgEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return false;
 
     }
 

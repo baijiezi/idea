@@ -57,11 +57,11 @@ public class StockFhsgTask {
 
             for(StocksEntity stock : list){
                 logger.info("==============================StockFhsgTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
-                if(stock.getId()>=3000 && stock.getId()<3800){
+                if(stock.getId()>=0 && stock.getId()<3800){
                     try{
-//                        if(stock.getCode().equals("300489")){
-//                            logger.info("");
-//                        }
+                        if(!stock.getCode().equals("600887")){
+                            continue;
+                        }
                         String url = "http://stock.quote.stockstar.com/dividend/bonus_"+stock.getCode()+".shtml";
                         Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
                         parser.setEncoding("GB2312");
@@ -107,26 +107,25 @@ public class StockFhsgTask {
                 }
 
             }
-            updateData(data);
-            logger.info("完成更新分红送股数据 " + data.size() + " 条");
+            List<StocksFhsgEntity> list1 = updateData(data);
+            logger.info("完成更新分红送股数据 " + list1.size() + " 条");
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
 
-    private void updateData(List<StocksFhsgDto> data){
+    private List<StocksFhsgEntity> updateData(List<StocksFhsgDto> data){
+        List list = new ArrayList<StocksFhsgEntity>();
         if(data==null || data.size()==0){
-            return;
+            return list;
         }
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
         StocksFhsgDao dao = new StocksFhsgDao();
         for(StocksFhsgDto dto : data){
-//            StocksFhsgEntity entity = dao.getByCodeAndGongGaoRi(dto.getCode(), dto.getGongGaoRi());
-            StocksFhsgEntity entity = null;
-            if(entity == null){
-                entity = new StocksFhsgEntity();
+            if(!dao.isExit(dto)){
+                StocksFhsgEntity  entity = new StocksFhsgEntity();
                 entity.setCode(dto.getCode());
                 entity.setName(dto.getName());
                 entity.setGongGaoRi(dto.getGongGaoRi());
@@ -139,10 +138,12 @@ public class StockFhsgTask {
                 entity.setMeiGuFenHong(dto.getMeiGuFenHong());
                 entity.setCreateAt(new Date());
                 dao.save(entity, session);
+                list.add(entity);
             }
         }
         session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
+        return list;
     }
 }
