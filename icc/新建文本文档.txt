@@ -2,7 +2,11 @@
 
 -- SELECT * from sic_stocks_zjlx_dfcf s where s.zhuLiJingBi >= 50000 ORDER BY s.`code`,s.date asc
 
-SELECT * from sic_stocks_zjlx_dfcf s where s.chaoDaDanJingBi >= 50000 ORDER BY s.`code`,s.date asc
+-- SELECT * from sic_stocks_zjlx_dfcf s where s.chaoDaDanJingBi >= 50000 ORDER BY s.`code`,s.date asc
+
+-- SELECT * from sic_stocks_zjlx_hx s where s.chaoDaDanLiuRuZhanBi >= 50000 ORDER BY s.`code`,s.date asc
+
+SELECT * from sic_stocks_zjlx_ths s where s.daDanLiuRuZhanBi >= 50000 ORDER BY s.`code`,s.date asc
 
 -- SELECT * from sic_stocks_price s where s.code in(SELECT DISTINCT s.code from sic_stocks_zjlx_dfcf s where s.zhuLiJingBi > 50000) ORDER BY s.`code`,s.date
 
