@@ -30,10 +30,13 @@ public class ChooseTask {
     public void execute(){
         logger.info("ChooseTask  execute");
         String result1 = getT();
-        String result2 = getTT();
-        if(!result1.equals("") || !result2.equals("")){
+        String result2 = "";
+//        String result2 = getTT();
+        String result3 = fhsg();
+        if(!result1.equals("") || !result2.equals("") || !result3.equals("")){
             MessageService messageService = new MessageService();
-            messageService.send("18825187648", "ZLJB_DFCF"+result1+";    KLINE"+result2, Constants.MESSAGE_TYPE_CHOOSE);
+            String content = "ZLJB_DFCF" + result1 + ";    KLINE" + result2 + ";    FHSG" + result3;
+            messageService.send("18825187648", content, Constants.MESSAGE_TYPE_CHOOSE);
         }
     }
 
@@ -130,4 +133,7 @@ public class ChooseTask {
         return sb.toString();
     }
 
+    public String fhsg(){
+        return "";
+    }
 }

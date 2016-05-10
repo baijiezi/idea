@@ -70,7 +70,7 @@ public class StocksZjlxDfcfDao {
                 return null;
             }
             String dt = DateUtils.getSimpleDate(date);
-            Query query = session.createQuery(" from StocksZjlxDfcfEntity s where s.date = '" + dt + "' and s.zhuLiJingBi > " + zhuLiJingBi);
+            Query query = session.createQuery(" from StocksZjlxDfcfEntity s where s.date = '" + dt + "' and s.zhuLiJingBi >= " + zhuLiJingBi);
             List<StocksZjlxDfcfEntity> list = query.list();
             if(list!=null && list.size()>0) {
                 return list;

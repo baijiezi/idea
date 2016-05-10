@@ -59,9 +59,9 @@ public class StockFhsgTask {
                 logger.info("==============================StockFhsgTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
                 if(stock.getId()>=0 && stock.getId()<3800){
                     try{
-                        if(!stock.getCode().equals("000776")){
-                            continue;
-                        }
+//                        if(!stock.getCode().equals("000776")){
+//                            continue;
+//                        }
                         String url = "http://stock.quote.stockstar.com/dividend/bonus_"+stock.getCode()+".shtml";
                         Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
                         parser.setEncoding("GB2312");
