@@ -53,13 +53,13 @@ public class StockFhsgTask {
             List data = new ArrayList<StocksFhsgDto>();
             StocksDao stocksDao = new StocksDao();
             List<StocksEntity> list = stocksDao.getAll();
-            Date date = new Date();
+            StocksFhsgDao dao = new StocksFhsgDao();
 
             for(StocksEntity stock : list){
                 logger.info("==============================StockFhsgTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
                 if(stock.getId()>=0 && stock.getId()<3800){
                     try{
-                        if(!stock.getCode().equals("600887")){
+                        if(!stock.getCode().equals("000776")){
                             continue;
                         }
                         String url = "http://stock.quote.stockstar.com/dividend/bonus_"+stock.getCode()+".shtml";
@@ -95,7 +95,9 @@ public class StockFhsgTask {
                                     dto.setChuQuanRi(DateUtils.strToDate(list3.elementAt(6).toPlainTextString()));
                                     dto.setRemark(list3.elementAt(7).toPlainTextString());
                                     dto.setMeiGuFenHong(dto.getFenHong()/10);
-                                    data.add(dto);
+                                    if(!dao.isExit(dto)){
+                                        data.add(dto);
+                                    }
                                 }catch (Exception e){
                                     logger.info("StockFhsgTask异常:", e);
                                 }
@@ -105,7 +107,6 @@ public class StockFhsgTask {
                         e.printStackTrace();
                     }
                 }
-
             }
             List<StocksFhsgEntity> list1 = updateData(data);
             logger.info("完成更新分红送股数据 " + list1.size() + " 条");
@@ -120,26 +121,25 @@ public class StockFhsgTask {
         if(data==null || data.size()==0){
             return list;
         }
+        Date date = new Date();
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
         StocksFhsgDao dao = new StocksFhsgDao();
         for(StocksFhsgDto dto : data){
-            if(!dao.isExit(dto)){
-                StocksFhsgEntity  entity = new StocksFhsgEntity();
-                entity.setCode(dto.getCode());
-                entity.setName(dto.getName());
-                entity.setGongGaoRi(dto.getGongGaoRi());
-                entity.setFenHong(dto.getFenHong());
-                entity.setSongGu(dto.getSongGu());
-                entity.setZhuanZeng(dto.getZhuanZeng());
-                entity.setDengJiRi(dto.getDengJiRi());
-                entity.setChuQuanRi(dto.getChuQuanRi());
-                entity.setRemark(dto.getRemark());
-                entity.setMeiGuFenHong(dto.getMeiGuFenHong());
-                entity.setCreateAt(new Date());
-                dao.save(entity, session);
-                list.add(entity);
-            }
+            StocksFhsgEntity  entity = new StocksFhsgEntity();
+            entity.setCode(dto.getCode());
+            entity.setName(dto.getName());
+            entity.setGongGaoRi(dto.getGongGaoRi());
+            entity.setFenHong(dto.getFenHong());
+            entity.setSongGu(dto.getSongGu());
+            entity.setZhuanZeng(dto.getZhuanZeng());
+            entity.setDengJiRi(dto.getDengJiRi());
+            entity.setChuQuanRi(dto.getChuQuanRi());
+            entity.setRemark(dto.getRemark());
+            entity.setMeiGuFenHong(dto.getMeiGuFenHong());
+            entity.setCreateAt(date);
+            dao.save(entity, session);
+            list.add(entity);
         }
         session.getTransaction().commit();
         session.close();
