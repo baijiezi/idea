@@ -67,9 +67,9 @@ public class StockFhsgTask {
                 logger.info("==============================StockFhsgTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
                 if(stock.getId()>=0 && stock.getId()<3800){
                     try{
-                        if(!stock.getCode().equals("300506")){
-                            continue;
-                        }
+//                        if(!stock.getCode().equals("300506")){
+//                            continue;
+//                        }
                         String url = "http://stock.quote.stockstar.com/dividend/bonus_"+stock.getCode()+".shtml";
                         Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
                         parser.setEncoding("GB2312");
@@ -108,10 +108,10 @@ public class StockFhsgTask {
                                     dto.setMeiGuFenHong(dto.getFenHong()/10);
                                     if(dto.getMeiGuFenHong()!=null && dto.getMeiGuFenHong()>0){
                                         StringBuffer sb = new StringBuffer("http://qt.gtimg.cn/r=0.9694567599799484q=");
-                                        if(stock.getExchange().equals("sh")){
+                                        if(stock.getExchange().equals("sh") || stock.getExchange().startsWith("沪")){
                                             sb.append("s_sh").append(stock.getCode());
                                         }
-                                        if(stock.getExchange().equals("sz")){
+                                        if(stock.getExchange().equals("sz") || stock.getExchange().startsWith("深")){
                                             sb.append("s_sz").append(stock.getCode());
                                         }
 

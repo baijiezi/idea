@@ -66,10 +66,10 @@ public class StockPriceJianKongTask {
                     StringBuffer sb = new StringBuffer("http://qt.gtimg.cn/r=0.9694567599799484q=");
                     for(StocksEntity entity : list){
                         //http://qt.gtimg.cn/r=0.9694567599799484q=s_sz002340,s_sh600399,s_sh601919,s_sh600372,s_sh600868,s_sh600030,s_sz002547,s_sz000932,s_sz000089,s_sh601668,s_sh600880,s_sh601633
-                        if(entity.getExchange().equals("sh")){
+                        if(entity.getExchange().equals("sh") || entity.getExchange().startsWith("沪")){
                             sb.append("s_sh").append(entity.getCode()).append(",");
                         }
-                        if(entity.getExchange().equals("sz")){
+                        if(entity.getExchange().equals("sz") || entity.getExchange().startsWith("深")){
                             sb.append("s_sz").append(entity.getCode()).append(",");
                         }
                     }
