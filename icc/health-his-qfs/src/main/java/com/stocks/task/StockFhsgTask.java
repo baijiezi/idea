@@ -25,11 +25,11 @@ import org.htmlparser.util.NodeList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ning.http.client.Response;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.Future;
 
 /**
  * Created with IntelliJ IDEA.
@@ -54,14 +54,22 @@ public class StockFhsgTask {
             StocksDao stocksDao = new StocksDao();
             List<StocksEntity> list = stocksDao.getAll();
             StocksFhsgDao dao = new StocksFhsgDao();
+            Date dt = DateUtils.addDate(new Date(), -180);
+            AsyncHttpClientConfig config = new AsyncHttpClientConfig.Builder()
+                    .setMaximumConnectionsPerHost(30)
+                    .setMaximumConnectionsTotal(300)
+                    .setConnectionTimeoutInMs(30*60*1000)
+                    .setRequestTimeoutInMs(30*60*1000)
+                    .build();
+            AsyncHttpClient asyncHttpClient = new AsyncHttpClient(config);
 
             for(StocksEntity stock : list){
                 logger.info("==============================StockFhsgTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
                 if(stock.getId()>=0 && stock.getId()<3800){
                     try{
-//                        if(!stock.getCode().equals("000776")){
-//                            continue;
-//                        }
+                        if(!stock.getCode().equals("300506")){
+                            continue;
+                        }
                         String url = "http://stock.quote.stockstar.com/dividend/bonus_"+stock.getCode()+".shtml";
                         Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
                         parser.setEncoding("GB2312");
@@ -88,6 +96,9 @@ public class StockFhsgTask {
                                     dto.setCode(stock.getCode());
                                     dto.setName(stock.getName());
                                     dto.setGongGaoRi(DateUtils.strToDate(list3.elementAt(1).toPlainTextString()));
+                                    if(dto.getGongGaoRi().before(dt) || dao.isExit(dto)){
+                                        continue;
+                                    }
                                     dto.setFenHong(NumberUtils.toIntMilli(list3.elementAt(2).toPlainTextString()));
                                     dto.setSongGu(NumberUtils.toInt(list3.elementAt(3).toPlainTextString()));
                                     dto.setZhuanZeng(NumberUtils.toInt(list3.elementAt(4).toPlainTextString()));
@@ -95,9 +106,27 @@ public class StockFhsgTask {
                                     dto.setChuQuanRi(DateUtils.strToDate(list3.elementAt(6).toPlainTextString()));
                                     dto.setRemark(list3.elementAt(7).toPlainTextString());
                                     dto.setMeiGuFenHong(dto.getFenHong()/10);
-                                    if(!dao.isExit(dto)){
-                                        data.add(dto);
+                                    if(dto.getMeiGuFenHong()!=null && dto.getMeiGuFenHong()>0){
+                                        StringBuffer sb = new StringBuffer("http://qt.gtimg.cn/r=0.9694567599799484q=");
+                                        if(stock.getExchange().equals("sh")){
+                                            sb.append("s_sh").append(stock.getCode());
+                                        }
+                                        if(stock.getExchange().equals("sz")){
+                                            sb.append("s_sz").append(stock.getCode());
+                                        }
+
+                                        logger.info("url:"+ sb.toString());
+                                        Future r = asyncHttpClient.prepareGet(sb.toString()).execute();
+                                        Response response = (Response) r.get();
+                                        String rs = response.getResponseBody();
+                                        logger.info(rs);
+                                        String str = rs.substring(rs.indexOf("\"")+1, rs.lastIndexOf("\""));
+                                        String[] temp = str.split("~");
+
+                                        dto.setDangQianGuJia(NumberUtils.toIntMilli(temp[3]));
+                                        dto.setShouYiLv(NumberUtils.getBiLv(dto.getMeiGuFenHong(), dto.getDangQianGuJia()));
                                     }
+                                    data.add(dto);
                                 }catch (Exception e){
                                     logger.info("StockFhsgTask异常:", e);
                                 }
@@ -109,7 +138,7 @@ public class StockFhsgTask {
                 }
             }
             List<StocksFhsgEntity> list1 = updateData(data);
-            logger.info("完成更新分红送股数据 " + list1.size() + " 条");
+            logger.info("完成更新fhsg数据 " + list1.size() + " 条");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -137,6 +166,8 @@ public class StockFhsgTask {
             entity.setChuQuanRi(dto.getChuQuanRi());
             entity.setRemark(dto.getRemark());
             entity.setMeiGuFenHong(dto.getMeiGuFenHong());
+            entity.setDangQianGuJia(dto.getDangQianGuJia());
+            entity.setShouYiLv(dto.getShouYiLv());
             entity.setCreateAt(date);
             dao.save(entity, session);
             list.add(entity);

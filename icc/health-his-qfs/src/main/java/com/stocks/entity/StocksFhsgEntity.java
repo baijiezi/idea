@@ -33,6 +33,8 @@ public class StocksFhsgEntity  implements Serializable {
     private Date chuQuanRi;
     private String remark;
     private Integer meiGuFenHong;
+    private Integer dangQianGuJia;
+    private Integer shouYiLv;
     private Date createAt;
 
     public Integer getId() {
@@ -129,5 +131,21 @@ public class StocksFhsgEntity  implements Serializable {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public Integer getDangQianGuJia() {
+        return dangQianGuJia;
+    }
+
+    public void setDangQianGuJia(Integer dangQianGuJia) {
+        this.dangQianGuJia = dangQianGuJia;
+    }
+
+    public Integer getShouYiLv() {
+        return shouYiLv;
+    }
+
+    public void setShouYiLv(Integer shouYiLv) {
+        this.shouYiLv = shouYiLv;
     }
 }

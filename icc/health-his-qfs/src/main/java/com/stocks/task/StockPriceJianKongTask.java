@@ -101,12 +101,11 @@ public class StockPriceJianKongTask {
                             continue;
                         }
                         if(entity.getBuyPrice()!=null && entity.getBuyPrice()>0){
-                            if(dto.getShouPan() < entity.getBuyPrice()){
+                            if(dto.getShouPan()>0 && dto.getShouPan()<entity.getBuyPrice()){
                                 List messageList = messageDao.getByTypeAndSendTime(entity.getCode(), DateUtils.getSimpleDate(new Date()));
                                 if(messageList==null || messageList.size()==0){
                                     messageService.send("18825187648", dto.getName().substring(0,1)+entity.getCode()+"B"+dto.getShouPan(), entity.getCode());
                                 }
-
                             }
                         }
                         if(entity.getSalePrice()!=null && entity.getSalePrice()>0){
