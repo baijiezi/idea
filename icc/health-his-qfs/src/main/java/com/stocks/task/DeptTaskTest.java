@@ -17,7 +17,7 @@ public class DeptTaskTest {
     public static void main(String[] args){
 
         Map<String, String> map = new HashMap<String, String>();
-        map.put("com.message.entity.MessageEntity", "com.message.dao.MessageDao");
+        map.put("sic_message", "com.message.dao.MessageDao");
         for(String entityName : map.keySet()){
             try{
                 String daoName = map.get(entityName);
