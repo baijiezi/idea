@@ -61,9 +61,9 @@ public class StockFhsgTask {
             for(StocksEntity stock : list){
                 logger.info("==============================StockFhsgTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
                 try{
-//                        if(!stock.getCode().equals("300506")){
-//                            continue;
-//                        }
+//                    if(!stock.getCode().equals("000776")){
+//                        continue;
+//                    }
                     String url = "http://stock.quote.stockstar.com/dividend/bonus_"+stock.getCode()+".shtml";
                     Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
                     parser.setEncoding("GB2312");
@@ -80,8 +80,12 @@ public class StockFhsgTask {
                         NodeFilter filter2 = new TagNameFilter("tr");
                         NodeList list2 = parser1.extractAllNodesThatMatch(filter2);
                         System.out.println("list2.size: " + list2.size());
+                        int j = 0;
                         for(NodeIterator k = list2.elements(); k.hasMoreNodes(); ){
                             try{
+                                if(++j > 3){
+                                    break;
+                                }
                                 Node n = k.nextNode();
                                 Parser parser3 = new Parser(n.toHtml());
                                 NodeFilter filter3 = new TagNameFilter("td");
