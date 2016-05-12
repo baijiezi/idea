@@ -30,8 +30,7 @@ public class ChooseTask {
     public void execute(){
         logger.info("ChooseTask  execute");
         String result1 = getT();
-        String result2 = "";
-//        String result2 = getTT();
+        String result2 = getTT();
         String result3 = fhsg();
         if(!result1.equals("") || !result2.equals("") || !result3.equals("")){
             MessageService messageService = new MessageService();
