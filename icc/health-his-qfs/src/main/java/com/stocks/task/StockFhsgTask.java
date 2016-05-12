@@ -131,7 +131,7 @@ public class StockFhsgTask {
                 }
             }
             List<StocksFhsgEntity> list1 = updateData(data);
-            logger.info("完成更新fhsg数据 " + list1.size() + " 条");
+            logger.info("完成更新FHSG数据 " + list1.size() + " 条");
         }catch (Exception e){
             e.printStackTrace();
         }
