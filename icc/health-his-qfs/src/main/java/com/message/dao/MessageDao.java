@@ -1,6 +1,7 @@
 package com.message.dao;
 
 import com.message.entity.MessageEntity;
+import com.stocks.dao.IBaseDao;
 import com.stocks.utils.DateUtils;
 import com.stocks.utils.HibernateUtil;
 import org.hibernate.Query;
@@ -16,7 +17,7 @@ import java.util.List;
  * Time: 上午10:22
  * To change this template use File | Settings | File Templates.
  */
-public class MessageDao {
+public class MessageDao implements IBaseDao {
 
     public List<MessageEntity> getToSends(String toSendTime){
         Session session = HibernateUtil.getOpenSession();
@@ -165,5 +166,25 @@ public class MessageDao {
     }
 
 
-
+    @Override
+    public List exports() {
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            Query query = session.createQuery(" from MessageEntity s where s.status = 0");
+            List<MessageEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
 }

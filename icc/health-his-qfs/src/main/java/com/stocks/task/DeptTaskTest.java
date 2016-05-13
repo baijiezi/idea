@@ -2,6 +2,7 @@ package com.stocks.task;
 
 import com.message.dao.MessageDao;
 import com.message.entity.MessageEntity;
+import com.stocks.dao.IBaseDao;
 
 import java.lang.reflect.Method;
 import java.util.*;
@@ -17,15 +18,20 @@ public class DeptTaskTest {
     public static void main(String[] args){
 
         Map<String, String> map = new HashMap<String, String>();
-        map.put("sic_message", "com.message.dao.MessageDao");
-        for(String entityName : map.keySet()){
+        map.put("health_sic_stocks", "com.stocks.dao.StocksDao");
+        map.put("health_sic_fhsg", "com.stocks.dao.StocksFhsgDao");
+        map.put("health_sic_price", "com.stocks.dao.StocksPriceDao");
+        map.put("health_sic_zjlx_dfcf", "com.stocks.dao.StocksZjlxDfcfDao");
+        map.put("health_sic_zjlx_hx", "com.stocks.dao.StocksZjlxHXDao");
+        map.put("health_sic_zjlx_zjlx_ths", "com.stocks.dao.StocksZjlxTHSDao");
+        for(String key : map.keySet()){
             try{
-                String daoName = map.get(entityName);
-                MessageDao dao = (MessageDao)Class.forName(daoName).newInstance();
-                List<MessageEntity> list = dao.getByStatus(0);
-                for(MessageEntity entity : list){
-                    Method[] methods = entity.getClass().getMethods();
-                    StringBuffer result = new StringBuffer(entity.getClass().getName());
+                String daoName = map.get(key);
+                IBaseDao dao = (MessageDao)Class.forName(daoName).newInstance();
+                List list = dao.exports();
+                for(Object obj : list){
+                    Method[] methods = obj.getClass().getMethods();
+                    StringBuffer result = new StringBuffer(obj.getClass().getName());
                     result.append("[");
                     int i = 0;
                     for(Method method : methods)
@@ -33,10 +39,11 @@ public class DeptTaskTest {
                         try
                         {
                             String methodName = method.getName();
+                            System.out.println(methodName);
                             if(methodName.startsWith("get") && !methodName.equals("getClass"))
                             {
                                 String fieldName = methodName.substring(3, 4).toUpperCase() + methodName.substring(4, methodName.length());
-                                String value = method.invoke(entity, null).toString();
+                                Object value = method.invoke(obj, null);
                                 if(i > 0)
                                     result.append(", ");
                                 result.append(fieldName).append("=").append(value);
