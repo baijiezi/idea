@@ -43,21 +43,20 @@ public class ExportTask {
                 List list = dao.exports(DateUtils.strToDate("2016-05-13"));
                 for(Object obj : list){
                     Method[] methods = obj.getClass().getMethods();
-                    StringBuffer result = new StringBuffer("INSERT INTO `" + key + "` VALUES (");
+                    StringBuffer sb = new StringBuffer("INSERT INTO `" + key + "` VALUES (");
                     for(Method method : methods)
                     {
                         try
                         {
                             String methodName = method.getName();
-                            if(methodName.startsWith("get") && !methodName.equals("getClass"))
+                            if(methodName.startsWith("get") && !methodName.equals("getClass") && !methodName.equals("getStocksEntity"))
                             {
-                                String fieldName = methodName.substring(3, 4).toUpperCase() + methodName.substring(4, methodName.length());
                                 Object value = method.invoke(obj, null);
                                 if(value == null) {
-                                    result.append("null").append(",");
+                                    sb.append("null").append(",");
                                 }
                                 else{
-                                    result.append("'").append(value).append("',");
+                                    sb.append("'").append(value).append("',");
                                 }
                             }
                         }
@@ -66,7 +65,9 @@ public class ExportTask {
                             e.printStackTrace();
                         }
                     }
-                    logger.info(result.toString());
+                    String str = sb.substring(0, sb.length()-1);
+                    str = str + ")";
+                    logger.info(str);
                 }
             } catch (Exception e){
                 e.printStackTrace();

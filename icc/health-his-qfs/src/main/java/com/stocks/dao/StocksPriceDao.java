@@ -391,7 +391,29 @@ public class StocksPriceDao implements IBaseDao{
         try{
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             String dt = format.format(createTime);
-            Query query = session.createQuery(" from StocksPriceEntity s where s.date = '" + dt + "'");
+            Query query = session.createQuery(" from StocksPriceEntity s where s.createTime >= '" + dt + "'");
+            List<StocksPriceEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
+    @Override
+    public List exports(String createTime) {
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            Query query = session.createQuery(" from StocksPriceEntity s where s.createTime >= '" + createTime + "'");
             List<StocksPriceEntity> list = query.list();
             if(list!=null && list.size()>0) {
                 return list;

@@ -12,4 +12,5 @@ import java.util.List;
  */
 public interface IBaseDao {
     public List exports(Date createTime);
+    public List exports(String createTime);
 }
