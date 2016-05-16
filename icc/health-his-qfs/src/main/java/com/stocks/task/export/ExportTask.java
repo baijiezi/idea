@@ -30,12 +30,12 @@ public class ExportTask {
 
 
         Map<String, String> map = new HashMap<String, String>();
-//        map.put("health_sic_stocks", "com.stocks.dao.StocksDao");
-//        map.put("health_sic_fhsg", "com.stocks.dao.StocksFhsgDao");
+//        map.put("sic_stocks_stocks", "com.stocks.dao.StocksDao");
+//        map.put("sic_stocks_fhsg", "com.stocks.dao.StocksFhsgDao");
         map.put("sic_stocks_price", "com.stocks.dao.StocksPriceDao");
-//        map.put("health_sic_zjlx_dfcf", "com.stocks.dao.StocksZjlxDfcfDao");
-//        map.put("health_sic_zjlx_hx", "com.stocks.dao.StocksZjlxHXDao");
-//        map.put("health_sic_zjlx_zjlx_ths", "com.stocks.dao.StocksZjlxTHSDao");
+//        map.put("sic_stocks_zjlx_dfcf", "com.stocks.dao.StocksZjlxDfcfDao");
+//        map.put("sic_stocks_zjlx_hx", "com.stocks.dao.StocksZjlxHXDao");
+//        map.put("sic_stocks_zjlx_zjlx_ths", "com.stocks.dao.StocksZjlxTHSDao");
         for(String key : map.keySet()){
             try{
                 String daoName = map.get(key);
