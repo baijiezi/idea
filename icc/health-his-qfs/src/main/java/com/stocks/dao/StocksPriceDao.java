@@ -19,7 +19,7 @@ import java.util.List;
  * Time: 下午6:54
  * To change this template use File | Settings | File Templates.
  */
-public class StocksPriceDao {
+public class StocksPriceDao implements IBaseDao{
 
     public List<StocksPriceEntity> getByCode(String code){
         Session session = HibernateUtil.getOpenSession();
@@ -384,9 +384,27 @@ public class StocksPriceDao {
     }
 
 
-
-
-
-
-
+    @Override
+    public List exports(Date createTime) {
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String dt = format.format(createTime);
+            Query query = session.createQuery(" from StocksPriceEntity s where s.date = '" + dt + "'");
+            List<StocksPriceEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
 }

@@ -1,5 +1,6 @@
 package com.stocks.dao;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,5 +11,5 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface IBaseDao {
-    public List exports();
+    public List exports(Date createTime);
 }

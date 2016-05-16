@@ -47,12 +47,26 @@
         </filter>
     </appender>
 
+    <appender name="EXPORT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/sic_export.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/sic_export-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>180</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%msg%n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
     <logger name="com" level="all" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="TASKFILE"/>
         <appender-ref ref="ERRORFILE"/>
     </logger>
-
+    <logger name="com.stocks.task.export" level="info" additivity="false">
+        <appender-ref ref="EXPORT"/>
+    </logger>
 
 
 </configuration>
