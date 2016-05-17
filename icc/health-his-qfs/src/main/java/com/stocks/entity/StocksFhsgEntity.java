@@ -153,7 +153,7 @@ public class StocksFhsgEntity  implements Serializable {
         StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks_fhsg` VALUES (");
         sb.append(id==null ? "null," : "'"+id+"',");
         sb.append(code==null ? "null," : "'"+code+"',");
-        sb.append(name==null ? "null," : "'"+name+"',");
+        sb.append(name==null ? "null," : "'',");
         sb.append(gongGaoRi==null ? "null," : "'"+gongGaoRi+"',");
         sb.append(fenHong==null ? "null," : "'"+fenHong+"',");
         sb.append(meiGuFenHong==null ? "null," : "'"+meiGuFenHong+"',");

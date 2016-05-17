@@ -224,7 +224,7 @@ public class StocksZjlxTHSEntity  implements java.io.Serializable  {
         StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks_zjlx_ths` VALUES (");
         sb.append(id==null ? "null," : "'"+id+"',");
         sb.append(code==null ? "null," : "'"+code+"',");
-        sb.append(name==null ? "null," : "'"+name+"',");
+        sb.append(name==null ? "null," : "'',");
         sb.append(date==null ? "null," : "'"+date+"',");
         sb.append(chengJiaoE==null ? "null," : "'"+chengJiaoE+"',");
         sb.append(zongLiuRu==null ? "null," : "'"+zongLiuRu+"',");

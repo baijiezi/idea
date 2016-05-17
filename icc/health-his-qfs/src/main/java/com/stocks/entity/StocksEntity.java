@@ -207,7 +207,7 @@ public class StocksEntity implements Serializable {
         StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks` VALUES (");
         sb.append(id==null ? "null," : "'"+id+"',");
         sb.append(code==null ? "null," : "'"+code+"',");
-        sb.append(name==null ? "null," : "'"+name+"',");
+        sb.append(name==null ? "null," : "'',");
         sb.append(exchange==null ? "null," : "'"+exchange+"',");
         sb.append(type==null ? "null," : "'"+type+"',");
         sb.append(subType==null ? "null," : "'"+subType+"',");
