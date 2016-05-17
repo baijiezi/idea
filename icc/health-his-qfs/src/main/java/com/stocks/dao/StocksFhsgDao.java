@@ -2,10 +2,14 @@ package com.stocks.dao;
 
 import com.stocks.dto.StocksFhsgDto;
 import com.stocks.entity.StocksFhsgEntity;
+import com.stocks.entity.StocksPriceEntity;
 import com.stocks.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import com.stocks.utils.DateUtils;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +20,7 @@ import java.util.List;
  * Time: 下午4:23
  * To change this template use File | Settings | File Templates.
  */
-public class StocksFhsgDao {
+public class StocksFhsgDao implements IBaseDao {
     public List<StocksFhsgEntity> getByCode(String code){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
@@ -203,6 +207,52 @@ public class StocksFhsgDao {
 
 
 
+    }
+
+    @Override
+    public List exports(Date createAt) {
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String dt = format.format(createAt);
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.createAt >= '" + dt + "'");
+            List<StocksPriceEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
+    @Override
+    public List exports(String createAt) {
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.createAt >= '" + createAt + "'");
+            List<StocksPriceEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
     }
 
 }

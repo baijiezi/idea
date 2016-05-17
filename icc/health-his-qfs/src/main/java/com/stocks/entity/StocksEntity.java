@@ -91,12 +91,36 @@ public class StocksEntity implements Serializable {
         this.subType = subType;
     }
 
+    public String getHangYe() {
+        return hangYe;
+    }
+
+    public void setHangYe(String hangYe) {
+        this.hangYe = hangYe;
+    }
+
     public String getDetailUrl() {
         return detailUrl;
     }
 
     public void setDetailUrl(String detailUrl) {
         this.detailUrl = detailUrl;
+    }
+
+    public Integer getBuyPrice() {
+        return buyPrice;
+    }
+
+    public void setBuyPrice(Integer buyPrice) {
+        this.buyPrice = buyPrice;
+    }
+
+    public Integer getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(Integer salePrice) {
+        this.salePrice = salePrice;
     }
 
     public String getPriceTaskType() {
@@ -177,29 +201,5 @@ public class StocksEntity implements Serializable {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
-    }
-
-    public String getHangYe() {
-        return hangYe;
-    }
-
-    public void setHangYe(String hangYe) {
-        this.hangYe = hangYe;
-    }
-
-    public Integer getBuyPrice() {
-        return buyPrice;
-    }
-
-    public void setBuyPrice(Integer buyPrice) {
-        this.buyPrice = buyPrice;
-    }
-
-    public Integer getSalePrice() {
-        return salePrice;
-    }
-
-    public void setSalePrice(Integer salePrice) {
-        this.salePrice = salePrice;
     }
 }

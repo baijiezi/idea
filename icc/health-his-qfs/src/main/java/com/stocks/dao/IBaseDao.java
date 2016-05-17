@@ -11,6 +11,6 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface IBaseDao {
-    public List exports(Date createTime);
-    public List exports(String createTime);
+    public List exports(Date createAt);
+    public List exports(String createAt);
 }

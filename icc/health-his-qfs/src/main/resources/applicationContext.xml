@@ -23,6 +23,7 @@
                 <ref bean="messageTaskTrigger" />
                 <ref bean="chooseTaskTrigger" />
                 <!--<ref bean="fhsgTaskTrigger" />-->
+                <!--<ref bean="exportTaskTrigger" />-->
             </list>
         </property>
     </bean>
@@ -180,9 +181,21 @@
     </bean>
     <bean id="fhsgJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject" ref="chooseTask" />
+        <property name="targetObject" ref="fhsgTask" />
         <property name="targetMethod" value="execute" />
     </bean>
     <bean id="fhsgTask" class="com.stocks.task.StockFhsgTask"></bean>
+
+    <bean id="exportTaskTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="exportJobDetail" />
+        <property name="cronExpression" value="0 51 13 * * ?" />
+    </bean>
+    <bean id="exportJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="exportTask" />
+        <property name="targetMethod" value="execute" />
+    </bean>
+    <bean id="exportTask" class="com.stocks.task.export.ExportTask"></bean>
 
 </beans>

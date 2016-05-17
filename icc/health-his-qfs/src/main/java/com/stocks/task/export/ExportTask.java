@@ -30,14 +30,19 @@ public class ExportTask {
 
 
         Map<String, String> map = new HashMap<String, String>();
-//        map.put("sic_stocks_stocks", "com.stocks.dao.StocksDao");
-//        map.put("sic_stocks_fhsg", "com.stocks.dao.StocksFhsgDao");
+        map.put("sic_stocks", "com.stocks.dao.StocksDao");
+        map.put("sic_stocks_fhsg", "com.stocks.dao.StocksFhsgDao");
         map.put("sic_stocks_price", "com.stocks.dao.StocksPriceDao");
-//        map.put("sic_stocks_zjlx_dfcf", "com.stocks.dao.StocksZjlxDfcfDao");
-//        map.put("sic_stocks_zjlx_hx", "com.stocks.dao.StocksZjlxHXDao");
-//        map.put("sic_stocks_zjlx_zjlx_ths", "com.stocks.dao.StocksZjlxTHSDao");
+        map.put("sic_stocks_zjlx_dfcf", "com.stocks.dao.StocksZjlxDfcfDao");
+        map.put("sic_stocks_zjlx_hx", "com.stocks.dao.StocksZjlxHXDao");
+        map.put("sic_stocks_zjlx_zjlx_ths", "com.stocks.dao.StocksZjlxTHSDao");
+        map.put("sic_stocks_daily_kline_ma5", "com.stocks.dao.StocksDailyKLineMA5Dao");
+        map.put("sic_stocks_daily_kline_ma10", "com.stocks.dao.StocksDailyKLineMA10Dao");
+        map.put("sic_stocks_daily_kline_ma20", "com.stocks.dao.StocksDailyKLineMA20Dao");
+        map.put("sic_stocks_daily_kline_ma30", "com.stocks.dao.StocksDailyKLineMA30Dao");
         for(String key : map.keySet()){
             try{
+                logger.info("=======" + key);
                 String daoName = map.get(key);
                 IBaseDao dao = (IBaseDao)Class.forName(daoName).newInstance();
                 List list = dao.exports(DateUtils.strToDate("2016-05-13"));
@@ -49,6 +54,7 @@ public class ExportTask {
                         try
                         {
                             String methodName = method.getName();
+                            logger.info("-------" + methodName);
                             if(methodName.startsWith("get") && !methodName.equals("getClass") && !methodName.equals("getStocksEntity"))
                             {
                                 Object value = method.invoke(obj, null);
@@ -66,7 +72,7 @@ public class ExportTask {
                         }
                     }
                     String str = sb.substring(0, sb.length()-1);
-                    str = str + ")";
+                    str = str + ");";
                     logger.info(str);
                 }
             } catch (Exception e){

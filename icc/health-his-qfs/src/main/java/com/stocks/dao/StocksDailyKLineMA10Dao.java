@@ -17,7 +17,7 @@ import java.util.List;
  * Time: 下午11:07
  * To change this template use File | Settings | File Templates.
  */
-public class StocksDailyKLineMA10Dao {
+public class StocksDailyKLineMA10Dao implements IBaseDao {
     public boolean save(StocksDailyKLineMA10Entity entity, Session session){
         try{
             session.save(entity);
@@ -118,5 +118,51 @@ public class StocksDailyKLineMA10Dao {
         HibernateUtil.closeSessionFactory();
         return null;
 
+    }
+
+    @Override
+    public List exports(Date createAt) {
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String dt = format.format(createAt);
+            Query query = session.createQuery(" from StocksDailyKLineMA10Entity s where s.createTime >= '" + dt + "'");
+            List<StocksDailyKLineMA10Entity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
+    @Override
+    public List exports(String createAt) {
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            Query query = session.createQuery(" from StocksDailyKLineMA10Entity s where s.createTime >= '" + createAt + "'");
+            List<StocksDailyKLineMA10Entity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
     }
 }

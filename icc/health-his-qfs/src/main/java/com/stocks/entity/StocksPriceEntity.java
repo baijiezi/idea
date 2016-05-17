@@ -73,7 +73,6 @@ public class StocksPriceEntity implements Serializable {
     @JoinColumn(name = "code", referencedColumnName="code", insertable = false, updatable = false)
     private StocksEntity stocksEntity;//上级科室
 
-
     public Integer getId() {
         return id;
     }
@@ -186,6 +185,14 @@ public class StocksPriceEntity implements Serializable {
         this.zuiDi = zuiDi;
     }
 
+    public Integer getZhenFu() {
+        return zhenFu;
+    }
+
+    public void setZhenFu(Integer zhenFu) {
+        this.zhenFu = zhenFu;
+    }
+
     public Integer getJinKai() {
         return jinKai;
     }
@@ -232,6 +239,22 @@ public class StocksPriceEntity implements Serializable {
 
     public void setNeiPan(Integer neiPan) {
         this.neiPan = neiPan;
+    }
+
+    public Integer getPanCha() {
+        return panCha;
+    }
+
+    public void setPanCha(Integer panCha) {
+        this.panCha = panCha;
+    }
+
+    public Integer getPanBi() {
+        return panBi;
+    }
+
+    public void setPanBi(Integer panBi) {
+        this.panBi = panBi;
     }
 
     public Long getShiYing() {
@@ -442,14 +465,6 @@ public class StocksPriceEntity implements Serializable {
         this.saleFive2 = saleFive2;
     }
 
-    public Integer getZhenFu() {
-        return zhenFu;
-    }
-
-    public void setZhenFu(Integer zhenFu) {
-        this.zhenFu = zhenFu;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -464,21 +479,5 @@ public class StocksPriceEntity implements Serializable {
 
     public void setStocksEntity(StocksEntity stocksEntity) {
         this.stocksEntity = stocksEntity;
-    }
-
-    public Integer getPanCha() {
-        return panCha;
-    }
-
-    public void setPanCha(Integer panCha) {
-        this.panCha = panCha;
-    }
-
-    public Integer getPanBi() {
-        return panBi;
-    }
-
-    public void setPanBi(Integer panBi) {
-        this.panBi = panBi;
     }
 }

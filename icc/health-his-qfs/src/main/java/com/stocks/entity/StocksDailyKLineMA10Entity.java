@@ -219,8 +219,4 @@ public class StocksDailyKLineMA10Entity implements Serializable {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
-
-
-
 }
