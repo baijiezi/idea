@@ -480,4 +480,11 @@ public class StocksPriceEntity implements Serializable {
     public void setStocksEntity(StocksEntity stocksEntity) {
         this.stocksEntity = stocksEntity;
     }
+
+    public String toSql(){
+        StringBuffer sb = new StringBuffer("INSERT INTO `health_orders` VALUES (");
+        sb.append(id==null ? "null," : "'"+id+"',");
+        sb.append(");");
+        return sb.toString();
+    }
 }
