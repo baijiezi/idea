@@ -336,4 +336,45 @@ public class StocksZjlxHXEntity  implements java.io.Serializable  {
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
+
+    public String toSql(){
+        StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks_zjlx_hx` VALUES (");
+        sb.append(id==null ? "null," : "'"+id+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(name==null ? "null," : "'"+name+"',");
+        sb.append(date==null ? "null," : "'"+date+"',");
+        sb.append(heJiChengJiao==null ? "null," : "'"+heJiChengJiao+"',");
+        sb.append(jingLiuRu==null ? "null," : "'"+jingLiuRu+"',");
+        sb.append(jingLiuRuLv==null ? "null," : "'"+jingLiuRuLv+"',");
+        sb.append(chaoDaDanLiuRu==null ? "null," : "'"+chaoDaDanLiuRu+"',");
+        sb.append(chaoDaDanLiuRuZhanBi==null ? "null," : "'"+chaoDaDanLiuRuZhanBi+"',");
+        sb.append(chaoDaDanLiuRuZengZhangLv==null ? "null," : "'"+chaoDaDanLiuRuZengZhangLv+"',");
+        sb.append(chaoDaDanLiuChu==null ? "null," : "'"+chaoDaDanLiuChu+"',");
+        sb.append(chaoDaDanLiuChuZhanBi==null ? "null," : "'"+chaoDaDanLiuChuZhanBi+"',");
+        sb.append(chaoDaDanLiuChuZengZhangLv==null ? "null," : "'"+chaoDaDanLiuChuZengZhangLv+"',");
+        sb.append(daDanLiuRu==null ? "null," : "'"+daDanLiuRu+"',");
+        sb.append(daDanLiuRuZhanBi==null ? "null," : "'"+daDanLiuRuZhanBi+"',");
+        sb.append(daDanLiuRuZengZhangLv==null ? "null," : "'"+daDanLiuRuZengZhangLv+"',");
+        sb.append(daDanLiuChu==null ? "null," : "'"+daDanLiuChu+"',");
+        sb.append(daDanLiuChuZhanBi==null ? "null," : "'"+daDanLiuChuZhanBi+"',");
+        sb.append(daDanLiuChuZengZhangLv==null ? "null," : "'"+daDanLiuChuZengZhangLv+"',");
+        sb.append(xiaoDanLiuRu==null ? "null," : "'"+xiaoDanLiuRu+"',");
+        sb.append(xiaoDanLiuRuZhanBi==null ? "null," : "'"+xiaoDanLiuRuZhanBi+"',");
+        sb.append(xiaoDanLiuRuZengZhangLv==null ? "null," : "'"+xiaoDanLiuRuZengZhangLv+"',");
+        sb.append(xiaoDanLiuChu==null ? "null," : "'"+xiaoDanLiuChu+"',");
+        sb.append(xiaoDanLiuChuZhanBi==null ? "null," : "'"+xiaoDanLiuChuZhanBi+"',");
+        sb.append(xiaoDanLiuChuZengZhangLv==null ? "null," : "'"+xiaoDanLiuChuZengZhangLv+"',");
+        sb.append(sanDanLiuRu==null ? "null," : "'"+sanDanLiuRu+"',");
+        sb.append(sanDanLiuRuZhanBi==null ? "null," : "'"+sanDanLiuRuZhanBi+"',");
+        sb.append(sanDanLiuRuZengZhangLv==null ? "null," : "'"+sanDanLiuRuZengZhangLv+"',");
+        sb.append(sanDanLiuChu==null ? "null," : "'"+sanDanLiuChu+"',");
+        sb.append(sanDanLiuChuZhanBi==null ? "null," : "'"+sanDanLiuChuZhanBi+"',");
+        sb.append(sanDanLiuChuZengZhangLv==null ? "null," : "'"+sanDanLiuChuZengZhangLv+"',");
+        sb.append(qiTaChengJiaoJinE==null ? "null," : "'"+qiTaChengJiaoJinE+"',");
+        sb.append(qiTaZhanBi==null ? "null," : "'"+qiTaZhanBi+"',");
+        sb.append(qiTaZengZhanLv==null ? "null," : "'"+qiTaZengZhanLv+"',");
+        sb.append(createAt==null ? "null," : "'"+createAt+"'");
+        sb.append(");");
+        return sb.toString();
+    }
 }

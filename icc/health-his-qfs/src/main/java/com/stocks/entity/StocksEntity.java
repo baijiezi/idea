@@ -202,4 +202,30 @@ public class StocksEntity implements Serializable {
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
+
+    public String toSql(){
+        StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks` VALUES (");
+        sb.append(id==null ? "null," : "'"+id+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(name==null ? "null," : "'"+name+"',");
+        sb.append(exchange==null ? "null," : "'"+exchange+"',");
+        sb.append(type==null ? "null," : "'"+type+"',");
+        sb.append(subType==null ? "null," : "'"+subType+"',");
+        sb.append(hangYe==null ? "null," : "'"+hangYe+"',");
+        sb.append(detailUrl==null ? "null," : "'"+detailUrl+"',");
+        sb.append(buyPrice==null ? "null," : "'"+buyPrice+"',");
+        sb.append(salePrice==null ? "null," : "'"+salePrice+"',");
+        sb.append(priceTaskType==null ? "null," : "'"+priceTaskType+"',");
+        sb.append(priceUpdate==null ? "null," : "'"+priceUpdate+"',");
+        sb.append(zjlsDfcfTaskType==null ? "null," : "'"+zjlsDfcfTaskType+"',");
+        sb.append(zjlsDfcfUpdate==null ? "null," : "'"+zjlsDfcfUpdate+"',");
+        sb.append(zjlsHxTaskType==null ? "null," : "'"+zjlsHxTaskType+"',");
+        sb.append(zjlsHxUpdate==null ? "null," : "'"+zjlsHxUpdate+"',");
+        sb.append(zjlsThsTaskType==null ? "null," : "'"+zjlsThsTaskType+"',");
+        sb.append(zjlsThsUpdate==null ? "null," : "'"+zjlsThsUpdate+"',");
+        sb.append(status==null ? "null," : "'"+status+"',");
+        sb.append(createAt==null ? "null," : "'"+createAt+"'");
+        sb.append(");");
+        return sb.toString();
+    }
 }

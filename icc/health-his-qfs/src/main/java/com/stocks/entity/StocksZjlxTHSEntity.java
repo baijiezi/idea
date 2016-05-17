@@ -25,23 +25,23 @@ public class StocksZjlxTHSEntity  implements java.io.Serializable  {
     private String code;
     private String name;
     private Date date;
-    private long chengJiaoE;
-    private long zongLiuRu;
-    private long zongLiuChu;
-    private long jingLiuRu;
-    private int jingLiuRuZhanBi;
-    private long daDanLiuRu;
-    private int daDanLiuRuZhanBi;
-    private long daDanLiuChu;
-    private int daDanLiuChuZhanBi;
-    private long zhongDanLiuRu;
-    private int zhongDanLiuRuZhanBi;
-    private long zhongDanLiuChu;
-    private int zhongDanLiuChuZhanBi;
-    private long xiaoDanLiuRu;
-    private int xiaoDanLiuRuZhanBi;
-    private long xiaoDanLiuChu;
-    private int xiaoDanLiuChuZhanBi;
+    private Long chengJiaoE;
+    private Long zongLiuRu;
+    private Long zongLiuChu;
+    private Long jingLiuRu;
+    private Integer jingLiuRuZhanBi;
+    private Long daDanLiuRu;
+    private Integer daDanLiuRuZhanBi;
+    private Long daDanLiuChu;
+    private Integer daDanLiuChuZhanBi;
+    private Long zhongDanLiuRu;
+    private Integer zhongDanLiuRuZhanBi;
+    private Long zhongDanLiuChu;
+    private Integer zhongDanLiuChuZhanBi;
+    private Long xiaoDanLiuRu;
+    private Integer xiaoDanLiuRuZhanBi;
+    private Long xiaoDanLiuChu;
+    private Integer xiaoDanLiuChuZhanBi;
     private Date createAt;
 
     public Integer getId() {
@@ -218,5 +218,33 @@ public class StocksZjlxTHSEntity  implements java.io.Serializable  {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public String toSql(){
+        StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks_zjlx_ths` VALUES (");
+        sb.append(id==null ? "null," : "'"+id+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(name==null ? "null," : "'"+name+"',");
+        sb.append(date==null ? "null," : "'"+date+"',");
+        sb.append(chengJiaoE==null ? "null," : "'"+chengJiaoE+"',");
+        sb.append(zongLiuRu==null ? "null," : "'"+zongLiuRu+"',");
+        sb.append(zongLiuChu==null ? "null," : "'"+zongLiuChu+"',");
+        sb.append(jingLiuRu==null ? "null," : "'"+jingLiuRu+"',");
+        sb.append(jingLiuRuZhanBi==null ? "null," : "'"+jingLiuRuZhanBi+"',");
+        sb.append(daDanLiuRu==null ? "null," : "'"+daDanLiuRu+"',");
+        sb.append(daDanLiuRuZhanBi==null ? "null," : "'"+daDanLiuRuZhanBi+"',");
+        sb.append(daDanLiuChu==null ? "null," : "'"+daDanLiuChu+"',");
+        sb.append(daDanLiuChuZhanBi==null ? "null," : "'"+daDanLiuChuZhanBi+"',");
+        sb.append(zhongDanLiuRu==null ? "null," : "'"+zhongDanLiuRu+"',");
+        sb.append(zhongDanLiuRuZhanBi==null ? "null," : "'"+zhongDanLiuRuZhanBi+"',");
+        sb.append(zhongDanLiuChu==null ? "null," : "'"+zhongDanLiuChu+"',");
+        sb.append(zhongDanLiuChuZhanBi==null ? "null," : "'"+zhongDanLiuChuZhanBi+"',");
+        sb.append(xiaoDanLiuRu==null ? "null," : "'"+xiaoDanLiuRu+"',");
+        sb.append(xiaoDanLiuRuZhanBi==null ? "null," : "'"+xiaoDanLiuRuZhanBi+"',");
+        sb.append(xiaoDanLiuChu==null ? "null," : "'"+xiaoDanLiuChu+"',");
+        sb.append(xiaoDanLiuChuZhanBi==null ? "null," : "'"+xiaoDanLiuChuZhanBi+"',");
+        sb.append(createAt==null ? "null," : "'"+createAt+"'");
+        sb.append(");");
+        return sb.toString();
     }
 }

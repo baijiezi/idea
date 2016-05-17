@@ -91,4 +91,61 @@ public class StocksZJLXDetailEntity {
     public void setShift(Integer shift) {
         this.shift = shift;
     }
+
+    public String toSql(){
+        StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks_zjlx_detail` VALUES (");
+        sb.append(id==null ? "null," : "'"+id+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(");");
+        return sb.toString();
+    }
 }

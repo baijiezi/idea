@@ -42,38 +42,42 @@ public class ExportTask {
         map.put("sic_stocks_daily_kline_ma30", "com.stocks.dao.StocksDailyKLineMA30Dao");
         for(String key : map.keySet()){
             try{
-                logger.info("=======" + key);
+                logger.info("==========" + key);
                 String daoName = map.get(key);
                 IBaseDao dao = (IBaseDao)Class.forName(daoName).newInstance();
                 List list = dao.exports(DateUtils.strToDate("2016-05-13"));
                 for(Object obj : list){
-                    Method[] methods = obj.getClass().getMethods();
-                    StringBuffer sb = new StringBuffer("INSERT INTO `" + key + "` VALUES (");
-                    for(Method method : methods)
-                    {
-                        try
-                        {
-                            String methodName = method.getName();
-                            logger.info("-------" + methodName);
-                            if(methodName.startsWith("get") && !methodName.equals("getClass") && !methodName.equals("getStocksEntity"))
-                            {
-                                Object value = method.invoke(obj, null);
-                                if(value == null) {
-                                    sb.append("null").append(",");
-                                }
-                                else{
-                                    sb.append("'").append(value).append("',");
-                                }
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            e.printStackTrace();
-                        }
-                    }
-                    String str = sb.substring(0, sb.length()-1);
-                    str = str + ");";
-                    logger.info(str);
+                    Method method = obj.getClass().getMethod("toSql");
+                    String sql = (String)method.invoke(obj, null);
+                    logger.info(sql);
+
+//                    Method[] methods = obj.getClass().getMethods();
+//                    StringBuffer sb = new StringBuffer("INSERT INTO `" + key + "` VALUES (");
+//                    for(Method method : methods)
+//                    {
+//                        try
+//                        {
+//                            String methodName = method.getName();
+//                            logger.info("-------" + methodName);
+//                            if(methodName.startsWith("get") && !methodName.equals("getClass") && !methodName.equals("getStocksEntity"))
+//                            {
+//                                Object value = method.invoke(obj, null);
+//                                if(value == null) {
+//                                    sb.append("null").append(",");
+//                                }
+//                                else{
+//                                    sb.append("'").append(value).append("',");
+//                                }
+//                            }
+//                        }
+//                        catch (Exception e)
+//                        {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                    String str = sb.substring(0, sb.length()-1);
+//                    str = str + ");";
+//                    logger.info(str);
                 }
             } catch (Exception e){
                 e.printStackTrace();

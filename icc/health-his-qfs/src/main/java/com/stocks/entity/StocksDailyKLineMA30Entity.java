@@ -219,4 +219,32 @@ public class StocksDailyKLineMA30Entity implements Serializable {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    public String toSql(){
+        StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks_daily_kline_ma30` VALUES (");
+        sb.append(id==null ? "null," : "'"+id+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(name==null ? "null," : "'"+name+"',");
+        sb.append(date==null ? "null," : "'"+date+"',");
+        sb.append(shouPan==null ? "null," : "'"+shouPan+"',");
+        sb.append(junJia==null ? "null," : "'"+junJia+"',");
+        sb.append(zhangFu==null ? "null," : "'"+zhangFu+"',");
+        sb.append(zhangDie==null ? "null," : "'"+zhangDie+"',");
+        sb.append(chengJiaoLiang==null ? "null," : "'"+chengJiaoLiang+"',");
+        sb.append(ChengJiaoE==null ? "null," : "'"+ChengJiaoE+"',");
+        sb.append(huanShou==null ? "null," : "'"+huanShou+"',");
+        sb.append(liangBi==null ? "null," : "'"+liangBi+"',");
+        sb.append(zuiGao==null ? "null," : "'"+zuiGao+"',");
+        sb.append(zuiDi==null ? "null," : "'"+zuiDi+"',");
+        sb.append(zhenFu==null ? "null," : "'"+zhenFu+"',");
+        sb.append(waiPan==null ? "null," : "'"+waiPan+"',");
+        sb.append(neiPan==null ? "null," : "'"+neiPan+"',");
+        sb.append(panCha==null ? "null," : "'"+panCha+"',");
+        sb.append(panBi==null ? "null," : "'"+panBi+"',");
+        sb.append(weiBi==null ? "null," : "'"+weiBi+"',");
+        sb.append(weiCha==null ? "null," : "'"+weiCha+"',");
+        sb.append(createTime==null ? "null," : "'"+createTime+"'");
+        sb.append(");");
+        return sb.toString();
+    }
 }

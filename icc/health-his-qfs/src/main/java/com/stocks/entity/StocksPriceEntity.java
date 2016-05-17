@@ -482,8 +482,57 @@ public class StocksPriceEntity implements Serializable {
     }
 
     public String toSql(){
-        StringBuffer sb = new StringBuffer("INSERT INTO `health_orders` VALUES (");
+        StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks_price` VALUES (");
         sb.append(id==null ? "null," : "'"+id+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(name==null ? "null," : "'"+name+"',");
+        sb.append(date==null ? "null," : "'"+date+"',");
+        sb.append(shouPan==null ? "null," : "'"+shouPan+"',");
+        sb.append(junJia==null ? "null," : "'"+junJia+"',");
+        sb.append(zhangFu==null ? "null," : "'"+zhangFu+"',");
+        sb.append(zhangDie==null ? "null," : "'"+zhangDie+"',");
+        sb.append(chengJiaoLiang==null ? "null," : "'"+chengJiaoLiang+"',");
+        sb.append(ChengJiaoE==null ? "null," : "'"+ChengJiaoE+"',");
+        sb.append(huanShou==null ? "null," : "'"+huanShou+"',");
+        sb.append(liangBi==null ? "null," : "'"+liangBi+"',");
+        sb.append(zuiGao==null ? "null," : "'"+zuiGao+"',");
+        sb.append(zuiDi==null ? "null," : "'"+zuiDi+"',");
+        sb.append(zhenFu==null ? "null," : "'"+zhenFu+"',");
+        sb.append(jinKai==null ? "null," : "'"+jinKai+"',");
+        sb.append(zuoShou==null ? "null," : "'"+zuoShou+"',");
+        sb.append(zhangTing==null ? "null," : "'"+zhangTing+"',");
+        sb.append(dieTing==null ? "null," : "'"+dieTing+"',");
+        sb.append(waiPan==null ? "null," : "'"+waiPan+"',");
+        sb.append(neiPan==null ? "null," : "'"+neiPan+"',");
+        sb.append(panCha==null ? "null," : "'"+panCha+"',");
+        sb.append(panBi==null ? "null," : "'"+panBi+"',");
+        sb.append(shiYing==null ? "null," : "'"+shiYing+"',");
+        sb.append(shiJing==null ? "null," : "'"+shiJing+"',");
+        sb.append(zongShiZhi==null ? "null," : "'"+zongShiZhi+"',");
+        sb.append(liuTongShiZhi==null ? "null," : "'"+liuTongShiZhi+"',");
+        sb.append(weiBi==null ? "null," : "'"+weiBi+"',");
+        sb.append(weiCha==null ? "null," : "'"+weiCha+"',");
+        sb.append(saleFive1==null ? "null," : "'"+saleFive1+"',");
+        sb.append(saleFive2==null ? "null," : "'"+saleFive2+"',");
+        sb.append(saleFour1==null ? "null," : "'"+saleFour1+"',");
+        sb.append(saleFour2==null ? "null," : "'"+saleFour2+"',");
+        sb.append(saleThree1==null ? "null," : "'"+saleThree1+"',");
+        sb.append(saleThree2==null ? "null," : "'"+saleThree2+"',");
+        sb.append(saleTwo1==null ? "null," : "'"+saleTwo1+"',");
+        sb.append(saleTwo2==null ? "null," : "'"+saleTwo2+"',");
+        sb.append(saleOne1==null ? "null," : "'"+saleOne1+"',");
+        sb.append(saleOne2==null ? "null," : "'"+saleOne2+"',");
+        sb.append(buyOne1==null ? "null," : "'"+buyOne1+"',");
+        sb.append(buyOne2==null ? "null," : "'"+buyOne2+"',");
+        sb.append(buyTwo1==null ? "null," : "'"+buyTwo1+"',");
+        sb.append(buyTwo2==null ? "null," : "'"+buyTwo2+"',");
+        sb.append(buyThree1==null ? "null," : "'"+buyThree1+"',");
+        sb.append(buyThree2==null ? "null," : "'"+buyThree2+"',");
+        sb.append(buyFour1==null ? "null," : "'"+buyFour1+"',");
+        sb.append(buyFour2==null ? "null," : "'"+buyFour2+"',");
+        sb.append(buyFive1==null ? "null," : "'"+buyFive1+"',");
+        sb.append(buyFive2==null ? "null," : "'"+buyFive2+"',");
+        sb.append(createTime==null ? "null," : "'"+createTime+"'");
         sb.append(");");
         return sb.toString();
     }

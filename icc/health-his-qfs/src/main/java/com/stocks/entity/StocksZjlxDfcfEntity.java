@@ -273,4 +273,38 @@ public class StocksZjlxDfcfEntity implements java.io.Serializable {
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
+
+    public String toSql(){
+        StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks_zjlx_dfcf` VALUES (");
+        sb.append(id==null ? "null," : "'"+id+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(name==null ? "null," : "'"+name+"',");
+        sb.append(date==null ? "null," : "'"+date+"',");
+        sb.append(zongLiuRu==null ? "null," : "'"+zongLiuRu+"',");
+        sb.append(zongLiuChu==null ? "null," : "'"+zongLiuChu+"',");
+        sb.append(zongJing==null ? "null," : "'"+zongJing+"',");
+        sb.append(zhuLiLiuRu==null ? "null," : "'"+zhuLiLiuRu+"',");
+        sb.append(zhuLiLiuChu==null ? "null," : "'"+zhuLiLiuChu+"',");
+        sb.append(zhuLiJingLiuRu==null ? "null," : "'"+zhuLiJingLiuRu+"',");
+        sb.append(zhuLiJingBi==null ? "null," : "'"+zhuLiJingBi+"',");
+        sb.append(chaoDaDanLiuRu==null ? "null," : "'"+chaoDaDanLiuRu+"',");
+        sb.append(chaoDaDanLiuChu==null ? "null," : "'"+chaoDaDanLiuChu+"',");
+        sb.append(chaoDaDanJingLiuRu==null ? "null," : "'"+chaoDaDanJingLiuRu+"',");
+        sb.append(chaoDaDanJingBi==null ? "null," : "'"+chaoDaDanJingBi+"',");
+        sb.append(daDanLiuRu==null ? "null," : "'"+daDanLiuRu+"',");
+        sb.append(daDanLiuChu==null ? "null," : "'"+daDanLiuChu+"',");
+        sb.append(daDanJingLiuRu==null ? "null," : "'"+daDanJingLiuRu+"',");
+        sb.append(daDanJingBi==null ? "null," : "'"+daDanJingBi+"',");
+        sb.append(zhongDanLiuRu==null ? "null," : "'"+zhongDanLiuRu+"',");
+        sb.append(zhongDanLiuChu==null ? "null," : "'"+zhongDanLiuChu+"',");
+        sb.append(zhongDanJingLiuRu==null ? "null," : "'"+zhongDanJingLiuRu+"',");
+        sb.append(zhongDanJingBi==null ? "null," : "'"+zhongDanJingBi+"',");
+        sb.append(xiaoDanLiuRu==null ? "null," : "'"+xiaoDanLiuRu+"',");
+        sb.append(xiaoDanLiuChu==null ? "null," : "'"+xiaoDanLiuChu+"',");
+        sb.append(xiaoDanJingLiuRu==null ? "null," : "'"+xiaoDanJingLiuRu+"',");
+        sb.append(xiaoDanJingBi==null ? "null," : "'"+xiaoDanJingBi+"',");
+        sb.append(createAt==null ? "null," : "'"+createAt+"'");
+        sb.append(");");
+        return sb.toString();
+    }
 }

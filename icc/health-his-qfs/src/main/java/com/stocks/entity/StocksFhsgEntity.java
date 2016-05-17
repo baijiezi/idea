@@ -148,4 +148,24 @@ public class StocksFhsgEntity  implements Serializable {
     public void setShouYiLv(Integer shouYiLv) {
         this.shouYiLv = shouYiLv;
     }
+
+    public String toSql(){
+        StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks_fhsg` VALUES (");
+        sb.append(id==null ? "null," : "'"+id+"',");
+        sb.append(code==null ? "null," : "'"+code+"',");
+        sb.append(name==null ? "null," : "'"+name+"',");
+        sb.append(gongGaoRi==null ? "null," : "'"+gongGaoRi+"',");
+        sb.append(fenHong==null ? "null," : "'"+fenHong+"',");
+        sb.append(meiGuFenHong==null ? "null," : "'"+meiGuFenHong+"',");
+        sb.append(dangQianGuJia==null ? "null," : "'"+dangQianGuJia+"',");
+        sb.append(shouYiLv==null ? "null," : "'"+shouYiLv+"',");
+        sb.append(songGu==null ? "null," : "'"+songGu+"',");
+        sb.append(zhuanZeng==null ? "null," : "'"+zhuanZeng+"',");
+        sb.append(dengJiRi==null ? "null," : "'"+dengJiRi+"',");
+        sb.append(chuQuanRi==null ? "null," : "'"+chuQuanRi+"',");
+        sb.append(remark==null ? "null," : "'"+remark+"',");
+        sb.append(createAt==null ? "null," : "'"+createAt+"'");
+        sb.append(");");
+        return sb.toString();
+    }
 }
