@@ -142,4 +142,22 @@ public class MessageEntity implements Serializable {
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
+    public String toSql(){
+        StringBuffer sb = new StringBuffer("INSERT INTO `sic_stocks` VALUES (");
+        sb.append(id==null ? "null," : "'"+id+"',");
+        sb.append(supplier==null ? "null," : "'"+supplier+"',");
+        sb.append(account==null ? "null," : "'"+account+"',");
+        sb.append(authkey==null ? "null," : "'"+authkey+"',");
+        sb.append(cgid==null ? "null," : "'"+cgid+"',");
+        sb.append(mobile==null ? "null," : "'"+mobile+"',");
+        sb.append(type==null ? "null," : "'"+type+"',");
+        sb.append(content==null ? "null," : "'"+content+"',");
+        sb.append(toSendTime==null ? "null," : "'"+toSendTime+"',");
+        sb.append(sendTime==null ? "null," : "'"+sendTime+"',");
+        sb.append(status==null ? "null," : "'"+status+"',");
+        sb.append(remark==null ? "null," : "'"+remark+"'");
+        sb.append(");");
+        return sb.toString();
+    }
 }
