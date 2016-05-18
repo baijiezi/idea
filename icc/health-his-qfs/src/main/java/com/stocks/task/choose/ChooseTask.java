@@ -42,7 +42,7 @@ public class ChooseTask {
 
      public String getT(){
          StocksZjlxDfcfDao dao = new StocksZjlxDfcfDao();
-         List<StocksZjlxDfcfEntity> list = dao.getByChaoDaDanJingBi(new Date(), 50000);
+         List<StocksZjlxDfcfEntity> list = dao.getByChaoDaDanJingBi(new Date(), 40000);
          StringBuffer sb = new StringBuffer("");
          if(list!=null && list.size()>0){
              for(StocksZjlxDfcfEntity entity : list){
