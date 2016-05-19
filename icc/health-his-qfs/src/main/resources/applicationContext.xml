@@ -189,7 +189,7 @@
     <bean id="exportTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="exportJobDetail" />
-        <property name="cronExpression" value="0 30 23 * * ?" />
+        <property name="cronExpression" value="0 30 19 * * ?" />
     </bean>
     <bean id="exportJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
