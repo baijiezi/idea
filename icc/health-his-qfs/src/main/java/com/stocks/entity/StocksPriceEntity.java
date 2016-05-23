@@ -45,6 +45,7 @@ public class StocksPriceEntity implements Serializable {
     private Long shiJing;
     private Long zongShiZhi;
     private Long liuTongShiZhi;
+    private String priceTrends;
     private Integer weiBi;
     private Integer weiCha;
     private Integer buyOne1;
@@ -289,6 +290,14 @@ public class StocksPriceEntity implements Serializable {
         this.liuTongShiZhi = liuTongShiZhi;
     }
 
+    public String getPriceTrends() {
+        return priceTrends;
+    }
+
+    public void setPriceTrends(String priceTrends) {
+        this.priceTrends = priceTrends;
+    }
+
     public Integer getWeiBi() {
         return weiBi;
     }
@@ -510,6 +519,7 @@ public class StocksPriceEntity implements Serializable {
         sb.append(shiJing==null ? "null," : "'"+shiJing+"',");
         sb.append(zongShiZhi==null ? "null," : "'"+zongShiZhi+"',");
         sb.append(liuTongShiZhi==null ? "null," : "'"+liuTongShiZhi+"',");
+        sb.append(priceTrends==null ? "null," : "'"+priceTrends+"',");
         sb.append(weiBi==null ? "null," : "'"+weiBi+"',");
         sb.append(weiCha==null ? "null," : "'"+weiCha+"',");
         sb.append(saleFive1==null ? "null," : "'"+saleFive1+"',");

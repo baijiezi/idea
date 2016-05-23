@@ -138,6 +138,21 @@ public class StocksPriceDao implements IBaseDao{
 
     }
 
+    public  List<StocksPriceEntity> getRecentRecords(Date date, String code, Session session){
+        try{
+            date = DateUtils.addDate(date, -90);
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String dt = format.format(date);
+            Query query = session.createQuery(" from StocksPriceEntity s where s.date >= '" + dt + "' and s.code = '" + code + "'");
+            List<StocksPriceEntity> list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
 
     public StocksDailyKLineMA5Entity getMA5(String code, String date, Session session){
         try{
@@ -315,9 +330,9 @@ public class StocksPriceDao implements IBaseDao{
     }
 
 
-    public boolean save(StocksPriceEntity stocksDailyEntity, Session session){
+    public boolean save(StocksPriceEntity stocksPriceEntity, Session session){
         try{
-            session.save(stocksDailyEntity);
+            session.save(stocksPriceEntity);
             return true;
         }catch(Exception e){
             e.printStackTrace();
@@ -327,9 +342,9 @@ public class StocksPriceDao implements IBaseDao{
 
 
 
-    public boolean update(StocksPriceEntity stocksDailyEntity, Session session){
+    public boolean update(StocksPriceEntity stocksPriceEntity, Session session){
         try{
-            session.update(stocksDailyEntity);
+            session.update(stocksPriceEntity);
             return true;
         }catch(Exception e){
             e.printStackTrace();
