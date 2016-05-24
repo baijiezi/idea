@@ -217,6 +217,7 @@ public class NumberUtils {
 
     }
 
+    //获取百分比小数点后三位如 1% 显示为 1000
     public static int getBiLv(long p, long t){
         if(p==0 || t==0){
             return 0;
@@ -229,10 +230,23 @@ public class NumberUtils {
 
     }
 
+    //获取百分比，不包含小数点后面，如 1% 显示为 1
+    public static int getBiLv2(long p, long t){
+        if(p==0 || t==0){
+            return 0;
+        }
+        BigDecimal part = new BigDecimal(p);
+        BigDecimal total = new BigDecimal(t);
+        BigDecimal part2 = part.multiply(new BigDecimal(100));
+        BigDecimal biLv = part2.divide(total, 0, RoundingMode.HALF_DOWN);
+        return biLv.intValue();
+
+    }
+
     public static void main(String[] args){
 //        System.out.println(NumberUtils.getZhenFu(10490, 9690, 10030));
 
-        System.out.println(NumberUtils.getBiLv(9225400, 153806600));
+        System.out.println(NumberUtils.getBiLv2(1, 6));
 
     }
 

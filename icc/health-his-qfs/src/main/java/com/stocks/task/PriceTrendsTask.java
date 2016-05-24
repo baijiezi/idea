@@ -31,31 +31,46 @@ public class PriceTrendsTask {
     public void execute(){
         logger.info("PriceTrendsTask  execute");
         try{
-            Session session = HibernateUtil.getOpenSession();
-            session.beginTransaction();
-
 //            Date date = new Date();
-            Date date = DateUtils.strToDate("2016-03-07");
-            StocksPriceDao priceDao = new StocksPriceDao();
-            List<StocksPriceEntity> list =  priceDao.getByDate(date);
-            for(StocksPriceEntity entity : list){
-                List<StocksPriceEntity> recentRecords = priceDao.getRecentRecords(date, entity.getCode(), session);
-                for(StocksPriceEntity record : recentRecords){
-                    String trends = record.getPriceTrends();
-                    if(trends!=null && !trends.equals("")){
-                        trends = trends + ",";
+//            Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
+            Date date = DateUtils.strToDate("2016-03-12");
+            Date endDate = DateUtils.strToDate("2016-03-14 23:59:59");
+            while (date.before(endDate)){
+                logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
+                Session session = HibernateUtil.getOpenSession();
+                session.beginTransaction();
+                StocksPriceDao priceDao = new StocksPriceDao();
+                List<StocksPriceEntity> list =  priceDao.getByDate(date);
+                for(StocksPriceEntity entity : list){
+//                if(!entity.getCode().equals("600136")){
+//                    continue;
+//                }
+                    List<StocksPriceEntity> recentRecords = priceDao.getRecentRecords(date, entity.getCode(), session);
+                    for(StocksPriceEntity record : recentRecords){
+                        String trends = record.getPriceTrends();
+                        String biLv = "0";
+                        if(entity.getShouPan()!=0 && record.getShouPan()!=0){
+                            biLv = String.valueOf(NumberUtils.getBiLv2(entity.getShouPan()-record.getShouPan(), record.getShouPan()));
+                        }
+                        if(trends==null || trends.equals("")){
+                            record.setPriceTrends(biLv);
+                        }
+                        else{
+                            record.setPriceTrends(trends + "," + biLv);
+                        }
+                        session.update(record);
                     }
-                    record.setPriceTrends(trends + NumberUtils.getBiLv(entity.getShouPan()-record.getShouPan(), record.getShouPan()));
-                    session.update(record);
                 }
+
+                session.getTransaction().commit();
+                session.close();
+                HibernateUtil.closeSessionFactory();
+
+                date = DateUtils.addDate(date, 1);
             }
-
-            session.getTransaction().commit();
-            session.close();
-            HibernateUtil.closeSessionFactory();
-
             logger.info("PriceTrendsTask  finish");
         }catch (Exception e){
+            logger.error("PriceTrendsTask异常：", e);
             e.printStackTrace();
         }
     }

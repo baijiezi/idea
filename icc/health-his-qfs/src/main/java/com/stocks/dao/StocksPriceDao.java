@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,16 +50,14 @@ public class StocksPriceDao implements IBaseDao{
     public List<StocksPriceEntity> getByDate(Date date){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
+        List<StocksPriceEntity> list = new ArrayList<StocksPriceEntity>();
         try{
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             String dt = format.format(date);
             Query query = session.createQuery(" from StocksPriceEntity s where s.date = '" + dt + "'");
-            List<StocksPriceEntity> list = query.list();
+            list = query.list();
             if(list!=null && list.size()>0) {
                 return list;
-            }
-            else{
-                return null;
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -66,7 +65,7 @@ public class StocksPriceDao implements IBaseDao{
         session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
-        return null;
+        return list;
 
     }
 
@@ -139,17 +138,18 @@ public class StocksPriceDao implements IBaseDao{
     }
 
     public  List<StocksPriceEntity> getRecentRecords(Date date, String code, Session session){
+        List<StocksPriceEntity> list = new ArrayList<StocksPriceEntity>();
         try{
+            String endDate = DateUtils.getSimpleDate(date);
             date = DateUtils.addDate(date, -90);
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            String dt = format.format(date);
-            Query query = session.createQuery(" from StocksPriceEntity s where s.date >= '" + dt + "' and s.code = '" + code + "'");
-            List<StocksPriceEntity> list = query.list();
+            String startDate = DateUtils.getSimpleDate(date);
+            Query query = session.createQuery(" from StocksPriceEntity s where s.date >= '" + startDate + "' and s.date < '" + endDate + "'and s.code = '" + code + "'");
+            list = query.list();
             return list;
         }catch(Exception e){
             e.printStackTrace();
         }
-        return null;
+        return list;
 
     }
 
