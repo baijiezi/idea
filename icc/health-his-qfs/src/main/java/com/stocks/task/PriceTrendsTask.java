@@ -33,8 +33,8 @@ public class PriceTrendsTask {
         try{
 //            Date date = new Date();
 //            Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
-            Date date = DateUtils.strToDate("2016-05-21");
-            Date endDate = DateUtils.strToDate("2016-05-23 23:59:59");
+            Date date = DateUtils.strToDate("2016-05-20");
+            Date endDate = DateUtils.strToDate("2016-05-25 23:59:59");
             while (date.before(endDate)){
                 logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
                 Session session = HibernateUtil.getOpenSession();
@@ -48,6 +48,11 @@ public class PriceTrendsTask {
                     List<StocksPriceEntity> recentRecords = priceDao.getRecentRecords(date, entity.getCode(), session);
                     for(StocksPriceEntity record : recentRecords){
                         String trends = record.getPriceTrends();
+                        if(trends!=null && trends.length()>=245){
+                            logger.info(record.getCode() + record.getDate() + "  " + trends.length());
+                            logger.info(trends);
+                            continue;
+                        }
                         String biLv = "0";
                         if(entity.getShouPan()!=0 && record.getShouPan()!=0){
                             biLv = String.valueOf(NumberUtils.getBiLv2(entity.getShouPan()-record.getShouPan(), record.getShouPan()));
@@ -57,11 +62,6 @@ public class PriceTrendsTask {
                         }
                         else{
                             record.setPriceTrends(trends + "," + biLv);
-                        }
-                        if(record.getPriceTrends().length() >= 255){
-                            logger.info(record.getCode() + record.getDate() + "  " + record.getPriceTrends().length());
-                            logger.info(trends);
-                            continue;
                         }
                         session.update(record);
                     }
