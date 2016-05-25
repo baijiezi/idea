@@ -33,8 +33,8 @@ public class PriceTrendsTask {
         try{
 //            Date date = new Date();
 //            Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
-            Date date = DateUtils.strToDate("2016-05-05");
-            Date endDate = DateUtils.strToDate("2016-05-24 23:59:59");
+            Date date = DateUtils.strToDate("2016-05-21");
+            Date endDate = DateUtils.strToDate("2016-05-23 23:59:59");
             while (date.before(endDate)){
                 logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
                 Session session = HibernateUtil.getOpenSession();
@@ -57,6 +57,11 @@ public class PriceTrendsTask {
                         }
                         else{
                             record.setPriceTrends(trends + "," + biLv);
+                        }
+                        if(record.getPriceTrends().length() >= 255){
+                            logger.info(record.getCode() + record.getDate() + "  " + record.getPriceTrends().length());
+                            logger.info(trends);
+                            continue;
                         }
                         session.update(record);
                     }
