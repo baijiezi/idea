@@ -33,7 +33,7 @@ public class PriceTrendsTask {
         try{
 //            Date date = new Date();
 //            Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
-            Date date = DateUtils.strToDate("2016-05-20");
+            Date date = DateUtils.strToDate("2016-05-21");
             Date endDate = DateUtils.strToDate("2016-05-25 23:59:59");
             while (date.before(endDate)){
                 logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
@@ -48,7 +48,7 @@ public class PriceTrendsTask {
                     List<StocksPriceEntity> recentRecords = priceDao.getRecentRecords(date, entity.getCode(), session);
                     for(StocksPriceEntity record : recentRecords){
                         String trends = record.getPriceTrends();
-                        if(trends!=null && trends.length()>=245){
+                        if(trends!=null && trends.length()>=248){
                             logger.info(record.getCode() + record.getDate() + "  " + trends.length());
                             logger.info(trends);
                             continue;
