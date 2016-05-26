@@ -31,10 +31,10 @@ public class PriceTrendsTask {
     public void execute(){
         logger.info("PriceTrendsTask  execute");
         try{
-//            Date date = new Date();
-//            Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
-            Date date = DateUtils.strToDate("2016-05-21");
-            Date endDate = DateUtils.strToDate("2016-05-25 23:59:59");
+//            Date date = DateUtils.strToDate("2016-05-21");
+//            Date endDate = DateUtils.strToDate("2016-05-25 23:59:59");
+            Date date = new Date();
+            Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
             while (date.before(endDate)){
                 logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
                 Session session = HibernateUtil.getOpenSession();
@@ -42,9 +42,6 @@ public class PriceTrendsTask {
                 StocksPriceDao priceDao = new StocksPriceDao();
                 List<StocksPriceEntity> list =  priceDao.getByDate(date);
                 for(StocksPriceEntity entity : list){
-//                if(!entity.getCode().equals("600136")){
-//                    continue;
-//                }
                     List<StocksPriceEntity> recentRecords = priceDao.getRecentRecords(date, entity.getCode(), session);
                     for(StocksPriceEntity record : recentRecords){
                         String trends = record.getPriceTrends();
