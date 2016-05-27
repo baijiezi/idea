@@ -46,7 +46,7 @@ public class ChooseTask {
          StringBuffer sb = new StringBuffer("");
          if(list!=null && list.size()>0){
              for(StocksZjlxDfcfEntity entity : list){
-                 sb.append(entity.getCode());
+                 sb.append(entity.getCode()+" " + entity.getChaoDaDanJingBi() + ",");
              }
          }
          return sb.toString();

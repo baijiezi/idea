@@ -9,6 +9,7 @@ import org.hibernate.Session;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +37,24 @@ public class StocksZjlxDfcfDao implements IBaseDao {
         }catch(Exception e){
             e.printStackTrace();
         }
+        return null;
+
+    }
+
+    public List<StocksZjlxDfcfEntity> getByDate(String date){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksZjlxDfcfEntity> list = new ArrayList<StocksZjlxDfcfEntity>();
+            Query query = session.createQuery(" from StocksZjlxDfcfEntity s where s.date = '" + date + "'");
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
         return null;
 
     }
@@ -141,6 +160,26 @@ public class StocksZjlxDfcfDao implements IBaseDao {
         return null;
 
     }
+
+
+    public List<StocksZjlxDfcfEntity> getByChaoDaDanJingBi(String startDate, String endDate, int zhuLiJingBi){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksZjlxDfcfEntity> list = new ArrayList<StocksZjlxDfcfEntity>();
+            Query query = session.createQuery(" from StocksZjlxDfcfEntity s where s.date >= '" + startDate + "' and s.date <= '" + endDate + "' and s.chaoDaDanJingBi > " + zhuLiJingBi + " order by s.code, s.date ");
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
 
     public boolean save(StocksZjlxDfcfEntity entity, Session session){
         try{

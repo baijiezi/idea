@@ -7,6 +7,7 @@ import org.hibernate.Session;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,14 +36,10 @@ public class StocksDailyKLineMA5Dao implements IBaseDao {
         try{
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             String dt = format.format(date);
+            List<StocksDailyKLineMA5Entity> list = new ArrayList<StocksDailyKLineMA5Entity>();
             Query query = session.createQuery(" from StocksDailyKLineMA5Entity s where s.date = '" + dt + "'");
-            List<StocksDailyKLineMA5Entity> list = query.list();
-            if(list!=null && list.size()>0) {
-                return list;
-            }
-            else{
-                return null;
-            }
+            list = query.list();
+            return list;
         }catch(Exception e){
             e.printStackTrace();
         }
