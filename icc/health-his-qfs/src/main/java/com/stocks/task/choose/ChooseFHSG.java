@@ -18,7 +18,7 @@ import java.util.List;
 public class ChooseFHSG {
     public static void main(String[] args){
         ChooseFHSG chooseFHSG = new ChooseFHSG();
-        chooseFHSG.shouYiLvAndChuQuanRi2();
+        chooseFHSG.songGuAndChuQuanRi2();
 
 
     }
@@ -67,6 +67,23 @@ public class ChooseFHSG {
         System.out.println(list.size());
         for(StocksFhsgEntity entity : list){
             StocksPriceEntity priceEntity = priceDao.getByDateAndCode(entity.getGongGaoRi(), entity.getCode());
+            if(priceEntity != null){
+                System.out.println(priceEntity.getCode() + "  " + priceEntity.getDate() + "  " + priceEntity.getPriceTrends());
+            }
+
+        }
+    }
+
+    public void songGuAndChuQuanRi2(){
+        StocksFhsgDao fhsgDao = new StocksFhsgDao();
+        StocksPriceDao priceDao = new StocksPriceDao();
+        String chuQuanRi = "2016-01-01";
+        Integer songGu = 10;
+        List<StocksFhsgEntity> list = fhsgDao.getBySongGuAndChuQuanRi(chuQuanRi, songGu);
+        System.out.println(list.size());
+        for(StocksFhsgEntity entity : list){
+            //提前数天
+            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(DateUtils.addDate(entity.getChuQuanRi(), -14), entity.getCode());
             if(priceEntity != null){
                 System.out.println(priceEntity.getCode() + "  " + priceEntity.getDate() + "  " + priceEntity.getPriceTrends());
             }
