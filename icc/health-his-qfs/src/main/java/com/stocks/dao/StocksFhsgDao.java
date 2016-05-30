@@ -10,6 +10,7 @@ import com.stocks.utils.DateUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -178,37 +179,6 @@ public class StocksFhsgDao implements IBaseDao {
     }
 
 
-
-    public static void main(String[] args){
-        Session session = HibernateUtil.getOpenSession();
-        session.beginTransaction();
-
-        StocksFhsgDao dao = new StocksFhsgDao();
-//        StocksFhsgEntity entity = new StocksFhsgEntity();
-//        entity.setCode("111");
-//        entity.setGongGaoRi(new Date());
-//        entity.setName("222");
-//        entity.setRemark("====");
-//        entity.setCreateAt(new Date());
-//        dao.update(entity, session);
-
-//        List<StocksFhsgEntity> list = dao.getByCode("111");
-//        for(StocksFhsgEntity entity : list){
-//            System.out.println(entity.getName());
-//        }
-
-        StocksFhsgEntity entity = dao.getByCodeAndGongGaoRi("111", new Date());
-        System.out.println(entity.getName());
-
-
-        session.getTransaction().commit();
-        session.close();
-        HibernateUtil.closeSessionFactory();
-
-
-
-    }
-
     @Override
     public List exports(Date createAt) {
         Session session = HibernateUtil.getOpenSession();
@@ -253,6 +223,126 @@ public class StocksFhsgDao implements IBaseDao {
         session.close();
         HibernateUtil.closeSessionFactory();
         return null;
+    }
+
+    public List<StocksFhsgEntity> getByShouYiLvAndGongGaoRi(String gongGaoRi, Integer shouYiLv){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.gongGaoRi >= '" + gongGaoRi + "' and s.shouYiLv >= " + shouYiLv);
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
+    public List<StocksFhsgEntity> getBySongGuAndGongGaoRi(String gongGaoRi, Integer songGu){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.gongGaoRi >= '" + gongGaoRi + "' and (s.songGu >= " + songGu + " or s.zhuanZeng >= " + songGu + ")");
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
+    public List<StocksFhsgEntity> getByShouYiLvAndDengJiRi(String dengJiRi, Integer shouYiLv){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.dengJiRi >= '" + dengJiRi + "' and s.shouYiLv >= " + shouYiLv);
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
+    public List<StocksFhsgEntity> getBySongGuAndDengJiRi(String dengJiRi, Integer songGu){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.dengJiRi >= '" + dengJiRi + "' and (s.songGu >= " + songGu + " or s.zhuanZeng >= " + songGu + ")");
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
+    public List<StocksFhsgEntity> getByShouYiLvAndChuQuanRi(String chuQuanRi, Integer shouYiLv){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.chuQuanRi >= '" + chuQuanRi + "' and s.shouYiLv >= " + shouYiLv);
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
+    public List<StocksFhsgEntity> getBySongGuAndChuQuanRi(String chuQuanRi, Integer songGu){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.chuQuanRi >= '" + chuQuanRi + "' and (s.songGu >= " + songGu + " or s.zhuanZeng >= " + songGu + ")");
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
+    public static void main(String[] args){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+
+        StocksFhsgDao dao = new StocksFhsgDao();
+        List list = dao.getByShouYiLvAndDengJiRi("2016-04-01", 3000);
+        System.out.println(list.size());
+
+
+
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+
+
+
     }
 
 }
