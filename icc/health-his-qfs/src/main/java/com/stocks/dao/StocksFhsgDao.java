@@ -315,7 +315,7 @@ public class StocksFhsgDao implements IBaseDao {
         session.beginTransaction();
         try{
             List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
-            Query query = session.createQuery(" from StocksFhsgEntity s where s.chuQuanRi >= '" + chuQuanRi + "' and (s.songGu >= " + songGu + " or s.zhuanZeng >= " + songGu + ")");
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.chuQuanRi >= '" + chuQuanRi + "' and s.fenHong = 0 and (s.songGu >= " + songGu + " or s.zhuanZeng >= " + songGu + ")");
             list = query.list();
             return list;
         }catch(Exception e){

@@ -18,7 +18,7 @@ import java.util.List;
 public class ChooseFHSG {
     public static void main(String[] args){
         ChooseFHSG chooseFHSG = new ChooseFHSG();
-        chooseFHSG.songGuAndChuQuanRi2();
+        chooseFHSG.shouYiLvAndChuQuanRi2();
 
 
     }
@@ -49,7 +49,7 @@ public class ChooseFHSG {
         List<StocksFhsgEntity> list = fhsgDao.getByShouYiLvAndChuQuanRi(chuQuanRi, shouYiLv);
         System.out.println(list.size());
         for(StocksFhsgEntity entity : list){
-            //提前数天
+            //提前两周
             StocksPriceEntity priceEntity = priceDao.getByDateAndCode(DateUtils.addDate(entity.getChuQuanRi(), -14), entity.getCode());
             if(priceEntity != null){
                 System.out.println(priceEntity.getCode() + "  " + priceEntity.getDate() + "  " + priceEntity.getPriceTrends());
@@ -74,6 +74,22 @@ public class ChooseFHSG {
         }
     }
 
+    public void songGuAndChuQuanRi(){
+        StocksFhsgDao fhsgDao = new StocksFhsgDao();
+        StocksPriceDao priceDao = new StocksPriceDao();
+        String chuQuanRi = "2016-01-01";
+        Integer songGu = 10;
+        List<StocksFhsgEntity> list = fhsgDao.getBySongGuAndChuQuanRi(chuQuanRi, songGu);
+        System.out.println(list.size());
+        for(StocksFhsgEntity entity : list){
+            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(entity.getChuQuanRi(), entity.getCode());
+            if(priceEntity != null){
+                System.out.println(priceEntity.getCode() + "  " + priceEntity.getDate() + "  " + priceEntity.getPriceTrends());
+            }
+
+        }
+    }
+
     public void songGuAndChuQuanRi2(){
         StocksFhsgDao fhsgDao = new StocksFhsgDao();
         StocksPriceDao priceDao = new StocksPriceDao();
@@ -82,8 +98,8 @@ public class ChooseFHSG {
         List<StocksFhsgEntity> list = fhsgDao.getBySongGuAndChuQuanRi(chuQuanRi, songGu);
         System.out.println(list.size());
         for(StocksFhsgEntity entity : list){
-            //提前数天
-            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(DateUtils.addDate(entity.getChuQuanRi(), -14), entity.getCode());
+            //提前两周
+            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(DateUtils.addDate(entity.getChuQuanRi(), -21), entity.getCode());
             if(priceEntity != null){
                 System.out.println(priceEntity.getCode() + "  " + priceEntity.getDate() + "  " + priceEntity.getPriceTrends());
             }
