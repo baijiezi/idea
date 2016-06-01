@@ -5,6 +5,8 @@ import com.stocks.dao.*;
 import com.stocks.entity.*;
 import com.stocks.utils.Constants;
 import com.stocks.utils.DateUtils;
+import com.stocks.utils.HibernateUtil;
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,11 +32,11 @@ public class ChooseTask {
     public void execute(){
         logger.info("ChooseTask  execute");
         String result1 = getT();
-        String result2 = getTT();
+//        String result2 = getTT();
         String result3 = fhsg();
-        if(!result1.equals("") || !result2.equals("") || !result3.equals("")){
+        if(!result1.equals("") || !result3.equals("")){
             MessageService messageService = new MessageService();
-            String content = "ZLJB_DFCF" + result1 + ";    KLINE" + result2 + ";    FHSG" + result3;
+            String content = "ZLJB_DFCF" + result1 + ";    FHSG" + result3;
             messageService.send("18825187648", content, Constants.MESSAGE_TYPE_CHOOSE);
         }
     }
@@ -133,6 +135,22 @@ public class ChooseTask {
     }
 
     public String fhsg(){
-        return "";
+        StocksFhsgDao fhsgDao = new StocksFhsgDao();
+        String createAt = DateUtils.getSimpleDate(new Date());
+        String dengJiRi = createAt;
+        Integer shouYiLv = 2000;
+        List<StocksFhsgEntity> list = fhsgDao.getByShouYiLvAndDengJiRiAndCreateAt(shouYiLv, dengJiRi, createAt);
+        System.out.println(list.size());
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        StringBuffer sb = new StringBuffer("");
+        for(StocksFhsgEntity entity : list){
+            //提前一周
+            sb.append(entity.getCode() + " " + entity.getShouYiLv() + " " + DateUtils.getSimpleDate(entity.getDengJiRi()) + ", ");
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return sb.toString();
     }
 }

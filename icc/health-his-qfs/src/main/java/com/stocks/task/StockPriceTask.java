@@ -240,6 +240,7 @@ public class StockPriceTask {
                 }
 
             }
+            asyncHttpClient.close();
             List codes = updateData(data);
             updateTime(codes);
             logger.info("共完成获取价格数据" + codes.size() + " 条");

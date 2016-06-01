@@ -9,6 +9,8 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,10 +33,14 @@ public class PriceTrendsTask {
     public void execute(){
         logger.info("PriceTrendsTask  execute");
         try{
-//            Date date = DateUtils.strToDate("2016-05-21");
-//            Date endDate = DateUtils.strToDate("2016-05-25 23:59:59");
             Date date = new Date();
             Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
+            InetAddress localHost = InetAddress.getLocalHost();
+            if(localHost.getHostAddress().equals("192.168.200.27")){
+                date = DateUtils.strToDate("2016-05-26");
+                endDate = DateUtils.strToDate("2016-05-31 23:59:59");
+            }
+
             while (date.before(endDate)){
                 logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
                 Session session = HibernateUtil.getOpenSession();
@@ -46,8 +52,8 @@ public class PriceTrendsTask {
                     for(StocksPriceEntity record : recentRecords){
                         String trends = record.getPriceTrends();
                         if(trends!=null && trends.length()>=248){
-                            logger.info(record.getCode() + record.getDate() + "  " + trends.length());
-                            logger.info(trends);
+//                            logger.info(record.getCode() + record.getDate() + "  " + trends.length());
+//                            logger.info(trends);
                             continue;
                         }
                         String biLv = "0";

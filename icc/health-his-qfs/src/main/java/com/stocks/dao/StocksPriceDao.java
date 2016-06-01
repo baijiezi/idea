@@ -115,6 +115,26 @@ public class StocksPriceDao implements IBaseDao{
 
     }
 
+    public StocksPriceEntity getByDateAndCode(Date date, String code, Session session){
+
+        try{
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String dt = format.format(date);
+            Query query = session.createQuery(" from StocksPriceEntity s where s.date = '" + dt + "' and s.code = '" + code + "'");
+            List<StocksPriceEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list.get(0);
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
     public StocksPriceEntity getByDateAndCode(String date, String code){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
@@ -141,7 +161,7 @@ public class StocksPriceDao implements IBaseDao{
         List<StocksPriceEntity> list = new ArrayList<StocksPriceEntity>();
         try{
             String endDate = DateUtils.getSimpleDate(date);
-            date = DateUtils.addDate(date, -90);
+            date = DateUtils.addDate(date, -150);
             String startDate = DateUtils.getSimpleDate(date);
             Query query = session.createQuery(" from StocksPriceEntity s where s.date >= '" + startDate + "' and s.date < '" + endDate + "'and s.code = '" + code + "'");
             list = query.list();

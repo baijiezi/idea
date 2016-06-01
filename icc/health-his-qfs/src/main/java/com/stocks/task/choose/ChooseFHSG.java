@@ -5,6 +5,8 @@ import com.stocks.dao.StocksPriceDao;
 import com.stocks.entity.StocksFhsgEntity;
 import com.stocks.entity.StocksPriceEntity;
 import com.stocks.utils.DateUtils;
+import com.stocks.utils.HibernateUtil;
+import org.hibernate.Session;
 
 import java.util.List;
 
@@ -48,14 +50,19 @@ public class ChooseFHSG {
         Integer shouYiLv = 2000;
         List<StocksFhsgEntity> list = fhsgDao.getByShouYiLvAndChuQuanRi(chuQuanRi, shouYiLv);
         System.out.println(list.size());
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
         for(StocksFhsgEntity entity : list){
-            //提前两周
-            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(DateUtils.addDate(entity.getChuQuanRi(), -14), entity.getCode());
+            //提前一周
+            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(DateUtils.addDate(entity.getChuQuanRi(), -7), entity.getCode(), session);
             if(priceEntity != null){
                 System.out.println(priceEntity.getCode() + "  " + priceEntity.getDate() + "  " + priceEntity.getPriceTrends());
             }
 
         }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
     }
 
     public void shouYiLvAndGongGaoRi(){
@@ -98,8 +105,8 @@ public class ChooseFHSG {
         List<StocksFhsgEntity> list = fhsgDao.getBySongGuAndChuQuanRi(chuQuanRi, songGu);
         System.out.println(list.size());
         for(StocksFhsgEntity entity : list){
-            //提前两周
-            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(DateUtils.addDate(entity.getChuQuanRi(), -21), entity.getCode());
+            //提前一周
+            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(DateUtils.addDate(entity.getChuQuanRi(), -7), entity.getCode());
             if(priceEntity != null){
                 System.out.println(priceEntity.getCode() + "  " + priceEntity.getDate() + "  " + priceEntity.getPriceTrends());
             }

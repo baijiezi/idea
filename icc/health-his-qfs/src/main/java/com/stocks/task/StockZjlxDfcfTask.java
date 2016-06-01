@@ -111,6 +111,7 @@ public class StockZjlxDfcfTask {
                     logger.error("StockZJLXTask远程异常：" + stock.getCode(), e);
                 }
             }
+            asyncHttpClient.close();
             List codes = updateData(data);
             updateTime(codes);
             logger.info("共完成获取资金流向" + codes.size() + " 条");

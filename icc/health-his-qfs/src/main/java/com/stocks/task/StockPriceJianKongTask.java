@@ -117,6 +117,7 @@ public class StockPriceJianKongTask {
                             }
                         }
                     }
+                    asyncHttpClient.close();
                 }
                 Thread.sleep(1*60*1000);
             }

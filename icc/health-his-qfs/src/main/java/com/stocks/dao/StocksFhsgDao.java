@@ -310,6 +310,23 @@ public class StocksFhsgDao implements IBaseDao {
         return null;
     }
 
+    public List<StocksFhsgEntity> getByShouYiLvAndDengJiRiAndCreateAt(Integer shouYiLv, String dengJiRi, String createAt){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.createAt >= '" + createAt + "' and s.shouYiLv >= " + shouYiLv + " and s.dengJiRi >= '" + dengJiRi + "'");
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
     public List<StocksFhsgEntity> getBySongGuAndChuQuanRi(String chuQuanRi, Integer songGu){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
