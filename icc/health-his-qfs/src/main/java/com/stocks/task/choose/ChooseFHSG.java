@@ -20,7 +20,7 @@ import java.util.List;
 public class ChooseFHSG {
     public static void main(String[] args){
         ChooseFHSG chooseFHSG = new ChooseFHSG();
-        chooseFHSG.shouYiLvAndChuQuanRi2();
+        chooseFHSG.shouYiLvAndChuQuanRi();
 
 
     }
@@ -30,16 +30,20 @@ public class ChooseFHSG {
         StocksFhsgDao fhsgDao = new StocksFhsgDao();
         StocksPriceDao priceDao = new StocksPriceDao();
         String chuQuanRi = "2016-01-01";
-        Integer shouYiLv = 2000;
+        Integer shouYiLv = 3000;
         List<StocksFhsgEntity> list = fhsgDao.getByShouYiLvAndChuQuanRi(chuQuanRi, shouYiLv);
         System.out.println(list.size());
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
         for(StocksFhsgEntity entity : list){
-            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(entity.getChuQuanRi(), entity.getCode());
+            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(entity.getChuQuanRi(), entity.getCode(), session);
             if(priceEntity != null){
                 System.out.println(priceEntity.getCode() + "  " + priceEntity.getDate() + "  " + priceEntity.getPriceTrends());
             }
-
         }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
     }
 
     //  26/46=56%
@@ -47,7 +51,7 @@ public class ChooseFHSG {
         StocksFhsgDao fhsgDao = new StocksFhsgDao();
         StocksPriceDao priceDao = new StocksPriceDao();
         String chuQuanRi = "2016-01-01";
-        Integer shouYiLv = 2000;
+        Integer shouYiLv = 3000;
         List<StocksFhsgEntity> list = fhsgDao.getByShouYiLvAndChuQuanRi(chuQuanRi, shouYiLv);
         System.out.println(list.size());
         Session session = HibernateUtil.getOpenSession();
