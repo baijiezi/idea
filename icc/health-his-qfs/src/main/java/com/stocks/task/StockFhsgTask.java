@@ -107,26 +107,26 @@ public class StockFhsgTask {
                                 if(dao.isExit(dto)){
                                     continue;
                                 }
-                                if(dto.getMeiGuFenHong()!=null && dto.getMeiGuFenHong()>0){
-                                    StringBuffer sb = new StringBuffer("http://qt.gtimg.cn/r=0.9694567599799484q=");
-                                    if(stock.getExchange().equals("sh") || stock.getExchange().startsWith("沪")){
-                                        sb.append("s_sh").append(stock.getCode());
-                                    }
-                                    if(stock.getExchange().equals("sz") || stock.getExchange().startsWith("深")){
-                                        sb.append("s_sz").append(stock.getCode());
-                                    }
-
-                                    logger.info("url:"+ sb.toString());
-                                    Future r = asyncHttpClient.prepareGet(sb.toString()).execute();
-                                    Response response = (Response) r.get();
-                                    String rs = response.getResponseBody();
-                                    logger.info(rs);
-                                    String str = rs.substring(rs.indexOf("\"")+1, rs.lastIndexOf("\""));
-                                    String[] temp = str.split("~");
-
-                                    dto.setDangQianGuJia(NumberUtils.toIntMilli(temp[3]));
-                                    dto.setShouYiLv(NumberUtils.getBiLv(dto.getMeiGuFenHong(), dto.getDangQianGuJia()));
-                                }
+//                                if(dto.getMeiGuFenHong()!=null && dto.getMeiGuFenHong()>0){
+//                                    StringBuffer sb = new StringBuffer("http://qt.gtimg.cn/r=0.9694567599799484q=");
+//                                    if(stock.getExchange().equals("sh") || stock.getExchange().startsWith("沪")){
+//                                        sb.append("s_sh").append(stock.getCode());
+//                                    }
+//                                    if(stock.getExchange().equals("sz") || stock.getExchange().startsWith("深")){
+//                                        sb.append("s_sz").append(stock.getCode());
+//                                    }
+//
+//                                    logger.info("url:"+ sb.toString());
+//                                    Future r = asyncHttpClient.prepareGet(sb.toString()).execute();
+//                                    Response response = (Response) r.get();
+//                                    String rs = response.getResponseBody();
+//                                    logger.info(rs);
+//                                    String str = rs.substring(rs.indexOf("\"")+1, rs.lastIndexOf("\""));
+//                                    String[] temp = str.split("~");
+//
+//                                    dto.setDangQianGuJia(NumberUtils.toIntMilli(temp[3]));
+//                                    dto.setShouYiLv(NumberUtils.getBiLv(dto.getMeiGuFenHong(), dto.getDangQianGuJia()));
+//                                }
                                 data.add(dto);
                             }catch (Exception e){
                                 logger.info("StockFhsgTask异常:", e);
