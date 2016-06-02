@@ -70,7 +70,7 @@
     <bean id="fhsgTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="fhsgJobDetail" />
-        <property name="cronExpression" value="0 0 17 * * ?" />
+        <property name="cronExpression" value="0 30 17 * * ?" />
     </bean>
     <bean id="fhsgJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">

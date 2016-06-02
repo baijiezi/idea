@@ -46,7 +46,7 @@ public class ChooseFHSG {
         HibernateUtil.closeSessionFactory();
     }
 
-    //  26/46=56%   shouYiLv越高增长概率越大
+    //  26/46=56%
     public void shouYiLvAndDengJiRi(){
         StocksFhsgDao fhsgDao = new StocksFhsgDao();
         StocksPriceDao priceDao = new StocksPriceDao();
@@ -60,7 +60,7 @@ public class ChooseFHSG {
             //提前5天
             StocksPriceEntity priceEntity = priceDao.getByDateAndCode(DateUtils.addDate(entity.getDengJiRi(), -5), entity.getCode(), session);
             if(priceEntity != null){
-                System.out.println(priceEntity.getCode() + "  " + priceEntity.getDate() + "  " + priceEntity.getPriceTrends());
+                System.out.println(priceEntity.getCode() + "  " + priceEntity.getDate() + "  " + entity.getShouYiLv() + "  " + priceEntity.getPriceTrends());
             }
 
         }
