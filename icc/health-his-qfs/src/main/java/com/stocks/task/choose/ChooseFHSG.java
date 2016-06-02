@@ -20,7 +20,7 @@ import java.util.List;
 public class ChooseFHSG {
     public static void main(String[] args){
         ChooseFHSG chooseFHSG = new ChooseFHSG();
-        chooseFHSG.shouYiLvAndChuQuanRi();
+        chooseFHSG.shouYiLvAndDengJiRi();
 
 
     }
@@ -46,19 +46,19 @@ public class ChooseFHSG {
         HibernateUtil.closeSessionFactory();
     }
 
-    //  26/46=56%
-    public void shouYiLvAndChuQuanRi2(){
+    //  26/46=56%   shouYiLv越高增长概率越大
+    public void shouYiLvAndDengJiRi(){
         StocksFhsgDao fhsgDao = new StocksFhsgDao();
         StocksPriceDao priceDao = new StocksPriceDao();
-        String chuQuanRi = "2016-01-01";
+        String dengJiRi = "2016-01-01";
         Integer shouYiLv = 3000;
-        List<StocksFhsgEntity> list = fhsgDao.getByShouYiLvAndChuQuanRi(chuQuanRi, shouYiLv);
+        List<StocksFhsgEntity> list = fhsgDao.getByShouYiLvAndDengJiRi(dengJiRi, shouYiLv);
         System.out.println(list.size());
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
         for(StocksFhsgEntity entity : list){
-            //提前一周
-            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(DateUtils.addDate(entity.getChuQuanRi(), -7), entity.getCode(), session);
+            //提前5天
+            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(DateUtils.addDate(entity.getDengJiRi(), -5), entity.getCode(), session);
             if(priceEntity != null){
                 System.out.println(priceEntity.getCode() + "  " + priceEntity.getDate() + "  " + priceEntity.getPriceTrends());
             }

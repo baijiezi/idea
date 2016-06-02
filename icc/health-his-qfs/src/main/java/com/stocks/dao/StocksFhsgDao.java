@@ -264,7 +264,7 @@ public class StocksFhsgDao implements IBaseDao {
         session.beginTransaction();
         try{
             List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
-            Query query = session.createQuery(" from StocksFhsgEntity s where s.dengJiRi >= '" + dengJiRi + "' and s.shouYiLv >= " + shouYiLv);
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.dengJiRi >= '" + dengJiRi + "' and s.shouYiLv >= " + shouYiLv + " order by s.shouYiLv");
             list = query.list();
             return list;
         }catch(Exception e){
@@ -298,7 +298,7 @@ public class StocksFhsgDao implements IBaseDao {
         session.beginTransaction();
         try{
             List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
-            Query query = session.createQuery(" from StocksFhsgEntity s where s.chuQuanRi >= '" + chuQuanRi + "' and s.shouYiLv >= " + shouYiLv);
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.chuQuanRi >= '" + chuQuanRi + "' and s.shouYiLv >= " + shouYiLv + " order by s.shouYiLv");
             list = query.list();
             return list;
         }catch(Exception e){
