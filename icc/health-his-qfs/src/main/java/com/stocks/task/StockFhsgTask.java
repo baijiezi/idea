@@ -61,7 +61,7 @@ public class StockFhsgTask {
             for(StocksEntity stock : list){
                 logger.info("==============================StockFhsgTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
                 try{
-//                    if(!stock.getCode().equals("000776")){
+//                    if(!stock.getCode().equals("200012")){
 //                        continue;
 //                    }
                     String url = "http://stock.quote.stockstar.com/dividend/bonus_"+stock.getCode()+".shtml";
@@ -94,7 +94,7 @@ public class StockFhsgTask {
                                 dto.setCode(stock.getCode());
                                 dto.setName(stock.getName());
                                 dto.setGongGaoRi(DateUtils.strToDate(list3.elementAt(1).toPlainTextString()));
-                                if(dto.getGongGaoRi()==null || dto.getGongGaoRi().before(dt) || dao.isExit(dto)){
+                                if(dto.getGongGaoRi()==null || dto.getGongGaoRi().before(dt)){
                                     continue;
                                 }
                                 dto.setFenHong(NumberUtils.toIntMilli(list3.elementAt(2).toPlainTextString()));
@@ -104,6 +104,9 @@ public class StockFhsgTask {
                                 dto.setChuQuanRi(DateUtils.strToDate(list3.elementAt(6).toPlainTextString()));
                                 dto.setRemark(list3.elementAt(7).toPlainTextString());
                                 dto.setMeiGuFenHong(dto.getFenHong()/10);
+                                if(dao.isExit(dto)){
+                                    continue;
+                                }
                                 if(dto.getMeiGuFenHong()!=null && dto.getMeiGuFenHong()>0){
                                     StringBuffer sb = new StringBuffer("http://qt.gtimg.cn/r=0.9694567599799484q=");
                                     if(stock.getExchange().equals("sh") || stock.getExchange().startsWith("沪")){

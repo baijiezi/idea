@@ -51,7 +51,7 @@ public class ChooseFHSG {
         StocksFhsgDao fhsgDao = new StocksFhsgDao();
         StocksPriceDao priceDao = new StocksPriceDao();
         String dengJiRi = "2016-01-01";
-        Integer shouYiLv = 3000;
+        Integer shouYiLv = 1000;
         List<StocksFhsgEntity> list = fhsgDao.getByShouYiLvAndDengJiRi(dengJiRi, shouYiLv);
         System.out.println(list.size());
         Session session = HibernateUtil.getOpenSession();
