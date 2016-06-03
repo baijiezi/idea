@@ -1,5 +1,6 @@
 package com.stocks.dao;
 
+import com.stocks.entity.StocksPriceEntity;
 import com.stocks.entity.StocksZjlxHXEntity;
 import com.stocks.entity.StocksZjlxHXEntity;
 import com.stocks.utils.HibernateUtil;
@@ -8,6 +9,7 @@ import org.hibernate.Session;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,6 +40,47 @@ public class StocksZjlxHXDao implements IBaseDao {
         return null;
 
     }
+
+    public List<StocksZjlxHXEntity> getByDate(String date){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksZjlxHXEntity> list = new ArrayList<StocksZjlxHXEntity>();
+            Query query = session.createQuery(" from StocksZjlxHXEntity s where s.date = '" + date + "'");
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
+    public List<StocksZjlxHXEntity> getByDate(Date date){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        List<StocksZjlxHXEntity> list = new ArrayList<StocksZjlxHXEntity>();
+        try{
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String dt = format.format(date);
+            Query query = session.createQuery(" from StocksZjlxHXEntity s where s.date = '" + dt + "'");
+            list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return list;
+
+    }
+
 
     public boolean save(StocksZjlxHXEntity entity, Session session){
         try{

@@ -118,7 +118,7 @@ public class StockZjlxHxTask {
                         dto.setQiTaZengZhanLv(NumberUtils.toIntMilli(getText(((JSONObject)li.get(12)).getString("date3"))));
                         dto.setJingLiuRu(dto.getChaoDaDanLiuRu() + dto.getDaDanLiuRu() + dto.getXiaoDanLiuRu() + dto.getSanDanLiuRu()
                                 - dto.getChaoDaDanLiuChu() - dto.getDaDanLiuChu() + dto.getXiaoDanLiuChu() + dto.getSanDanLiuChu());
-                        dto.setJingLiuRuLv(NumberUtils.toIntMilli(""));
+                        dto.setJingLiuRuLv(NumberUtils.getBiLv(dto.getJingLiuRu(), dto.getHeJiChengJiao()));
 
                         data.add(dto);
                     }
