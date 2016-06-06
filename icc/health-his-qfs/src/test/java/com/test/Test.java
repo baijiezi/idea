@@ -1,6 +1,8 @@
 package com.test;
 
+import com.stocks.dao.StocksFhsgDao;
 import com.stocks.dao.StocksZjlxHXDao;
+import com.stocks.entity.StocksFhsgEntity;
 import com.stocks.entity.StocksZjlxHXEntity;
 import com.stocks.utils.DateUtils;
 import com.stocks.utils.HibernateUtil;
@@ -18,6 +20,11 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args){
+        Test test = new Test();
+//        test.jiSuanJingLiuRuLv();
+    }
+
+    public void jiSuanJingLiuRuLv(){
         try{
             Date date = DateUtils.strToDate("2016-03-16");
             Date endDate = DateUtils.strToDate("2016-06-03 23:59:59");
@@ -42,4 +49,5 @@ public class Test {
             e.printStackTrace();
         }
     }
+
 }

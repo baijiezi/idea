@@ -2,7 +2,6 @@ package com.stocks.dao;
 
 import com.stocks.dto.StocksFhsgDto;
 import com.stocks.entity.StocksFhsgEntity;
-import com.stocks.entity.StocksPriceEntity;
 import com.stocks.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -22,6 +21,25 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class StocksFhsgDao implements IBaseDao {
+
+    public List<StocksFhsgEntity> getAll(){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
+            Query query = session.createQuery(" from StocksFhsgEntity s where 1 = 1");
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
     public List<StocksFhsgEntity> getByCode(String code){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
@@ -187,7 +205,7 @@ public class StocksFhsgDao implements IBaseDao {
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             String dt = format.format(createAt);
             Query query = session.createQuery(" from StocksFhsgEntity s where s.createAt >= '" + dt + "'");
-            List<StocksPriceEntity> list = query.list();
+            List<StocksFhsgEntity> list = query.list();
             if(list!=null && list.size()>0) {
                 return list;
             }
@@ -209,7 +227,7 @@ public class StocksFhsgDao implements IBaseDao {
         session.beginTransaction();
         try{
             Query query = session.createQuery(" from StocksFhsgEntity s where s.createAt >= '" + createAt + "'");
-            List<StocksPriceEntity> list = query.list();
+            List<StocksFhsgEntity> list = query.list();
             if(list!=null && list.size()>0) {
                 return list;
             }
