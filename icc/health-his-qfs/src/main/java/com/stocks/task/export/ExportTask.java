@@ -43,6 +43,9 @@ public class ExportTask {
                 String daoName = map.get(key);
                 IBaseDao dao = (IBaseDao)Class.forName(daoName).newInstance();
                 List list = dao.exports(new Date());
+                if(list==null || list.size()==0){
+                    continue;
+                }
                 for(Object obj : list){
                     Method method = obj.getClass().getMethod("toSql");
                     String sql = (String)method.invoke(obj, null);
