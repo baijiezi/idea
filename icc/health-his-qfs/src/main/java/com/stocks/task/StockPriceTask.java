@@ -71,11 +71,9 @@ public class StockPriceTask {
                     //已指定Url
                     if(stock.getPriceTaskType()!=null && stock.getPriceTaskType().equals(Constants.STOCK_PRICS_URL_TYPE_1)){
                         String url = "http://nufm2.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=0000011,3990012&sty=DFPIU&st=z&sr=&p=&ps=&cb=&js=var%20C1Cache=&token=44c9d251add88e27b65ed86506f6e5da&0.9730612772982568";
-                        logger.info("url: " + url);
                         Future r = asyncHttpClient.prepareGet(url).execute();
                         Response response = (Response) r.get();
                         String result = response.getResponseBody();
-                        logger.info("result: " + result);
                         String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
                         String[] temp = str.split(",");
                         StocksPriceDto stocksPriceDto = new StocksPriceDto();
@@ -101,16 +99,11 @@ public class StockPriceTask {
 
                     if(stock.getPriceTaskType()!=null && stock.getPriceTaskType().equals(Constants.STOCK_PRICS_URL_TYPE_2)){
                         String url = "http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=" + stock.getCode() + "1&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback08470946825109422&callback=callback08470946825109422&_=1457240176741";
-                        logger.info("url:"+ url);
                         Future r = asyncHttpClient.prepareGet(url).execute();
                         Response response = (Response) r.get();
                         String result = response.getResponseBody();
-                        logger.info(result);
                         String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
                         String[] temp = str.split(",");
-                        for(int v=0; v<temp.length; v++){
-                            logger.info(v + " " + temp[v]);
-                        }
                         StocksPriceDto dto = new StocksPriceDto();
                         dto.setCode(stock.getCode());
                         dto.setName(stock.getName());
@@ -171,16 +164,11 @@ public class StockPriceTask {
                     //格林美 已测试
                     if(stock.getPriceTaskType()!=null && stock.getPriceTaskType().equals(Constants.STOCK_PRICS_URL_TYPE_3)){
                         String url = "http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx?id=" + stock.getCode() + "2&token=beb0a0047196124721f56b0f0ff5a27c&cb=callback08212962551042438&callback=callback08212962551042438&_=1457186982524";
-                        logger.info("url:"+ url);
                         Future r = asyncHttpClient.prepareGet(url).execute();
                         Response response = (Response) r.get();
                         String result = response.getResponseBody();
-                        logger.info(result);
                         String str = result.substring(result.lastIndexOf("[")+1, result.lastIndexOf("]")).replace("\"","");
                         String[] temp = str.split(",");
-                        for(int v=0; v<temp.length; v++){
-                            logger.info(v + " " + temp[v]);
-                        }
                         StocksPriceDto dto = new StocksPriceDto();
                         dto.setCode(stock.getCode());
                         dto.setName(stock.getName());

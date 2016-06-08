@@ -67,17 +67,10 @@ public class StockZjlxDfcfTask {
                         Future r = asyncHttpClient.prepareGet(url).execute();
                         Response response = (Response) r.get();
                         String result = response.getResponseBody();
-                        logger.info("result:" + result);
-                        System.out.println(result.indexOf("\""));
-                        System.out.println(result.indexOf("\"", 2));
                         int idx1 = result.indexOf("\"");
                         int idx2 = result.indexOf("\"", idx1+1);
                         String str = result.substring(idx1+1, idx2);
-                        logger.info(str);
                         String[] temp = str.split(",");
-                        for(int l=0; l<temp.length; l++){
-                            logger.info(l + " " + temp[l]);
-                        }
                         StocksZjlxDfcfDto zjlxDto = new StocksZjlxDfcfDto();
                         zjlxDto.setCode(stock.getCode());
                         zjlxDto.setName(stock.getName());

@@ -65,24 +65,14 @@ public class StockZjlxHxTask {
                     if(stock.getZjlsHxTaskType()!=null && stock.getZjlsHxTaskType().equals(Constants.ZJLX_HX_URL_TYPE_1)){
 
                         String url = "http://vol.stock.hexun.com/Data/Stock/SMinData.ashx?code=" + stock.getCode() + "&count=20&page=1&callback=hx_json14579481800134419886";
-                        logger.info("url:" + url);
                         Future r = asyncHttpClient.prepareGet(url).execute();
                         Response response = (Response) r.get();
                         String result = response.getResponseBody();
-                        logger.info("result:" + result);
                         int idx1 = result.indexOf("{");
                         int idx2 = result.lastIndexOf("}");
-                        System.out.println(result.indexOf("{"));
-                        System.out.println(result.lastIndexOf("}"));
                         String rs = result.substring(idx1, idx2+1);
-                        logger.info(rs);
                         JSONObject jsonObject = JSON.parseObject(rs);
                         List li = (List)jsonObject.get("list");
-                        for(int i=0; i<li.size(); i++){
-                            System.out.println(i + "  " + li.get(i));
-                            JSONObject object = (JSONObject)li.get(i);
-                            System.out.println(object.get("date0"));
-                        }
 
                         StocksZjlxHXDto dto = new StocksZjlxHXDto();
                         dto.setCode(stock.getCode());

@@ -68,11 +68,9 @@ public class StockZjlxThsTask {
                     if(stock.getZjlsThsTaskType()!=null && stock.getZjlsThsTaskType().equals(Constants.ZJLX_THS_URL_TYPE_1)){
 
                         String url = "http://stockpage.10jqka.com.cn/spService/" + stock.getCode() + "/Funds/realFunds";
-                        logger.info("url:" + url);
                         Future r = asyncHttpClient.prepareGet(url).execute();
                         Response response = (Response) r.get();
                         String result = response.getResponseBody();
-                        logger.info("result:" + result);
                         JSONObject jsonObject = JSON.parseObject(result);
                         JSONObject title = (JSONObject)jsonObject.get("title");
                         JSONArray flashArray = (JSONArray)jsonObject.get("flash");

@@ -75,11 +75,9 @@ public class StockPriceJianKongTask {
                     }
 
                     String url = sb.substring(0, sb.length()-1);
-                    logger.info("url:"+ url);
                     Future r = asyncHttpClient.prepareGet(url).execute();
                     Response response = (Response) r.get();
                     String result = response.getResponseBody();
-                    logger.info(result);
                     String[] results = result.split(";");
                     Map map = new HashMap<String, StocksPriceDto>();
                     for(String rs : results){
