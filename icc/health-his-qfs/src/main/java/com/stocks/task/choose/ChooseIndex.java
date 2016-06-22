@@ -20,7 +20,7 @@ public class ChooseIndex {
 
     public static void main(String[] args){
         ChooseIndex chooseIndex = new ChooseIndex();
-        chooseIndex.jiaGeYuZengZhangLv();
+        chooseIndex.priceTrends();
 
     }
 
@@ -98,4 +98,22 @@ public class ChooseIndex {
         System.out.println("desc:" + desc);
     }
 
+
+    public void priceTrends(){
+        Date date = DateUtils.strToDate("2016-05-31");
+        StocksPriceDao dao = new StocksPriceDao();
+        List<StocksPriceEntity> list = dao.getByDate(date);
+        for(StocksPriceEntity entity : list){
+            String priceTrends = entity.getPriceTrends();
+            if(priceTrends!=null && !priceTrends.equals("")){
+                String[] temps = priceTrends.split(",");
+                int i = Integer.parseInt(temps[0]);
+                int j = Integer.parseInt(temps[1]);
+                int k = Integer.parseInt(temps[2]);
+                if(k>j && j>i){
+                    System.out.println(entity.getCode() + "  " + entity.getDate() + "  " + entity.getPriceTrends());
+                }
+            }
+        }
+    }
 }
