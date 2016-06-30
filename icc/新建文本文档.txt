@@ -1,23 +1,51 @@
+-- SELECT * FROM sic_stocks_fhsg s WHERE s.dengJiRi >= '2016-01-01' AND s.fenHong = 0 AND (s.zhuanZeng > 0 OR s.songGu > 0)
+
+ SELECT * FROM sic_stocks_fhsg s LEFT JOIN sic_stocks_price p ON s.`code` = p.`code` AND s.chuQuanRi = p.date WHERE s.chuQuanRi >= '2016-01-01' AND s.fenHong > 4000  ORDER BY s.chuQuanRi
+
+-- SELECT * FROM sic_stocks_fhsg s WHERE s.shouYiLv > 1000 AND s.createAt >= '2016-06-03'  ORDER BY s.shouYiLv DESC
+
+
+
+
+
+
+
+
 -- SELECT DISTINCT s.code from sic_stocks_zjlx_dfcf s where s.zhuLiJingBi > 50000
 
 -- +12  -2   =1  T0
 -- SELECT * from sic_stocks_zjlx_dfcf s where s.zhuLiJingBi >= 50000 ORDER BY s.`code`,s.date asc
 
 -- 准确率高
--- SELECT * from sic_stocks_zjlx_dfcf s where s.chaoDaDanJingBi >= 50000 ORDER BY s.`code`,s.date asc
+ SELECT * from sic_stocks_zjlx_dfcf s LEFT JOIN sic_stocks_price p ON s.`code` = p.`code` AND s.date = p.date where s.chaoDaDanJingBi >= 50000 ORDER BY s.date asc
 
 -- +7  -3   =8  T1
--- SELECT * from sic_stocks_zjlx_dfcf s where s.chaoDaDanJingBi >= 45000 and s.chaoDaDanJingBi < 50000 ORDER BY s.`code`,s.date asc
+-- SELECT * from sic_stocks_zjlx_dfcf s LEFT JOIN sic_stocks_price p ON s.`code` = p.`code` AND s.date = p.date where s.chaoDaDanJingBi >= 45000 and s.chaoDaDanJingBi < 50000 ORDER BY s.`code`,s.date asc
 
 -- +16  -6   =13  T1
--- SELECT * from sic_stocks_zjlx_dfcf s where s.chaoDaDanJingBi >= 40000 and s.chaoDaDanJingBi < 45000 ORDER BY s.`code`,s.date asc
+-- SELECT * from sic_stocks_zjlx_dfcf s LEFT JOIN sic_stocks_price p ON s.`code` = p.`code` AND s.date = p.date where s.chaoDaDanJingBi >= 40000 and s.chaoDaDanJingBi < 45000 ORDER BY s.`code`,s.date asc
 
- SELECT * from sic_stocks_zjlx_dfcf s LEFT JOIN sic_stocks_price p ON s.`code` = p.`code` AND s.date = p.date where s.chaoDaDanJingBi >= 35000 and s.chaoDaDanJingBi < 40000 ORDER BY s.`code`,s.date asc
+-- SELECT * from sic_stocks_zjlx_dfcf s LEFT JOIN sic_stocks_price p ON s.`code` = p.`code` AND s.date = p.date where s.chaoDaDanJingBi >= 35000 and s.chaoDaDanJingBi < 40000 ORDER BY s.`code`,s.date asc
 
 -- SELECT * from sic_stocks_price s where s.code in(SELECT DISTINCT s.code from sic_stocks_zjlx_dfcf s where s.zhuLiJingBi > 50000) ORDER BY s.`code`,s.date
 
 
 -- SELECT * from sic_stocks_zjlx_dfcf s where s.chaoDaDanJingBi >= 40000 OR s.zhuLiJingBi >= 40000
+
+
+
+
+
+
+
+
+
+
+-- SELECT * FROM sic_stocks_zjlx_hx s LEFT JOIN sic_stocks_price p ON s.`code` = p.`code` and s.date = p.date where s.chaoDaDanLiuRuZhanBi > 60000 ORDER BY s.chaoDaDanLiuRuZhanBi
+
+SELECT * FROM sic_stocks_zjlx_hx s LEFT JOIN sic_stocks_price p ON s.`code` = p.`code` and s.date = p.date where s.jingLiuRuLv > 80000 ORDER BY s.jingLiuRuLv
+
+
 
 
 
