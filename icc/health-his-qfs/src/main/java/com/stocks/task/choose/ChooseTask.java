@@ -38,8 +38,8 @@ public class ChooseTask {
         if(!result1.equals("") || !result3.equals("") || !result4.equals("")){
             MessageService messageService = new MessageService();
             String content = "ZLJB_DFCF" + result1 + ";    FHSG" + result3 + ";    PRICETRENDS" + result4;
-            System.out.println(content);
-//            messageService.send("18825187648", content, Constants.MESSAGE_TYPE_CHOOSE);
+//            System.out.println(content);
+            messageService.send("18825187648", content, Constants.MESSAGE_TYPE_CHOOSE);
         }
     }
 
