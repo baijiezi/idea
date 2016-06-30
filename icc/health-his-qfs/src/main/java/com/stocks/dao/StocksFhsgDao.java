@@ -362,6 +362,24 @@ public class StocksFhsgDao implements IBaseDao {
         return null;
     }
 
+
+    public List<StocksFhsgEntity> getByChuQuanRi(String chuQuanRi){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            List<StocksFhsgEntity> list = new ArrayList<StocksFhsgEntity>();
+            Query query = session.createQuery(" from StocksFhsgEntity s where s.chuQuanRi = '" + chuQuanRi + "' ");
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
     public static void main(String[] args){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();

@@ -34,9 +34,10 @@ public class ChooseTask {
         String result1 = getT();
 //        String result2 = getTT();
         String result3 = fhsg();
-        if(!result1.equals("") || !result3.equals("")){
+        String result4 = fhsgAndPriceTrends();
+        if(!result1.equals("") || !result3.equals("") || !result4.equals("")){
             MessageService messageService = new MessageService();
-            String content = "ZLJB_DFCF" + result1 + ";    FHSG" + result3;
+            String content = "ZLJB_DFCF" + result1 + ";    FHSG" + result3 + ";    PRICETRENDS" + result4;
             messageService.send("18825187648", content, Constants.MESSAGE_TYPE_CHOOSE);
         }
     }
@@ -147,6 +148,34 @@ public class ChooseTask {
         for(StocksFhsgEntity entity : list){
             //提前一周
             sb.append(entity.getCode() + " " + entity.getShouYiLv() + " " + DateUtils.getSimpleDate(entity.getDengJiRi()) + ", ");
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return sb.toString();
+    }
+
+
+    public String fhsgAndPriceTrends(){
+        StocksFhsgDao fhsgDao = new StocksFhsgDao();
+        StocksPriceDao priceDao = new StocksPriceDao();
+        Date date = DateUtils.addDate(new Date(), -1);
+        if(new Date().getDay() == 1){
+            date = DateUtils.addDate(new Date(), -3);
+        }
+        String chuQuanRi = DateUtils.getSimpleDate(date);
+        List<StocksFhsgEntity> list = fhsgDao.getByChuQuanRi(chuQuanRi);
+        System.out.println(list.size());
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        StringBuffer sb = new StringBuffer("");
+        for(StocksFhsgEntity entity : list){
+            StocksPriceEntity priceEntity = priceDao.getByDateAndCode(entity.getChuQuanRi(), entity.getCode());
+            String priceTrends = priceEntity.getPriceTrends();
+            Integer i = Integer.parseInt(priceTrends);
+            if(i > 0){
+                sb.append(entity.getCode() + " " + priceEntity.getPriceTrends());
+            }
         }
         session.getTransaction().commit();
         session.close();
