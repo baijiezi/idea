@@ -1,6 +1,8 @@
 package com.stocks.task.choose;
 
+import com.stocks.dao.StocksDailyKLineMA5Dao;
 import com.stocks.dao.StocksPriceDao;
+import com.stocks.entity.StocksDailyKLineMA5Entity;
 import com.stocks.entity.StocksPriceEntity;
 import com.stocks.utils.DateUtils;
 import com.stocks.utils.HibernateUtil;
@@ -20,7 +22,7 @@ public class ChooseIndex {
 
     public static void main(String[] args){
         ChooseIndex chooseIndex = new ChooseIndex();
-        chooseIndex.priceTrends();
+        chooseIndex.chengJiaoLiang();
 
     }
 
@@ -116,4 +118,36 @@ public class ChooseIndex {
             }
         }
     }
+
+
+    public void chengJiaoLiang(){
+        Date date = DateUtils.strToDate("2016-05-31");
+        StocksPriceDao dao = new StocksPriceDao();
+        StocksDailyKLineMA5Dao ma5Dao = new StocksDailyKLineMA5Dao();
+        List<StocksPriceEntity> list = dao.getByDate(date);
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        for(StocksPriceEntity entity : list){
+            StocksDailyKLineMA5Entity ma5Entity = ma5Dao.getByDateAndCode(entity.getDate(), entity.getCode(), session);
+            if(entity.getChengJiaoLiang()==null || ma5Entity==null || ma5Entity.getChengJiaoLiang()==null){
+                continue;
+            }
+            if(entity.getChengJiaoLiang() > ma5Entity.getChengJiaoLiang()*4) {
+                System.out.println(entity.getCode() + "  " + entity.getDate() + "  " + entity.getPriceTrends());
+            }
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+    }
 }
+
+
+
+
+
+
+
+
+
+
