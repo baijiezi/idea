@@ -172,6 +172,9 @@ public class ChooseTask {
         StringBuffer sb = new StringBuffer("");
         for(StocksFhsgEntity entity : list){
             StocksPriceEntity priceEntity = priceDao.getByDateAndCode(entity.getChuQuanRi(), entity.getCode());
+            if(priceEntity == null){
+                continue;
+            }
             String priceTrends = priceEntity.getPriceTrends();
             Integer i = Integer.parseInt(priceTrends);
             if(i > 0){
