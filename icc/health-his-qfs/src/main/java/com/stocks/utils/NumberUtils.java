@@ -178,7 +178,7 @@ public class NumberUtils {
     //单位：毫，千分之一
     public static long toLongMilli(String str){
         System.out.println("str:" + str);
-        if(str==null || str.equals("") || str.equals("null")){
+        if(str==null || str.equals("") || str.equals("null") || str.equals("-")){
             return 0;
         }
         str = str.replace("%", "");
