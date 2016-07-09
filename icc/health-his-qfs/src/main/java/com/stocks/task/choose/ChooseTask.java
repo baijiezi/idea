@@ -178,7 +178,7 @@ public class ChooseTask {
             String priceTrends = priceEntity.getPriceTrends();
             Integer i = Integer.parseInt(priceTrends);
             if(i > 0){
-                sb.append(entity.getCode() + " " + priceEntity.getPriceTrends());
+                sb.append(entity.getCode() + " " + priceEntity.getPriceTrends()).append(", ");
             }
         }
         session.getTransaction().commit();
