@@ -134,27 +134,6 @@ public class StockPriceTask {
                         dto.setLiuTongShiZhi(NumberUtils.toLong(temp[45]));
                         dto.setWeiBi(NumberUtils.toIntMilli(temp[41]));
                         dto.setWeiCha(NumberUtils.toIntCenti(temp[42]));
-                        dto.setBuyOne1(NumberUtils.toIntMilli(temp[3]));
-                        dto.setBuyOne2(NumberUtils.toIntCenti(temp[13]));
-                        dto.setBuyTwo1(NumberUtils.toIntMilli(temp[4]));
-                        dto.setBuyTwo2(NumberUtils.toIntCenti(temp[14]));
-                        dto.setBuyThree1(NumberUtils.toIntMilli(temp[5]));
-                        dto.setBuyThree2(NumberUtils.toIntCenti(temp[15]));
-                        dto.setBuyFour1(NumberUtils.toIntMilli(temp[6]));
-                        dto.setBuyFour2(NumberUtils.toIntCenti(temp[16]));
-                        dto.setBuyFive1(NumberUtils.toIntMilli(temp[7]));
-                        dto.setBuyFive2(NumberUtils.toIntCenti(temp[17]));
-                        dto.setSaleOne1(NumberUtils.toIntMilli(temp[8]));
-                        dto.setSaleOne2(NumberUtils.toIntCenti(temp[18]));
-                        dto.setSaleTwo1(NumberUtils.toIntMilli(temp[9]));
-                        dto.setSaleTwo2(NumberUtils.toIntCenti(temp[19]));
-                        dto.setSaleThree1(NumberUtils.toIntMilli(temp[10]));
-                        dto.setSaleThree2(NumberUtils.toIntCenti(temp[20]));
-                        dto.setSaleFour1(NumberUtils.toIntMilli(temp[11]));
-                        dto.setSaleFour2(NumberUtils.toIntCenti(temp[21]));
-                        dto.setSaleFive1(NumberUtils.toIntMilli(temp[12]));
-                        dto.setSaleFive2(NumberUtils.toIntCenti(temp[22]));
-
                         data.add(dto);
                     }
 
@@ -199,26 +178,6 @@ public class StockPriceTask {
                         dto.setWeiCha(NumberUtils.toIntCenti(temp[42]));
                         dto.setPanCha(dto.getNeiPan()-dto.getWaiPan());
                         dto.setPanBi(NumberUtils.getBiLv(dto.getPanCha(), dto.getNeiPan()+dto.getWaiPan()));
-                        dto.setBuyOne1(NumberUtils.toIntMilli(temp[3]));
-                        dto.setBuyOne2(NumberUtils.toIntCenti(temp[13]));
-                        dto.setBuyTwo1(NumberUtils.toIntMilli(temp[4]));
-                        dto.setBuyTwo2(NumberUtils.toIntCenti(temp[14]));
-                        dto.setBuyThree1(NumberUtils.toIntMilli(temp[5]));
-                        dto.setBuyThree2(NumberUtils.toIntCenti(temp[15]));
-                        dto.setBuyFour1(NumberUtils.toIntMilli(temp[6]));
-                        dto.setBuyFour2(NumberUtils.toIntCenti(temp[16]));
-                        dto.setBuyFive1(NumberUtils.toIntMilli(temp[7]));
-                        dto.setBuyFive2(NumberUtils.toIntCenti(temp[17]));
-                        dto.setSaleOne1(NumberUtils.toIntMilli(temp[8]));
-                        dto.setSaleOne2(NumberUtils.toIntCenti(temp[18]));
-                        dto.setSaleTwo1(NumberUtils.toIntMilli(temp[9]));
-                        dto.setSaleTwo2(NumberUtils.toIntCenti(temp[19]));
-                        dto.setSaleThree1(NumberUtils.toIntMilli(temp[10]));
-                        dto.setSaleThree2(NumberUtils.toIntCenti(temp[20]));
-                        dto.setSaleFour1(NumberUtils.toIntMilli(temp[11]));
-                        dto.setSaleFour2(NumberUtils.toIntCenti(temp[21]));
-                        dto.setSaleFive1(NumberUtils.toIntMilli(temp[12]));
-                        dto.setSaleFive2(NumberUtils.toIntCenti(temp[22]));
 
                         data.add(dto);
                     }
@@ -278,26 +237,6 @@ public class StockPriceTask {
             entity.setLiuTongShiZhi(dto.getLiuTongShiZhi());
             entity.setWeiBi(dto.getWeiBi());
             entity.setWeiCha(dto.getWeiCha());
-            entity.setBuyOne1(dto.getBuyOne1());
-            entity.setBuyOne2(dto.getBuyOne2());
-            entity.setBuyTwo1(dto.getBuyTwo1());
-            entity.setBuyTwo2(dto.getBuyTwo2());
-            entity.setBuyThree1(dto.getBuyThree1());
-            entity.setBuyThree2(dto.getBuyThree2());
-            entity.setBuyFour1(dto.getBuyFour1());
-            entity.setBuyFour2(dto.getBuyFour2());
-            entity.setBuyFive1(dto.getBuyFive1());
-            entity.setBuyFive2(dto.getBuyFive2());
-            entity.setSaleOne1(dto.getSaleOne1());
-            entity.setSaleOne2(dto.getSaleOne2());
-            entity.setSaleTwo1(dto.getSaleTwo1());
-            entity.setSaleTwo2(dto.getSaleTwo2());
-            entity.setSaleThree1(dto.getSaleThree1());
-            entity.setSaleThree2(dto.getSaleThree2());
-            entity.setSaleFour1(dto.getSaleFour1());
-            entity.setSaleFour2(dto.getSaleFour2());
-            entity.setSaleFive1(dto.getSaleFive1());
-            entity.setSaleFive2(dto.getSaleFive2());
             entity.setCreateTime(new Date());
 
             if(dao.save(entity, session)){
