@@ -24,7 +24,7 @@
                 <ref bean="chooseTaskTrigger" />
                 <ref bean="fhsgTaskTrigger" />
                 <ref bean="exportTaskTrigger" />
-                <ref bean="priceTrendsTaskTrigger" />
+                <!--<ref bean="priceTrendsTaskTrigger" />-->
             </list>
         </property>
     </bean>
