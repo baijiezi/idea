@@ -16,18 +16,18 @@ import com.test.model.Book;
 import com.test.service.BookService;
 
 @Controller
-@RequestMapping("/book.do")
+@RequestMapping("/book")
 public class BookController {
 
     private BookService bookService;
-    @RequestMapping(params = "method=add")
+    @RequestMapping("add")
     public String add(Book book){
         System.out.println("bookname:"+book.getName());
         System.out.println("author:"+book.getAuthor());
         bookService.add(book);
         return "success";
     }
-    @RequestMapping(params = "method=update")
+    @RequestMapping("update")
     public String update(Book book) {
         bookService.update(book);
         return "success";
