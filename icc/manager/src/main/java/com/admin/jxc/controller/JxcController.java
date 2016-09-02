@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class JxcController {
 
     @RequestMapping("add")
-    public String add(Book book){
-        System.out.println("bookname:"+book.getName());
-        System.out.println("author:" + book.getAuthor());
-        return "add";
+    public String add(){
+        return "success";
     }
 
 

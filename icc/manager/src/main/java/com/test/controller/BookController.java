@@ -32,6 +32,11 @@ public class BookController {
         bookService.update(book);
         return "success";
     }
+
+    @RequestMapping("te")
+    public String te(){
+        return "success";
+    }
     public BookService getBookService() {
         return bookService;
     }
