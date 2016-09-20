@@ -1,0 +1,280 @@
+﻿body,.header,.breadcrumb{
+    background-color: white !important;
+}
+.w100 input {
+    width: 100% !important;
+    max-width: 206px !important;
+}
+.tc{
+    text-align:center;
+}
+.cl{
+    clear: both;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.w100 select{
+    width: 100% !important;
+    max-width: 220px !important;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+h5{
+    color:#75b9e6;
+    line-height: 29px;
+}
+/*.pagination ul>li>a{
+    background-color: #75b9e6;
+    color: white;
+}*/
+.pagination ul>li>a:hover{
+    /*background-color: #4aa3de;*/
+    background-color: #75b9e6;
+    color: white;
+}
+.btn{
+    background-image: none;
+    border:1px solid #3498da;
+    background-color: #75b9e6;
+    box-sizing: border-box;
+    color: white;
+    text-shadow:none;
+    border-radius: 5px;
+    display: inline-block !important;
+}
+.btn:hover{
+    background-image: none;
+    background-color:#4aa3de;
+    border:1px solid #3498da;
+    box-sizing: border-box;
+    color:white;
+}
+a:hover{
+    color: white;
+}
+.btn-primary{
+    background-color: #75b9e6;
+    /*background-color:#4aa3de;*/
+    color:white;
+}
+.btn-success{
+    background-color: #75b9e6;
+    box-sizing: border-box;
+    border:1px solid #3498da;
+    color: white;
+    background-image: none;
+}
+.btn-success:hover{
+    background-color: #4aa3de; 
+    box-sizing: border-box;
+}
+.pagination ul>li>a{
+    border:1px solid #dddddd;
+}
+.pagination ul>li>a:hover{
+    border:1px solid #3498da;
+    box-sizing: border-box;
+}
+/*表格的样式*/
+.table th, .table td{
+    line-height: 24px;
+}
+input#code {
+margin-right: 60px;
+}
+div#from-manager,label{
+    /*font-size: 16px !important;*/
+    font-size: 13px;
+}
+select, input[type="file"]{
+    font-size: 13px;
+}
+a:hover{
+    color: #3498da;
+}
+.tree li{
+    padding: 8px 0 0 2px;
+}
+.tree li span{
+    line-height:22px;
+    padding:3px 7px;
+}
+.tree li::after{
+    top:22px;
+}
+.tree a{
+    margin:0 3px;
+}
+.btn-primary:hover{
+    /*background-color: #64769E;*/
+    background-image: none;
+}
+.tree li.parent_li>span:hover{
+    background-color: #4aa3de;
+    border: 1px solid #3498da;
+    color: #fff;
+}
+td{
+    padding: 0 0 10px 0; !important;
+}
+.btn-success2{
+    width: 250px;
+    height: 38px;
+    border-radius: 6px;
+    font-size: 16px;
+    text-align: center;
+
+}
+label.col-lunionpay-2.control-label {
+margin-left: 60px;
+}
+label.col-lunionpay-2.control-label:first-child {
+margin-left: 0px;
+}
+/*下面是表格变色*/
+.yellowgreen{
+background-color:#EEEEEE;
+}
+.white{
+background-color: white;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{
+    background-color:#EEEEEE;
+}
+.table-hover tbody tr.yellowgreen:hover td, .table-hover tbody tr.yellowgreen:hover th,.table-striped tbody tr:nth-child(odd).yellowgreen td, .table-striped tbody tr:nth-child(odd).yellowgreen th{
+    background-color: transparent;
+}
+
+
+
+
+/*珠海分页*/
+.sub_btn{
+    width: 58px !important;
+    height: 30px;
+}
+.pagenation_bar .page{
+    height: 34px;
+    line-height: 34px;
+}
+.pagenation_bar .page a{
+    height: 30px;
+    line-height: 30px;
+    width: 32px;
+    text-align: center;
+    padding:0;
+}
+.pagenation_bar .page .tac {
+    min-width: 30px;
+    height: 30px;
+    border: 1px solid #CCC;
+    background-color: #FFF;
+    vertical-align: top;
+    line-height: 30px;
+    font-size: 12px;
+    padding:0;
+    margin-top: 0px;
+    text-align: center;
+}
+.pagenation_bar .page .right span{
+    font-size: 16px;
+    line-height: 32px;
+}
+.pagenation_bar .page a.current{
+    background-color: #4aa3de;
+}
+.pagenation_bar .page a{
+    border:1px solid #4aa3de;
+}
+.pagenation_bar .page a{
+    color:#4aa3de;
+    background-color: white;
+    text-decoration: none;
+}
+.pagenation_bar .page a:hover{
+    background-color: #75b9e6;
+    color: white;
+    border: 1px solid #3498da;
+}
+.pagenation_bar .page .right span{
+    color: black;
+    font-style: bold;
+}
+/*菜单管理*/
+.tree li::before{
+    border-left: 1px solid #999 !important;
+}
+.tree li::after{
+    border-top: 1px solid #999 !important;
+}
+/*预约挂号订单管理*/
+.form-horizontal .w100 .control-label{
+    width: 100px;
+}
+
+.form-horizontal .w100 .controls{
+    margin-left: 100px;
+}
+#scroll{
+    width: 100%;
+    overflow: auto;
+    overflow-y: hidden;
+}
+.table th, .table td{
+    line-height: 16px;
+}
+/*select{
+    width: 100%;
+    display:inline-block;
+}
+input[type="text"], input[type="password"]{
+    width: 100%;
+    display:inline-block;
+}*/
+.well{
+    padding-bottom: 0px;
+}
+.form-horizontal .control-group{
+    margin-bottom: 10px;
+}
+/*预约挂号*/
+#order_booking .table th,#order_booking .table td {
+    border-top: none !important;
+}
+#order_booking table {
+    border-radius: 10px !important;
+    margin-bottom: 5px;
+}
+#order_booking .table th,#order_booking .table td {
+    font-size: 12px !important;
+    line-height: 8px;
+}
+#order_booking .table-bordered th,#order_booking .table-bordered td td{
+    border-left:none !important;
+}
+button, input, select, textarea {
+    margin: 0px !important;
+}
+
+
+/*ie兼容*/
+body{
+    line-height: normal\9;
+}
+.navbar .navbar-inner,.btn-success,.header,.sidebar-nav .nav-header,.btn-primary,.btn{
+    filter:none\9;
+}
+.table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th{
+    background: none\9;
+}
+
+
+

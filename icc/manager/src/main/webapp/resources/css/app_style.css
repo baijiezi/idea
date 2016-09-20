@@ -1,0 +1,119 @@
+body.error,body.error{
+	background-color:#FFF;
+	margin:0;
+	padding:0;
+	font-size: 25px;
+}
+
+.error .top{
+	position:relative;
+	background:#B7E7FF;
+	min-height:350px;
+	width:100%;
+	min-width:960px;
+	margin:0 auto
+}
+.error .info{
+	width:270px;
+	position:absolute;
+	left:50%;
+	bottom:56px;
+	transform:translate(-385px,0);
+	-webkit-transform:translate(-385px,0);
+	-moz-transform:transform:translate(-385px,0);
+	-ms-transform:transform:translate(-385px,0);
+}
+.error .info-titl{
+	margin-left:10%;
+	width:80%
+}
+.error .info-cont{
+	width:100%;
+	background:#FFF;
+	border-radius:15px;
+	padding:15px 10px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	color:#B7E7FF;
+	position:relative
+}
+.error .info-cont:before{
+	content:'';
+	width:0;
+	height:0;
+	border-width:7px 0 7px 10px;
+	border-style:solid;
+	border-color:transparent transparent transparent #FFF;
+	position:absolute;
+	left:100%;
+	top:15px
+}
+.error .info-cont p{
+	margin:0;
+	padding:0;
+	line-height:1.5em
+}
+.error .person{
+	width:200px;
+	position:absolute;
+	bottom:-50px;
+	left:50%;
+	
+	transform:translate(-100px,0);
+	-webkit-transform:translate(-100px,0);
+	-moz-transform:transform:translate(-100px,0);
+	-ms-transform:transform:translate(-100px,0);
+}
+.error .hospital{
+	width:110px;
+	position:absolute;
+	bottom:-6px;
+	left:50%;
+	transform:translate(115px,0);
+	-webkit-transform:translate(115px,0);
+	-moz-transform:transform:translate(115px,0);
+	-ms-transform:transform:translate(115px,0);
+}
+
+/********************下载页面************************************/
+.download {
+	background:url(../images/bg_docter_02.png) top left no-repeat;
+	background-size:110% auto;
+	margin:0;
+	padding:0
+}
+.download .app-name{
+	margin-top:5em;
+	width:60%;
+	margin-left:20%
+}
+.download .app-icon{
+	margin-top:1em;
+	width:40%;
+	margin-left:30%
+}
+.download .btn-toDow{
+	overflow:hidden;
+	margin-top:1em	
+}
+.download .btn-toDow img{
+	height:1.5em;
+	margin-right:10px;
+	float:left
+}
+.download .btn-toDow a{
+	text-decoration:none;
+	display:inline-block;
+	width:60%;
+	margin-left:20%;
+	padding:1em 10px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	border-radius:5px;
+	line-height:1.5em;
+	background:#16a6ea;
+	color:#FFF;
+	opacity:.5
+}

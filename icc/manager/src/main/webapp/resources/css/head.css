@@ -1,0 +1,92 @@
+.navbar .navbar-inner {
+    background: #75b9e6;
+    padding: 0em 1em;
+    margin: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 0px;
+    border-bottom: none;
+}
+.brand .first {
+    color:white !important;
+    font-style:normal !important;
+}
+.nav>li>a:hover{
+    background-color: #3498da !important;
+}
+
+#land{
+    width: 500px;
+    box-shadow: 10px 10px 3000px #A8D6F4;
+}
+#land .block{
+    box-shadow: 0px 1px 300px #A8D6F4;
+    margin:10em 0em;
+    border:1px solid #D3EDFF;
+}
+#land .block-body{
+    margin:3em;
+}
+#land label{
+    margin-right: 20px;
+    font-size: 16px;
+    line-height:30px;
+}
+#land input{
+    margin-bottom: 30px !important;
+}
+#land button{
+    text-align: center !important;
+}
+body{
+    background: url(../images/login-background.jpg) no-repeat center fixed;
+    width: 100%;
+    height: 100%;
+    /*background-color: #1E88A8 !important;*/
+    /*background-color: #58B2DC !important;*/
+    /*background-color: #006284 !important;*/
+    /*background-color: #2EA9DF !important;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+.tc{
+    text-align:center;
+}
+.cl{
+    clear: both;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+/*body{
+  line-height: 30px;
+}
+li{
+  line-height: 29px;
+}*/
+
+.error{
+    padding-top: 15px;
+    color: red;
+}
+
+/*ie兼容*/
+body{
+    line-height: normal\9;
+}
+.navbar .navbar-inner,.btn-success,.header,.sidebar-nav .nav-header,.btn-primary,.btn{
+    filter:none\9;
+}
+.table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th{
+    background: none\9;
+}

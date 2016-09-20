@@ -26,16 +26,19 @@ public class AdminController {
 
     @RequestMapping("/index")
     public String adminIndex(){
+        System.out.println("index");
         return "admin/index";
     }
 
     @RequestMapping("/listMenu")
     public String listMenu(Model model, HttpServletRequest request){
+        System.out.println("listMenu");
         return "admin/menu";
     }
 
     @RequestMapping("/showMain")
     public String index(Model model, HttpServletRequest request){
+        System.out.println("showMain");
         return "admin/main";
     }
 
