@@ -15,7 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin/jxc")
 public class JxcController {
 
-    @RequestMapping("goods/add")
+    @RequestMapping("/goods/list")
+    public String list(){
+        return "admin/jxc/goodsList";
+    }
+
+    @RequestMapping("/goods/addPage")
+    public String addPage(){
+        System.out.println("addPage");
+        return "admin/jxc/goodsAdd";
+    }
+
+    @RequestMapping("/goods/add")
     public String add(){
         return "success";
     }
