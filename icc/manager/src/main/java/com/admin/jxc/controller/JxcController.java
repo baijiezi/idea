@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-@RequestMapping("/jxc")
+@RequestMapping("/admin/jxc")
 public class JxcController {
 
-    @RequestMapping("add")
+    @RequestMapping("goods/add")
     public String add(){
         return "success";
     }

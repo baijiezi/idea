@@ -63,10 +63,9 @@
         <i class="icon-tasks"></i>基础数据管理<i class="icon-chevron-up"></i>
     </a>
     <ul id="110000" class="nav nav-list collapse in">
-        <li><a href="${urlPath}/admin/hospital/list" target="main-frame"><i class="icon-chevron-right"></i>医院管理</a></li>
-        <li><a href="${urlPath}/admin/dept/list" target="main-frame"><i class="icon-chevron-right"></i>科室管理</a></li>
-        <li><a href="${urlPath}/admin/doctor/list" target="main-frame"><i class="icon-chevron-right"></i>医生管理</a></li>
-        <li><a href="${urlPath}/admin/cache" target="main-frame"><i class="icon-chevron-right"></i>缓存清理</a></li>
+        <li><a href="${urlPath}/admin/jxc/goods/list" target="main-frame"><i class="icon-chevron-right"></i>SP管理</a></li>
+        <li><a href="${urlPath}/admin/jxc/buy/add" target="main-frame"><i class="icon-chevron-right"></i>JH管理</a></li>
+        <li><a href="${urlPath}/admin/jxc/sale/sale" target="main-frame"><i class="icon-chevron-right"></i>XS医生管理</a></li>
     </ul>
 </div>
 
