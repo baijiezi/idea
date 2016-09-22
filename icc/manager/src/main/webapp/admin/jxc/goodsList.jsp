@@ -82,39 +82,16 @@
                 <th style="width:2%;"><input type="checkbox" class="group-checkable" data-set="#table-manager .checkboxes" id="table_th_checkbox" /></th>
                 <th style="width:15%;">医院名称</th>
                 <th style="width:5%;">医院ID</th>
-                <th style="width:10%;">简称</th>
-                <th style="width:10%;">所在地区</th>
-                <th style="width:15%;">详细地址</th>
-                <th style="width:10%;">联系电话</th>
-                <th style="width:5%;">医院级别</th>
-                <th style="width:5%;">经营性质</th>
-                <%--<th style="width:5%;">医院相片</th>--%>
-                <th style="width:5%;">状态</th>
                 <th style="width:10%;">更新时间</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach var="item" items="${hospitalList}" >
-                <tr id="${item.hospitalId}">
-                    <td><input type="checkbox" name="table_td_checkbox" class="checkboxes" value="${item.hospitalId}" /></td>
-                    <td>
-                        <c:choose>
-                            <c:when test="${buttons.k101011 == null}" >
-                                <a href="/admin/hospital/editPage?id=${item.hospitalId}"> ${item.hospitalName}</a>
-                            </c:when>
-                            <c:otherwise>
-                                ${item.hospitalName}
-                            </c:otherwise>
-                        </c:choose>
-                    </td>
-                    <td>${item.hospitalId}</td>
-                    <td>${item.shortName}</td>
-                        <%--<td>${item.area.province.province}${item.area.city.city}${item.area.area}</td>--%>
-                    <td>${item.area}</td>
-                    <td>${item.address}</td><td>${item.contact}</td><td>${item.grade}</td><td>${item.nature}</td>
-                        <%--<td>${item.p ? '有相片':'尚无相片'}</td>--%>
-                    <td><c:choose><c:when test="${item.served}">启用</c:when><c:otherwise>禁用</c:otherwise></c:choose></td>
-                    <td><fmt:formatDate value="${item.updatedAt}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                <tr id="${item.id}">
+                    <td><input type="checkbox" name="table_td_checkbox" class="checkboxes" value="${item.id}" /></td>
+                    <td>${item.code}</td>
+                    <td>${item.name}</td>
+                    <td>${item.status}</td>
                 </tr>
             </c:forEach>
             </tbody>

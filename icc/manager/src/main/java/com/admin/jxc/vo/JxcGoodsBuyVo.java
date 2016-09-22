@@ -13,6 +13,7 @@ import java.util.Date;
 public class JxcGoodsBuyVo implements Serializable {
 
     private static final long serialVersionUID = 7375909700364018334L;
+    private Integer id;
     private String code;
     private String name;
     private String classes;
@@ -23,6 +24,14 @@ public class JxcGoodsBuyVo implements Serializable {
     private Integer status;
     private Date buyTime;
     private String remark;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getCode() {
         return code;

@@ -34,7 +34,7 @@ public class JxcController {
             PageUtil pageUtil = jxcService.findGoods(1, map);
             Map pageMap = new HashMap();
             pageMap.put("firstPage",1);
-            pageMap.put("lastPage",pageUtil.getTotalPage());
+            pageMap.put("lastPage",2);
             pageMap.put("prePage",pageUtil.getPrePage());
             pageMap.put("curPage",1);
             pageMap.put("pageSize",pageUtil.getPageSize());
@@ -47,7 +47,7 @@ public class JxcController {
             e.printStackTrace();
         }
 
-        return "admin/jxc/goodsList";
+        return "admin/jxc/goods";
     }
 
     @RequestMapping("/goods/addPage")

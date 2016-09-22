@@ -12,8 +12,17 @@ import java.io.Serializable;
 public class JxcGoodsClassesVo implements Serializable {
 
     private static final long serialVersionUID = 4602302249474072809L;
+    private Integer id;
     private String className;
     private String remark;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getClassName() {
         return className;
