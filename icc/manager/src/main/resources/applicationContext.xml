@@ -26,4 +26,6 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <bean id="mapper" class="com.admin.utils.HealthMapper" />
+
 </beans>  

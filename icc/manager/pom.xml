@@ -12,6 +12,7 @@
         <spring.version>3.2.6.RELEASE</spring.version>
         <junit.version>3.8.1</junit.version>
         <tiles.version>3.0.5</tiles.version>
+        <orika.version>1.4.2</orika.version>
     </properties>
 
     <dependencies>
@@ -179,7 +180,11 @@
             <version>5.1.33</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>${orika.version}</version>
+        </dependency>
 
     </dependencies>
     <build>
