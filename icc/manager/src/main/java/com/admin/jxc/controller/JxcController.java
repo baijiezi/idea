@@ -1,7 +1,10 @@
 package com.admin.jxc.controller;
 
 import com.admin.jxc.service.IJxcService;
+import com.admin.jxc.vo.JxcGoodsVo;
+import com.admin.jxc.vo.User;
 import com.admin.utils.PageUtil;
+import com.test.model.Book;
 import ma.glasnost.orika.MapperFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,10 +59,19 @@ public class JxcController {
         return "admin/jxc/goodsAdd";
     }
 
+//    @RequestMapping("/goods/add")
+//    public String add(User user, HttpServletRequest request){
+//        System.out.println("add");
+//        System.out.println(user.getCode());
+//        System.out.println(request.getParameter("code"));
+//        System.out.println(request.getAttribute("code"));
+//        return "success";
+//    }
+
     @RequestMapping("/goods/add")
-    public String add(){
+    public String add(User user){
+        System.out.println("code:"+user.getCode());
+        System.out.println("name:"+user.getName());
         return "success";
     }
-
-
 }

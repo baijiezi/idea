@@ -7,5 +7,10 @@
         <put-attribute name="body" value="/admin/jxc/goodsList.jsp"/>
     </definition>
 
+    <definition extends="manager" name="admin/jxc/goodsAdd">
+        <put-attribute name="body" value="/admin/jxc/goodsAdd.jsp"/>
+    </definition>
+
+
 
 </tiles-definitions>
