@@ -59,19 +59,14 @@ public class JxcController {
         return "admin/jxc/goodsAdd";
     }
 
-//    @RequestMapping("/goods/add")
-//    public String add(User user, HttpServletRequest request){
-//        System.out.println("add");
-//        System.out.println(user.getCode());
-//        System.out.println(request.getParameter("code"));
-//        System.out.println(request.getAttribute("code"));
-//        return "success";
-//    }
-
     @RequestMapping("/goods/add")
-    public String add(User user){
-        System.out.println("code:"+user.getCode());
-        System.out.println("name:"+user.getName());
+    public String add(User user, HttpServletRequest request){
+        System.out.println("add");
+        System.out.println(user.getCode());
+        System.out.println(request.getParameter("code"));
+        System.out.println(request.getAttribute("code"));
         return "success";
     }
+
+
 }

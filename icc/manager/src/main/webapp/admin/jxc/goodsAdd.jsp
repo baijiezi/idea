@@ -25,10 +25,33 @@
     <a id="btnBack" class="btn" onclick="javascript:history.go(-1);"><i class="icon-undo"></i> 返回</a>
 </div>
     <form method="post" action="<%=request.getContextPath() %>/admin/jxc/goods/add">
-        bookname:<input type="text" name="code" id="name">
-        author:<input type="text" name="name" id="author">
-        <input type="submit" value="Add">
-    </form>
+<div class="well">
+<div class="row-fluid">
+    <div class="span6">
+        <div class="control-group">
+            <label class="control-label"><span class="required">*</span>医院ID：</label>
+            <div class="controls">
+                <input type="text" name="code" maxlength="20" />
+
+            </div>
+        </div>
+    </div>
+    <div class="span6">
+        <div class="control-group">
+            <label class="control-label"><span class="required">*</span>医院名称：</label>
+            <div class="controls">
+                <input type="text" name="name" />
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" value="Add">
+
+
+</div>
+
+</div>
+</form>
 </div>
 </body>
 </html>
