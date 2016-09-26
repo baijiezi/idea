@@ -17,12 +17,13 @@ public class JxcGoodsVo implements Serializable {
     private String code;
     private String name;
     private String classes;
-    private String saleTo;
+    private Integer buyPrice;
     private Integer salePrice;
-    private Integer saleCount;
+    private Integer buyCount;
+    private Integer saledCount;
     private Integer stockCount;
     private Integer status;
-    private Date saleTime;
+    private Date createTime;
     private String remark;
 
     public Integer getId() {
@@ -57,12 +58,12 @@ public class JxcGoodsVo implements Serializable {
         this.classes = classes;
     }
 
-    public String getSaleTo() {
-        return saleTo;
+    public Integer getBuyPrice() {
+        return buyPrice;
     }
 
-    public void setSaleTo(String saleTo) {
-        this.saleTo = saleTo;
+    public void setBuyPrice(Integer buyPrice) {
+        this.buyPrice = buyPrice;
     }
 
     public Integer getSalePrice() {
@@ -73,12 +74,20 @@ public class JxcGoodsVo implements Serializable {
         this.salePrice = salePrice;
     }
 
-    public Integer getSaleCount() {
-        return saleCount;
+    public Integer getBuyCount() {
+        return buyCount;
     }
 
-    public void setSaleCount(Integer saleCount) {
-        this.saleCount = saleCount;
+    public void setBuyCount(Integer buyCount) {
+        this.buyCount = buyCount;
+    }
+
+    public Integer getSaledCount() {
+        return saledCount;
+    }
+
+    public void setSaledCount(Integer saledCount) {
+        this.saledCount = saledCount;
     }
 
     public Integer getStockCount() {
@@ -97,12 +106,12 @@ public class JxcGoodsVo implements Serializable {
         this.status = status;
     }
 
-    public Date getSaleTime() {
-        return saleTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setSaleTime(Date saleTime) {
-        this.saleTime = saleTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getRemark() {

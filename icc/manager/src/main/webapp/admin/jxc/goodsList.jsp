@@ -72,7 +72,6 @@
     <div class="btn-toolbar">
         <c:if test="${buttons.k101010 == null}"><a href="/admin/jxc/goods/addPage" class="btn"><i class="icon-plus"></i> 增加</a></c:if>
         <c:if test="${buttons.k101012 == null}"><a id="btnDel" class="btn"><i class="icon-trash "></i> 删除</a></c:if>
-        <c:if test="${buttons.k101013 == null}"><a id="btnConfig" class="btn"><i class="icon-arrow-right"></i> 设置医院配置信息</a></c:if>
     </div>
 
     <div style="font-size: 13px;">
@@ -80,18 +79,35 @@
             <thead>
             <tr style="background-color:aliceblue" >
                 <th style="width:2%;"><input type="checkbox" class="group-checkable" data-set="#table-manager .checkboxes" id="table_th_checkbox" /></th>
-                <th style="width:15%;">医院名称</th>
-                <th style="width:5%;">医院ID</th>
-                <th style="width:10%;">更新时间</th>
+                <th style="width:15%;">商品名称</th>
+                <th style="width:10%;">商品类别</th>
+                <th style="width:8%;">最新进货价</th>
+                <th style="width:8%;">总进货数</th>
+                <th style="width:8%;">售价</th>
+                <th style="width:8%;">总卖出数</th>
+                <th style="width:8%;">库存数</th>
+                <th style="width:10%;">条码</th>
+                <th style="width:5%;">状态</th>
+                <th style="width:10%;">登记时间</th>
+                <th style="width:10%;">备注</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach var="item" items="${hospitalList}" >
                 <tr id="${item.id}">
                     <td><input type="checkbox" name="table_td_checkbox" class="checkboxes" value="${item.id}" /></td>
-                    <td>${item.code}</td>
                     <td>${item.name}</td>
+                    <td>${item.classes}</td>
+                    <td>${item.buyPrice}</td>
+                    <td>${item.buyCount}</td>
+                    <td>${item.salePrice}</td>
+                    <td>${item.saledCount}</td>
+                    <td>${item.stockCount}</td>
+                    <td>${item.code}</td>
                     <td>${item.status}</td>
+                    <td>${item.createTime}</td>
+                    <td>${item.remark}</td>
+
                 </tr>
             </c:forEach>
             </tbody>

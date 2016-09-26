@@ -1,5 +1,6 @@
 package com.admin.jxc.service;
 
+import com.admin.jxc.vo.JxcGoodsVo;
 import com.admin.utils.PageUtil;
 
 import java.util.Map;
@@ -13,4 +14,10 @@ import java.util.Map;
  */
 public interface IJxcService {
     public PageUtil findGoods(Integer page, Map map) throws Exception;
+
+    public void addGoods(JxcGoodsVo goodsVo) throws Exception;
+
+
+
+
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -34,15 +35,23 @@ public class JxcServiceImpl extends AbstractService implements IJxcService{
         for (JxcGoodsEntity entity : list){
             goodsVos.add(mapper.map(entity, JxcGoodsVo.class));
         }
-
         System.out.println("list.size:" + list.size());
         PageUtil pageUtil = new PageUtil();
         pageUtil.setCurPage(1);
         pageUtil.setPageList(goodsVos);
         pageUtil.setPageSize(10);
         pageUtil.setTotalCount(2);
-
         return pageUtil;
-
     }
+
+    @Override
+    public void addGoods(JxcGoodsVo goodsVo) throws Exception {
+        JxcGoodsDao dao = new JxcGoodsDao();
+        JxcGoodsEntity entity = mapper.map(goodsVo, JxcGoodsEntity.class);
+        entity.setStatus(0);
+        entity.setCreateTime(new Date());
+        dao.save(entity);
+    }
+
+
 }

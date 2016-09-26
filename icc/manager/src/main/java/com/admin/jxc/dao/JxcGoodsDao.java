@@ -20,7 +20,6 @@ public class JxcGoodsDao {
     public List<JxcGoodsEntity> getAll(){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
-
         try{
             Query query = session.createQuery(" from JxcGoodsEntity s where s.status = 0");
             List<JxcGoodsEntity> list = query.list();
@@ -33,20 +32,23 @@ public class JxcGoodsDao {
         }catch(Exception e){
             e.printStackTrace();
         }
-
         session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
         return null;
     }
 
-    public void save(JxcGoodsEntity entity, Session session){
+    public void save(JxcGoodsEntity entity){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
         try{
             session.save(entity);
         }catch(Exception e){
             e.printStackTrace();
         }
-
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
     }
 
 

@@ -60,12 +60,25 @@ public class JxcController {
     }
 
     @RequestMapping("/goods/add")
-    public String add(User user, HttpServletRequest request){
-        System.out.println("add");
-        System.out.println(user.getCode());
-        System.out.println(request.getParameter("code"));
-        System.out.println(request.getAttribute("code"));
-        return "success";
+    public String add(JxcGoodsVo goodsVo, Model model, HttpServletRequest request){
+        try{
+            String name = request.getParameter("name");
+            String encodeName = new String(name.getBytes("ISO-8859-1"), "utf-8");
+            goodsVo.setName(encodeName);
+
+            String classes = request.getParameter("classes");
+            String encodeClasses = new String(classes.getBytes("ISO-8859-1"), "utf-8");
+            goodsVo.setClasses(encodeClasses);
+
+            String remark = request.getParameter("remark");
+            String encodeRemark = new String(remark.getBytes("ISO-8859-1"), "utf-8");
+            goodsVo.setRemark(encodeRemark);
+
+            jxcService.addGoods(goodsVo);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return list(model, request);
     }
 
 
