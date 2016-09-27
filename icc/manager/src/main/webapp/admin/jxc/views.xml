@@ -11,6 +11,20 @@
         <put-attribute name="body" value="/admin/jxc/goodsAdd.jsp"/>
     </definition>
 
+    <definition extends="manager" name="admin/jxc/salesList">
+        <put-attribute name="body" value="/admin/jxc/salesList.jsp"/>
+    </definition>
 
+    <definition extends="manager" name="admin/jxc/salesAdd">
+        <put-attribute name="body" value="/admin/jxc/salesAdd.jsp"/>
+    </definition>
+
+    <definition extends="manager" name="admin/jxc/buysList">
+        <put-attribute name="body" value="/admin/jxc/buysList.jsp"/>
+    </definition>
+
+    <definition extends="manager" name="admin/jxc/buysAdd">
+        <put-attribute name="body" value="/admin/jxc/buysAdd.jsp"/>
+    </definition>
 
 </tiles-definitions>
