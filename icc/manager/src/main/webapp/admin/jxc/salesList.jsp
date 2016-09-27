@@ -55,7 +55,7 @@
 </head>
 <body>
 <div class="header">
-    <h5>基础信息管理 <span style="color:darkgrey">/ 医院管理</span></h5>
+    <h5>基础信息管理 <span style="color:darkgrey">/ XS</span></h5>
 </div>
 
 <div id="from-manager" class="breadcrumb">

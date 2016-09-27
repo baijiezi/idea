@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>${hospital == null ? '新增':'编辑'}医院</title>
+    <title>${hospital == null ? '新增':'编辑'}XS</title>
     <!-- 引入jquery-easyui插件 -->
     <link rel="stylesheet" href="/resources/js/jquery-easyui/easyui.css" />
     <script type="text/javascript" src="/resources/js/jquery-easyui/jquery.easyui.min.js"></script>

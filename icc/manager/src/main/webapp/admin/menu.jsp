@@ -48,7 +48,7 @@
     <ul id="110000" class="nav nav-list collapse in">
         <li><a href="${urlPath}/admin/jxc/goods/list" target="main-frame"><i class="icon-chevron-right"></i>SP管理</a></li>
         <li><a href="${urlPath}/admin/jxc/buy/add" target="main-frame"><i class="icon-chevron-right"></i>JH管理</a></li>
-        <li><a href="${urlPath}/admin/jxc/sale/sale" target="main-frame"><i class="icon-chevron-right"></i>XS医生管理</a></li>
+        <li><a href="${urlPath}/admin/jxc/sales/list" target="main-frame"><i class="icon-chevron-right"></i>XS医生管理</a></li>
     </ul>
 </div>
 

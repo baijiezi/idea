@@ -14,7 +14,7 @@
 <div class="header">
     <h5>基础信息管理
         <span style="color:darkgrey"> / </span>
-        <a href="/admin/hospital/list">商品管理</a>
+        <a href="/admin/hospital/list">JH</a>
         <span style="color:darkgrey"> /  ${hospital == null ? '新增':'编辑'}商品</span>
     </h5>
 </div>
