@@ -14,17 +14,19 @@
                     ids.push($(this).val());
                 });
                 if(ids.length > 0){
-                    if(window.confirm("是否删除当前选中的医院？")){
-                        $.getJSON('/admin/hospital/delete',{
+                    if(window.confirm("是否删除当前选中记录？")){
+                        $.get('/admin/jxc/sales/delete',{
                             ids : ids.join(',')
                         }, function(result){
-                            if(result.success){
-                                opcAlert(result.msg);
-                                window.location.href="/admin/hospital/list";
-                            }else{
-                                opcAlert(result.msg);
-                            }
+                            alert(result);
+//                            if(result.success){
+//                                opcAlert(result.msg);
+//                                window.location.href="/admin/hospital/list";
+//                            }else{
+//                                opcAlert(result.msg);
+//                            }
                         });
+
                     }
                 }else{
                     opcAlert("没有选中任何医院进行删除！");

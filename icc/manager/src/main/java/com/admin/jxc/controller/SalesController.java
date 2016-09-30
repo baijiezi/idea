@@ -98,4 +98,14 @@ public class SalesController {
         return result.toString();
     }
 
+    @RequestMapping("/delete")
+    public String delete(Long[] ids){
+        try{
+            System.out.println(ids.length);
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return "aa";
+    }
 }
