@@ -1,12 +1,16 @@
 package com.admin.jxc.controller;
 
+import com.admin.jxc.entity.JxcGoodsEntity;
 import com.admin.jxc.service.IJxcService;
 import com.admin.jxc.vo.JxcGoodsSaleVo;
+import com.admin.jxc.vo.JxcGoodsVo;
+import com.admin.utils.Json;
 import com.admin.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -42,7 +46,7 @@ public class SalesController {
             pageMap.put("totalCount",pageUtil.getTotalCount());
 
             model.addAttribute("pageUtil", pageMap);
-            model.addAttribute("hospitalList", pageUtil.getPageList());
+            model.addAttribute("pageList", pageUtil.getPageList());
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -76,6 +80,22 @@ public class SalesController {
             e.printStackTrace();
         }
         return list(model, request);
+    }
+
+    @RequestMapping("/findGoodsByCode")
+    @ResponseBody
+    public String findGoodsByCode(String code){
+        System.out.println("findGoodsByCode");
+        StringBuffer result = new StringBuffer("{");
+        try {
+            JxcGoodsVo goodsVo = jxcService.findGoodsByCode(code);
+            result.append("\"code\":\"").append(goodsVo.getCode()).append("\",")
+                    .append("\"name\":\"").append(goodsVo.getName()).append("\"");
+            result.append("}");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result.toString();
     }
 
 }

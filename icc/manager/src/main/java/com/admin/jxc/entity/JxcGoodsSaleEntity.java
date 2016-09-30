@@ -30,7 +30,7 @@ public class JxcGoodsSaleEntity  implements Serializable {
     private Integer saleCount;
     private Integer stockCount;
     private Integer status;
-    private Date saleTime;
+    private Date createTime;
     private String remark;
 
     public Integer getId() {
@@ -105,12 +105,12 @@ public class JxcGoodsSaleEntity  implements Serializable {
         this.status = status;
     }
 
-    public Date getSaleTime() {
-        return saleTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setSaleTime(Date saleTime) {
-        this.saleTime = saleTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getRemark() {

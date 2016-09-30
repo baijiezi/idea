@@ -34,7 +34,7 @@ public class JxcServiceImpl extends AbstractService implements IJxcService{
     protected MapperFacade mapper;
 
     @Override
-    public PageUtil findGoods(Integer page, Map map) throws Exception {
+     public PageUtil findGoods(Integer page, Map map) throws Exception {
         JxcGoodsDao dao = new JxcGoodsDao();
         List<JxcGoodsEntity> list = dao.getAll();
         List<JxcGoodsVo> goodsVos = new ArrayList<JxcGoodsVo>();
@@ -48,6 +48,17 @@ public class JxcServiceImpl extends AbstractService implements IJxcService{
         pageUtil.setPageSize(10);
         pageUtil.setTotalCount(2);
         return pageUtil;
+    }
+
+    @Override
+    public JxcGoodsVo findGoodsByCode(String code) throws Exception {
+        JxcGoodsDao dao = new JxcGoodsDao();
+        JxcGoodsEntity entity = dao.findByCode(code);
+        if(entity == null){
+            return null;
+        }
+        JxcGoodsVo goodsVo = mapper.map(entity, JxcGoodsVo.class);
+        return goodsVo;
     }
 
     @Override
@@ -82,6 +93,8 @@ public class JxcServiceImpl extends AbstractService implements IJxcService{
     public void addSales(JxcGoodsSaleVo saleVos) throws Exception {
         JxcGoodsSaleDao dao = new JxcGoodsSaleDao();
         JxcGoodsSaleEntity entity = mapper.map(saleVos, JxcGoodsSaleEntity.class);
+        entity.setStatus(0);
+        entity.setCreateTime(new Date());
         dao.save(entity);
     }
 

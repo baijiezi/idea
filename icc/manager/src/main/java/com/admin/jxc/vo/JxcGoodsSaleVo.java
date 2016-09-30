@@ -17,10 +17,9 @@ public class JxcGoodsSaleVo implements Serializable {
     private String code;
     private String name;
     private String classes;
-    private Integer buyPrice;
+    private String saleTo;
     private Integer salePrice;
-    private Integer buyCount;
-    private Integer saledCount;
+    private Integer saleCount;
     private Integer stockCount;
     private Integer status;
     private Date createTime;
@@ -58,12 +57,12 @@ public class JxcGoodsSaleVo implements Serializable {
         this.classes = classes;
     }
 
-    public Integer getBuyPrice() {
-        return buyPrice;
+    public String getSaleTo() {
+        return saleTo;
     }
 
-    public void setBuyPrice(Integer buyPrice) {
-        this.buyPrice = buyPrice;
+    public void setSaleTo(String saleTo) {
+        this.saleTo = saleTo;
     }
 
     public Integer getSalePrice() {
@@ -74,20 +73,12 @@ public class JxcGoodsSaleVo implements Serializable {
         this.salePrice = salePrice;
     }
 
-    public Integer getBuyCount() {
-        return buyCount;
+    public Integer getSaleCount() {
+        return saleCount;
     }
 
-    public void setBuyCount(Integer buyCount) {
-        this.buyCount = buyCount;
-    }
-
-    public Integer getSaledCount() {
-        return saledCount;
-    }
-
-    public void setSaledCount(Integer saledCount) {
-        this.saledCount = saledCount;
+    public void setSaleCount(Integer saleCount) {
+        this.saleCount = saleCount;
     }
 
     public Integer getStockCount() {

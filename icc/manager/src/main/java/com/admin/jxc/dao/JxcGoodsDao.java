@@ -17,6 +17,27 @@ import java.util.List;
  */
 public class JxcGoodsDao {
 
+    public JxcGoodsEntity findByCode(String code){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            Query query = session.createQuery(" from JxcGoodsEntity s where s.code = " + code);
+            List<JxcGoodsEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list.get(0);
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+    }
+
     public List<JxcGoodsEntity> getAll(){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();

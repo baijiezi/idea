@@ -5,6 +5,7 @@ import com.admin.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,22 +20,18 @@ public class JxcGoodsSaleDao {
     public List<JxcGoodsSaleEntity> getAll(){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
+        List<JxcGoodsSaleEntity> list = new ArrayList<JxcGoodsSaleEntity>();
         try{
             Query query = session.createQuery(" from JxcGoodsSaleEntity s where 1 = 1");
-            List<JxcGoodsSaleEntity> list = query.list();
-            if(list!=null && list.size()>0) {
-                return list;
-            }
-            else{
-                return null;
-            }
+            list = query.list();
+            return list;
         }catch(Exception e){
             e.printStackTrace();
         }
         session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
-        return null;
+        return list;
     }
 
     public void save(JxcGoodsSaleEntity entity){

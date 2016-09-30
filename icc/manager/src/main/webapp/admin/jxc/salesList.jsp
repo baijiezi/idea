@@ -70,7 +70,7 @@
 
 <div style="margin-left:10px; margin-right:10px;">
     <div class="btn-toolbar">
-        <c:if test="${buttons.k101010 == null}"><a href="/admin/jxc/goods/addPage" class="btn"><i class="icon-plus"></i> 增加</a></c:if>
+        <c:if test="${buttons.k101010 == null}"><a href="/admin/jxc/sales/addPage" class="btn"><i class="icon-plus"></i> 增加</a></c:if>
         <c:if test="${buttons.k101012 == null}"><a id="btnDel" class="btn"><i class="icon-trash "></i> 删除</a></c:if>
     </div>
 
@@ -92,7 +92,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="item" items="${hospitalList}" >
+            <c:forEach var="item" items="${pageList}" >
                 <tr id="${item.id}">
                     <td><input type="checkbox" name="table_td_checkbox" class="checkboxes" value="${item.id}" /></td>
                     <td>${item.name}</td>

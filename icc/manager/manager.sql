@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50618
 File Encoding         : 65001
 
-Date: 2016-09-21 16:37:19
+Date: 2016-09-30 14:49:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,13 +34,15 @@ CREATE TABLE `jxc_goods` (
   `remark` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of jxc_goods
 -- ----------------------------
 INSERT INTO `jxc_goods` VALUES ('16', '111111111', 'name', null, null, null, null, null, null, '0', '2016-09-21 16:25:53', null);
-INSERT INTO `jxc_goods` VALUES ('18', '111111112221', 'name', null, null, null, null, null, null, '0', '2016-09-21 16:28:14', null);
+INSERT INTO `jxc_goods` VALUES ('18', '1111111112221', 'name', null, null, null, null, null, null, '0', '2016-09-21 16:28:14', null);
+INSERT INTO `jxc_goods` VALUES ('19', 'a', '', '', null, null, null, null, null, '0', '2016-09-30 12:55:05', '');
+INSERT INTO `jxc_goods` VALUES ('20', '', '', '', null, null, null, null, null, '0', '2016-09-30 12:57:40', '');
 
 -- ----------------------------
 -- Table structure for `jxc_goods_buy`
@@ -60,7 +62,7 @@ CREATE TABLE `jxc_goods_buy` (
   `remark` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of jxc_goods_buy
@@ -75,7 +77,7 @@ CREATE TABLE `jxc_goods_classes` (
   `className` varchar(64) DEFAULT NULL,
   `remark` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of jxc_goods_classes
@@ -90,17 +92,18 @@ CREATE TABLE `jxc_goods_sale` (
   `code` varchar(64) NOT NULL,
   `name` varchar(64) NOT NULL,
   `classes` varchar(32) DEFAULT NULL,
-  `saleTo` varchar(64) NOT NULL,
+  `saleTo` varchar(64) DEFAULT NULL,
   `salePrice` int(11) DEFAULT NULL,
   `saleCount` int(11) DEFAULT NULL,
   `stockCount` int(11) DEFAULT NULL,
   `status` int(8) NOT NULL DEFAULT '0' COMMENT '0正常,1',
-  `saleTime` datetime NOT NULL,
+  `createTime` datetime NOT NULL,
   `remark` varchar(64) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of jxc_goods_sale
 -- ----------------------------
+INSERT INTO `jxc_goods_sale` VALUES ('1', '1111111112221', 'name', '', null, '12', null, null, '0', '2016-09-30 14:32:54', '喂喂');
+INSERT INTO `jxc_goods_sale` VALUES ('3', '1111111112221', 'name', '', null, '130', null, null, '0', '2016-09-30 14:48:44', '我');

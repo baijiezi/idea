@@ -3,6 +3,7 @@ package com.admin.jxc.service;
 import com.admin.jxc.dao.JxcGoodsBuyDao;
 import com.admin.jxc.dao.JxcGoodsSaleDao;
 import com.admin.jxc.entity.JxcGoodsBuyEntity;
+import com.admin.jxc.entity.JxcGoodsEntity;
 import com.admin.jxc.entity.JxcGoodsSaleEntity;
 import com.admin.jxc.vo.JxcGoodsBuyVo;
 import com.admin.jxc.vo.JxcGoodsSaleVo;
@@ -33,5 +34,5 @@ public interface IJxcService {
 
     public void addBuys(JxcGoodsBuyVo buysVo) throws Exception;
 
-
+    public JxcGoodsVo findGoodsByCode(String code) throws Exception;
 }
