@@ -46,9 +46,9 @@
         <i class="icon-tasks"></i>基础数据<i class="icon-chevron-up"></i>
     </a>
     <ul id="110000" class="nav nav-list collapse in">
-        <li><a href="${urlPath}/admin/jxc/goods/list" target="main-frame"><i class="icon-chevron-right"></i>SP管理</a></li>
-        <li><a href="${urlPath}/admin/jxc/buy/add" target="main-frame"><i class="icon-chevron-right"></i>JH管理</a></li>
-        <li><a href="${urlPath}/admin/jxc/sales/list" target="main-frame"><i class="icon-chevron-right"></i>XS医生管理</a></li>
+        <li><a href="${urlPath}/admin/jxc/goods/list" target="main-frame"><i class="icon-chevron-right"></i>商品管理</a></li>
+        <li><a href="${urlPath}/admin/jxc/buy/add" target="main-frame"><i class="icon-chevron-right"></i>进货管理</a></li>
+        <li><a href="${urlPath}/admin/jxc/sales/list" target="main-frame"><i class="icon-chevron-right"></i>销售管理</a></li>
     </ul>
 </div>
 
