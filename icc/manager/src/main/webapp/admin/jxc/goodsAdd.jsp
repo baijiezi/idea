@@ -8,14 +8,33 @@
     <!-- 引入jquery-easyui插件 -->
     <link rel="stylesheet" href="/resources/js/jquery-easyui/easyui.css" />
     <script type="text/javascript" src="/resources/js/jquery-easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $('#saveForm').validator({
+                ignore:false,
+                fields : {
+                    'code': 'required;',
+                    'name': 'required;'
+                } ,
+                valid : function(form){
+                    form.submit();
+                }
+            });
+
+        });
+
+    </script>
+
+
 
 </head>
 <body>
 <div class="header">
     <h5>基础信息管理
         <span style="color:darkgrey"> / </span>
-        <a href="/admin/hospital/list">商品管理</a>
-        <span style="color:darkgrey"> /  ${hospital == null ? '新增':'编辑'}商品</span>
+        <a href="/admin/hospital/list">医院管理</a>
+        <span style="color:darkgrey"> /  ${hospital == null ? '新增':'编辑'}医院</span>
     </h5>
 </div>
 
@@ -24,7 +43,7 @@
     <a id="btnReset" class="btn"><i class="icon-trash"></i> 重置</a>
     <a id="btnBack" class="btn" onclick="javascript:history.go(-1);"><i class="icon-undo"></i> 返回</a>
 </div>
-    <form method="post" action="<%=request.getContextPath() %>/admin/jxc/goods/add">
+    <form id="saveForm" method="post" action="<%=request.getContextPath() %>/admin/jxc/goods/add">
 <div class="well">
 <div class="row-fluid">
     <div class="span6">
