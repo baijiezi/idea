@@ -18,6 +18,9 @@
                     'name': 'required;'
                 } ,
                 valid : function(form){
+                    var salePrice = $("#salePrice").val() * 100;
+                    $("#salePrice").val(salePrice);
+                    alert($("#salePrice").val());
                     form.submit();
                 }
             });
@@ -77,7 +80,7 @@
         <div class="control-group">
             <label class="control-label">售价：</label>
             <div class="controls">
-                <input type="text" name="salePrice" />
+                <input type="text" id="salePrice" name="salePrice" />
             </div>
         </div>
     </div>
