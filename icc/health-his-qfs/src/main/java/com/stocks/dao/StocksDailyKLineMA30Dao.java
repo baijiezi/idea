@@ -1,5 +1,6 @@
 package com.stocks.dao;
 
+import com.stocks.entity.StocksDailyKLineMA20Entity;
 import com.stocks.entity.StocksDailyKLineMA30Entity;
 import com.stocks.utils.HibernateUtil;
 import org.hibernate.Query;
@@ -99,6 +100,28 @@ public class StocksDailyKLineMA30Dao implements IBaseDao {
         session.beginTransaction();
         try{
             Query query = session.createQuery(" from StocksDailyKLineMA30Entity s where s.date = '" + date + "' and s.code = '" + code + "'");
+            List<StocksDailyKLineMA30Entity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list.get(0);
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
+    public StocksDailyKLineMA30Entity getOneByCode(String code){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            Query query = session.createQuery(" from StocksDailyKLineMA30Entity s where s.code = '" + code + "' order by s.id desc limit 1");
             List<StocksDailyKLineMA30Entity> list = query.list();
             if(list!=null && list.size()>0) {
                 return list.get(0);

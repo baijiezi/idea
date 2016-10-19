@@ -137,6 +137,28 @@ public class StocksDailyKLineMA5Dao implements IBaseDao {
 
     }
 
+    public StocksDailyKLineMA5Entity getOneByCode(String code){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            Query query = session.createQuery(" from StocksDailyKLineMA5Entity s where s.code = '" + code + "' order by s.id desc limit 1");
+            List<StocksDailyKLineMA5Entity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list.get(0);
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
     @Override
     public List exports(Date createAt) {
         Session session = HibernateUtil.getOpenSession();

@@ -5,11 +5,9 @@ import com.message.service.MessageService;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
 import com.ning.http.client.Response;
-import com.stocks.dao.StocksDao;
-import com.stocks.dao.StocksPriceDao;
+import com.stocks.dao.*;
 import com.stocks.dto.StocksPriceDto;
-import com.stocks.entity.StocksEntity;
-import com.stocks.entity.StocksPriceEntity;
+import com.stocks.entity.*;
 import com.stocks.utils.Constants;
 import com.stocks.utils.DateUtils;
 import com.stocks.utils.HibernateUtil;
@@ -53,6 +51,19 @@ public class StockPriceJianKongTask {
             MessageDao messageDao = new MessageDao();
             List<StocksEntity> list = getStocks();
             MessageService messageService = new MessageService();
+
+            Map<String, StocksDailyKLineMA5Entity> ma5EntityMap = new HashMap<String, StocksDailyKLineMA5Entity>();
+            Map<String, StocksDailyKLineMA10Entity> ma10EntityMap = new HashMap<String, StocksDailyKLineMA10Entity>();
+            Map<String, StocksDailyKLineMA30Entity> ma30EntityMap = new HashMap<String, StocksDailyKLineMA30Entity>();
+            for(StocksEntity entity : list){
+                StocksDailyKLineMA5Dao ma5Dao = new StocksDailyKLineMA5Dao();
+                ma5EntityMap.put(entity.getCode(), ma5Dao.getOneByCode(entity.getCode()));
+                StocksDailyKLineMA10Dao ma10Dao = new StocksDailyKLineMA10Dao();
+                ma10EntityMap.put(entity.getCode(), ma10Dao.getOneByCode(entity.getCode()));
+                StocksDailyKLineMA30Dao ma30Dao = new StocksDailyKLineMA30Dao();
+                ma30EntityMap.put(entity.getCode(), ma30Dao.getOneByCode(entity.getCode()));
+            }
+
             while (now.before(endTime)){
                 now = new Date();
                 if(now.before(time1) || now.after(time2)){
@@ -98,22 +109,34 @@ public class StockPriceJianKongTask {
                             logger.info("StockPriceJianKong数据为空: " + entity.getCode());
                             continue;
                         }
-                        if(entity.getBuyPrice()!=null && entity.getBuyPrice()>0){
-                            if(dto.getShouPan()>0 && dto.getShouPan()<entity.getBuyPrice()){
+                        if(dto.getShouPan()>0){
+                            StocksDailyKLineMA5Entity ma5Entity = ma5EntityMap.get(entity.getCode());
+                            StocksDailyKLineMA10Entity ma10Entity = ma10EntityMap.get(entity.getCode());
+                            StocksDailyKLineMA30Entity ma30Entity = ma30EntityMap.get(entity.getCode());
+                            if(dto.getShouPan()<ma5Entity.getShouPan() && dto.getShouPan()<ma10Entity.getShouPan() && dto.getShouPan()<ma30Entity.getShouPan()) {
                                 List messageList = messageDao.getByTypeAndSendTime(entity.getCode(), DateUtils.getSimpleDate(new Date()));
                                 if(messageList==null || messageList.size()==0){
-                                    messageService.send("18825187648", dto.getName().substring(0,1)+entity.getCode()+"B"+dto.getShouPan(), entity.getCode());
+                                    messageService.send("18825187648", dto.getName().substring(0,1)+entity.getCode()+"破均线", entity.getCode());
                                 }
                             }
                         }
-                        if(entity.getSalePrice()!=null && entity.getSalePrice()>0){
-                            if(dto.getShouPan() > entity.getSalePrice()){
-                                List messageList = messageDao.getByTypeAndSendTime(entity.getCode(), DateUtils.getSimpleDate(new Date()));
-                                if(messageList==null || messageList.size()==0){
-                                    messageService.send("18825187648", dto.getName().substring(0,1)+entity.getCode()+"S"+dto.getShouPan(), entity.getCode());
-                                }
-                            }
-                        }
+
+//                        if(entity.getBuyPrice()!=null && entity.getBuyPrice()>0){
+//                            if(dto.getShouPan()>0 && dto.getShouPan()<entity.getBuyPrice()){
+//                                List messageList = messageDao.getByTypeAndSendTime(entity.getCode(), DateUtils.getSimpleDate(new Date()));
+//                                if(messageList==null || messageList.size()==0){
+//                                    messageService.send("18825187648", dto.getName().substring(0,1)+entity.getCode()+"B"+dto.getShouPan(), entity.getCode());
+//                                }
+//                            }
+//                        }
+//                        if(entity.getSalePrice()!=null && entity.getSalePrice()>0){
+//                            if(dto.getShouPan() > entity.getSalePrice()){
+//                                List messageList = messageDao.getByTypeAndSendTime(entity.getCode(), DateUtils.getSimpleDate(new Date()));
+//                                if(messageList==null || messageList.size()==0){
+//                                    messageService.send("18825187648", dto.getName().substring(0,1)+entity.getCode()+"S"+dto.getShouPan(), entity.getCode());
+//                                }
+//                            }
+//                        }
                     }
                     asyncHttpClient.close();
                 }
