@@ -116,7 +116,7 @@ public class StockPriceJianKongTask {
                             if(dto.getShouPan()<ma5Entity.getShouPan() && dto.getShouPan()<ma10Entity.getShouPan() && dto.getShouPan()<ma30Entity.getShouPan()) {
                                 List messageList = messageDao.getByTypeAndSendTime(entity.getCode(), DateUtils.getSimpleDate(new Date()));
                                 if(messageList==null || messageList.size()==0){
-                                    messageService.send("18825187648", dto.getName().substring(0,1)+entity.getCode()+"破均线", entity.getCode());
+                                    messageService.send("18825187648", dto.getName().substring(0,1)+entity.getCode()+"破线", entity.getCode());
                                 }
                             }
                         }
