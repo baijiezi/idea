@@ -113,7 +113,8 @@ public class StockPriceJianKongTask {
                             StocksDailyKLineMA5Entity ma5Entity = ma5EntityMap.get(entity.getCode());
                             StocksDailyKLineMA10Entity ma10Entity = ma10EntityMap.get(entity.getCode());
                             StocksDailyKLineMA30Entity ma30Entity = ma30EntityMap.get(entity.getCode());
-                            if(dto.getShouPan()<ma5Entity.getShouPan() && dto.getShouPan()<ma10Entity.getShouPan() && dto.getShouPan()<ma30Entity.getShouPan()) {
+//                            if(dto.getShouPan()<ma5Entity.getShouPan() && dto.getShouPan()<ma10Entity.getShouPan() && dto.getShouPan()<ma30Entity.getShouPan()) {
+                            if(dto.getShouPan()<ma5Entity.getShouPan()) {
                                 List messageList = messageDao.getByTypeAndSendTime(entity.getCode(), DateUtils.getSimpleDate(new Date()));
                                 if(messageList==null || messageList.size()==0){
                                     messageService.send("18825187648", dto.getName().substring(0,1)+entity.getCode()+"破线", entity.getCode());
