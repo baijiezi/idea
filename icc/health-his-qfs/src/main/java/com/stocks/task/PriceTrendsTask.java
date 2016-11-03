@@ -47,7 +47,9 @@ public class PriceTrendsTask {
                 session.beginTransaction();
                 StocksPriceDao priceDao = new StocksPriceDao();
                 List<StocksPriceEntity> list =  priceDao.getByDate(date);
+                logger.info("list.size:" + list.size());
                 for(StocksPriceEntity entity : list){
+                    logger.info(entity.getCode());
                     List<StocksPriceEntity> recentRecords = priceDao.getRecentRecords(date, entity.getCode(), session);
                     for(StocksPriceEntity record : recentRecords){
                         String trends = record.getPriceTrends();
@@ -70,10 +72,11 @@ public class PriceTrendsTask {
                     }
                 }
 
+                logger.info("开始提交事务");
                 session.getTransaction().commit();
                 session.close();
                 HibernateUtil.closeSessionFactory();
-
+                logger.info("结束提交事务");
                 date = DateUtils.addDate(date, 1);
             }
             logger.info("PriceTrendsTask  finish");
