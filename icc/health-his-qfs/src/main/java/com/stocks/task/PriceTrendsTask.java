@@ -36,8 +36,7 @@ public class PriceTrendsTask {
             Date date = new Date();
             Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
             InetAddress localHost = InetAddress.getLocalHost();
-//            if(localHost.getHostAddress().equals("192.168.200.27")){
-            if(true){
+            if(localHost.getHostAddress().equals("192.168.200.27")){
                 date = DateUtils.strToDate("2016-09-07");
                 endDate = DateUtils.strToDate("2016-09-10 23:59:59");
             }
