@@ -21,10 +21,10 @@
                 <ref bean="stockDailyKLineMA30TaskTrigger" />
                 <ref bean="stockPriceJianKongTaskTrigger" />
                 <ref bean="messageTaskTrigger" />
-                <ref bean="chooseTaskTrigger" />
+                <!--<ref bean="chooseTaskTrigger" />-->
                 <ref bean="fhsgTaskTrigger" />
-                <ref bean="exportTaskTrigger" />
-                <!--<ref bean="priceTrendsTaskTrigger" />-->
+                <!--<ref bean="exportTaskTrigger" />-->
+                <ref bean="priceTrendsTaskTrigger" />
             </list>
         </property>
     </bean>
