@@ -163,9 +163,11 @@ public class StocksPriceDao implements IBaseDao{
             String endDate = DateUtils.getSimpleDate(date);
             date = DateUtils.addDate(date, -150);
             String startDate = DateUtils.getSimpleDate(date);
-            Query query = session.createQuery(" from StocksPriceEntity s where s.date >= '" + startDate + "' and s.date < '" + endDate + "'and s.code = '" + code + "'");
+            Query query = session.createQuery(" from StocksPriceEntity s where s.code = '" + code + "' and s.date >= '" + startDate + "' and s.date < '" + endDate + "'");
             list = query.list();
-            return list;
+            if(list!=null && list.size()>0){
+                return list;
+            }
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -36,9 +36,10 @@ public class PriceTrendsTask {
             Date date = new Date();
             Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
             InetAddress localHost = InetAddress.getLocalHost();
-            if(localHost.getHostAddress().equals("192.168.200.27")){
-                date = DateUtils.strToDate("2016-09-07");
-                endDate = DateUtils.strToDate("2016-09-10 23:59:59");
+//            if(localHost.getHostAddress().equals("192.168.200.27")){
+            if(true){
+                date = DateUtils.strToDate("2016-11-03");
+                endDate = DateUtils.strToDate("2016-11-03 23:59:59");
             }
 
             while (date.before(endDate)){
@@ -48,14 +49,14 @@ public class PriceTrendsTask {
                 StocksPriceDao priceDao = new StocksPriceDao();
                 List<StocksPriceEntity> list =  priceDao.getByDate(date);
                 logger.info("list.size:" + list.size());
+                List<StocksPriceEntity> recentRecords = null;
                 for(StocksPriceEntity entity : list){
                     logger.info(entity.getCode());
-                    List<StocksPriceEntity> recentRecords = priceDao.getRecentRecords(date, entity.getCode(), session);
+                    recentRecords = priceDao.getRecentRecords(date, entity.getCode(), session);
+                    logger.info("recentRecords:" + recentRecords.size());
                     for(StocksPriceEntity record : recentRecords){
                         String trends = record.getPriceTrends();
                         if(trends!=null && trends.length()>=248){
-//                            logger.info(record.getCode() + record.getDate() + "  " + trends.length());
-//                            logger.info(trends);
                             continue;
                         }
                         String biLv = "0";
