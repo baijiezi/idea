@@ -49,6 +49,7 @@ public class StocksPriceEntity implements Serializable {
     private Integer weiBi;
     private Integer weiCha;
     private Date createTime;
+    private Integer JunXianPaiLie;
 
     @ManyToOne(cascade = CascadeType.REFRESH, optional = false,fetch=FetchType.LAZY)
     @JoinColumn(name = "code", referencedColumnName="code", insertable = false, updatable = false)
@@ -308,6 +309,14 @@ public class StocksPriceEntity implements Serializable {
 
     public void setStocksEntity(StocksEntity stocksEntity) {
         this.stocksEntity = stocksEntity;
+    }
+
+    public Integer getJunXianPaiLie() {
+        return JunXianPaiLie;
+    }
+
+    public void setJunXianPaiLie(Integer junXianPaiLie) {
+        JunXianPaiLie = junXianPaiLie;
     }
 
     public String toSql(){
