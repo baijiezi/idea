@@ -47,6 +47,32 @@ public class StocksPriceDao implements IBaseDao{
 
     }
 
+    public List<StocksPriceEntity> getTopByCodeAndDate(String code, String date, Integer limit){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            if(code==null || code.equals("")) {
+                return null;
+            }
+            Query query = session.createQuery(" from StocksPriceEntity s where s.code = '" + code + "' and s.date <= '" + date + "' order by s.id desc ");
+            query.setMaxResults(limit);
+            List<StocksPriceEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
     public List<StocksPriceEntity> getByDate(Date date){
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
