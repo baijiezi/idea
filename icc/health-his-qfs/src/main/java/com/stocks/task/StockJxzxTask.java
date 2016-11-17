@@ -14,18 +14,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 /**
- * Created by sunshine-health-his on 2016/11/7.
+ * Created with IntelliJ IDEA.
+ * User: Administrator
+ * Date: 16-11-17
+ * Time: 下午9:14
+ * To change this template use File | Settings | File Templates.
  */
-public class StokJxplTask {
+public class StockJxzxTask {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args){
 
-        StokJxplTask stokJxplTask = new StokJxplTask();
-        stokJxplTask.execute();
+        StockJxzxTask stockJxzxTask = new StockJxzxTask();
+        stockJxzxTask.execute();
 
     }
 
@@ -38,8 +41,8 @@ public class StokJxplTask {
             InetAddress localHost = InetAddress.getLocalHost();
 //            if(localHost.getHostAddress().equals("192.168.200.27")){
             if(true){
-                date = DateUtils.strToDate("2016-11-10");
-                endDate = DateUtils.strToDate("2016-11-11 23:59:59");
+                date = DateUtils.strToDate("2016-11-16");
+                endDate = DateUtils.strToDate("2016-11-16 23:59:59");
             }
 
             while (date.before(endDate)){
@@ -81,19 +84,33 @@ public class StokJxplTask {
                 for(StocksPriceEntity entity : priceList){
                     String code = entity.getCode();
                     if(ma5Map.get(code)!=null && ma10Map.get(code)!=null && ma20Map.get(code)!=null && ma30Map.get(code)!=null){
-                        int[] a = new int[5];
-                        a[0] = entity.getShouPan() * 10 + 1;
-                        a[1] = ma5Map.get(code).getShouPan() * 10 + 2;
-                        a[2] = ma10Map.get(code).getShouPan() * 10 + 3;
-                        a[3] = ma20Map.get(code).getShouPan() * 10 + 4;
-                        a[4] = ma30Map.get(code).getShouPan() * 10 + 5;
-                        selectSort(a);
                         StringBuffer sb = new StringBuffer();
-                        for(int i=0; i<a.length; i++){
-                            String s = String.valueOf(a[i]);
-                            sb.append(s.substring(s.length()-1));
+                        if (entity.getZhangDie() > 0){
+                            sb.append("1");
+                        } else{
+                            sb.append("2");
                         }
-                        entity.setJunXianPaiLie(Integer.parseInt(sb.toString()));
+                        if (ma5Map.get(code).getZhangDie() > 0){
+                            sb.append("1");
+                        } else{
+                            sb.append("2");
+                        }
+                        if (ma10Map.get(code).getZhangDie() > 0){
+                            sb.append("1");
+                        } else{
+                            sb.append("2");
+                        }
+                        if (ma20Map.get(code).getZhangDie() > 0){
+                            sb.append("1");
+                        } else{
+                            sb.append("2");
+                        }
+                        if (ma30Map.get(code).getZhangDie() > 0){
+                            sb.append("1");
+                        } else{
+                            sb.append("2");
+                        }
+                        entity.setJunXianZouXiang(Integer.parseInt(sb.toString()));
                         session.update(entity);
                     }
                 }
@@ -109,22 +126,4 @@ public class StokJxplTask {
         }
     }
 
-    // 选择排序法   将要排序的对象分作两部份，一个是已排序的，一个是未排序的，从后端未排序部份选择一个最小值，并放入前端已排序部份的最后一个。
-    public void selectSort(int[] a){
-        int position=0;
-        for(int i=0;i<a.length;i++){
-
-            int j=i+1;
-            position=i;
-            int temp=a[i];
-            for(;j<a.length;j++){
-                if(a[j]>temp){
-                    temp=a[j];
-                    position=j;
-                }
-            }
-            a[position]=a[i];
-            a[i]=temp;
-        }
-    }
 }
