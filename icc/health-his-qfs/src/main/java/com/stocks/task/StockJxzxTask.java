@@ -41,12 +41,12 @@ public class StockJxzxTask {
             InetAddress localHost = InetAddress.getLocalHost();
 //            if(localHost.getHostAddress().equals("192.168.200.27")){
             if(true){
-                date = DateUtils.strToDate("2016-11-16");
-                endDate = DateUtils.strToDate("2016-11-16 23:59:59");
+                date = DateUtils.strToDate("2016-04-14");
+                endDate = DateUtils.strToDate("2016-06-17 23:59:59");
             }
 
             while (date.before(endDate)){
-                logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
+                logger.info("start StockJxzxTask, Date = " + DateUtils.getSimpleDate(date));
 
                 StocksPriceDao priceDao = new StocksPriceDao();
                 List<StocksPriceEntity> priceList = priceDao.getByDate(date);

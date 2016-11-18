@@ -13,24 +13,22 @@ import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Administrator
- * Date: 16-11-13
- * Time: 下午6:27
+ * User: BaiJiezi
+ * Date: 16-11-18
+ * Time: 上午10:57
  * To change this template use File | Settings | File Templates.
  */
-
-
-public class JunXianPaiLieStatistics {
+public class JunXianZouXiangStatistics {
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args){
 
-        JunXianPaiLieStatistics junXianPaiLieStatistics = new JunXianPaiLieStatistics();
-        junXianPaiLieStatistics.execute();
+        JunXianZouXiangStatistics junXianZouXiangStatistics = new JunXianZouXiangStatistics();
+        junXianZouXiangStatistics.execute();
     }
 
     public void execute(){
-        logger.info("ChooseJXPL  execute");
+        logger.info("JunXianZouXiangStatistics  execute");
 
         try{
             Date date = new Date();
@@ -39,7 +37,7 @@ public class JunXianPaiLieStatistics {
 //            if(localHost.getHostAddress().equals("192.168.200.27")){
             if(true){
                 date = DateUtils.strToDate("2016-04-14");
-                endDate = DateUtils.strToDate("2016-07-08 23:59:59");
+                endDate = DateUtils.strToDate("2016-06-16 23:59:59");
             }
 
             Map<Integer, Integer> zhangFuMap = new HashMap<Integer, Integer>();
@@ -53,7 +51,7 @@ public class JunXianPaiLieStatistics {
                     if(entity.getChengJiaoLiang()==null || entity.getChengJiaoLiang()<=0 || entity.getLiuTongShiZhi()==null || entity.getLiuTongShiZhi() <= 0 ){
                         continue;
                     }
-                    Integer key = entity.getJunXianPaiLie();
+                    Integer key = entity.getJunXianZouXiang();
                     Integer zhangFu = 0;
                     String trends = entity.getPriceTrends();
                     String[] trendsArray = trends.split(",");
@@ -112,5 +110,4 @@ public class JunXianPaiLieStatistics {
         }
         return sortedMap;
     }
-
 }
