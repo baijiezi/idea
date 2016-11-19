@@ -51,6 +51,7 @@ public class StocksPriceEntity implements Serializable {
     private Date createTime;
     private Integer JunXianPaiLie;
     private Integer junXianZouXiang;
+    private Integer junXianPaiLieCJL;
 
     @ManyToOne(cascade = CascadeType.REFRESH, optional = false,fetch=FetchType.LAZY)
     @JoinColumn(name = "code", referencedColumnName="code", insertable = false, updatable = false)
@@ -326,6 +327,14 @@ public class StocksPriceEntity implements Serializable {
 
     public void setJunXianZouXiang(Integer junXianZouXiang) {
         this.junXianZouXiang = junXianZouXiang;
+    }
+
+    public Integer getJunXianPaiLieCJL() {
+        return junXianPaiLieCJL;
+    }
+
+    public void setJunXianPaiLieCJL(Integer junXianPaiLieCJL) {
+        this.junXianPaiLieCJL = junXianPaiLieCJL;
     }
 
     public String toSql(){

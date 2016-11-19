@@ -1,0 +1,211 @@
+\Userscom.intellij.rt.execution.application.AppMain com.stocks.statistics.JunXianPaiLieCJLStatistics
+1042 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - JunXianPaiLieCJLStatistics  execute 
+1117 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-14 
+34053 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-15 
+50337 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-16 
+50395 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-17 
+50439 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-18 
+65276 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-19 
+80227 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-20 
+97902 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-21 
+116486 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-22 
+136037 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-23 
+136090 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-24 
+136101 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-25 
+153668 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-26 
+170046 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-27 
+186654 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-28 
+205882 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-29 
+205948 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-04-30 
+205966 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-01 
+205983 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-02 
+206006 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-03 
+222672 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-04 
+239470 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-05 
+255264 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-06 
+271806 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-07 
+271855 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-08 
+271869 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-09 
+286915 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-10 
+302348 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-11 
+317342 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-12 
+332454 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-13 
+347593 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-14 
+347656 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-15 
+347672 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-16 
+363353 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-17 
+379314 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-18 
+397181 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-19 
+412430 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-20 
+428506 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-21 
+428559 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-22 
+428574 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-23 
+444591 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-24 
+461714 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-25 
+477944 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-26 
+493052 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-27 
+508938 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-28 
+508988 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-29 
+509003 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-30 
+523108 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-05-31 
+540017 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-01 
+557058 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-02 
+572528 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-03 
+588538 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-04 
+588591 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-05 
+588603 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-06 
+603990 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-07 
+618941 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-08 
+618997 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-09 
+619013 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-10 
+619025 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-11 
+635054 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-12 
+650270 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-13 
+666271 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-14 
+681944 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-15 
+696930 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-16 
+712872 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-17 
+728827 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-18 
+728888 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-19 
+728902 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-20 
+728921 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-21 
+745992 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-22 
+746048 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-23 
+746064 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-24 
+746079 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-25 
+746092 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-26 
+761429 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-27 
+777059 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-28 
+792431 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-29 
+806824 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-06-30 
+821386 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-07-01 
+836843 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-07-02 
+836897 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-07-03 
+836923 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-07-04 
+852308 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-07-05 
+867860 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-07-06 
+887135 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-07-07 
+902234 [main] INFO  c.s.s.JunXianPaiLieCJLStatistics - start PriceTrendsTask, Date = 2016-07-08 
+null--->-841577
+52134--->-296330
+25134--->-283251
+24135--->-248889
+24153--->-235000
+21543--->-228889
+45231--->-216867
+12543--->-188992
+45123--->-187955
+21534--->-186538
+45132--->-160928
+52413--->-159740
+14523--->-157313
+41523--->-156552
+51234--->-156481
+23514--->-141905
+15234--->-138849
+12534--->-136152
+42153--->-128205
+21354--->-118961
+52341--->-118605
+15423--->-113468
+45213--->-111795
+52314--->-109574
+15342--->-107003
+25143--->-97884
+43152--->-97015
+42315--->-95556
+12354--->-95156
+51423--->-93538
+51324--->-92405
+52143--->-91339
+35142--->-90123
+45312--->-88515
+14253--->-81471
+14532--->-81338
+54123--->-81164
+42351--->-80526
+15243--->-79563
+51243--->-77808
+25314--->-77654
+42513--->-77358
+23154--->-76399
+54213--->-75599
+12453--->-73770
+14352--->-73475
+52431--->-71498
+43125--->-70000
+25413--->-68702
+51342--->-67760
+25431--->-67685
+24351--->-63311
+25341--->-61635
+23541--->-57132
+41532--->-56202
+53214--->-40580
+42531--->-38525
+41325--->-34426
+21435--->-31818
+43521--->-30519
+24531--->-25762
+43251--->-25361
+43512--->-23765
+12435--->-20017
+45321--->-19903
+32514--->-12632
+12345--->-10210
+53412--->-2089
+41253--->-1818
+21453--->-847
+23415--->3323
+23451--->4762
+15432--->5628
+21345--->6737
+41235--->11864
+34251--->12364
+54231--->12717
+54132--->16393
+23145--->16802
+14325--->19429
+43215--->20513
+53241--->24766
+15324--->24786
+31524--->25000
+53142--->28455
+34512--->29118
+41352--->29730
+54312--->30226
+53421--->30285
+32154--->34286
+51432--->36617
+34521--->39500
+35214--->39655
+32145--->42915
+14235--->53143
+42135--->59091
+34125--->59204
+54321--->60813
+24513--->64516
+24315--->70430
+13254--->71300
+31425--->72789
+32451--->80128
+53124--->87037
+13452--->87042
+13425--->95205
+35421--->102622
+32415--->103201
+35412--->104329
+13245--->105049
+13524--->109223
+31452--->118062
+32541--->119212
+35124--->124444
+13542--->128477
+31254--->152778
+31542--->153333
+31245--->157479
+34152--->158716
+34215--->191066
+35241--->194089
+
+Process finished with exit code 0

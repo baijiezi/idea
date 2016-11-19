@@ -17,23 +17,22 @@ import java.util.Map;
 /**
  * Created with IntelliJ IDEA.
  * User: Administrator
- * Date: 16-11-15
- * Time: 下午10:04
+ * Date: 16-11-19
+ * Time: 下午7:08
  * To change this template use File | Settings | File Templates.
  */
-public class StockJxplTask{
-
+public class StockJxplCJLTask {
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args){
 
-        StockJxplTask stockJxplTask = new StockJxplTask();
-        stockJxplTask.execute();
+        StockJxplCJLTask stockJxplCJLTask = new StockJxplCJLTask();
+        stockJxplCJLTask.execute();
 
     }
 
     public void execute(){
-        logger.info("StokJxplTask  execute");
+        logger.info("StockJxplCJLTask  execute");
 
         try{
             Date date = new Date();
@@ -41,7 +40,7 @@ public class StockJxplTask{
             InetAddress localHost = InetAddress.getLocalHost();
 //            if(localHost.getHostAddress().equals("192.168.200.27")){
             if(true){
-                date = DateUtils.strToDate("2016-11-17");
+                date = DateUtils.strToDate("2016-11-15");
                 endDate = DateUtils.strToDate("2016-11-18 23:59:59");
             }
 
@@ -83,22 +82,23 @@ public class StockJxplTask{
                 session.beginTransaction();
                 for(StocksPriceEntity entity : priceList){
                     String code = entity.getCode();
-                    if(ma5Map.get(code)!=null && ma10Map.get(code)!=null && ma20Map.get(code)!=null && ma30Map.get(code)!=null){
-                        int[] a = new int[5];
-                        a[0] = entity.getShouPan() * 10 + 1;
-                        a[1] = ma5Map.get(code).getShouPan() * 10 + 2;
-                        a[2] = ma10Map.get(code).getShouPan() * 10 + 3;
-                        a[3] = ma20Map.get(code).getShouPan() * 10 + 4;
-                        a[4] = ma30Map.get(code).getShouPan() * 10 + 5;
-                        selectSort(a);
-                        StringBuffer sb = new StringBuffer();
-                        for(int i=0; i<a.length; i++){
-                            String s = String.valueOf(a[i]);
-                            sb.append(s.substring(s.length()-1));
-                        }
-                        entity.setJunXianPaiLie(Integer.parseInt(sb.toString()));
-                        session.update(entity);
+                    if(entity.getChengJiaoLiang()==null || ma5Map.get(code)==null || ma10Map.get(code)==null || ma20Map.get(code)==null || ma30Map.get(code)==null){
+                        continue;
                     }
+                    long[] a = new long[5];
+                    a[0] = entity.getChengJiaoLiang() * 10 + 1;
+                    a[1] = ma5Map.get(code).getChengJiaoLiang() * 10 + 2;
+                    a[2] = ma10Map.get(code).getChengJiaoLiang() * 10 + 3;
+                    a[3] = ma20Map.get(code).getChengJiaoLiang() * 10 + 4;
+                    a[4] = ma30Map.get(code).getChengJiaoLiang() * 10 + 5;
+                    selectSort(a);
+                    StringBuffer sb = new StringBuffer();
+                    for(int i=0; i<a.length; i++){
+                        String s = String.valueOf(a[i]);
+                        sb.append(s.substring(s.length()-1));
+                    }
+                    entity.setJunXianPaiLieCJL(Integer.parseInt(sb.toString()));
+                    session.update(entity);
                 }
                 session.getTransaction().commit();
                 session.close();
@@ -113,13 +113,13 @@ public class StockJxplTask{
     }
 
     // 选择排序法   将要排序的对象分作两部份，一个是已排序的，一个是未排序的，从后端未排序部份选择一个最小值，并放入前端已排序部份的最后一个。
-    public void selectSort(int[] a){
+    public void selectSort(long[] a){
         int position=0;
         for(int i=0;i<a.length;i++){
 
             int j=i+1;
             position=i;
-            int temp=a[i];
+            long temp=a[i];
             for(;j<a.length;j++){
                 if(a[j]>temp){
                     temp=a[j];
