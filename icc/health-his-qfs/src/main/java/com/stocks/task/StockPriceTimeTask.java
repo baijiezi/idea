@@ -44,7 +44,7 @@ public class StockPriceTimeTask {
             Date now = new Date();
             Date time1 = DateUtils.strToDate(DateUtils.getSimpleDate(now) + " 11:30:00");
             Date time2 = DateUtils.strToDate(DateUtils.getSimpleDate(now) + " 13:00:00");
-            Date endTime = DateUtils.strToDate(DateUtils.getSimpleDate(now) + " 19:15:00");
+            Date endTime = DateUtils.strToDate(DateUtils.getSimpleDate(now) + " 15:02:00");
 
             AsyncHttpClientConfig config = new AsyncHttpClientConfig.Builder()
                     .setMaximumConnectionsPerHost(30)
