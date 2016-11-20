@@ -32,7 +32,7 @@
     <bean id="stockPriceTimeTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockPriceTimeJobDetail" />
-        <property name="cronExpression" value="0 25 9 * * ?" />
+        <property name="cronExpression" value="0 20 9 ? * MON-FRI" />
     </bean>
     <bean id="stockPriceTimeJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -58,7 +58,7 @@
     <bean id="messageTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="messageJobDetail" />
-        <property name="cronExpression" value="0 35 11 * * ?" />
+        <property name="cronExpression" value="0 35 11 ? * MON-FRI" />
     </bean>
     <bean id="messageJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -82,7 +82,7 @@
     <bean id="stockPriceTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockPriceTaskJobDetail" />
-        <property name="cronExpression" value="0 0 18 * * ?" />
+        <property name="cronExpression" value="0 0 18 ? * MON-FRI" />
     </bean>
     <bean id="stockPriceTaskJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -94,7 +94,7 @@
     <bean id="stockZjlxDfcfTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockZjlxDfcfJobDetail" />
-        <property name="cronExpression" value="0 10 18 * * ?" />
+        <property name="cronExpression" value="0 10 18 ? * MON-FRI" />
     </bean>
     <bean id="stockZjlxDfcfJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -106,7 +106,7 @@
     <bean id="stockZjlxHXTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockZjlxHXJobDetail" />
-        <property name="cronExpression" value="0 20 18 * * ?" />
+        <property name="cronExpression" value="0 20 18 ? * MON-FRI" />
     </bean>
     <bean id="stockZjlxHXJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -118,7 +118,7 @@
     <bean id="stockZjlxThsTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockZjlxThsJobDetail" />
-        <property name="cronExpression" value="0 30 18 * * ?" />
+        <property name="cronExpression" value="0 30 18 ? * MON-FRI" />
     </bean>
     <bean id="stockZjlxThsJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -130,7 +130,7 @@
     <bean id="stockDailyKLineMA5TaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockDailyKLineMA5JobDetail" />
-        <property name="cronExpression" value="0 40 18 * * ?" />
+        <property name="cronExpression" value="0 40 18 ? * MON-FRI" />
     </bean>
     <bean id="stockDailyKLineMA5JobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -142,7 +142,7 @@
     <bean id="stockDailyKLineMA10TaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockDailyKLineMA10JobDetail" />
-        <property name="cronExpression" value="0 45 18 * * ?" />
+        <property name="cronExpression" value="0 45 18 ? * MON-FRI" />
     </bean>
     <bean id="stockDailyKLineMA10JobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -154,7 +154,7 @@
     <bean id="stockDailyKLineMA20TaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockDailyKLineMA20JobDetail" />
-        <property name="cronExpression" value="0 50 18 * * ?" />
+        <property name="cronExpression" value="0 50 18 ? * MON-FRI" />
     </bean>
     <bean id="stockDailyKLineMA20JobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -166,7 +166,7 @@
     <bean id="stockDailyKLineMA30TaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockDailyKLineMA30JobDetail" />
-        <property name="cronExpression" value="0 55 18 * * ?" />
+        <property name="cronExpression" value="0 55 18 ? * MON-FRI" />
     </bean>
     <bean id="stockDailyKLineMA30JobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -202,7 +202,7 @@
     <bean id="priceTrendsTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="priceTrendsJobDetail" />
-        <property name="cronExpression" value="0 15 19 * * ?" />
+        <property name="cronExpression" value="0 15 19 ? * MON-FRI" />
     </bean>
     <bean id="priceTrendsJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
