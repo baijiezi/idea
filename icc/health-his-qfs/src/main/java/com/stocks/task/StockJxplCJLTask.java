@@ -38,8 +38,8 @@ public class StockJxplCJLTask {
             Date date = new Date();
             Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
             InetAddress localHost = InetAddress.getLocalHost();
-//            if(localHost.getHostAddress().equals("192.168.200.27")){
-            if(true){
+            if(localHost.getHostAddress().equals("192.168.200.27")){
+//            if(true){
                 date = DateUtils.strToDate("2016-11-15");
                 endDate = DateUtils.strToDate("2016-11-18 23:59:59");
             }

@@ -34,7 +34,7 @@ public class WeeklyStatistics {
             Map<Integer, Integer> shouPanMap = new HashMap<Integer, Integer>();
             Map<Integer, Integer> countMap = new HashMap<Integer, Integer>();
             StocksPriceDao priceDao = new StocksPriceDao();
-            List<StocksPriceEntity> priceList = priceDao.getByCode("000001_2");
+            List<StocksPriceEntity> priceList = priceDao.getByCode("399001");     //399001         000001_2
             for(StocksPriceEntity entity : priceList){
                 Integer key =  entity.getDate().getDay();
 

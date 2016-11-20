@@ -19,7 +19,7 @@
                 <ref bean="stockDailyKLineMA10TaskTrigger" />
                 <ref bean="stockDailyKLineMA20TaskTrigger" />
                 <ref bean="stockDailyKLineMA30TaskTrigger" />
-                <ref bean="stockPriceJianKongTaskTrigger" />
+                <ref bean="stockPriceTimeTaskTrigger" />
                 <ref bean="messageTaskTrigger" />
                 <!--<ref bean="chooseTaskTrigger" />-->
                 <ref bean="fhsgTaskTrigger" />
@@ -29,19 +29,19 @@
         </property>
     </bean>
 
-    <bean id="stockPriceJianKongTaskTrigger"
+    <bean id="stockPriceTimeTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="jobDetail" ref="stockPriceJianKongJobDetail" />
+        <property name="jobDetail" ref="stockPriceTimeJobDetail" />
         <property name="cronExpression" value="0 25 9 * * ?" />
     </bean>
-    <bean id="stockPriceJianKongJobDetail"
+    <bean id="stockPriceTimeJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <!-- 指定任务类 -->
-        <property name="targetObject" ref="stockPriceJianKong" />
+        <property name="targetObject" ref="stockPriceTime" />
         <!-- 指定任务执行的方法 -->
         <property name="targetMethod" value="execute" />
     </bean>
-    <bean id="stockPriceJianKong" class="com.stocks.task.StockPriceJianKongTask"></bean>
+    <bean id="stockPriceTime" class="com.stocks.task.StockPriceTimeTask"></bean>
 
     <bean id="stocksTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
@@ -210,5 +210,7 @@
         <property name="targetMethod" value="execute" />
     </bean>
     <bean id="priceTrendsTask" class="com.stocks.task.PriceTrendsTask"></bean>
+
+
 
 </beans>
