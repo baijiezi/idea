@@ -11,6 +11,7 @@
         <property name="triggers">
             <list>
                 <!--<ref bean="stocksTaskTrigger" />-->
+                <ref bean="stockPriceTimeTaskTrigger" />
                 <ref bean="stockPriceTaskTrigger" />
                 <ref bean="stockZjlxDfcfTaskTrigger" />
                 <ref bean="stockZjlxHXTaskTrigger" />
@@ -19,12 +20,12 @@
                 <ref bean="stockDailyKLineMA10TaskTrigger" />
                 <ref bean="stockDailyKLineMA20TaskTrigger" />
                 <ref bean="stockDailyKLineMA30TaskTrigger" />
-                <ref bean="stockPriceTimeTaskTrigger" />
                 <ref bean="messageTaskTrigger" />
-                <!--<ref bean="chooseTaskTrigger" />-->
                 <ref bean="fhsgTaskTrigger" />
-                <!--<ref bean="exportTaskTrigger" />-->
+                <ref bean="stockJunXianPaiLieTrigger" />
                 <ref bean="priceTrendsTaskTrigger" />
+                <!--<ref bean="chooseTaskTrigger" />-->
+                <!--<ref bean="exportTaskTrigger" />-->
             </list>
         </property>
     </bean>
@@ -175,6 +176,31 @@
     </bean>
     <bean id="stockDailyKLineMA30" class="com.stocks.task.kline.StockDailyKLineMA30Task"></bean>
 
+    <bean id="stockJunXianPaiLieTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="stockJunXianPaiLieJobDetail" />
+        <property name="cronExpression" value="0 05 17 ? * MON-FRI" />
+    </bean>
+    <bean id="stockJunXianPaiLieJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="junXianPaiLieTask" />
+        <property name="targetMethod" value="execute" />
+    </bean>
+    <bean id="junXianPaiLieTask" class="com.stocks.task.StockJxplTask"></bean>
+
+    <bean id="priceTrendsTaskTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="priceTrendsJobDetail" />
+        <property name="cronExpression" value="0 15 19 ? * MON-FRI" />
+    </bean>
+    <bean id="priceTrendsJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="priceTrendsTask" />
+        <property name="targetMethod" value="execute" />
+    </bean>
+    <bean id="priceTrendsTask" class="com.stocks.task.PriceTrendsTask"></bean>
+
+
     <bean id="chooseTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="chooseJobDetail" />
@@ -198,19 +224,5 @@
         <property name="targetMethod" value="execute" />
     </bean>
     <bean id="exportTask" class="com.stocks.task.export.ExportTask"></bean>
-
-    <bean id="priceTrendsTaskTrigger"
-          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="jobDetail" ref="priceTrendsJobDetail" />
-        <property name="cronExpression" value="0 15 19 ? * MON-FRI" />
-    </bean>
-    <bean id="priceTrendsJobDetail"
-          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject" ref="priceTrendsTask" />
-        <property name="targetMethod" value="execute" />
-    </bean>
-    <bean id="priceTrendsTask" class="com.stocks.task.PriceTrendsTask"></bean>
-
-
 
 </beans>
