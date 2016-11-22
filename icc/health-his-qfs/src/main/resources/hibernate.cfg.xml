@@ -10,7 +10,7 @@
             org.hibernate.dialect.MySQLDialect
         </property>
         <property name="connection.url">
-            jdbc:mysql://192.168.1.102:3306/icc
+            jdbc:mysql://localhost:3306/icc
         </property>
         <property name="connection.username">root</property>
         <property name="connection.password">123456</property>
@@ -30,6 +30,7 @@
         <mapping class="com.stocks.entity.StocksZjlxHXEntity" />
         <mapping class="com.stocks.entity.StocksZjlxTHSEntity" />
         <mapping class="com.stocks.entity.StocksFhsgEntity" />
+        <mapping class="com.stocks.entity.StocksGuDongEntity" />
         <mapping class="com.stocks.entity.StocksDailyKLineMA5Entity" />
         <mapping class="com.stocks.entity.StocksDailyKLineMA10Entity" />
         <mapping class="com.stocks.entity.StocksDailyKLineMA20Entity" />
