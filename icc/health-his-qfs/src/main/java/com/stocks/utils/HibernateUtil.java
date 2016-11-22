@@ -3,6 +3,7 @@ package com.stocks.utils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,7 +17,7 @@ public class HibernateUtil {
     private static final SessionFactory sessionFactory;
 
     static {
-        sessionFactory = new AnnotationConfiguration().configure()
+        sessionFactory = new Configuration().configure()
                 .buildSessionFactory();
     }
 
