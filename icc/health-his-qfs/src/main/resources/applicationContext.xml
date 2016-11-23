@@ -179,7 +179,7 @@
     <bean id="stockJunXianPaiLieTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockJunXianPaiLieJobDetail" />
-        <property name="cronExpression" value="0 05 17 ? * MON-FRI" />
+        <property name="cronExpression" value="0 05 19 ? * MON-FRI" />
     </bean>
     <bean id="stockJunXianPaiLieJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">

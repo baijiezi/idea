@@ -46,7 +46,7 @@ public class StockJxplTask{
             }
 
             while (date.before(endDate)){
-                logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
+                logger.info("start StokJxplTask, Date = " + DateUtils.getSimpleDate(date));
 
                 StocksPriceDao priceDao = new StocksPriceDao();
                 List<StocksPriceEntity> priceList = priceDao.getByDate(date);
@@ -98,7 +98,7 @@ public class StockJxplTask{
                             sb.append(s.substring(s.length()-1));
                         }
                         entity.setJunXianPaiLie(Integer.parseInt(sb.toString()));
-                        session.update(entity);
+//                        session.update(entity);
                     }
                     //更新均线走向
                     if(ma5Map.get(code)!=null && ma10Map.get(code)!=null && ma20Map.get(code)!=null && ma30Map.get(code)!=null){
@@ -129,7 +129,7 @@ public class StockJxplTask{
                             sb.append("2");
                         }
                         entity.setJunXianZouXiang(Integer.parseInt(sb.toString()));
-                        session.update(entity);
+//                        session.update(entity);
                     }
                     //更新成交量均线排列
                     if(entity.getChengJiaoLiang()!=null && ma5Map.get(code)!=null && ma10Map.get(code)!=null && ma20Map.get(code)!=null && ma30Map.get(code)!=null){
