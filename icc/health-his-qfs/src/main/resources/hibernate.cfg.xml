@@ -31,6 +31,7 @@
         <mapping class="com.stocks.entity.StocksZjlxTHSEntity" />
         <mapping class="com.stocks.entity.StocksFhsgEntity" />
         <mapping class="com.stocks.entity.StocksGuDongEntity" />
+        <mapping class="com.stocks.entity.StocksQuanZhongEntity" />
         <mapping class="com.stocks.entity.StocksDailyKLineMA5Entity" />
         <mapping class="com.stocks.entity.StocksDailyKLineMA10Entity" />
         <mapping class="com.stocks.entity.StocksDailyKLineMA20Entity" />

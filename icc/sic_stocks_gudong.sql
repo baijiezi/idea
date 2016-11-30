@@ -10,19 +10,19 @@ Target Server Type    : MYSQL
 Target Server Version : 50618
 File Encoding         : 65001
 
-Date: 2016-11-22 09:52:11
+Date: 2016-11-30 18:39:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `sic_stocks_gudong`
+-- Table structure for `sic_stocks`
 -- ----------------------------
-DROP TABLE IF EXISTS `sic_stocks_gudong`;
-CREATE TABLE `sic_stocks_gudong` (
+DROP TABLE IF EXISTS `sic_stocks_quanzhong`;
+CREATE TABLE `sic_stocks_quanzhong` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(16) NOT NULL,
-  `name` varchar(32) NOT NULL,
-  `gdName` varchar(32) NOT NULL,
+  `type` varchar(32) NOT NULL,
+  `keyName` varchar(32) NOT NULL,
+  `value` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
