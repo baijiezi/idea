@@ -130,21 +130,22 @@ public class StocksQuanZhongDao implements IBaseDao {
         StocksQuanZhongDao dao = new StocksQuanZhongDao();
 
         ClassLoader classLoader = dao.getClass().getClassLoader();
-        File file = new File(classLoader.getResource("file/a.txt").getFile());
+        File file = new File(classLoader.getResource("file/jxpl.txt").getFile());
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                System.out.println(line);
+                String[] temp = line.split("--->");
+                StocksQuanZhongEntity entity = new StocksQuanZhongEntity();
+                entity.setType("jxpl");
+                entity.setKeyName(temp[0]);
+                entity.setValue(Integer.parseInt(temp[1]));
+                dao.save(entity, session);
             }
             scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
-
 
 
         session.getTransaction().commit();
