@@ -24,7 +24,8 @@ public class ChooseTask {
 
     public static void main(String[] args){
         ChooseTask chooseTask = new ChooseTask();
-        chooseTask.execute();
+//        chooseTask.execute();
+        chooseTask.jxpl();
 
     }
 
@@ -185,5 +186,18 @@ public class ChooseTask {
         session.close();
         HibernateUtil.closeSessionFactory();
         return sb.toString();
+    }
+
+    public void jxpl(){
+        StocksPriceDao priceDao = new StocksPriceDao();
+        List<StocksPriceEntity> list = priceDao.getByDate(new Date());
+        StocksQuanZhongDao dao = new StocksQuanZhongDao();
+        for(StocksPriceEntity entity : list){
+            if(entity.getJunXianPaiLie()!=null && entity.getJunXianPaiLie()==32541){
+                System.out.println(entity.getCode() + " " + entity.getName() + "  " +
+                        entity.getJunXianZouXiang() + " " + dao.getByTypeAndKey("jxzx", String.valueOf(entity.getJunXianZouXiang())).getValue() + "  " +
+                        entity.getJunXianPaiLieCJL() + " " + dao.getByTypeAndKey("jxplCJL", String.valueOf(entity.getJunXianPaiLieCJL())).getValue());
+            }
+        }
     }
 }

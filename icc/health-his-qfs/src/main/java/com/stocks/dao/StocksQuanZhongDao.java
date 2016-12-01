@@ -67,6 +67,31 @@ public class StocksQuanZhongDao implements IBaseDao {
 
     }
 
+    public StocksQuanZhongEntity getByTypeAndKey(String type, String key){
+        Session session = HibernateUtil.getOpenSession();
+        session.beginTransaction();
+        try{
+            if(type==null || type.equals("")) {
+                return null;
+            }
+            Query query = session.createQuery(" from StocksQuanZhongEntity s where s.type = '" + type + "' and s.keyName = '" + key + "'");
+            List<StocksQuanZhongEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list.get(0);
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
     public boolean save(StocksQuanZhongEntity entity, Session session){
         try{
             session.save(entity);
@@ -130,20 +155,20 @@ public class StocksQuanZhongDao implements IBaseDao {
         StocksQuanZhongDao dao = new StocksQuanZhongDao();
 
         ClassLoader classLoader = dao.getClass().getClassLoader();
-        File file = new File(classLoader.getResource("file/jxpl.txt").getFile());
+        File file = new File(classLoader.getResource("file/a.txt").getFile());
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] temp = line.split("--->");
                 StocksQuanZhongEntity entity = new StocksQuanZhongEntity();
-                entity.setType("jxpl");
+                entity.setType("");
                 entity.setKeyName(temp[0]);
-                entity.setValue(Integer.parseInt(temp[1]));
+                entity.setValue(Integer.valueOf(temp[1]));
                 dao.save(entity, session);
             }
             scanner.close();
-        } catch (Exception e) {
+        }  catch (Exception e) {
             e.printStackTrace();
         }
 
