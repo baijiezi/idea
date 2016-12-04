@@ -25,6 +25,13 @@ public class StocksGuDongEntity implements Serializable {
     private String code;
     private String name;
     private String gdName;
+    private String gdXingZhi;
+    private String guFenLeiXing;
+    private Integer chiGuShu;
+    private Integer biLv;
+    private Integer zengJian;
+    private Integer bianDongBiLv;
+    private String fenLei;
 
     public Integer getId() {
         return id;
@@ -56,5 +63,61 @@ public class StocksGuDongEntity implements Serializable {
 
     public void setGdName(String gdName) {
         this.gdName = gdName;
+    }
+
+    public String getGdXingZhi() {
+        return gdXingZhi;
+    }
+
+    public void setGdXingZhi(String gdXingZhi) {
+        this.gdXingZhi = gdXingZhi;
+    }
+
+    public String getGuFenLeiXing() {
+        return guFenLeiXing;
+    }
+
+    public void setGuFenLeiXing(String guFenLeiXing) {
+        this.guFenLeiXing = guFenLeiXing;
+    }
+
+    public Integer getChiGuShu() {
+        return chiGuShu;
+    }
+
+    public void setChiGuShu(Integer chiGuShu) {
+        this.chiGuShu = chiGuShu;
+    }
+
+    public Integer getBiLv() {
+        return biLv;
+    }
+
+    public void setBiLv(Integer biLv) {
+        this.biLv = biLv;
+    }
+
+    public Integer getZengJian() {
+        return zengJian;
+    }
+
+    public void setZengJian(Integer zengJian) {
+        this.zengJian = zengJian;
+    }
+
+    public Integer getBianDongBiLv() {
+        return bianDongBiLv;
+    }
+
+    public void setBianDongBiLv(Integer bianDongBiLv) {
+        this.bianDongBiLv = bianDongBiLv;
+    }
+
+    public String getFenLei() {
+        return fenLei;
+    }
+
+    public void setFenLei(String fenLei) {
+        this.fenLei = fenLei;
     }
 }
