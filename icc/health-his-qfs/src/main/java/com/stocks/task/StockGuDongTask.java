@@ -58,8 +58,6 @@ public class StockGuDongTask {
             List data = new ArrayList<StocksGuDongEntity>();
             StocksDao stocksDao = new StocksDao();
             List<StocksEntity> list = stocksDao.getAll();
-            StocksFhsgDao dao = new StocksFhsgDao();
-            Date dt = DateUtils.addDate(new Date(), -180);
             AsyncHttpClientConfig config = new AsyncHttpClientConfig.Builder()
                     .setMaximumConnectionsPerHost(30)
                     .setMaximumConnectionsTotal(300)
@@ -71,61 +69,149 @@ public class StockGuDongTask {
             for(StocksEntity stock : list){
 //                logger.info("==============================StockGuDongTask:" + stock.getName() + "    " + stock.getCode() + "===============================");
                 try{
-                    if(!stock.getCode().equals("002304")){
+                    if(stock.getCode().equals("000001_2")){
                         continue;
                     }
-                    String url = "http://f10.eastmoney.com/f10_v2/ShareholderResearch.aspx?code=sz002304";
+                    String url = "http://f10.eastmoney.com/f10_v2/ShareholderResearch.aspx?code=" + stock.getExchange() + stock.getCode();
+                    System.out.println(url);
                     Parser parser = new Parser( (HttpURLConnection) (new URL(url)).openConnection() );
-//                    parser.setEncoding("GB2312");
                     CssSelectorNodeFilter filter = new CssSelectorNodeFilter("div[class='section']");
                     NodeList li = parser.extractAllNodesThatMatch(filter);
-
-//                    TagNameFilter filter = new TagNameFilter("div");
-//                    NodeList li = parser.extractAllNodesThatMatch(filter);
                     System.out.println("list.size: " + li.size());
                     for(NodeIterator i = li.elements(); i.hasMoreNodes(); ){
                         Div node = (Div) i.nextNode();
 
-                        TagNameFilter filter4 = new TagNameFilter("table");
                         Parser parser1 = new Parser(node.toHtml());
-                        NodeList tableList = parser1.extractAllNodesThatMatch(filter4);
-                        for(int j=0; j<tableList.size(); j++){
-                            TableTag tableNode = (TableTag)tableList.elementAt(j);
-                            TableRow[] rows = tableNode.getRows();
-                            for(int k=0; k<rows.length; k++){
-                                if(k == 0){
-                                    continue;
+                        CssSelectorNodeFilter filter1 = new CssSelectorNodeFilter("div[class='name']");
+                        NodeList list1 = parser1.extractAllNodesThatMatch(filter1);
+                        System.out.println(list1.elementAt(0).toPlainTextString().trim());
+                        String title = list1.elementAt(0).toPlainTextString().trim();
+
+                        if(title.equals("十大流通股东")){
+                            Parser parser2 = new Parser(node.toHtml());
+                            CssSelectorNodeFilter filter2 = new CssSelectorNodeFilter("div[class='tab']");
+                            NodeList list2 = parser2.extractAllNodesThatMatch(filter2);
+                            Div tabNode = (Div)list2.elementAt(0);
+                            Parser parser3 = new Parser(tabNode.toHtml());
+                            NodeFilter filter3 = new TagNameFilter("li");
+                            NodeList dateList = parser3.extractAllNodesThatMatch(filter3);
+//                            System.out.println(dateList.elementAt(0).toPlainTextString());
+
+                            TagNameFilter filter4 = new TagNameFilter("table");
+                            Parser parser4 = new Parser(node.toHtml());
+                            NodeList tableList = parser4.extractAllNodesThatMatch(filter4);
+                            for(int j=0; j<tableList.size(); j++){
+                                String date = dateList.elementAt(j).toPlainTextString();
+                                TableTag tableNode = (TableTag)tableList.elementAt(j);
+                                TableRow[] rows = tableNode.getRows();
+                                for(int k=0; k<rows.length; k++){
+                                    if(k==0 || k==11){
+                                        continue;
+                                    }
+                                    TableRow row = rows[k];
+                                    TableColumn[] columns = row.getColumns();
+                                    if(columns==null || columns.length < 1){
+                                        continue;
+                                    }
+                                    StocksGuDongEntity entity = new StocksGuDongEntity();
+                                    entity.setCode(stock.getCode());
+                                    entity.setDate(DateUtils.strToDate(date));
+                                    entity.setName(stock.getName());
+                                    entity.setGdName(columns[0].toPlainTextString());
+                                    entity.setGdXingZhi(columns[1].toPlainTextString());
+                                    entity.setGuFenLeiXing(columns[2].toPlainTextString());
+                                    entity.setChiGuShu(NumberUtils.toInt(columns[3].toPlainTextString()));
+                                    entity.setBiLv(NumberUtils.toIntMilli(columns[4].toPlainTextString()));
+                                    entity.setZengJian(columns[5].toPlainTextString());
+                                    entity.setBianDongBiLv(NumberUtils.toIntMilli(columns[6].toPlainTextString()));
+                                    entity.setTitle(title);
+                                    entity.setCreateTime(new Date());
+                                    data.add(entity);
                                 }
-                                TableRow row = rows[k];
-                                TableColumn[] columns = row.getColumns();
-                                if(columns==null || columns.length < 1){
-                                    continue;
-                                }
-                                StocksGuDongEntity entity = new StocksGuDongEntity();
-                                entity.setCode(stock.getCode());
-                                entity.setName(stock.getName());
-                                entity.setGdName(columns[1].toPlainTextString());
-                                data.add(entity);
                             }
                         }
 
-//                        Parser parser1 = new Parser(node.toHtml());
-//                        CssSelectorNodeFilter filter1 = new CssSelectorNodeFilter("div[class='name']");
-//                        NodeList list1 = parser1.extractAllNodesThatMatch(filter1);
-//                        System.out.println(list1.elementAt(0).toPlainTextString().trim());
-//
-//
-//                        Parser parser2 = new Parser(node.toHtml());
-//                        CssSelectorNodeFilter filter2 = new CssSelectorNodeFilter("div[class='tab']");
-//                        NodeList list2 = parser2.extractAllNodesThatMatch(filter2);
-//                        Div tabNode = (Div)list2.elementAt(0);
-//                        Parser parser3 = new Parser(tabNode.toHtml());
-//                        NodeFilter filter3 = new TagNameFilter("span");
-//                        NodeList dateList = parser3.extractAllNodesThatMatch(filter3);
-//                        System.out.println(dateList.elementAt(0).toPlainTextString());
+                        if(title.equals("十大股东")){
+                            Parser parser2 = new Parser(node.toHtml());
+                            CssSelectorNodeFilter filter2 = new CssSelectorNodeFilter("div[class='tab']");
+                            NodeList list2 = parser2.extractAllNodesThatMatch(filter2);
+                            Div tabNode = (Div)list2.elementAt(0);
+                            Parser parser3 = new Parser(tabNode.toHtml());
+                            NodeFilter filter3 = new TagNameFilter("li");
+                            NodeList dateList = parser3.extractAllNodesThatMatch(filter3);
 
+                            TagNameFilter filter4 = new TagNameFilter("table");
+                            Parser parser4 = new Parser(node.toHtml());
+                            NodeList tableList = parser4.extractAllNodesThatMatch(filter4);
+                            for(int j=0; j<tableList.size(); j++){
+                                String date = dateList.elementAt(j).toPlainTextString();
+                                TableTag tableNode = (TableTag)tableList.elementAt(j);
+                                TableRow[] rows = tableNode.getRows();
+                                for(int k=0; k<rows.length; k++){
+                                    if(k==0 || k==11){
+                                        continue;
+                                    }
+                                    TableRow row = rows[k];
+                                    TableColumn[] columns = row.getColumns();
+                                    if(columns==null || columns.length < 1){
+                                        continue;
+                                    }
+                                    StocksGuDongEntity entity = new StocksGuDongEntity();
+                                    entity.setCode(stock.getCode());
+                                    entity.setDate(DateUtils.strToDate(date));
+                                    entity.setName(stock.getName());
+                                    entity.setGdName(columns[0].toPlainTextString());
+                                    entity.setGuFenLeiXing(columns[1].toPlainTextString());
+                                    entity.setChiGuShu(NumberUtils.toInt(columns[2].toPlainTextString()));
+                                    entity.setBiLv(NumberUtils.toIntMilli(columns[3].toPlainTextString()));
+                                    entity.setZengJian(columns[4].toPlainTextString());
+                                    entity.setBianDongBiLv(NumberUtils.toIntMilli(columns[5].toPlainTextString()));
+                                    entity.setTitle(title);
+                                    entity.setCreateTime(new Date());
+                                    data.add(entity);
+                                }
+                            }
+                        }
 
+                        if(title.startsWith("基金持股")){
+                            Parser parser2 = new Parser(node.toHtml());
+                            CssSelectorNodeFilter filter2 = new CssSelectorNodeFilter("div[class='tab']");
+                            NodeList list2 = parser2.extractAllNodesThatMatch(filter2);
+                            Div tabNode = (Div)list2.elementAt(0);
+                            Parser parser3 = new Parser(tabNode.toHtml());
+                            NodeFilter filter3 = new TagNameFilter("li");
+                            NodeList dateList = parser3.extractAllNodesThatMatch(filter3);
 
+                            TagNameFilter filter4 = new TagNameFilter("table");
+                            Parser parser4 = new Parser(node.toHtml());
+                            NodeList tableList = parser4.extractAllNodesThatMatch(filter4);
+                            for(int j=0; j<tableList.size(); j++){
+                                String date = dateList.elementAt(j).toPlainTextString();
+                                TableTag tableNode = (TableTag)tableList.elementAt(j);
+                                TableRow[] rows = tableNode.getRows();
+                                System.out.println(rows.length);
+                                for(int k=0; k<rows.length-1; k++){
+                                    if(k == 0){
+                                        continue;
+                                    }
+                                    TableRow row = rows[k];
+                                    TableColumn[] columns = row.getColumns();
+                                    if(columns==null || columns.length < 1){
+                                        continue;
+                                    }
+                                    StocksGuDongEntity entity = new StocksGuDongEntity();
+                                    entity.setCode(stock.getCode());
+                                    entity.setDate(DateUtils.strToDate(date));
+                                    entity.setName(stock.getName());
+                                    entity.setGdName(columns[1].toPlainTextString());
+                                    entity.setChiGuShu(NumberUtils.toInt(columns[3].toPlainTextString()));
+                                    entity.setBiLv(NumberUtils.toIntMilli(columns[5].toPlainTextString()));
+                                    entity.setTitle(title);
+                                    entity.setCreateTime(new Date());
+                                    data.add(entity);
+                                }
+                            }
+                        }
                     }
                 }catch (Exception e){
                     e.printStackTrace();

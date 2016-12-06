@@ -21,6 +21,7 @@ public class NumberUtils {
             return 0;
         }
         str = str.replace("%", "");
+        str = str.replace(",", "");
         if(str.equals("")){
             return 0;
         }
@@ -40,6 +41,7 @@ public class NumberUtils {
             return 0;
         }
         str = str.replace("%", "");
+        str = str.replace(",", "");
         if(str.equals("")){
             return 0;
         }
@@ -63,6 +65,7 @@ public class NumberUtils {
             return 0;
         }
         str = str.replace("%", "");
+        str = str.replace(",", "");
         if(str.equals("")){
             return 0;
         }
@@ -83,6 +86,7 @@ public class NumberUtils {
             return 0;
         }
         str = str.replace("%", "");
+        str = str.replace(",", "");
         if(str.equals("")){
             return 0;
         }
@@ -108,6 +112,7 @@ public class NumberUtils {
             return 0;
         }
         str = str.replace("%", "");
+        str = str.replace(",", "");
         if(str.equals("")){
             return 0;
         }
@@ -129,6 +134,7 @@ public class NumberUtils {
             return 0;
         }
         str = str.replace("%", "");
+        str = str.replace(",", "");
         if(str.equals("")){
             return 0;
         }
@@ -153,6 +159,7 @@ public class NumberUtils {
             return 0;
         }
         str = str.replace("%", "");
+        str = str.replace(",", "");
         if(str.equals("")){
             return 0;
         }
@@ -175,6 +182,7 @@ public class NumberUtils {
             return 0;
         }
         str = str.replace("%", "");
+        str = str.replace(",", "");
         if(str.equals("")){
             return 0;
         }

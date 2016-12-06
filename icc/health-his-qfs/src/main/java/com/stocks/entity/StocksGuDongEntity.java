@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,15 +24,17 @@ public class StocksGuDongEntity implements Serializable {
     @GeneratedValue
     private Integer id;
     private String code;
+    private Date date;
     private String name;
     private String gdName;
     private String gdXingZhi;
     private String guFenLeiXing;
     private Integer chiGuShu;
     private Integer biLv;
-    private Integer zengJian;
+    private String zengJian;
     private Integer bianDongBiLv;
-    private String fenLei;
+    private String title;
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -97,11 +100,11 @@ public class StocksGuDongEntity implements Serializable {
         this.biLv = biLv;
     }
 
-    public Integer getZengJian() {
+    public String getZengJian() {
         return zengJian;
     }
 
-    public void setZengJian(Integer zengJian) {
+    public void setZengJian(String zengJian) {
         this.zengJian = zengJian;
     }
 
@@ -113,11 +116,27 @@ public class StocksGuDongEntity implements Serializable {
         this.bianDongBiLv = bianDongBiLv;
     }
 
-    public String getFenLei() {
-        return fenLei;
+    public String getTitle() {
+        return title;
     }
 
-    public void setFenLei(String fenLei) {
-        this.fenLei = fenLei;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }
