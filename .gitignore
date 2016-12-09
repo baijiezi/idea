@@ -43,3 +43,6 @@
 /icc/manager/.idea
 /icc/manager/target
 /icc/manager/manager.iml
+/mavenSpace/cxf-spring/target
+/mavenSpace/cxf-spring/.idea
+/mavenSpace/cxf-spring/cxf-spring.iml
