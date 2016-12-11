@@ -38,11 +38,11 @@ public class StockJxplTask{
         try{
             Date date = new Date();
             Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
-            InetAddress localHost = InetAddress.getLocalHost();
-            if(localHost.getHostAddress().equals("192.168.200.27")){
-//            if(true){
-                date = DateUtils.strToDate("2016-11-17");
-                endDate = DateUtils.strToDate("2016-11-18 23:59:59");
+//            InetAddress localHost = InetAddress.getLocalHost();
+//            if(localHost.getHostAddress().equals("192.168.200.27")){
+            if(true){
+                date = DateUtils.strToDate("2016-11-11");
+                endDate = DateUtils.strToDate("2016-12-10 23:59:59");
             }
 
             while (date.before(endDate)){
@@ -79,18 +79,27 @@ public class StockJxplTask{
                     ma30Map.put(entity.getCode(), entity);
                 }
 
+                StocksDailyKLineMA60Dao kLineMA60Dao = new StocksDailyKLineMA60Dao();
+                List<StocksDailyKLineMA60Entity> ma60List = kLineMA60Dao.getByDate(date);
+                Map<String, StocksDailyKLineMA60Entity> ma60Map = new HashMap<String, StocksDailyKLineMA60Entity>();
+                for(StocksDailyKLineMA60Entity entity : ma60List){
+                    ma60Map.put(entity.getCode(), entity);
+                }
+
+
                 Session session = HibernateUtil.getOpenSession();
                 session.beginTransaction();
                 for(StocksPriceEntity entity : priceList){
                     String code = entity.getCode();
                     //更新均线排列
-                    if(ma5Map.get(code)!=null && ma10Map.get(code)!=null && ma20Map.get(code)!=null && ma30Map.get(code)!=null){
-                        int[] a = new int[5];
+                    if(ma5Map.get(code)!=null && ma10Map.get(code)!=null && ma20Map.get(code)!=null && ma30Map.get(code)!=null && ma60Map.get(code)!=null){
+                        int[] a = new int[6];
                         a[0] = entity.getShouPan() * 10 + 1;
                         a[1] = ma5Map.get(code).getShouPan() * 10 + 2;
                         a[2] = ma10Map.get(code).getShouPan() * 10 + 3;
                         a[3] = ma20Map.get(code).getShouPan() * 10 + 4;
                         a[4] = ma30Map.get(code).getShouPan() * 10 + 5;
+                        a[5] = ma60Map.get(code).getShouPan() * 10 + 6;
                         selectSort(a);
                         StringBuffer sb = new StringBuffer();
                         for(int i=0; i<a.length; i++){
@@ -101,7 +110,7 @@ public class StockJxplTask{
 //                        session.update(entity);
                     }
                     //更新均线走向
-                    if(ma5Map.get(code)!=null && ma10Map.get(code)!=null && ma20Map.get(code)!=null && ma30Map.get(code)!=null){
+                    if(ma5Map.get(code)!=null && ma10Map.get(code)!=null && ma20Map.get(code)!=null && ma30Map.get(code)!=null && ma60Map.get(code)!=null){
                         StringBuffer sb = new StringBuffer();
                         if (entity.getZhangDie() > 0){
                             sb.append("1");
@@ -128,17 +137,23 @@ public class StockJxplTask{
                         } else{
                             sb.append("2");
                         }
+                        if (ma60Map.get(code).getZhangDie() > 0){
+                            sb.append("1");
+                        } else{
+                            sb.append("2");
+                        }
                         entity.setJunXianZouXiang(Integer.parseInt(sb.toString()));
 //                        session.update(entity);
                     }
                     //更新成交量均线排列
-                    if(entity.getChengJiaoLiang()!=null && ma5Map.get(code)!=null && ma10Map.get(code)!=null && ma20Map.get(code)!=null && ma30Map.get(code)!=null){
-                        long[] a = new long[5];
+                    if(entity.getChengJiaoLiang()!=null && ma5Map.get(code)!=null && ma10Map.get(code)!=null && ma20Map.get(code)!=null && ma30Map.get(code)!=null && ma60Map.get(code)!=null){
+                        long[] a = new long[6];
                         a[0] = entity.getChengJiaoLiang() * 10 + 1;
                         a[1] = ma5Map.get(code).getChengJiaoLiang() * 10 + 2;
                         a[2] = ma10Map.get(code).getChengJiaoLiang() * 10 + 3;
                         a[3] = ma20Map.get(code).getChengJiaoLiang() * 10 + 4;
                         a[4] = ma30Map.get(code).getChengJiaoLiang() * 10 + 5;
+                        a[5] = ma60Map.get(code).getChengJiaoLiang() * 10 + 6;
                         selectSortLong(a);
                         StringBuffer sb = new StringBuffer();
                         for(int i=0; i<a.length; i++){

@@ -37,13 +37,14 @@ public class StockDailyKLineMA60Task {
             StocksDao stocksDao = new StocksDao();
             StocksPriceDao priceDao = new StocksPriceDao();
             List<StocksEntity> list = stocksDao.getAll();
-            Date date = new Date();
-//            Date date = DateUtils.strToDate("2016-04-14");
+//            Date date = new Date();
+            Date date = DateUtils.strToDate("2016-11-02");
             while(DateUtils.getDateStartTime(date).before(new Date())){
+                System.out.println(DateUtils.getSimpleDate(date));
                 List data = new ArrayList<StocksDailyKLineMA60Entity>();
                 Session session = HibernateUtil.getOpenSession();
                 for(StocksEntity stock : list){
-                    logger.info("==============================StockDailyKLineMA60Task:" + stock.getName() + "    " + stock.getCode() + "  " + DateUtils.getSimpleDate(date) +"===============================");
+//                    logger.info("==============================StockDailyKLineMA60Task:" + stock.getName() + "    " + stock.getCode() + "  " + DateUtils.getSimpleDate(date) +"===============================");
                     try{
                         StocksDailyKLineMA60Entity entity = priceDao.getMA60(stock.getCode(), DateUtils.getSimpleDate(date), session);
                         if(entity == null){
