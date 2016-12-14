@@ -36,24 +36,28 @@ public class PriceTrendsTask {
             Date date = new Date();
             Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
             InetAddress localHost = InetAddress.getLocalHost();
-//            if(localHost.getHostAddress().equals("192.168.200.27")){
-            if(true){
-                date = DateUtils.strToDate("2016-11-29");
-                endDate = DateUtils.strToDate("2016-12-11 23:59:59");
+            if(localHost.getHostAddress().equals("192.168.200.27")){
+//            if(true){
+                date = DateUtils.strToDate("2016-06-17");
+                endDate = DateUtils.strToDate("2016-06-17 23:59:59");
             }
 
             while (date.before(endDate)){
                 logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
                 Session session = HibernateUtil.getOpenSession();
                 session.beginTransaction();
+                Integer maxId = (Integer)session.createQuery("select max(p.id) from StocksPriceEntity p " ).uniqueResult();
+                Integer minId = maxId - 2748 * 100;
+
                 StocksPriceDao priceDao = new StocksPriceDao();
                 List<StocksPriceEntity> list =  priceDao.getByDate(date);
                 List<StocksPriceEntity> recentRecords = null;
                 for(StocksPriceEntity entity : list){
-                    recentRecords = priceDao.getRecentRecords(date, entity.getCode(), session);
+                    recentRecords = priceDao.getRecentRecords(entity.getCode(), session, minId);
                     for(StocksPriceEntity record : recentRecords){
                         String trends = record.getPriceTrends();
-                        if(trends!=null && trends.length()>=248){
+//                        if(trends!=null && trends.length()>=248){
+                        if(trends.length()>=248 || record.getDate().compareTo(date)>=0){
                             continue;
                         }
                         String biLv = "0";

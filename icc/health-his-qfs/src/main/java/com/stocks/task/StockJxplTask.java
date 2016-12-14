@@ -38,9 +38,9 @@ public class StockJxplTask{
         try{
             Date date = new Date();
             Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
-//            InetAddress localHost = InetAddress.getLocalHost();
-//            if(localHost.getHostAddress().equals("192.168.200.27")){
-            if(true){
+            InetAddress localHost = InetAddress.getLocalHost();
+            if(localHost.getHostAddress().equals("192.168.200.27")){
+//            if(true){
                 date = DateUtils.strToDate("2016-11-11");
                 endDate = DateUtils.strToDate("2016-12-10 23:59:59");
             }

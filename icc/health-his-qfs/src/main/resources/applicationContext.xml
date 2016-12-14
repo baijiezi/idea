@@ -23,7 +23,7 @@
                 <ref bean="messageTaskTrigger" />
                 <ref bean="fhsgTaskTrigger" />
                 <ref bean="stockJunXianPaiLieTrigger" />
-                <!--<ref bean="priceTrendsTaskTrigger" />-->
+                <ref bean="priceTrendsTaskTrigger" />
                 <!--<ref bean="chooseTaskTrigger" />-->
                 <!--<ref bean="exportTaskTrigger" />-->
             </list>

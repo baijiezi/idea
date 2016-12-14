@@ -183,13 +183,10 @@ public class StocksPriceDao implements IBaseDao{
 
     }
 
-    public  List<StocksPriceEntity> getRecentRecords(Date date, String code, Session session){
+    public  List<StocksPriceEntity> getRecentRecords(String code, Session session, Integer minId){
         List<StocksPriceEntity> list = new ArrayList<StocksPriceEntity>();
         try{
-            String endDate = DateUtils.getSimpleDate(date);
-            date = DateUtils.addDate(date, -120);
-            String startDate = DateUtils.getSimpleDate(date);
-            Query query = session.createQuery(" from StocksPriceEntity s where s.code = '" + code + "' and s.date >= '" + startDate + "' and s.date < '" + endDate + "'");
+            Query query = session.createQuery(" from StocksPriceEntity s where s.code = '" + code + "' and s.id > " + minId);
             list = query.list();
             if(list!=null && list.size()>0){
                 return list;
