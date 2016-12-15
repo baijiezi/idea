@@ -20,6 +20,7 @@
                 <ref bean="stockDailyKLineMA10TaskTrigger" />
                 <ref bean="stockDailyKLineMA20TaskTrigger" />
                 <ref bean="stockDailyKLineMA30TaskTrigger" />
+                <ref bean="stockDailyKLineMA60TaskTrigger" />
                 <ref bean="messageTaskTrigger" />
                 <ref bean="fhsgTaskTrigger" />
                 <ref bean="stockJunXianPaiLieTrigger" />
@@ -176,10 +177,22 @@
     </bean>
     <bean id="stockDailyKLineMA30" class="com.stocks.task.kline.StockDailyKLineMA30Task"></bean>
 
+    <bean id="stockDailyKLineMA60TaskTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="stockDailyKLineMA60JobDetail" />
+        <property name="cronExpression" value="0 9 19 ? * MON-FRI" />
+    </bean>
+    <bean id="stockDailyKLineMA60JobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="stockDailyKLineMA60" />
+        <property name="targetMethod" value="execute" />
+    </bean>
+    <bean id="stockDailyKLineMA60" class="com.stocks.task.kline.StockDailyKLineMA60Task"></bean>
+
     <bean id="stockJunXianPaiLieTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="stockJunXianPaiLieJobDetail" />
-        <property name="cronExpression" value="0 05 19 ? * MON-FRI" />
+        <property name="cronExpression" value="0 15 19 ? * MON-FRI" />
     </bean>
     <bean id="stockJunXianPaiLieJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -191,7 +204,7 @@
     <bean id="priceTrendsTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="priceTrendsJobDetail" />
-        <property name="cronExpression" value="0 15 19 ? * MON-FRI" />
+        <property name="cronExpression" value="0 30 19 ? * MON-FRI" />
     </bean>
     <bean id="priceTrendsJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
