@@ -31,6 +31,7 @@ public class PriceTrendsTask {
     }
 
     public void execute(){
+        System.out.println(new Date());
         logger.info("PriceTrendsTask  execute");
         try{
             Date date = new Date();
@@ -43,6 +44,7 @@ public class PriceTrendsTask {
             }
 
             while (date.before(endDate)){
+                System.out.println(new Date());
                 logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
                 Session session = HibernateUtil.getOpenSession();
                 session.beginTransaction();
@@ -57,7 +59,7 @@ public class PriceTrendsTask {
                     for(StocksPriceEntity record : recentRecords){
                         String trends = record.getPriceTrends();
 //                        if(trends!=null && trends.length()>=248){
-                        if(trends.length()>=248 || record.getDate().compareTo(date)>=0){
+                        if((trends!=null && trends.length()>=248) || record.getDate().compareTo(date)>=0){
                             continue;
                         }
                         String biLv = "0";
@@ -80,6 +82,7 @@ public class PriceTrendsTask {
                 date = DateUtils.addDate(date, 1);
             }
             logger.info("PriceTrendsTask  finish");
+            System.out.println(new Date());
         }catch (Exception e){
             logger.error("PriceTrendsTask异常：", e);
             e.printStackTrace();

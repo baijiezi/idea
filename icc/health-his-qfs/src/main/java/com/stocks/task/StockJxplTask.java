@@ -41,8 +41,8 @@ public class StockJxplTask{
             InetAddress localHost = InetAddress.getLocalHost();
             if(localHost.getHostAddress().equals("192.168.200.27")){
 //            if(true){
-                date = DateUtils.strToDate("2016-11-11");
-                endDate = DateUtils.strToDate("2016-12-10 23:59:59");
+                date = DateUtils.strToDate("2016-12-12");
+                endDate = DateUtils.strToDate("2016-12-14 23:59:59");
             }
 
             while (date.before(endDate)){
