@@ -198,6 +198,21 @@ public class StocksPriceDao implements IBaseDao{
 
     }
 
+    public  List<StocksPriceEntity> getById(Session session, Integer minId, Integer maxId){
+        List<StocksPriceEntity> list = new ArrayList<StocksPriceEntity>();
+        try{
+            Query query = session.createQuery(" from StocksPriceEntity s where s.id > " + minId + " and s.id <= " + maxId);
+            list = query.list();
+            if(list!=null && list.size()>0){
+                return list;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+
+    }
+
 
     public StocksDailyKLineMA5Entity getMA5(String code, String date, Session session){
         try{
