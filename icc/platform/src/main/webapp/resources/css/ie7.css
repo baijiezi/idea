@@ -1,0 +1,218 @@
+/* ========================================
+	CSS hack code for IE7
+========================================== */
+/* new blue scheme */
+/* 各种三角形 */
+/******************************/
+#unionpaym-login .login-right p {
+  line-height: 24px;
+}
+/*content*/
+#content .contentBox {
+  background: #dfeef7;
+}
+/*快速预约 */
+.fastOrderli label {
+  margin-right: 0px;
+}
+#content .fastOrder .contentRight UL LI LABEL {
+  vertical-align: top;
+  line-height: 25px;
+}
+/* 排班页面 ie7线条不能对齐的bug*/
+.gp-search .sche-list {
+  margin-top: -14px;
+}
+.gp-search .sche-list table .blue-bottom {
+  height: 42px;
+}
+.gp-search .sche-list table td.ie-fix {
+  height: 43px;
+}
+.gp-search .sche-list table td.full-plan {
+  height: 43px;
+}
+.gp-search .doc-list li {
+  height: 62px;
+  padding: 20px 10px 37px;
+}
+.gp-search .sche-list table .err td {
+  height: 123px;
+}
+.gp-search .sche-list table .light-blue {
+  background: none;
+}
+.gfm-line select {
+  height: auto;
+}
+.gp-person .patients-manage .update-patient .card-list li .del-card {
+  margin-top: 7px;
+}
+.gfm-item select {
+  margin-top: 1px;
+}
+#gp-scalpers .scalpers-content .j-button {
+  margin-top: -16px;
+}
+.gp-person .myfav-list .list_expert li .ask-question,
+.gp-person .myfav-list .list li .del {
+  float: none;
+  margin-right: 15px;
+}
+.gp-person .myfav-list .list_hospdept li .del,
+.gp-person .myfav-list .list_hosp li .del {
+  margin-left: 240px;
+}
+.gp-person .user-info DIV.content #certNoTipsArea .cerno-tips {
+  margin-top: -12px;
+}
+#userinfo-display #certNoTipsArea .cerno-tips {
+  margin-top: -12px;
+}
+.gp-all-comment-list .comment-list-item .append-comment .triangle {
+  top: -20px;
+}
+.unionpay-pagination .unionpay-pagination-buttom {
+  right: -25%;
+}
+#gp-skilleddoctor .unionpay-pagination .unionpay-pagination-buttom {
+  right: -50%;
+}
+.unionpay-schedule .top .check-dept select {
+  margin-top: 4px;
+}
+.template-style .main-content li img,
+.cancleOrderContent .gfm-line .gfm-item img {
+  vertical-align: top;
+}
+.template-style .main-content li #freshcode,
+.cancleOrderContent .gfm-line .gfm-item #freshcode {
+  display: inline-block;
+  line-height: 30px;
+  vertical-align: top;
+}
+#unionpay-myask-ans .q-list .name {
+  top: 8px;
+}
+#unionpay-myask-ans .q-list .time {
+  top: 24px;
+}
+.gi-star1-little {
+  margin-right: -1px;
+}
+.recommend {
+  margin-left: 5px;
+}
+.unionpaym-box .glRating {
+  margin-top: -5px;
+}
+.unionpaym-box .glRating span.text {
+  margin-top: 7px;
+}
+.comment-result .glRating {
+  margin-top: 0px;
+}
+.order-comment .glRating span.text {
+  top: 11px;
+}
+.order-comment #commentAddForm .glRating {
+  margin-top: -3px;
+}
+.order-comment #commentAddForm .glRating span {
+  top: 3px;
+}
+#gp-depart-rank-list .gp-depart-rank-list-list li {
+  height: 100%;
+  margin-top: -4px;
+}
+.gp-seo .single-wrap .bottom-box {
+  padding-bottom: 5px;
+  padding-right: 5px;
+}
+/*图片轮播中对于分页样式的修补 */
+#sh-content .left-rail .bx-pager .bx-pager-item {
+  display: inline;
+  zoom: 1;
+}
+#sh-content .left-rail .bx-pager .bx-pager-item .bx-pager-link {
+  display: block;
+}
+#js-content .right-top .bx-pager-item {
+  display: inline;
+  zoom: 1;
+}
+#js-content .right-top .bx-pager-link {
+  display: block;
+}
+.gp-landing #banner .bx-pager-link {
+  display: block;
+}
+.gp-landing #banner .bx-pager {
+  display: inline;
+}
+.gp-landing #banner .bx-pager-item {
+  vertical-align: middle;
+}
+#gp-friendlyLink .other-web-link li label {
+  vertical-align: top;
+}
+.unionpay-schedule .intro .more-box .more-content {
+  height: 142px;
+}
+.gp-landing .jh-box {
+  height: 100%;
+}
+.gp-landing .hy-refresh li {
+  padding: 2px 0 2px 12px;
+}
+.gp-person .patients-manage .gb-disabled {
+  margin-top: 30px;
+}
+.gp-person .patients-manage .gb-disabled .gb-text {
+  padding: 0px 5px;
+  width: 80px;
+}
+.unionpayh-web-search form {
+  height: 40px;
+}
+.unionpayh-mini .unionpayh-web-search form {
+  height: 35px;
+}
+.unionpay-expert-items .doc-data .doc-visit i,
+.unionpay-1200px .unionpay-hpt-items .hospital-comment .no-hop-comment i {
+  vertical-align: middle;
+}
+#hospDeptId {
+  margin: 4px 0px 0px 0px;
+}
+.unionpay-feature-mask .fe-mask-bg {
+  height: 120%;
+}
+.gp-fulllxjy-depts .depts-list-box {
+  height: 780px;
+}
+.gp-fulllxjy-index #banner .bx-pager-link {
+  display: block;
+}
+.unionpay-placeholder-wrap em {
+  margin-left: 10px;
+}
+.gp-search-dis .qa-box .banner .bx-pager-link {
+  display: block;
+}
+.new-register .form-area li .gbs {
+  margin-top: -42px;
+}
+.new-register .form-area li.imunionpay-line img {
+  margin-top: -36px;
+}
+.new-register .upload-line .gbs {
+  margin-top: 0px !important;
+}
+.amazinunionpay-login .main-box {
+  background-color: #fff;
+}
+.unionpay-medal p {
+  *display: inline;
+  *zoom: 1;
+}
