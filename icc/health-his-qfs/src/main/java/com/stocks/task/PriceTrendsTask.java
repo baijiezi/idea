@@ -1,6 +1,8 @@
 package com.stocks.task;
 
+import com.stocks.dao.StocksParamsDao;
 import com.stocks.dao.StocksPriceDao;
+import com.stocks.entity.StocksParamsEntity;
 import com.stocks.entity.StocksPriceEntity;
 import com.stocks.utils.DateUtils;
 import com.stocks.utils.HibernateUtil;
@@ -32,17 +34,12 @@ public class PriceTrendsTask {
         System.out.println(new Date());
         logger.info("PriceTrendsTask  execute");
         try{
-            Date date = new Date();
-            Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
-            InetAddress localHost = InetAddress.getLocalHost();
-            if(localHost.getHostAddress().equals("192.168.200.27")){
-//            if(true){
-                date = DateUtils.strToDate("2016-12-19");
-                endDate = DateUtils.strToDate("2016-12-19 23:59:59");
-            }
+            StocksParamsDao paramsDao = new StocksParamsDao();
+            StocksParamsEntity paramsEntity = paramsDao.getByParam("priceTrends");
+            Date date = DateUtils.strToDate(paramsEntity.getValue());
+            Date endDate = new Date();
 
             while (date.before(endDate)){
-                System.out.println(new Date());
                 logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
                 Session session = HibernateUtil.getOpenSession();
                 session.beginTransaction();
@@ -50,14 +47,15 @@ public class PriceTrendsTask {
 
                 StocksPriceDao priceDao = new StocksPriceDao();
                 List<StocksPriceEntity> list =  priceDao.getByDate(date);
+                logger.info("size:" + list.size());
                 Map<String, Integer> map = new HashMap<String, Integer>();
                 for(StocksPriceEntity entity : list){
                     map.put(entity.getCode(), entity.getShouPan());
                 }
                 List<StocksPriceEntity> recentRecords = null;
-                for(int i=0; i<300; i++){
-                    Integer idMax = maxId - i * 1000;
-                    Integer idMin = maxId - (i+1)*1000;
+                for(int i=0; i<600; i++){
+                    Integer idMax = maxId - i * 500;
+                    Integer idMin = maxId - (i+1)*500;
                     logger.info(i + "  " + idMax + "  " + DateUtils.getStrTime(new Date()));
                     recentRecords = priceDao.getById(session, idMin, idMax);
                     logger.info(i + "  " + idMin + "  " + DateUtils.getStrTime(new Date()));
@@ -81,6 +79,7 @@ public class PriceTrendsTask {
                         }
                         session.update(record);
                     }
+                    recentRecords = null;
                 }
                 logger.info("开始提交事务" + DateUtils.getStrTime(new Date()));
                 session.getTransaction().commit();
@@ -88,9 +87,10 @@ public class PriceTrendsTask {
                 logger.info("完成提交事务" + DateUtils.getStrTime(new Date()));
                 HibernateUtil.closeSessionFactory();
                 date = DateUtils.addDate(date, 1);
+                paramsEntity.setParam(DateUtils.getSimpleDate(date));
+                paramsDao.update(paramsEntity);
             }
             logger.info("PriceTrendsTask  finish");
-            System.out.println(new Date());
         }catch (Exception e){
             logger.error("PriceTrendsTask异常：", e);
             e.printStackTrace();

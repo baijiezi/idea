@@ -200,14 +200,10 @@ public class StocksPriceDao implements IBaseDao{
 
     public  List<StocksPriceEntity> getById(Session session, Integer minId, Integer maxId){
         List<StocksPriceEntity> list = new ArrayList<StocksPriceEntity>();
-        try{
-            Query query = session.createQuery(" from StocksPriceEntity s where s.id > " + minId + " and s.id <= " + maxId);
-            list = query.list();
-            if(list!=null && list.size()>0){
-                return list;
-            }
-        }catch(Exception e){
-            e.printStackTrace();
+        Query query = session.createQuery(" from StocksPriceEntity s where s.id > " + minId + " and s.id <= " + maxId);
+        list = query.list();
+        if(list!=null && list.size()>0){
+            return list;
         }
         return list;
 
@@ -483,15 +479,15 @@ public class StocksPriceDao implements IBaseDao{
 //        HibernateUtil.closeSessionFactory();
 
 
-//        List<StocksPriceEntity> list = dao.getByDate("2016-03-08");
-//        System.out.println(list.size());
+        List<StocksPriceEntity> list = dao.getByDate("2016-03-08");
+        System.out.println(list.size());
 //        StocksPriceEntity entity = list.get(0);
 //        System.out.println(entity.getShouPan());
 //        System.out.println(entity.getStocksEntity());
 //        System.out.println(entity.getStocksEntity().getDetailUrl());
 //        HibernateUtil.closeSessionFactory();
 
-        dao.getMA5("002340", "2016-04-01", session);
+//        dao.getMA5("002340", "2016-04-01", session);
 
 
 

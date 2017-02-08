@@ -145,17 +145,17 @@ public class MessageDao {
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
 
-//        MessageEntity entity = new MessageEntity();
-//        entity.setMobile("222");
-//        entity.setContent("aaa");
+        MessageEntity entity = new MessageEntity();
+        entity.setMobile("222");
+        entity.setContent("aaa");
 
         MessageDao dao = new MessageDao();
-//        dao.save(entity, session);
+        dao.save(entity, session);
 //        List list = dao.getByStatus(0);
 //        List list = dao.getByTypeAndSendTime("111", DateUtils.getSimpleDate(new Date()));
 
-        List list = dao.getToSends(DateUtils.getStrTime(new Date()));
-        System.out.println(list.size());
+//        List list = dao.getToSends(DateUtils.getStrTime(new Date()));
+//        System.out.println(list.size());
 
 
         session.getTransaction().commit();
