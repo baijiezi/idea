@@ -36,31 +36,38 @@ public class PriceTrendsTask {
         try{
             StocksParamsDao paramsDao = new StocksParamsDao();
             StocksParamsEntity paramsEntity = paramsDao.getByParam("priceTrends");
-            Date date = DateUtils.strToDate(paramsEntity.getValue());
+            Date date = DateUtils.strToDate(paramsEntity.getValue().split("_")[0]);
+            Integer i = Integer.parseInt(paramsEntity.getValue().split("_")[1]);
             Date endDate = new Date();
 
             while (date.before(endDate)){
                 logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
                 Session session = HibernateUtil.getOpenSession();
-                session.beginTransaction();
-                Integer maxId = (Integer)session.createQuery("select max(p.id) from StocksPriceEntity p " ).uniqueResult();
-
+//                Integer maxId = (Integer)session.createQuery("select max(p.id) from StocksPriceEntity p " ).uniqueResult();
                 StocksPriceDao priceDao = new StocksPriceDao();
                 List<StocksPriceEntity> list =  priceDao.getByDate(date);
                 logger.info("size:" + list.size());
+                if(list==null || list.size()<=0){
+                    date = DateUtils.addDate(date, 1);
+                    continue;
+                }
                 Map<String, Integer> map = new HashMap<String, Integer>();
                 for(StocksPriceEntity entity : list){
                     map.put(entity.getCode(), entity.getShouPan());
                 }
+                Integer maxId = list.get(0).getId();
                 List<StocksPriceEntity> recentRecords = null;
-                for(int i=0; i<600; i++){
-                    Integer idMax = maxId - i * 500;
-                    Integer idMin = maxId - (i+1)*500;
+                for( ; i<300; i++){
+                    Integer idMax = maxId - i * 1000;
+                    Integer idMin = maxId - (i+1)*1000;
+                    if(idMax < 0){
+                        break;
+                    }
                     logger.info(i + "  " + idMax + "  " + DateUtils.getStrTime(new Date()));
                     recentRecords = priceDao.getById(session, idMin, idMax);
                     logger.info(i + "  " + idMin + "  " + DateUtils.getStrTime(new Date()));
                     logger.info("" + recentRecords.size());
-
+                    session.beginTransaction();
                     for(StocksPriceEntity record : recentRecords){
                         String trends = record.getPriceTrends();
                         if((trends!=null && trends.length()>=248) || record.getDate().compareTo(date)>=0){
@@ -79,16 +86,25 @@ public class PriceTrendsTask {
                         }
                         session.update(record);
                     }
+                    paramsEntity.setValue(DateUtils.getSimpleDate(date) + "_" + (i+1));
+                    paramsDao.update(paramsEntity, session);
+                    logger.info("开始提交事务" + DateUtils.getStrTime(new Date()));
+                    session.getTransaction().commit();
+                    logger.info("完成提交事务" + DateUtils.getStrTime(new Date()));
                     recentRecords = null;
+                    //如果任务执行超过五分钟，则退出
+                    if((new Date().getTime() - endDate.getTime()) > 300000){
+                        session.close();
+                        return;
+                    }
                 }
-                logger.info("开始提交事务" + DateUtils.getStrTime(new Date()));
-                session.getTransaction().commit();
+
                 session.close();
-                logger.info("完成提交事务" + DateUtils.getStrTime(new Date()));
                 HibernateUtil.closeSessionFactory();
                 date = DateUtils.addDate(date, 1);
-                paramsEntity.setParam(DateUtils.getSimpleDate(date));
+                paramsEntity.setValue(DateUtils.getSimpleDate(date) + "_0");
                 paramsDao.update(paramsEntity);
+                i = 0;
             }
             logger.info("PriceTrendsTask  finish");
         }catch (Exception e){

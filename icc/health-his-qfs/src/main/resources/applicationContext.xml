@@ -204,7 +204,7 @@
     <bean id="priceTrendsTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="priceTrendsJobDetail" />
-        <property name="cronExpression" value="0 30 19 ? * MON-FRI" />
+        <property name="cronExpression" value="0 0,10,20,30,40,50 * * * ?" />
     </bean>
     <bean id="priceTrendsJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">

@@ -469,8 +469,8 @@ public class StocksPriceDao implements IBaseDao{
         Session session = HibernateUtil.getOpenSession();
         StocksPriceDao dao = new StocksPriceDao();
 
-//        List<StocksPriceEntity> list = dao.getByCode("002340");
-//        System.out.println(list.size());
+        List<StocksPriceEntity> list = dao.getByCode("002340");
+        System.out.println(list.size());
 //        StocksPriceEntity entity = list.get(0);
 //        System.out.println(entity.getShouPan());
 //        System.out.println(entity.getStocksEntity());
@@ -479,8 +479,8 @@ public class StocksPriceDao implements IBaseDao{
 //        HibernateUtil.closeSessionFactory();
 
 
-        List<StocksPriceEntity> list = dao.getByDate("2016-03-08");
-        System.out.println(list.size());
+//        List<StocksPriceEntity> list = dao.getByDate("2016-03-08");
+//        System.out.println(list.size());
 //        StocksPriceEntity entity = list.get(0);
 //        System.out.println(entity.getShouPan());
 //        System.out.println(entity.getStocksEntity());
