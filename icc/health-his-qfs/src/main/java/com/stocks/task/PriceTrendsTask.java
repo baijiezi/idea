@@ -39,6 +39,9 @@ public class PriceTrendsTask {
             Date date = DateUtils.strToDate(paramsEntity.getValue().split("_")[0]);
             Integer i = Integer.parseInt(paramsEntity.getValue().split("_")[1]);
             Date endDate = new Date();
+            if(endDate.getHours()>=6 && endDate.getHours()<=7){
+                return;
+            }
 
             while (date.before(endDate)){
                 logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
