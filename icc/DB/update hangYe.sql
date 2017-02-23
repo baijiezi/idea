@@ -1,1 +1,0 @@
-UPDATE sic_stocks s SET s.hangYe='1' where s.`code` IN ('000','000001')

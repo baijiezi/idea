@@ -1,9 +1,0 @@
-
-git@github_four.com:baijiezi/eclipse-jee-indigo-github.git
-
-
-git@github_five.com:baijiezi/idea.git
-
-
-
-aaaa
