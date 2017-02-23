@@ -151,16 +151,16 @@ public class StockPriceSimpleTask {
                         Integer sumzhangDie19 = priceDao.getSUMZhangDie19(stock.getCode(), DateUtils.getSimpleDate(date), session);
                         Integer sumzhangDie29 = priceDao.getSUMZhangDie29(stock.getCode(), DateUtils.getSimpleDate(date), session);
                         Integer sumzhangDie59 = priceDao.getSUMZhangDie59(stock.getCode(), DateUtils.getSimpleDate(date), session);
-                        Integer jxzx = jxzx(entity.getZhangFu(), sumzhangDie4 + entity.getZhangFu(), sumzhangDie9 + entity.getZhangFu(),
-                                sumzhangDie19 + entity.getZhangFu(), sumzhangDie29 + entity.getZhangFu(), sumzhangDie59 + entity.getZhangFu());
+                        Integer jxzx = jxzx(entity.getZhangDie(), sumzhangDie4+entity.getZhangDie(), sumzhangDie9+entity.getZhangDie(),
+                                sumzhangDie19+entity.getZhangDie(), sumzhangDie29+entity.getZhangDie(), sumzhangDie59+entity.getZhangDie());
                         entity.setJunXianZouXiang(jxzx);
 
                         String code = entity.getCode();
                         if((code.startsWith("600")||code.startsWith("601")) && map.get("jxpl_600.601_6"+jxpl)>50000 && map.get("jxzx_600.601_6"+jxzx)>50000){
-                            content.append(entity.getCode()).append(map.get("jxpl_600.601_6"+jxpl)).append(" ").append(map.get("jxzx_600.601_6"+jxzx)).append(",");
+                            content.append(entity.getCode()).append(map.get("jxpl_600.601_6"+jxpl)).append(" ").append(map.get("jxzx_600.601_6"+jxzx)).append(entity.getName().substring(0,1)).append(",");
                         }
                         if((code.startsWith("000")||code.startsWith("002")) && map.get("jxpl_000.002_6"+jxpl)>50000 && map.get("jxzx_000.002_6"+jxzx)>50000){
-                            content.append(entity.getCode()).append(map.get("jxpl_000.002_6"+jxpl)).append(" ").append(map.get("jxzx_000.002_6"+jxzx)).append(",");
+                            content.append(entity.getCode()).append(map.get("jxpl_000.002_6"+jxpl)).append(" ").append(map.get("jxzx_000.002_6"+jxzx)).append(entity.getName().substring(0,1)).append(",");
                         }
                     }
 
