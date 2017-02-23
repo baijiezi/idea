@@ -44,16 +44,16 @@ public class StockIndexTask {
                 logger.info("==============================StockIndexTask:" + entity.getName() + "    " + entity.getCode() + "===============================");
 
                 try{
-                    if(entity.getStocksEntity().getExchange().equals("hs")){
-                        StocksPriceEntity sz = map.get("0000001_2");
-                        sz.setShouPan(sz.getShouPan()+entity.getShouPan());
-
-                    }
-                    else if(entity.getStocksEntity().getExchange().equals("ss")){
-                        StocksPriceEntity ss = map.get("009988");
-                        ss.setShouPan(ss.getShouPan()+entity.getShouPan());
-
-                    }
+//                    if(entity.getStocksEntity().getExchange().equals("hs")){
+//                        StocksPriceEntity sz = map.get("0000001_2");
+//                        sz.setShouPan(sz.getShouPan()+entity.getShouPan());
+//
+//                    }
+//                    else if(entity.getStocksEntity().getExchange().equals("ss")){
+//                        StocksPriceEntity ss = map.get("009988");
+//                        ss.setShouPan(ss.getShouPan()+entity.getShouPan());
+//
+//                    }
 
 
 

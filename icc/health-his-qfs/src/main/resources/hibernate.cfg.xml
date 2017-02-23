@@ -10,14 +10,14 @@
             org.hibernate.dialect.MySQLDialect
         </property>
         <property name="connection.url">
-            jdbc:mysql://localhost:3306/icc
+            jdbc:mysql://192.168.1.102:3306/icc
         </property>
         <property name="connection.username">root</property>
         <property name="connection.password">123456</property>
         <property name="connection.driver_class">
             com.mysql.jdbc.Driver
         </property>
-        <property name="show_sql">false</property>
+        <property name="show_sql">true</property>
         <property name="format_sql">true</property>
         <property name="current_session_context_class">thread</property>
         <property name="hbm2ddl.auto">update</property>
@@ -38,6 +38,7 @@
         <mapping class="com.stocks.entity.StocksDailyKLineMA30Entity" />
         <mapping class="com.stocks.entity.StocksDailyKLineMA60Entity" />
         <mapping class="com.stocks.entity.StocksParamsEntity" />
+        <mapping class="com.stocks.entity.StocksPriceSimpleEntity" />
         <mapping class="com.message.entity.MessageEntity" />
 
     </session-factory>

@@ -33,15 +33,8 @@ public class JunXianPaiLieStatistics {
         logger.info("ChooseJXPL  execute");
 
         try{
-            Date date = new Date();
-            Date endDate = DateUtils.strToDate(DateUtils.getSimpleDate(date) + " 23:59:59");
-            InetAddress localHost = InetAddress.getLocalHost();
-//            if(localHost.getHostAddress().equals("192.168.200.27")){
-            if(true){
-                date = DateUtils.strToDate("2016-04-14");
-                endDate = DateUtils.strToDate("2016-07-08 23:59:59");
-            }
-
+            Date date = DateUtils.strToDate("2016-11-14");
+            Date endDate = DateUtils.strToDate("2017-02-16 23:59:59");
             Map<Integer, Integer> zhangFuMap = new HashMap<Integer, Integer>();
             Map<Integer, Integer> countMap = new HashMap<Integer, Integer>();
             Map<Integer, Integer> biLvMap = new HashMap<Integer, Integer>();
@@ -49,7 +42,11 @@ public class JunXianPaiLieStatistics {
                 logger.info("start PriceTrendsTask, Date = " + DateUtils.getSimpleDate(date));
                 StocksPriceDao priceDao = new StocksPriceDao();
                 List<StocksPriceEntity> priceList = priceDao.getByDate(date);
+                logger.info("" + priceList.size());
                 for(StocksPriceEntity entity : priceList){
+                    if(!entity.getCode().startsWith("600") && !entity.getCode().startsWith("601")){
+                        continue;
+                    }
                     if(entity.getChengJiaoLiang()==null || entity.getChengJiaoLiang()<=0 || entity.getLiuTongShiZhi()==null || entity.getLiuTongShiZhi() <= 0 ){
                         continue;
                     }
@@ -58,7 +55,7 @@ public class JunXianPaiLieStatistics {
                     String trends = entity.getPriceTrends();
                     String[] trendsArray = trends.split(",");
                     if(trendsArray.length >=10){
-                        zhangFu = Integer.parseInt(trendsArray[4]);
+                        zhangFu = Integer.parseInt(trendsArray[0]);
                     }
                     if(zhangFuMap.get(key) != null){
                         zhangFu = zhangFuMap.get(key) + zhangFu;
@@ -81,7 +78,7 @@ public class JunXianPaiLieStatistics {
             Map<Integer, Integer> sortedMap = sortMapByValue(biLvMap);
 
             for(Map.Entry<Integer, Integer> entry  : sortedMap.entrySet()){
-                System.out.println(entry.getKey()+"--->" + entry.getValue());
+                logger.info(entry.getKey()+" ---> " + entry.getValue() + " " + countMap.get(entry.getKey()));
             }
 
         } catch (Exception e){

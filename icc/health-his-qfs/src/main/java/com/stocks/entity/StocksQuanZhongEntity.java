@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,6 +26,9 @@ public class StocksQuanZhongEntity implements Serializable {
     private String type;
     private String keyName;
     private Integer value;
+    private Integer count;
+    private Date createTime;
+    private String mark;
 
     public Integer getId() {
         return id;
@@ -56,5 +60,29 @@ public class StocksQuanZhongEntity implements Serializable {
 
     public void setValue(Integer value) {
         this.value = value;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
     }
 }

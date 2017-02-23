@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,11 +21,8 @@ public class StocksPriceTimeDao implements IBaseDao{
 
     public List<StocksPriceTimeEntity> getByCode(String code){
         Session session = HibernateUtil.getOpenSession();
-        session.beginTransaction();
+//        session.beginTransaction();
         try{
-            if(code==null || code.equals("")) {
-                return null;
-            }
             Query query = session.createQuery(" from StocksPriceTimeEntity s where s.code = '" + code + "'");
             List<StocksPriceTimeEntity> list = query.list();
             if(list!=null && list.size()>0) {
@@ -36,7 +34,25 @@ public class StocksPriceTimeDao implements IBaseDao{
         }catch(Exception e){
             e.printStackTrace();
         }
-        session.getTransaction().commit();
+//        session.getTransaction().commit();
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
+    public List<StocksPriceTimeEntity> getByCodeAndDate(String code, String date){
+        Session session = HibernateUtil.getOpenSession();
+//        session.beginTransaction();
+        try{
+            List<StocksPriceTimeEntity> list = new ArrayList<StocksPriceTimeEntity>();
+            Query query = session.createQuery(" from StocksPriceTimeEntity s where s.code = '" + code + "' and s.createTime between '" + date + "' and '" + date + " 23:59:59'");
+            list = query.list();
+            return list;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+//        session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
         return null;
@@ -80,28 +96,11 @@ public class StocksPriceTimeDao implements IBaseDao{
 
 
     public static void main(String[] args){
-        Session session = HibernateUtil.getOpenSession();
-        StocksPriceDao dao = new StocksPriceDao();
+//        Session session = HibernateUtil.getOpenSession();
+        StocksPriceTimeDao dao = new StocksPriceTimeDao();
+        List<StocksPriceTimeEntity> list = dao.getByCodeAndDate("000001_2", "2016-11-21");
+        System.out.println(list.size());
 
-//        List<StocksPriceTimeEntity> list = dao.getByCode("002340");
-//        System.out.println(list.size());
-//        StocksPriceTimeEntity entity = list.get(0);
-//        System.out.println(entity.getShouPan());
-//        System.out.println(entity.getStocksEntity());
-//        System.out.println(entity.getStocksEntity().getDetailUrl1());
-//        System.out.println(entity.getStocksEntity().getCode());
-//        HibernateUtil.closeSessionFactory();
-
-
-//        List<StocksPriceTimeEntity> list = dao.getByDate("2016-03-08");
-//        System.out.println(list.size());
-//        StocksPriceTimeEntity entity = list.get(0);
-//        System.out.println(entity.getShouPan());
-//        System.out.println(entity.getStocksEntity());
-//        System.out.println(entity.getStocksEntity().getDetailUrl());
-//        HibernateUtil.closeSessionFactory();
-
-        dao.getMA5("002340", "2016-04-01", session);
 
 
 

@@ -208,6 +208,10 @@ public class StockPriceTask {
         session.beginTransaction();
         StocksPriceDao dao = new StocksPriceDao();
         for(StocksPriceDto dto : data){
+            //停牌
+            if(dto.getShouPan()==null || dto.getShouPan()==0){
+                continue;
+            }
             StocksPriceEntity entity = new StocksPriceEntity();
             entity.setCode(dto.getCode());
             entity.setName(dto.getName());

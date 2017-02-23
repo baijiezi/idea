@@ -49,7 +49,7 @@ public class StocksPriceDao implements IBaseDao{
 
     public List<StocksPriceEntity> getTopByCodeAndDate(String code, String date, Integer limit){
         Session session = HibernateUtil.getOpenSession();
-        session.beginTransaction();
+//        session.beginTransaction();
         try{
             if(code==null || code.equals("")) {
                 return null;
@@ -66,7 +66,7 @@ public class StocksPriceDao implements IBaseDao{
         }catch(Exception e){
             e.printStackTrace();
         }
-        session.getTransaction().commit();
+//        session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
         return null;
@@ -75,7 +75,7 @@ public class StocksPriceDao implements IBaseDao{
 
     public List<StocksPriceEntity> getByDate(Date date){
         Session session = HibernateUtil.getOpenSession();
-        session.beginTransaction();
+//        session.beginTransaction();
         List<StocksPriceEntity> list = new ArrayList<StocksPriceEntity>();
         try{
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -88,7 +88,7 @@ public class StocksPriceDao implements IBaseDao{
         }catch(Exception e){
             e.printStackTrace();
         }
-        session.getTransaction().commit();
+//        session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
         return list;
@@ -97,7 +97,7 @@ public class StocksPriceDao implements IBaseDao{
 
     public List<StocksPriceEntity> getByDate(String date){
         Session session = HibernateUtil.getOpenSession();
-        session.beginTransaction();
+//        session.beginTransaction();
         try{
             Query query = session.createQuery(" from StocksPriceEntity s where s.date = '" + date + "'");
             List<StocksPriceEntity> list = query.list();
@@ -110,7 +110,7 @@ public class StocksPriceDao implements IBaseDao{
         }catch(Exception e){
             e.printStackTrace();
         }
-        session.getTransaction().commit();
+//        session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
         return null;
@@ -119,7 +119,7 @@ public class StocksPriceDao implements IBaseDao{
 
     public StocksPriceEntity getByDateAndCode(Date date, String code){
         Session session = HibernateUtil.getOpenSession();
-        session.beginTransaction();
+//        session.beginTransaction();
         try{
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             String dt = format.format(date);
@@ -134,7 +134,7 @@ public class StocksPriceDao implements IBaseDao{
         }catch(Exception e){
             e.printStackTrace();
         }
-        session.getTransaction().commit();
+//        session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
         return null;
@@ -163,7 +163,7 @@ public class StocksPriceDao implements IBaseDao{
 
     public StocksPriceEntity getByDateAndCode(String date, String code){
         Session session = HibernateUtil.getOpenSession();
-        session.beginTransaction();
+//        session.beginTransaction();
         try{
             Query query = session.createQuery(" from StocksPriceEntity s where s.date = '" + date + "' and s.code = '" + code + "'");
             List<StocksPriceEntity> list = query.list();
@@ -176,7 +176,7 @@ public class StocksPriceDao implements IBaseDao{
         }catch(Exception e){
             e.printStackTrace();
         }
-        session.getTransaction().commit();
+//        session.getTransaction().commit();
         session.close();
         HibernateUtil.closeSessionFactory();
         return null;
@@ -428,6 +428,160 @@ public class StocksPriceDao implements IBaseDao{
 
     }
 
+    public Integer getSUM4(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT SUM(shouPan) FROM (SELECT shouPan FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 4) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                BigDecimal b = (BigDecimal)list.get(0);
+                return b.intValue();
+            }
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Integer getSUM9(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT SUM(shouPan) FROM (SELECT shouPan FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 9) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                BigDecimal b = (BigDecimal)list.get(0);
+                return b.intValue();
+            }
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Integer getSUM19(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT SUM(shouPan) FROM (SELECT shouPan FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 19) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                BigDecimal b = (BigDecimal)list.get(0);
+                return b.intValue();
+            }
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Integer getSUM29(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT SUM(shouPan) FROM (SELECT shouPan FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 29) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                BigDecimal b = (BigDecimal)list.get(0);
+                return b.intValue();
+            }
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Integer getSUM59(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT SUM(shouPan) FROM (SELECT shouPan FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 59) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                BigDecimal b = (BigDecimal)list.get(0);
+                return b.intValue();
+            }
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Integer getSUMZhangDie4(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT SUM(zhangDie) FROM (SELECT zhangDie FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 4) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                BigDecimal b = (BigDecimal)list.get(0);
+                return b.intValue();
+            }
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Integer getSUMZhangDie9(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT SUM(zhangDie) FROM (SELECT zhangDie FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 9) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                BigDecimal b = (BigDecimal)list.get(0);
+                return b.intValue();
+            }
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Integer getSUMZhangDie19(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT SUM(zhangDie) FROM (SELECT zhangDie FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 19) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                BigDecimal b = (BigDecimal)list.get(0);
+                return b.intValue();
+            }
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Integer getSUMZhangDie29(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT SUM(zhangDie) FROM (SELECT zhangDie FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 29) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                BigDecimal b = (BigDecimal)list.get(0);
+                return b.intValue();
+            }
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Integer getSUMZhangDie59(String code, String date, Session session){
+        try{
+            Query query = session.createSQLQuery("SELECT SUM(zhangDie) FROM (SELECT zhangDie FROM sic_stocks_price p where p.code='" + code + "' and p.date<='" + date + "' ORDER BY p.date DESC LIMIT 59) as A");
+            List<Object> list = query.list();
+            if(list!=null && list.size()>0) {
+                BigDecimal b = (BigDecimal)list.get(0);
+                return b.intValue();
+            }
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
+
+
     public boolean save(StocksPriceEntity stocksPriceEntity, Session session){
         try{
             session.save(stocksPriceEntity);
@@ -464,13 +618,39 @@ public class StocksPriceDao implements IBaseDao{
     }
 
 
+    public List<StocksPriceEntity> getBySql(String sql){
+        Session session = HibernateUtil.getOpenSession();
+        try{
+            Query query = session.createSQLQuery("select * from sic_stocks_price p where p.date = '2017-02-15' ");
+            List<StocksPriceEntity> list = query.list();
+            if(list!=null && list.size()>0) {
+                return list;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        session.close();
+        HibernateUtil.closeSessionFactory();
+        return null;
+
+    }
+
 
     public static void main(String[] args){
         Session session = HibernateUtil.getOpenSession();
         StocksPriceDao dao = new StocksPriceDao();
 
-        List<StocksPriceEntity> list = dao.getByCode("002340");
-        System.out.println(list.size());
+        Integer i = dao.getSUM4("000776", "2017-02-20", session);
+        System.out.println(i);
+
+//        StocksPriceEntity entity = dao.getByDateAndCode("2017-02-16", "600887");
+//        System.out.println(entity.getName());
+
+//        List<StocksPriceEntity> list = dao.getByCode("600887");
+//        System.out.println(list.size());
 //        StocksPriceEntity entity = list.get(0);
 //        System.out.println(entity.getShouPan());
 //        System.out.println(entity.getStocksEntity());
@@ -479,7 +659,7 @@ public class StocksPriceDao implements IBaseDao{
 //        HibernateUtil.closeSessionFactory();
 
 
-//        List<StocksPriceEntity> list = dao.getByDate("2016-03-08");
+//        List<StocksPriceEntity> list = dao.getByDate("2017-02-15");
 //        System.out.println(list.size());
 //        StocksPriceEntity entity = list.get(0);
 //        System.out.println(entity.getShouPan());
@@ -490,7 +670,8 @@ public class StocksPriceDao implements IBaseDao{
 //        dao.getMA5("002340", "2016-04-01", session);
 
 
-
+//        List<StocksPriceEntity> list = dao.getBySql("");
+//        System.out.println(list.size());
 
 
 

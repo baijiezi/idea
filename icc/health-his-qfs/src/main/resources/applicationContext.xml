@@ -27,6 +27,8 @@
                 <ref bean="priceTrendsTaskTrigger" />
                 <!--<ref bean="chooseTaskTrigger" />-->
                 <!--<ref bean="exportTaskTrigger" />-->
+                <ref bean="testTaskTrigger" />
+                <ref bean="stockPriceSimpleTaskTrigger" />
             </list>
         </property>
     </bean>
@@ -92,6 +94,18 @@
         <property name="targetMethod" value="execute" />
     </bean>
     <bean id="stockPriceTask" class="com.stocks.task.StockPriceTask"></bean>
+
+    <bean id="stockPriceSimpleTaskTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="stockPriceSimpleTaskJobDetail" />
+        <property name="cronExpression" value="0 40 14 ? * MON-FRI" />
+    </bean>
+    <bean id="stockPriceSimpleTaskJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="stockPriceSimpleTask" />
+        <property name="targetMethod" value="execute" />
+    </bean>
+    <bean id="stockPriceSimpleTask" class="com.stocks.task.StockPriceSimpleTask"></bean>
 
     <bean id="stockZjlxDfcfTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
@@ -204,7 +218,7 @@
     <bean id="priceTrendsTaskTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="priceTrendsJobDetail" />
-        <property name="cronExpression" value="0 0,10,20,30,40,50 * * * ?" />
+        <property name="cronExpression" value="0 30 19 * * ?" />
     </bean>
     <bean id="priceTrendsJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -238,4 +252,15 @@
     </bean>
     <bean id="exportTask" class="com.stocks.task.export.ExportTask"></bean>
 
+    <bean id="testTaskTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="testTaskJobDetail" />
+        <property name="cronExpression" value="0 47 15 22 * ?" />
+    </bean>
+    <bean id="testTaskJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="testTask" />
+        <property name="targetMethod" value="execute" />
+    </bean>
+    <bean id="testTask" class="com.stocks.statistics.JunXianZouXiangStatistics"></bean>
 </beans>

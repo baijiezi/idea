@@ -153,18 +153,21 @@ public class StocksQuanZhongDao implements IBaseDao {
         Session session = HibernateUtil.getOpenSession();
         session.beginTransaction();
         StocksQuanZhongDao dao = new StocksQuanZhongDao();
-
+        Date date = new Date();
         ClassLoader classLoader = dao.getClass().getClassLoader();
         File file = new File(classLoader.getResource("file/a.txt").getFile());
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                String[] temp = line.split("--->");
+                String[] temp = line.split(" ");
                 StocksQuanZhongEntity entity = new StocksQuanZhongEntity();
-                entity.setType("");
-                entity.setKeyName(temp[0]);
-                entity.setValue(Integer.valueOf(temp[1]));
+                entity.setType("jxzx_600.601_6");
+                entity.setKeyName(temp[3]);
+                entity.setValue(Integer.valueOf(temp[5]));
+                entity.setCount(Integer.valueOf(temp[6]));
+                entity.setCreateTime(date);
+                entity.setMark("均线走向600.601,第六天,2016-11-14至2017-02-16");
                 dao.save(entity, session);
             }
             scanner.close();
